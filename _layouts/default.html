@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en" class="wide wow-animation smoothscroll scrollTo">
+
+<head>
+  <!-- Site Title-->
+  <title>{{page.title}}</title>
+  <meta charset="utf-8">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="keywords" content="intense web design multipurpose template">
+  <meta name="date" content="Dec 26">
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+  <!-- Stylesheets-->
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Montserrat:400,700%7CLato:300,300italic,400,700,900%7CYesteryear">
+  <link rel="stylesheet" href="/css/style.css">
+  <!--[if lt IE 10]>
+    <div style="background: #212121; padding: 10px 0; box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3); clear: both; text-align:center; position: relative; z-index:1;"><a href="http://windows.microsoft.com/en-US/internet-explorer/"><img src="images/ie8-panel/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."></a></div>
+    <script src="js/html5shiv.min.js"></script>
+		<![endif]-->
+  <script src="/js/analytics.js"></script>
+  <script src='https://www.google.com/recaptcha/api.js'></script>
+</head>
+
+<body>
+  <!-- Page-->
+  <div class="page text-center">
+    <!-- Page Header-->
+    <header class="page-head slider-menu-position">
+      <!-- RD Navbar Transparent-->
+      <div class="rd-navbar-wrap">
+
+        {% if page.page-type=="home" %}
+        <nav data-md-device-layout="rd-navbar-fixed" data-lg-device-layout="rd-navbar-static" class="rd-navbar rd-navbar-default rd-atata rd-navbar-transparent"
+          data-lg-auto-height="true" data-md-layout="rd-navbar-fixed" data-lg-layout="rd-navbar-static" data-lg-stick-up="true">
+          {% else %}
+          <nav data-md-device-layout="rd-navbar-fixed" data-lg-device-layout="rd-navbar-static" class="rd-navbar rd-navbar-default rd-navbar-dark"
+            data-lg-auto-height="true" data-md-layout="rd-navbar-fixed" data-lg-layout="rd-navbar-static" data-lg-stick-up="true">
+            {% endif %}
+
+            <div class="rd-navbar-inner">
+              <!-- RD Navbar Panel-->
+              <div class="rd-navbar-panel">
+                <!-- RD Navbar Toggle-->
+                <button data-rd-navbar-toggle=".rd-navbar, .rd-navbar-nav-wrap" class="rd-navbar-toggle" aria-label="Home"><span></span></button>
+                <!--Navbar Brand-->
+                <div class="rd-navbar-brand">
+                  <a href="/"><img style='margin-top: 0px;margin-left: -15px;' width='165' height='35' src='/images/intense/elastest-logo-dark.png'
+                      alt='ElasTest' /></a>
+                </div>
+              </div>
+              <div class="rd-navbar-menu-wrap">
+                <div class="rd-navbar-nav-wrap">
+                  <div class="rd-navbar-mobile-scroll">
+                    <!--Navbar Brand Mobile-->
+                    <div class="rd-navbar-mobile-brand">
+                      <a href="/index.html"><img style='margin-top: 0px;margin-left: -15px;' width='184' height='40' src='/images/intense/elastest-logo-dark.png'
+                          alt='ElasTest' /></a>
+                    </div>
+                    <div class="form-search-wrap">
+                      <!-- RD Search Form-->
+                      <form action="search-results.html" method="GET" class="form-search rd-search">
+                        <div class="form-group">
+                          <label for="rd-navbar-form-search-widget" class="form-label form-search-label form-label-sm">Search</label>
+                          <input id="rd-navbar-form-search-widget" type="text" name="s" autocomplete="off" class="form-search-input input-sm form-control form-control-gray-lightest input-sm"
+                          />
+                        </div>
+                        <button type="submit" class="form-search-submit"><span class="mdi mdi-magnify"></span></button>
+                      </form>
+                    </div>
+                    <!-- RD Navbar Nav-->
+                    <ul class="rd-navbar-nav">
+                      <li {% if page.active=="home" %} class="active" {% endif %}>
+                        <a href="/"><span>Home</span></a>
+                      </li>
+                      <li {% if page.active=="project" %} class="active" {% endif %}>
+                        <a href="/project.html"><span>Project</span></a>
+                      </li>
+                      <li {% if page.active=="objectives" %} class="active" {% endif %}>
+                        <a href="/objectives.html"><span>Objectives</span></a>
+                      </li>
+                      <li {% if page.active=="community" %} class="active" {% endif %}>
+                        <a href="/community.html"><span>Community</span></a>
+                      </li>
+                      <li {% if page.active=="blog" %} class="active" {% endif %}>
+                        <a href="/blog/index.html"><span>Blog</span></a>
+                      </li>
+                      <li {% if page.active=="documentation" %} class="active" {% endif %}>
+                        <a href="/documentation.html"><span>Documentation</span></a>
+                      </li>
+                      <li {% if page.active=="roadmap" %} class="active" {% endif %}>
+                        <a href="/roadmap.html"><span>Roadmap</span></a>
+                      </li>
+                    </ul>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </nav>
+      </div>
+
+      {% if page.page-type=="home" %}
+
+      <!--Swiper-->
+      <div class="rd-parallax rd-parallax-swiper">
+        <div data-speed="0.3" data-sm-speed="1" data-type="html" class="rd-parallax-layer">
+          <div data-loop="true" data-height="100vh" data-dragable="false" data-min-height="750px" class="swiper-container swiper-slider swiper-no-swiping">
+            <div class="swiper-wrapper text-center">
+              <div id="page-loader" data-slide-bg="images/intros/intro-08-1920x1078.jpg" data-preview-bg="images/intros/intro-08-1920x1078.jpg"
+                class="swiper-slide">
+                <div data-speed="0.5" data-fade="true" class="swiper-caption swiper-parallax">
+                  <div class="swiper-slide-caption">
+                    <div class="shell">
+                      <div class="range range-lg-center">
+                        <div class="cell-lg-12">
+                          <div data-caption-animate="fadeInUp" data-caption-delay="700">
+                            <img id="page-loader-logo" style="margin-top:25px" src="images/logos_elastest/logo-white.png" alt="ElasTest" />
+                          </div>
+                        </div>
+                        <div class="cell-lg-10 offset-top-30">
+                          <p data-caption-animate="fadeInUp" data-caption-delay="900" class="hidden reveal-sm-block text-light h4">
+                            An elastic platform to make easier end to end testing
+                          </p>
+                        </div>
+                        <div class="offset-top-66 range range-md-center range-sm-center range-xs-center"><a href="/#features" data-waypoint-to="#features" data-caption-animate="fadeInUp" data-caption-delay="1200"
+                            class="btn btn-default btn-lg btn-anis-effect"><span class="btn-text">Start a journey</span></a></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {% endif %}
+
+    </header>
+
+    {% if page.page-type
+    <>"home" %}
+
+      <!-- Classic Breadcrumbs-->
+      <section class="breadcrumb-classic">
+        <div id="title-header" class="shell section-34 section-sm-50">
+          <div class="range range-lg-middle">
+            <div class="cell-lg-2 veil reveal-lg-block cell-lg-push-2"><span class="icon-lg {{page.section-icon}} icon icon-white"></span></div>
+            <div id="page-title" class="cell-lg-5 reveal-lg-block cell-lg-push-1 text-lg-left">
+              <h1 class="h2"><span class="big">{{page.section-title}}</span></h1>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {% endif %}
+
+      <!-- Page Content-->
+      <main class="page-content">
+
+        <!--The ElasTest members-->
+        {{ content }}
+
+      </main>
+      <!-- Page Footers-->
+      <!-- Default footer-->
+      <footer class="section-relative section-top-66 section-bottom-34 page-footer bg-gray-base context-dark">
+        <div class="shell">
+          <div class="range range-sm-center text-lg-left">
+            <div class="cell-sm-8 cell-md-12">
+              <div class="range range-xs-center">
+
+                <div class="cell-xs-12 offset-top-41 cell-md-5 offset-md-top-0 text-md-left cell-lg-4 cell-lg-push-2">
+                  <h2 class="h6 text-uppercase text-spacing-60">Newsletter</h2>
+                  <p>Keep up with the project news. Enter your e-mail and subscribe to our newsletter.
+                  </p>
+                </div>
+                <div class="cell-xs-12 offset-top-41 cell-md-5 offset-md-top-0 text-md-left cell-lg-4 cell-lg-push-2">
+                  <div class="offset-top-30">
+                    <form action="//github.us15.list-manage.com/subscribe/post?u=df7490aeb0b751da2913c2f2f&amp;id=1638a5f111" method="post" id="mc-embedded-subscribe-form"
+                      name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                      <div class="form-group">
+                        <div class="input-group input-group-sm"><span class="input-group-addon"><span class="input-group-icon mdi mdi-email"></span></span>
+                          <label for="mce-EMAIL" class="hidden">Email</label>
+                          <input placeholder="Type your E-Mail" id="mce-EMAIL" type="email" name="EMAIL" data-constraints="@Required @Email" value=""
+                            class="form-control email"><span class="input-group-btn">                            
+                          <input type="hidden" name="u" value="df7490aeb0b751da2913c2f2f">
+                          <input type="hidden" name="id" value="1638a5f111">
+                          <input type="hidden" name="orig-lang" value="1">
+                          <input type="submit" id="mc-embedded-subscribe" class="btn btn-sm btn-primary" name="subscribe" value="Subscribe">
+                      </div>
+                    </div>
+                    <div id="form-subscribe-footer" class="form-output"></div>
+                  </form>
+                </div>
+              </div>
+              <div class="cell-xs-12 offset-top-66 cell-lg-3 cell-lg-push-1 offset-lg-top-0">
+                <!-- Footer brand-->
+                <div class="footer-brand">
+                  <a href="/index.html"><img style='margin-top: -5px;margin-left: 0px;' width='138' height='31' src='/images/intense/elastest-logo-dark.png' alt='ElasTest' /></a>
+                </div>
+                <p class="text-darker offset-top-4"></p>
+                <ul class="list-inline">
+                  <li>
+                    <a href="https://github.com/elastest" class="icon fa fa-github icon-xxs icon-circle icon-darker-filled" aria-label="ElasTest GitHub"><span class="hidden">GitHub</span></a>
+                          </li>
+                          <li>
+                            <a href="https://twitter.com/elastestio" class="icon fa fa-twitter icon-xxs icon-circle icon-darker-filled" aria-label="ElasTest Twitter"><span class="hidden">Twitter</span></a>
+                          </li>
+                          <li>
+                            <a href="https://groups.google.com/forum/#!forum/elastest-users" class="icon mdi mdi-email icon-xxs icon-circle icon-darker-filled"
+                              aria-label="ElasTest Email"><span class="hidden">Email</span></a>
+                          </li>
+                          <li>
+                            <a href="http://elastest.io/blog" class="icon mdi mdi-blogger icon-xxs icon-circle icon-darker-filled" aria-label="ElasTest Blog"><span class="hidden">Blog</span></a>
+                          </li>
+                          <li>
+                            <a href="https://www.youtube.com/channel/UCT89tiZVQhnRQMkfDCPm_1g" class="icon mdi mdi-youtube-play icon-xxs icon-circle icon-darker-filled"
+                              aria-label="ElasTest YouTube"><span class="hidden">YouTube</span></a>
+                          </li>
+                          </ul>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+              <div class="shell offset-top-50">
+                <p class="small text-darker">ElasTest &copy; <span id="copyright-year"></span>
+
+                </p>
+              </div>
+      </footer>
+      </div>
+      <!-- Global Mailform Output-->
+      <div id="form-output-global" class="snackbars"></div>
+      <!-- PhotoSwipe Gallery-->
+      <div tabindex="-1" role="dialog" aria-hidden="true" class="pswp">
+        <div class="pswp__bg"></div>
+        <div class="pswp__scroll-wrap">
+          <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+          </div>
+          <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+              <div class="pswp__counter"></div>
+              <button title="Close (Esc)" class="pswp__button pswp__button--close"></button>
+              <button title="Share" class="pswp__button pswp__button--share"></button>
+              <button title="Toggle fullscreen" class="pswp__button pswp__button--fs"></button>
+              <button title="Zoom in/out" class="pswp__button pswp__button--zoom"></button>
+              <div class="pswp__preloader">
+                <div class="pswp__preloader__icn">
+                  <div class="pswp__preloader__cut">
+                    <div class="pswp__preloader__donut"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+              <div class="pswp__share-tooltip"></div>
+            </div>
+            <button title="Previous (arrow left)" class="pswp__button pswp__button--arrow--left"></button>
+            <button title="Next (arrow right)" class="pswp__button pswp__button--arrow--right"></button>
+            <div class="pswp__caption">
+              <div class="pswp__caption__center"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Java script-->
+      <script src="/js/core.min.js"></script>
+      <script src="/js/script.js"></script>
+</body>
+
+</html>

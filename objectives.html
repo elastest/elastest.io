@@ -1,0 +1,180 @@
+--- 
+layout: default 
+title: ElasTest Objectives 
+active: objectives 
+section-title: Objectives
+section-icon: mdi mdi-calendar-multiple-check
+---
+
+    <section class="section-41 section-sm-66">
+        <div class="shell">
+            <div class="range range-xs-center">
+                <div class="cell-xs-10 cell-lg-12 text-md-left cell-lg-push-1 offset-top-50 offset-lg-top-0">
+                    <h2 class="h1">ElasTest ambition</h2>
+                    <hr class="divider hr-lg-left-0 bg-orange">
+                    <div class="offset-top-30 offset-md-top-50">
+                        <p>Software testing is one of the most complex and less understood areas of software engineering. When creating software, the testing process commonly accounts for the highest fraction of costs, efforts and time-to-market of the whole software development lifecycle. For example, in the <a target="_blank" href="http://eu.wiley.com/WileyCDA/WileyTitle/productCd-1118662873.html">testing book of Mili and Tchier</a> it is reported that the creation of Windows Server 2003 required around 2,000 engineers for analysis and development but 2,400 for testing. This situation is getting worse with the emergence of highly distributed and interconnected heterogeneous environments (i.e. Systems in the Large, SiL) and the appropriate testing of SiL is becoming prohibitive for many software and service providers.</p>
+                        <p>This is a deterrent of innovation and generates relevant risks in society given the pervasiveness of software in most human activities. This situation is mainly caused by complexity effects. When a software under test (SuT) grows in N lines of code, the complexity of its tests do not grow proportionally as these new N lines may generate potentially many new interactions. Hence, software grows linearly but its complexity may grow exponentially.</p>
+                        <p>As introduced before, a SiL is an aggregation of systems in the small (SiS). Hence, following the same logic, when integrating a new SiS in a SiL the final testing costs are significantly over the ones of testing independently the comprising SiS. This effect is well known in software engineering and it is illustrated in the next figure.</p>
+                        
+                        <div class="range range-xs-center">
+                            <div class="cell-sm-9">
+                                <img src="images/objectives.jpg" alt="ElasTest Objectives" class="img-responsive reveal-inline-block offset-top-10">
+                            </div>
+                        </div>
+                        
+                        <p>Our assumption is that SiL grow through the aggregation of SiS that interact following some orchestration rules. Hence, we hypothesize that the appropriate orchestration of T-Jobs should also enable the validation of the interactions among such functions. As a result, in the ideal case (i.e. test orchestration effort being zero) the marginal cost of testing a new added function should be constant (red line on right picture) and the total costs of SiL testing should grow linearly (red line on left picture). In current state of the art (SotA), test orchestration technologies are not popular and are created in ad-hoc manners, reason why the interactions are typically tested manually driving to increasing marginal costs (blue line on right picture) and super-linear total costs (blue on the left).</p>
+                        <p>As it can be observed in the previous figure, in an ideal world in whick SiS do not interact inside a SiL (solid red line), the testing costs might be growing linearly with the size of the SiL (left picture) and the marginal costs of testing would be constant (right picture). However, in reality (solid blue line) the costs of testing grow super-linearly (left picture) as the marginal cost of testing is not constant (right picture) due to the complex interactions within the SiL. In this context, our ambition is to approach as much as possible to that ideal situation basing on ElasTest ideas.</p>
+                        <p>ElasTest ambition is to evolve SotA creating novel test orchestration technologies and to get as close as possible to such ideal.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-41 section-sm-66">
+        <div class="shell">
+            <div class="range range-xs-center">
+                <div class="cell-xs-10 cell-lg-12 text-md-left cell-lg-push-1 offset-top-50 offset-lg-top-0">
+                    <h2 class="h1">ElasTest progresses beyond the state of the art</h2>
+                    <hr class="divider hr-lg-left-0 bg-orange">
+                    <div class="offset-top-30 offset-md-top-50">
+                        <p>ElasTest will provide relevant advances beyond SotA both from a scientific and from an innovation perspective. The following table summarizes such advances.</p>
+
+                        <!-- Bootstrap Table-->
+
+                        <div class="table-responsive clearfix">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th><span class="hidden">Competences</span></th>
+                                <th>Current SotA</th>
+                                <th>Expected SotA evolutions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th>Test orchestration</th>
+                                <td>
+                                    <p>No notion of orchestration</p>
+                                    <p>Limited methods or tools for testing SiL</p>
+                                    <p>Strong assumptions on tests and/or SuT</p>
+                                    <p>Hard integration with CI tools</p>
+                                </td>
+                                <td>
+                                    <p>Solid orchestration notation (topology)</p>
+                                    <p>Systematic Divide-and-conquer testing of SiL</p>
+                                    <p>No assumptions on tests or SuT</p>
+                                    <p>Ready to be used with CI tools</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Non-functional testing</th>
+                                <td>
+                                    <p>Non-functional testing is a challenge</p>
+                                    <p>Poor tools and methodologies</p>
+                                    <p>Ad-hoc non-reusable code required</p>
+                                    <p>No tests for costs or energy</p>
+                                    <p>No tools for multimedia QoE testing</p>
+                                    <p>No tools for IoT QoS testing</p>
+                                </td>
+                                <td>
+                                    <p>Non-functional testing is a feature</p>
+                                    <p>Powerful tool and methodology</p>
+                                    <p>Reusable orchestration logic</p>
+                                    <p>Ready for costs and energy testing</p>
+                                    <p>Ready for QoE multimedia testing</p>
+                                    <p>Ready for QoS testing in IoT environments</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Security testing</th>
+                                <td>
+                                    <p>Simple client/server configuration testing</p>
+                                    <p>Specific to a vulnerability of application</p>
+                                    <p>Limited protocol semantics</p>
+                                    <p>Crash oracle</p>
+                                </td>
+                                <td>
+                                    <p>Support for multiple entities</p>
+                                    <p>Generic Security Check as a Service framework</p>
+                                    <p>Fine-grained protocol grammar language</p>
+                                    <p>Fine-grained oracles</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>GUI automation and impersonation</th>
+                                <td>
+                                    <p>GUI user impersonation</p>
+                                    <p>Poor tools for code re-usability</p>
+                                </td>
+                                <td>
+                                    <p>User + sensor + device impersonation</p>
+                                    <p>Reusable SaaS test support services</p>
+                                </td>
+                            </tr>
+                                                        <tr>
+                                <th>Monitoring and Runtime verification</th>
+                                <td>
+                                    <p>Methodologies and tools for testing SiS</p>
+                                    <p>Monitors are monolithic</p>
+                                    <p>No mechanism for monitor coordination</p>
+                                    <p>No mechanism for large fragmented logs</p>
+                                </td>
+                                <td>
+                                    <p>Methodologies and tools for testing SiL</p>
+                                    <p>Full orchestration of monitors</p>
+                                    <p>Language for monitor orchestration</p>
+                                    <p>Algorithms for large and fragmented logs</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Machine Learning applications to testing</th>
+                                <td>
+                                    <p>Focus on automating processes</p>
+                                    <p>Work on lab and controlled environments</p>
+                                </td>
+                                <td>
+                                    <p>Focus on supporting the tester in:
+                                        <ul style="list-style: none;">
+                                            <li>a) design of new test cases</li>
+                                            <li>b) orchestration of test cases</li>
+                                        </ul>
+                                    </p>
+                                    <p>Work on real-world SiL</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Cognitive Q&A Systems</th>
+                                <td>
+                                    <p>Powerful tool for knowledge reusability, </p>
+                                    <p>but never applied to software testing</p>
+                                </td>
+                                <td>
+                                    <p>Q&A for designing T-Jobs</p>
+                                    <p>Q&A for designing orchestration</p>
+                                    <p>Q&A for test design strategy</p>
+                                    <p>Full testing knowledge reusability</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Instrumentation</th>
+                                <td>
+                                    <p>Only available in specific clouds</p>
+                                    <p>May require special permissions</p>
+                                    <p>Fragmented non-uniform APIs</p>
+                                </td>
+                                <td>
+                                    <p>Infrastructure-independent capabilities</p>
+                                    <p>Available for all cloud users</p>
+                                    <p>Coherent unified and uniform API</p>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>

@@ -1,0 +1,22 @@
+title: ElasTest
+#baseurl: "/_site" # the subpath of your site, e.g. /blog
+url: "https://github.com/elastest/elastest-eu-web" # the base hostname & protocol for your site, e.g. http://example.com
+indexHtml: "index.html"
+
+github_username:  elastest
+
+# Build settings
+markdown: kramdown
+theme: minima
+gems:
+  - jekyll-feed
+  - jekyll-paginate
+
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+
+paginate: 2 #show N posts
+paginate_path: "/blog/page:num/"
