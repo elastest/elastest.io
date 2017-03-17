@@ -10,26 +10,34 @@ section-icon: mdi mdi-newspaper
         <div class="range range-xs-center">
             <div class="cell-xs-10 cell-sm-12 text-md-center cell-lg-push-1 offset-top-50 offset-lg-top-0">
                 <div class="offset-top-30 offset-md-top-50">
-                    {% for post in paginator.posts %}
-                       <div class="range range-xs-center">
-                            <div class="blog-list-image cell-sm-5">{{ post.excerpt }}</div>
-                            <div class="cell-sm-7 text-justify">
-                                <h3><a href="{{post.url}}">{{ post.title }}</a></h3>
-                                <p>
-                                    {{ post.content | split:"<!-- more -->" | first | strip_html | truncate:300 }}
-                                </p>
-                                <div class="text-left">
-                                    {% if post.content | size > 300 %}
-                                    <div><a class="btn btn-sm btn-primary" href="{{ post.url }}/#read-more" role="button">Read more <i class="fa fa-arrow-circle-right"></i></a></div>
-                                    {% endif %}
-                                    <div class="float-right"><span class="mdi  mdi-calendar-clock"></span><span> {{ post.date | date_to_string }}</span></div>
+                    {% if paginator.posts.size > 0 %}
+                        {% for post in paginator.posts %}
+                        <div class="range range-xs-center">
+                                <div class="blog-list-image cell-sm-5">{{ post.excerpt }}</div>
+                                <div class="cell-sm-7 text-justify">
+                                    <h3><a href="{{post.url}}">{{ post.title }}</a></h3>
+                                    <p>
+                                        {{ post.content | split:"<!-- more -->" | first | strip_html | truncate:300 }}
+                                    </p>
+                                    <div class="text-left">
+                                        {% if post.content | size > 300 %}
+                                        <div><a class="btn btn-sm btn-primary" href="{{ post.url }}/#read-more" role="button">Read more <i class="fa fa-arrow-circle-right"></i></a></div>
+                                        {% endif %}
+                                        <div class="float-right"><span class="mdi  mdi-calendar-clock"></span><span> {{ post.date | date_to_string }}</span></div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        {% if forloop.last == false %}
-                        <hr class="divider divider-95 divider-xs hr-lg-center-0">
-                        {% endif %}
-                    {% endfor %}
+                            {% if forloop.last == false %}
+                            <hr class="divider divider-95 divider-xs hr-lg-center-0">
+                            {% endif %}
+                        {% endfor %}
+
+                    {% else %}
+                    <div class="text-justify">
+                        <h2 id="content" class="h1">No posts yet</h2>
+                        <hr class="divider hr-lg-left-0 bg-mantis">
+                    </div>
+                    {% endif %}
 
 
 
