@@ -13,8 +13,19 @@ li {
     list-style: none;
 }
 
+
+.holder h1{
+    border-bottom: #ffac2f 4px solid;
+    padding-bottom: 12px;
+}
+
+.holder h2{
+    border-bottom: #ffac2f 3px solid;
+    padding-bottom: 12px;
+}
+
 .wy-grid-for-nav{
-  position: relative !important; 
+  /*position: relative !important; */
 }
 
 /* fallback */
@@ -31,7 +42,7 @@ li {
   width:100%;
   }
 .wy-grid-for-nav{
-  position: relative !important;
+  /*position: relative !important;*/
 }
 
 .wy-nav-side {
@@ -50,9 +61,6 @@ li {
     height:30px !important;;
   }
 
-  .wy-grid-for-nav{
-    position:relative !important;
-  }
 
 .holder{
     width: 100% !important;
@@ -196,7 +204,7 @@ padding-top: 10px;
   width: 0px;
   height:0px;
   margin-right: 20px;
-  background: #ea8e0c url(../img/menu-icon.png);
+  background: #ffac2f url(../img/menu-icon.png);
   float: right;
 
 }
@@ -263,7 +271,7 @@ li.subnav_drop a:hover, .subnav a:hover, a:active, .subnav li a:hover  {
 }
 .wy-side-nav-search {
     z-index: 200;
-    background-color: #ea8e0c;
+    background-color: #ffac2f;
     text-align: center;
     padding: 0.809em;
     display: block;
@@ -275,7 +283,7 @@ li.subnav_drop a:hover, .subnav a:hover, a:active, .subnav li a:hover  {
     width: 100%;
     border-radius: 50px;
     padding: 6px 12px;
-    border-color: #ea8e0c;
+    border-color: #ffac2f;
 }
 .rst-versions {
     visibility: hidden;
@@ -289,16 +297,16 @@ li.subnav_drop a:hover, .subnav a:hover, a:active, .subnav li a:hover  {
 
 
 .wy-nav-content a:link, .wy-nav-content a:hover, .wy-nav-content a:hover:{
-    color: #ea8e0c;
+    color: #ffac2f;
 }
 
 a {
-    color: #ea8e0c;
+    color: #ffac2f;
     text-decoration: none;
 }
 
 a:hover{
-    color: #ea8e0c;
+    color: #ffac2f;
     text-decoration: none;
 }
 /*
@@ -349,7 +357,7 @@ nav.stickynav {
 }
 
 .wy-menu, .wy-menu-vertical{
-    margin-top: 40px !important;
+    margin-top: 37px !important;
 }
 
 .wy-menu-vertical li.current a{
@@ -364,7 +372,7 @@ nav.stickynav {
 
 @media screen and (min-width: 1400px){
 .wy-grid-for-nav {
-    position: relative;
+    /*position: relative;*/
     margin: 0 auto;
 
     }
@@ -454,7 +462,7 @@ code.cs, code.c {
 
 code, .rst-content tt {
     padding: 2px 5px;
-    color: #ea8e0c;
+    color: #ffac2f;
     background-color: #fcf3e0;
     font-size: 100%;
     border:none;
@@ -517,13 +525,14 @@ code, .rst-content tt {
     cursor: pointer;
 }
 
-@media (max-width: 768px) and (orientation: landscape) {
-    .fixed-menu,
+@media (max-width: 767px) and (orientation: landscape) {
+    .float-panel,
     .holder > section > .shell > .range > div{
         display: block !important;
         max-width: 100% !important;
         -webkit-flex-basis: 100% !important;
         flex-basis: 100% !important;
+        position: relative !important;
     }
 
     .holder > section{
@@ -531,48 +540,60 @@ code, .rst-content tt {
     }
 }
 
+@media (max-width: 767px){
+  .float-panel{
+    position:relative !important;
+    top: 0 !important;
+  }
+}
+
 @media (min-width: 768px) {
-    .fixed-menu{
+    .float-panel{
         width: 100%;
-        top: 168px;
         left: 0;
-        position: fixed !important;
-        height: 100%;
+        position: absolute;
     }
 
     #menu-list{
         overflow-y: auto;
-        height: 200px;
+        height: 298px;
     }
 }
 
-@media (min-width: 992px) {
-    .fixed-menu{
-        top: 168px;
-    }
+@media (min-width: 992px) and (orientation: portrait){
     #menu-list{
-        height: 119px;
+        height: 795px;
     }
 }
+
+@media (min-width: 992px) and (orientation: landscape){
+    #menu-list{
+        height: 206px;
+    }
+}
+
 
 @media (min-width: 1200px) {
-    .fixed-menu{
-        top: 222px;
-    }
     #menu-list{
-        height: 465px;
+        height: 570px;
     }
 }
 
 @media (min-width: 1800px) {
-    .fixed-menu{
-        top: 228px;
-    }
     #menu-list{
-        height: 372px;
+        height: 558px;
     }
 }
 
+#site-menu-title h3{
+    margin: 0 0 3px 0;
+}
+#site-menu-title hr{
+    margin: 0 0 6px 0;
+}
+
+
+/* Lateral Menu Scrollbar */
 #menu-list::-webkit-scrollbar-track
 {
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
