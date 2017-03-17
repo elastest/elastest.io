@@ -56,7 +56,7 @@ li {
 
 .holder{
     width: 100% !important;
-
+    padding-right: 10px;
   }
 
 .wy-nav-side {
@@ -214,17 +214,20 @@ a:hover#menu-icon {
   margin: 0 auto;font-size;
   padding:1em 1em 3em 0em;
   overflow:auto;
-
-
+  position: relative;
 }
 
-  .wy-nav-content{
+.wy-nav-content{
     width: 100%
-  }
+}
+
+.wy-nav-content img{
+    max-width: 100%;
+}
 
 
 .holder{
-  width: 90%;
+  width: 98%;
   margin: 0 auto;
   text-left: center;
   display: block;
@@ -247,7 +250,7 @@ li.subnav_drop a:hover, .subnav a:hover, a:active, .subnav li a:hover  {
 }
 
 .wy-menu ,.wy-menu-vertical{
-    border:1px solid #e1e1e5;
+    /*border:1px solid #e1e1e5;*/
 }
 
 .subnav li {
@@ -367,7 +370,8 @@ nav.stickynav {
     }
 }
 .wy-nav-content{
-  padding: 1.7em 1em 0em 2em;
+  /*padding: 1.7em 1em 0em 1em;*/
+  padding: 0;
   width: 100%;
   max-width: 100%;
 }
@@ -395,7 +399,8 @@ nav.stickynav {
     position: relative;
     float: left;
     background: none;
-    width:28%;
+    /*width:28%;*/
+    width: 100% !important;
 }
 
 .content_container{
@@ -510,4 +515,80 @@ code, .rst-content tt {
 
 .subnav_drop {
     cursor: pointer;
+}
+
+@media (max-width: 768px) and (orientation: landscape) {
+    .fixed-menu,
+    .holder > section > .shell > .range > div{
+        display: block !important;
+        max-width: 100% !important;
+        -webkit-flex-basis: 100% !important;
+        flex-basis: 100% !important;
+    }
+
+    .holder > section{
+        clear:both;
+    }
+}
+
+@media (min-width: 768px) {
+    .fixed-menu{
+        width: 100%;
+        top: 168px;
+        left: 0;
+        position: fixed !important;
+        height: 100%;
+    }
+
+    #menu-list{
+        overflow-y: auto;
+        height: 200px;
+    }
+}
+
+@media (min-width: 992px) {
+    .fixed-menu{
+        top: 168px;
+    }
+    #menu-list{
+        height: 119px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .fixed-menu{
+        top: 222px;
+    }
+    #menu-list{
+        height: 465px;
+    }
+}
+
+@media (min-width: 1800px) {
+    .fixed-menu{
+        top: 228px;
+    }
+    #menu-list{
+        height: 372px;
+    }
+}
+
+#menu-list::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 9px;
+	background-color: #F5F5F5;
+}
+
+#menu-list::-webkit-scrollbar
+{
+	width: 10px;
+	background-color: #F5F5F5;
+}
+
+#menu-list::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #666;
 }
