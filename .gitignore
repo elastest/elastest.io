@@ -3,4 +3,5 @@ _site
 .jekyll-metadata
 Gemfile.lock
 blog/_posts
-docs
+/docs/*
+!/docs/index.html
