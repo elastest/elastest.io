@@ -1,5 +1,5 @@
 --- 
-layout: default  
+layout: default
 page-type: post
 ---
 
@@ -12,6 +12,11 @@ page-type: post
               <hr class="divider hr-lg-left-0 bg-orange">
               <div class="post-date text-left">{{page.date | date_to_string}}</div>
               <div class="offset-top-30 offset-md-top-50 text-justify">
+                <div class="range">
+                  <div markdown="1" class="post-image-container cell-xs-9 center-block"> 
+                      <img class="img-responsive" alt="{{page.image-alt}}" src="{{page.main-image}}">
+                  </div>
+                </div>
                 {{page.content}}
               </div>
             </div>

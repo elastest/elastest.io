@@ -18,5 +18,5 @@ exclude:
   - Gemfile.lock
   - vendor
 
-paginate: 2 #show N posts
+paginate: 10 #show N posts
 paginate_path: "/blog/page:num/"

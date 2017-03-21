@@ -13,7 +13,9 @@ section-icon: mdi mdi-newspaper
                     {% if paginator.posts.size > 0 %}
                         {% for post in paginator.posts %}
                         <div class="range range-xs-center">
-                                <div class="blog-list-image cell-sm-5">{{ post.excerpt }}</div>
+                                <div class="blog-list-image cell-sm-5">
+                                    <img src="{{ post.main-image }}" alt="{{ post.image-alt }}" class="img-responsive">
+                                </div>
                                 <div class="cell-sm-7 text-justify">
                                     <h3><a href="{{post.url}}">{{ post.title }}</a></h3>
                                     <p>
