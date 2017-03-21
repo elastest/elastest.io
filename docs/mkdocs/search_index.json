@@ -1,9 +1,0 @@
-{
-    "docs": [
-        {
-            "location": "/", 
-            "text": "No documentation yet\n\n\n\n\nElasTest is currently in the early stages of defining and development. You can't download and install it righ now. If you want to know more about ElasTest development process, please visit the \nRoadmap\n section.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n      // Creating custom :external selector\n      $.expr[':'].external = function(obj){\n          return !obj.href.match(/^mailto\\:/)\n                  && (obj.hostname != location.hostname);\n      };\n      $(function(){\n        $('a:external').addClass('external');\n        $(\".external\").attr('target','_blank');\n      })", 
-            "title": "Get Started"
-        }
-    ]
-}

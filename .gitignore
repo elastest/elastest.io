@@ -3,3 +3,10 @@ _site
 .jekyll-metadata
 Gemfile.lock
 blog/_posts
+docs/css
+docs/fonts
+docs/img
+docs/js
+docs/license
+docs/mkdocs
+docs/sitemap.xml
