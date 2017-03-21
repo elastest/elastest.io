@@ -237,7 +237,6 @@ a:hover#menu-icon {
 .holder{
   width: 98%;
   margin: 0 auto;
-  text-left: center;
   display: block;
 
 }
@@ -556,32 +555,32 @@ code, .rst-content tt {
 
     #menu-list{
         overflow-y: auto;
-        height: 298px;
+        max-height: 298px;
     }
 }
 
 @media (min-width: 992px) and (orientation: portrait){
     #menu-list{
-        height: 795px;
+        max-height: 795px;
     }
 }
 
 @media (min-width: 992px) and (orientation: landscape){
     #menu-list{
-        height: 206px;
+        max-height: 206px;
     }
 }
 
 
 @media (min-width: 1200px) {
     #menu-list{
-        height: 570px;
+        max-height: 570px;
     }
 }
 
 @media (min-width: 1800px) {
     #menu-list{
-        height: 558px;
+        max-height: 558px;
     }
 }
 
