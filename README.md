@@ -1,34 +1,38 @@
-# Installation
-1. Clone or download repository
-2. Install Docker
-3. Open terminal and go to repository
-4. Run the following command:
-	```
-	sudo docker run --rm --label=jekyll --volume="$(pwd)":/srv/jekyll -it -p 127.0.0.1:4000:4000 jekyll/jekyll bundle exec jekyll serve
-	```
-5. Open http://127.0.0.1:4000/ in your browser to view web locally
+# Introduction
+The elastest.io web is generated with [Jekyll](https://jekyllrb.com/).
 
+You can edit any page with a simple text editor. When you commit the changes to the repository, the web page will be updated automatically.
 
-# Add new blog post
-1. Create a new **.markdown** file into /blog/_posts folder with the following name structure:
-	```
-	YY-MM-DD-title.markdown 
-	```
+#How to add a new blog post
+1. Clone this repository
+```
+git clone git@github.com:elastest/elastest.io.git
+```
+2. Create a new **.markdown** file into /blog/_posts folder with the following name structure:
+```
+YY-MM-DD-title.markdown 
+```
+3. Add the following header into file:
+```
+---
+layout: post
+title:  "Title"
+date:   YYYY-MM-DD HH:MM:SS +0100
+main-image: "/path/to/image"
+image-alt: "image alt text"
+---
+```
+Where you will have to set **title, date, main-image and image-alt variables**. Don't edit neither layout variable nor +0100 in date variable (GMT+1).
+> *Note: Add post images into **/blog/images folder**
 	
-2. Add the following header into file:
+4. Write post content below, in [Markdown format](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
+5. If you want to preview the changes in local before commiting, you can execute the following command in the root folder of the repository (you need [Docker] installed) and open the browser in `http://localhost:4000`:
 
-		---
-		layout: post
-		title:  "Title"
-		date:   YYYY-MM-DD HH:MM:SS +0100
-		main-image: "/path/to/image"
-		image-alt: "image alt text"
-		---
+```
+docker run --rm --label=jekyll --volume="$(pwd)":/srv/jekyll -it -p 127.0.0.1:4000:4000 jekyll/jekyll bundle exec jekyll serve
+```
+6. To update the web page, commit and push your changes. Then, GitHub will update the web [elastest.io](http://elastest.io) automatically.
 
-	Where you will have to set **title, date, main-image and image-alt variables**. Don't edit neither layout variable nor +0100 in date variable (GMT+1).
-	> *Note: Add post images into **/blog/images folder**
-	
-3. Write post content below, in markdown language
 
 
 # Add documentation
