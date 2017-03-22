@@ -1,4 +1,4 @@
-# Local Installation
+# Installation
 1. Clone or download repository
 2. Install Docker
 3. Open terminal and go to repository
