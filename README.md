@@ -3,7 +3,7 @@ The elastest.io web is generated with [Jekyll](https://jekyllrb.com/).
 
 You can edit any page with a simple text editor. When you commit the changes to the repository, the web page will be updated automatically.
 
-#How to add a new blog post
+# How to add a new blog post
 1. Clone this repository
 ```
 git clone git@github.com:elastest/elastest.io.git
