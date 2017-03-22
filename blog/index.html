@@ -12,7 +12,7 @@ section-icon: mdi mdi-newspaper
                 <div class="offset-top-30 offset-md-top-50">
                     {% if paginator.posts.size > 0 %}
                         {% for post in paginator.posts %}
-                        <div class="range range-xs-center">
+                        <div class="range range-xs-center post-row">
                                 <div class="blog-list-image cell-sm-5">
                                     <img src="{{ post.main-image }}" alt="{{ post.image-alt }}" class="img-responsive">
                                 </div>
