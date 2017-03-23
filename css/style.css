@@ -1698,11 +1698,15 @@ th {
     vertical-align: top;
     border: 1px solid #ddd;
      }
+  .table > tbody > tr > td{
+    text-align: center;
+  }
   .table > thead > tr > th {
     vertical-align: bottom;
     border-bottom: 2px solid #ddd;
     border-left: none;
-    border-right: none; }
+    border-right: none;
+    text-align: center;}
   .table > caption + thead > tr:first-child > th,
   .table > caption + thead > tr:first-child > td,
   .table > colgroup + thead > tr:first-child > th,
