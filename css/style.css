@@ -6027,8 +6027,8 @@ button.close {
 
 .center-block {
   display: block;
-  margin-left: auto;
-  margin-right: auto; }
+  margin-left: auto !important;
+  margin-right: auto !important; }
 
 .pull-right {
   float: right !important; }
@@ -35574,6 +35574,10 @@ ul {
 
 .project-partner > div{
     display: table-cell; 
+}
+
+.project-partner p{
+  text-align: center !important;
 }
 
 
