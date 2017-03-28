@@ -10,7 +10,7 @@ git clone git@github.com:elastest/elastest.io.git
 ```
 2. Create a new **.markdown** file into /blog/_posts folder with the following name structure:
 ```
-YY-MM-DD-title.markdown 
+YYYY-MM-DD-title.markdown 
 ```
 3. Add the following header into file:
 ```
@@ -22,7 +22,7 @@ main-image: "/path/to/image"
 image-alt: "image alt text"
 ---
 ```
-Where you will have to set **title, date, main-image and image-alt variables**. Don't edit neither layout variable nor +0100 in date variable (GMT+1).
+Where you will have to set **title, date, main-image and image-alt variables**. Don't edit neither layout variable nor +0100 in date variable (GMT+1). The date can not be greater than the current date.
 > *Note: Add post images into **/blog/images folder**
 	
 4. Write post content below, in [Markdown format](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
