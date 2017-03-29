@@ -23,8 +23,8 @@ image-alt: "image alt text"
 ---
 ```
 Where you will have to set **title, date, main-image and image-alt variables**. Don't edit neither layout variable nor +0100 in date variable (GMT+1). The date can not be greater than the current date.
-> *Note: Add post images into **/blog/images folder**
-	
+> *Notes: Add post images into **/blog/images folder**
+> Insert main-image path begining with slash "/"	
 4. Write post content below, in [Markdown format](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
 5. If you want to preview the changes in local before commiting, you can execute the following command in the root folder of the repository (you need [Docker] installed) and open the browser in `http://localhost:4000`:
 
