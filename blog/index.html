@@ -23,7 +23,7 @@ section-icon: mdi mdi-newspaper
                                     </p>
                                     <div class="text-left">
                                         {% if post.content | size > 300 %}
-                                        <div><a class="btn btn-sm btn-primary" href="{{ post.url }}/#read-more" role="button">Read more <i class="fa fa-arrow-circle-right"></i></a></div>
+                                        <div><a class="btn btn-sm btn-primary" href="{{ post.url }}" role="button">Read more <i class="fa fa-arrow-circle-right"></i></a></div>
                                         {% endif %}
                                         <div class="float-right"><span class="mdi  mdi-calendar-clock"></span><span> {{ post.date | date_to_string }}</span></div>
                                     </div>
