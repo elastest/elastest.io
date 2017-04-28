@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Introducing ElasTest"
-date:   2017-04-28 15:30:00 +0100
+date:   2017-04-28 15:32:00 +0200
 main-image: "/images/blog/elastest_logo_grey_horizontal_706x200.png"
 image-alt: "ElasTest logo"
 ---
