@@ -12,7 +12,7 @@ In the context of the ElasTest project, Fraunhofer provides one of the vertical 
 
 This second face to face meeting also marked the end of our first release. As a result of this iteration, we showcased a proof of concept of what ElasTest could look like when integrated within [Jenkins](https://jenkins.io/) (see screenshot), and presented our findings regarding the architecture for ElasTest. As part of this release, we also looked back and did a retrospective to improve our methodology. The retrospective was really fruitful, and once again it was clear that everyone involved in the project had a true interest in pushing it forward.
 
-![ElasTest Proof of Concept]({{ site.url }}/images/blog/elastest-torm-poc-small.png)
+![ElasTest Proof of Concept](/images/blog/elastest-torm-poc-small.png)
 
 We then entered into the planning of the second release. This release will last until the end of August, and it puts a huge pressure on the partners developing ElasTest, as each and every one of them needs to have a proof of concept of each of their components. 
 
