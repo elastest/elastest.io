@@ -35602,3 +35602,32 @@ ul {
 .post-row{
     padding: 28px 0 28px 0;
 }
+
+
+/* API */
+#swagger-ui{
+  width: 100%;
+}
+
+.swagger-ui pre{
+  padding: 0 !important;
+  word-break: break-all;
+  word-wrap: break-word;
+  background-color: transparent;
+  border: none;
+  border-radius: 0px;
+  font-size: inherit;
+}
+
+.swagger-ui a {
+    color: #ffac2f !important;
+    text-decoration: underline !important;
+}
+
+.swagger-ui .topbar{
+  display: none;
+}
+
+.swagger-ui .try-out{
+  display: none;
+}

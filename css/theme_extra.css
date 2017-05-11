@@ -612,3 +612,7 @@ code, .rst-content tt {
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
 	background-color: #666;
 }
+
+.fa{
+    font-family: "Lato", Helvetica, Arial, sans-serif;
+}
