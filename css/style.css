@@ -35631,3 +35631,9 @@ ul {
 .swagger-ui .try-out{
   display: none;
 }
+
+
+/**/
+#cookiescript_accept{
+  background-color: #ffac2f;
+}
