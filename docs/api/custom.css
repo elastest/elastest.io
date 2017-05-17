@@ -1,0 +1,57 @@
+body{
+  	font-family: "Lato", Helvetica, Arial, sans-serif !important;
+  	font-size: 16px !important;
+  	line-height: 1.5 !important;
+  	color: #000000;
+}
+
+span, div, p, ul, li, ol, a, button, section{
+	font-family: "Lato", Helvetica, Arial, sans-serif !important;
+  	font-size: 16px !important;
+}
+
+a {
+    color: #ffac2f !important;
+    text-decoration: underline !important;
+}
+
+.swagger-ui .topbar{
+	background-color: #666666 !important;
+}
+
+#header-logo{
+	width: 165px !important;
+	height: 100% !important;
+}
+
+#header-link > span{
+	display: none !important;
+}
+
+.swagger-ui .topbar .download-url-wrapper .download-url-button{
+	background: #ffac2f !important;
+}
+
+.swagger-ui .topbar .download-url-wrapper input[type=text]{
+	border: 1px solid #d9d9d9 !important;
+}
+
+.swagger-ui .info .title small {
+    font-size: 10px;
+    position: relative;
+    top: -5px;
+    display: inline-block;
+    margin: 0 0 0 5px;
+    padding: 2px 4px;
+    vertical-align: super;
+    border-radius: 57px;
+    background: #7d8492;
+}
+
+.swagger-ui .topbar{
+  display: none;
+}
+
+.swagger-ui .try-out{
+  display: none;
+}

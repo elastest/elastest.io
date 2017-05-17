@@ -1,0 +1,282 @@
+--- 
+layout: default 
+title: Elastest Documentation - ElasTest Platform Manager 
+active: documentation 
+section-title: Documentation 
+section-icon: mdi mdi-content-copy 
+---
+<script src="/js/jquery-3.1.1.min.js"></script>
+<script src="/js/float-panel.js"></script>
+
+<script type="text/javascript">
+	/* Import docs theme css */
+	$('head').append('<link rel="stylesheet" type="text/css" href="/css/theme_extra.css">');
+	
+
+	$( document).ready(function(){
+	    $('li.subnav_drop').find('ul.subnav').hide();
+	       $( ".subnav" ).find( "li:contains('ElasTest Platform Manager')" ).each(function(i,e){
+		  var currentElement = $(e);
+		  currentElement.parent().css({"display":"block","visibility":"visible"}); //css("background-color","blue");
+		  currentElement.css({"display":"block","visibility":"visible"});
+	       });
+	    $('li.subnav_drop').click(function(i,e) {  
+	      $('li.subnav_drop').not(this).find('ul.subnav').hide();
+	      $(this).find('ul.subnav').toggle();
+	    }); 
+
+	    var minHeight = $('#float-panel').outerHeight() + 100;	
+            $('#doc-container').css('min-height', minHeight+'px');
+	});
+	   
+	$( ".wy-nav-content" ).find( "li:contains('ElasTest Platform Manager')" ).css('color','red');
+ </script>
+
+<div id="doc-container" class="container text-justify">
+  <div class="holder range"> 
+        <div id="float-panel" class="wy-grid-for-nav cell-xs-3 cell-md-3 cell-lg-2 float-panel" data-top="56">
+
+          
+          <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+            <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="main navigation">
+		<div id="site-menu-title">
+			<h3 class="h5">Explore docs</h3>
+			<hr class="divider hr-lg-left-0 bg-orange">    
+		</div>
+		<ul id="menu-list" class="current">
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Home</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../..">Home</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>API</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../">API</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 current">
+        <a class="current" href="./">ElasTest Platform Manager</a>
+        
+         
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../esm/">ElasTest Service Manager</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../ece/">ElasTest Cost Engine</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../etm/">ElasTest Torm</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../eus/">ElasTest User Emulator Service</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../eim/">ElasTest Instrumentation Manager</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../eds/">ElasTest Device Emulator Service</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../ems/">ElasTest Monitoring Service</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../ess/">ElasTest Security Service</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../ebs/">ElasTest Bigdata Service</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+		</ul>
+            </div>
+            &nbsp;
+          </nav>
+        </div>
+
+	<section class="section-sm-41">
+		<div class="shell">
+		    <div class="range range-xs-right">
+		        <div class="cell-xs-10 cell-sm-8 cell-md-9 cell-lg-10 cell-xl-12 text-md-left cell-lg-push-1 offset-lg-top-0">
+			  
+				<div class="wy-nav-content">
+				  <div class="rst-content">
+				   
+				    <div role="main">
+				      <div class="section">
+					
+					  <section class="section-41 section-sm-66">
+    <div class="shell">
+        <div class="range range-xs-center">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="position:absolute;width:0;height:0">
+  <defs>
+    <symbol viewBox="0 0 20 20" id="unlocked">
+          <path d="M15.8 8H14V5.6C14 2.703 12.665 1 10 1 7.334 1 6 2.703 6 5.6V6h2v-.801C8 3.754 8.797 3 10 3c1.203 0 2 .754 2 2.199V8H4c-.553 0-1 .646-1 1.199V17c0 .549.428 1.139.951 1.307l1.197.387C5.672 18.861 6.55 19 7.1 19h5.8c.549 0 1.428-.139 1.951-.307l1.196-.387c.524-.167.953-.757.953-1.306V9.199C17 8.646 16.352 8 15.8 8z"></path>
+    </symbol>
+
+    <symbol viewBox="0 0 20 20" id="locked">
+      <path d="M15.8 8H14V5.6C14 2.703 12.665 1 10 1 7.334 1 6 2.703 6 5.6V8H4c-.553 0-1 .646-1 1.199V17c0 .549.428 1.139.951 1.307l1.197.387C5.672 18.861 6.55 19 7.1 19h5.8c.549 0 1.428-.139 1.951-.307l1.196-.387c.524-.167.953-.757.953-1.306V9.199C17 8.646 16.352 8 15.8 8zM12 8H8V5.199C8 3.754 8.797 3 10 3c1.203 0 2 .754 2 2.199V8z"/>
+    </symbol>
+
+    <symbol viewBox="0 0 20 20" id="close">
+      <path d="M14.348 14.849c-.469.469-1.229.469-1.697 0L10 11.819l-2.651 3.029c-.469.469-1.229.469-1.697 0-.469-.469-.469-1.229 0-1.697l2.758-3.15-2.759-3.152c-.469-.469-.469-1.228 0-1.697.469-.469 1.228-.469 1.697 0L10 8.183l2.651-3.031c.469-.469 1.228-.469 1.697 0 .469.469.469 1.229 0 1.697l-2.758 3.152 2.758 3.15c.469.469.469 1.229 0 1.698z"/>
+    </symbol>
+
+    <symbol viewBox="0 0 20 20" id="large-arrow">
+      <path d="M13.25 10L6.109 2.58c-.268-.27-.268-.707 0-.979.268-.27.701-.27.969 0l7.83 7.908c.268.271.268.709 0 .979l-7.83 7.908c-.268.271-.701.27-.969 0-.268-.269-.268-.707 0-.979L13.25 10z"/>
+    </symbol>
+
+    <symbol viewBox="0 0 20 20" id="large-arrow-down">
+      <path d="M17.418 6.109c.272-.268.709-.268.979 0s.271.701 0 .969l-7.908 7.83c-.27.268-.707.268-.979 0l-7.908-7.83c-.27-.268-.27-.701 0-.969.271-.268.709-.268.979 0L10 13.25l7.418-7.141z"/>
+    </symbol>
+
+
+    <symbol viewBox="0 0 24 24" id="jump-to">
+      <path d="M19 7v4H5.83l3.58-3.59L8 6l-6 6 6 6 1.41-1.41L5.83 13H21V7z"/>
+    </symbol>
+
+    <symbol viewBox="0 0 24 24" id="expand">
+      <path d="M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z"/>
+    </symbol>
+
+  </defs>
+</svg>
+
+<div id="swagger-ui" class="text-justify"></div>
+
+<script src="../swagger-ui-bundle.js"> </script>
+<script src="../swagger-ui-standalone-preset.js"> </script>
+<script src="../script.js"> </script>
+<script>
+  window.onload = function(){
+    loadSwagger("https://raw.githubusercontent.com/elastest/elastest-platform-manager/master/api.yaml");
+  }
+</script>
+        </div>
+    </div>
+</section>
+					
+				      </div>
+				    </div>
+				    <footer>
+<hr class="divider divider-100 divider-xs hr-lg-center-0 offset-xs-top-20 offset-sm-top-20 offset-md-top-20 offset-lg-top-20">
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../esm/" class="btn btn-xs btn-primary float-right" title="ElasTest Service Manager">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../" class="btn btn-xs btn-primary" title="API"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
+      
+    </div>
+  
+
+
+  
+  
+	  <a href="https://github.com/elastest/elastest.io-docs/blob/master/docs/api/epm/index.html" class="fa fa-github offset-xxs-top-30"> Edit Documentation on GitHub</a>
+  
+</footer>
+			  	  
+				  </div>
+				</div>
+			</div>
+		    </div>
+		</div>
+	</section>
+
+  </div>
+</div>
