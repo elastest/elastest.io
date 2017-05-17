@@ -35633,6 +35633,15 @@ ul {
 }
 
 
+.swagger-ui .info .base-url{
+  margin-top: 12px;
+}
+
+.swagger-ui .opblock-body pre{
+  padding: 10px !important;
+}
+
+
 /**/
 #cookiescript_accept{
   background-color: #ffac2f !important;
