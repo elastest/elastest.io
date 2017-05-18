@@ -35641,15 +35641,15 @@ ul {
   padding: 10px !important;
 }
 
-.swagger-ui .table-container, .opblock-section-header {
-  overflow-x: scroll;
-}
-
 .swagger-ui.swagger-container > .wrapper{
   display:none;
 }
 
 @media (max-width: 768px) {
+  .swagger-ui .table-container, .opblock-section-header {
+    overflow-x: scroll;
+  }
+
   .swagger-ui .opblock-description-wrapper{
         padding: 12px 8px !important;
   }
