@@ -35648,6 +35648,9 @@ ul {
 .swagger-ui.swagger-container > .wrapper{
   display:none;
 }
+.swagger-ui .tablinks{
+  padding: 0 15px 0 0;
+}
 
 @media (max-width: 768px) {
   .swagger-ui .opblock-description-wrapper{
