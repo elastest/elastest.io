@@ -35641,6 +35641,72 @@ ul {
   padding: 10px !important;
 }
 
+.swagger-ui .table-container, .opblock-section-header {
+  overflow-x: scroll;
+}
+
+@media (max-width: 768px) {
+  .swagger-ui .opblock-description-wrapper{
+        padding: 12px 8px !important;
+  }
+
+  .swagger-ui .table-container {
+      padding: 8px !important;
+  }
+
+  .col.parameters-col_description{
+    padding: 8px 4px !important;
+  }
+
+  .swagger-ui .parameters-col_description p{
+    font-size: 13px !important;
+  }
+
+  .swagger-ui .opblock-body pre, .swagger-ui .response-col_description__inner span p{
+    padding: 7px !important;
+    font-size: 11px !important;
+  }
+
+  .swagger-ui .opblock .opblock-section-header{
+     padding: 8px 8px !important;
+  }
+
+  .swagger-ui .parameter__name{
+    font-size: 13px !important;
+  }
+
+  .swagger-ui .parameter__name.required:after {
+      font-size: 9px !important;
+      position: relative !important;
+      top: -6px !important;
+      padding: 4px !important;
+      content: "req" !important;
+      color: rgba(255,0,0,.6) !important;
+  }
+
+  .swagger-ui .parаmeter__type, .swagger-ui .parameter__in{
+    font-size: 11px !important;
+  }
+
+  .swagger-ui .opblock .opblock-section-header h4{
+    padding-right: 4px !important;
+  }
+
+  .opblock-summary-path > span{  
+    word-break: break-word !important;
+    font-size: 13px !important;
+  }
+
+  .swagger-ui .opblock .opblock-section-header label span{
+    padding: 0 5px 0 7px !important;
+  }
+
+  .swagger-ui .opblock-body select{
+    font-size: 10px;
+    min-width: initial !important;
+  }
+}
+
 
 /**/
 #cookiescript_accept{
