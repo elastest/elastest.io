@@ -20,4 +20,4 @@ exclude:
 
 paginate: 10 #show N posts
 paginate_path: "/blog/page:num/"
-permalink: /:categories/:title
+#permalink: /:categories/:title
