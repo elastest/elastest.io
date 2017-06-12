@@ -1,0 +1,17 @@
+---
+layout: post
+title:  "ExpoQA"
+date:   2017-06-12 11:32:00 +0200
+main-image: "/images/blog/expoqa17_square-banner.gif"
+image-alt: "ExpoQA"
+---
+
+This is going to be an interesting week for the project. Patxi Gortázar and Micael Gallego, from the [CodeURJC](http://www.codeurjc.es/) group, will be at [**expo:QA'17**](http://www.expoqa.com/). Expo:QA is an international conference on testing and quality assurance. It's held this week between 13th and 15th June in Madrid, Spain. People from around the globe are coming to speak and give amazing workshops. The conference is hosting 4 parallel tracks with professional speakers, master classes, workshops, and networking events. 
+
+We are going to give a talk and a workshop. The talk is entitled *CI & Docker: An experience building complex CI environments*, and we'll talk about the benefits and drawbacks of switching from a VM-based to a Docker-based CI environment. We will talk about cost savings, switching roles in the organization, and challenges ahead. 
+
+The workshop is centered on *Using Docker to build and test in your laptop and Jenkins*, and we will show how to build your Docker images, how to run your tests in a Docker environment, and how to leverage all of those in your Jenkins pipelines. We will walk from simple examples to powerful jobs. This workshop is based on previous experiences teaching CI and Jenkins in-house for different companies. 
+
+So, if you're attending expo:QA'17, just look for the ElasTest logo (we will be wearing ElasTest t-shirts), stop by and say hi! We are willing to share and learn how to better focus our work on ElasTest to fit your needs.
+
+See you there!
