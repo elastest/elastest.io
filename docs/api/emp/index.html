@@ -1,6 +1,6 @@
 --- 
 layout: default 
-title: Elastest Documentation - ElasTest Torm 
+title: Elastest Documentation - ElasTest Platform Monitor 
 active: documentation 
 section-title: Documentation 
 section-icon: mdi mdi-content-copy 
@@ -15,7 +15,7 @@ section-icon: mdi mdi-content-copy
 
 	$( document).ready(function(){
 	    $('li.subnav_drop').find('ul.subnav').hide();
-	       $( ".subnav" ).find( "li:contains('ElasTest Torm')" ).each(function(i,e){
+	       $( ".subnav" ).find( "li:contains('ElasTest Platform Monitor')" ).each(function(i,e){
 		  var currentElement = $(e);
 		  currentElement.parent().css({"display":"block","visibility":"visible"}); //css("background-color","blue");
 		  currentElement.css({"display":"block","visibility":"visible"});
@@ -29,7 +29,7 @@ section-icon: mdi mdi-content-copy
             $('#doc-container').css('min-height', minHeight+'px');
 	});
 	   
-	$( ".wy-nav-content" ).find( "li:contains('ElasTest Torm')" ).css('color','red');
+	$( ".wy-nav-content" ).find( "li:contains('ElasTest Platform Monitor')" ).css('color','red');
  </script>
 
 <div id="doc-container" class="container text-justify">
@@ -112,10 +112,8 @@ section-icon: mdi mdi-content-copy
         
              
 
-    <li class="toctree-l1 current">
-        <a class="current" href="./">ElasTest Torm</a>
-        
-         
+    <li class="toctree-l1 ">
+        <a class="" href="../etm/">ElasTest Torm</a>
         
     </li>
 
@@ -177,8 +175,10 @@ section-icon: mdi mdi-content-copy
         
              
 
-    <li class="toctree-l1 ">
-        <a class="" href="../emp/">ElasTest Platform Monitor</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">ElasTest Platform Monitor</a>
+        
+         
         
     </li>
 
@@ -251,7 +251,7 @@ section-icon: mdi mdi-content-copy
 <script src="../script.js"> </script>
 <script>
   window.onload = function(){
-    loadSwagger("https://raw.githubusercontent.com/elastest/elastest-torm/master/api.yaml");
+    loadSwagger("https://raw.githubusercontent.com/elastest/elastest-platform-monitoring/master/api.yaml");
   }
 </script>
         </div>
@@ -265,10 +265,8 @@ section-icon: mdi mdi-content-copy
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../eus/" class="btn btn-xs btn-primary float-right" title="ElasTest User Emulator Service">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
       
-      
-        <a href="../ece/" class="btn btn-xs btn-primary" title="ElasTest Cost Engine"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
+        <a href="../ebs/" class="btn btn-xs btn-primary" title="ElasTest Bigdata Service"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
       
     </div>
   
@@ -276,7 +274,7 @@ section-icon: mdi mdi-content-copy
 
   
   
-	  <a href="https://github.com/elastest/elastest.io-docs/blob/master/docs/api/etm/index.html" class="fa fa-github offset-xxs-top-30"> Edit Documentation on GitHub</a>
+	  <a href="https://github.com/elastest/elastest.io-docs/blob/master/docs/api/emp/index.html" class="fa fa-github offset-xxs-top-30"> Edit Documentation on GitHub</a>
   
 </footer>
 			  	  
