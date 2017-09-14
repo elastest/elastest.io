@@ -140,6 +140,11 @@
     max-height: 100%;
 }
 
+.center-image
+{
+    margin: 0 auto;
+    display: block;
+}
 
 /** 1 Bootstrap Framework */
 /** 1.1  Normalize */
