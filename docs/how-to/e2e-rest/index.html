@@ -1,6 +1,6 @@
 --- 
 layout: default 
-title: Elastest Documentation - API 
+title: Elastest Documentation - Run end2end tests (REST) 
 active: documentation 
 section-title: Documentation 
 section-icon: mdi mdi-content-copy 
@@ -15,7 +15,7 @@ section-icon: mdi mdi-content-copy
 
 	$( document).ready(function(){
 	    $('li.subnav_drop').find('ul.subnav').hide();
-	       $( ".subnav" ).find( "li:contains('API')" ).each(function(i,e){
+	       $( ".subnav" ).find( "li:contains('Run end2end tests (REST)')" ).each(function(i,e){
 		  var currentElement = $(e);
 		  currentElement.parent().css({"display":"block","visibility":"visible"}); //css("background-color","blue");
 		  currentElement.css({"display":"block","visibility":"visible"});
@@ -29,7 +29,7 @@ section-icon: mdi mdi-content-copy
             $('#doc-container').css('min-height', minHeight+'px');
 	});
 	   
-	$( ".wy-nav-content" ).find( "li:contains('API')" ).css('color','red');
+	$( ".wy-nav-content" ).find( "li:contains('Run end2end tests (REST)')" ).css('color','red');
  </script>
 
 <div id="doc-container" class="container text-justify">
@@ -49,13 +49,13 @@ section-icon: mdi mdi-content-copy
 					<li><ul> 
     
    
-    <li class="subnav_drop"><span>Home</span>
+    <li class="subnav_drop"><span>What is ElasTest?</span>
 <ul class="subnav">
         
              
 
     <li class="toctree-l1 ">
-        <a class="" href="..">Home</a>
+        <a class="" href="../..">What is ElasTest?</a>
         
     </li>
 
@@ -71,13 +71,93 @@ section-icon: mdi mdi-content-copy
 					<li><ul> 
     
    
-    <li class="subnav_drop"><span>API</span>
+    <li class="subnav_drop"><span>Getting started</span>
 <ul class="subnav">
         
              
 
+    <li class="toctree-l1 ">
+        <a class="" href="../../getting-started/installation/">Try ElasTest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../getting-started/hello-world/">Hello world</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../getting-started/user-guide/">User guide</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Fundamentals</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../fundamentals/core-concepts/">Core concepts</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../fundamentals/architecture/">Elastest Architecture</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>How to ...</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../unit/">Run unit tests</a>
+        
+    </li>
+
+
+        
+             
+
     <li class="toctree-l1 current">
-        <a class="current" href="./">API</a>
+        <a class="current" href="./">Run end2end tests (REST)</a>
         
          
         
@@ -88,7 +168,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="epm/">ElasTest Platform Manager</a>
+        <a class="" href="../e2e-browser/">Run end2end tests (Web Browser)</a>
         
     </li>
 
@@ -97,88 +177,29 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="esm/">ElasTest Service Manager</a>
+        <a class="" href="../local-testing/">Local testing with ElasTest</a>
         
     </li>
 
 
         
-             
-
-    <li class="toctree-l1 ">
-        <a class="" href="ece/">ElasTest Cost Engine</a>
-        
-    </li>
-
-
-        
-             
-
-    <li class="toctree-l1 ">
-        <a class="" href="etm/">ElasTest Torm</a>
-        
-    </li>
-
-
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Deploying ElasTest</span>
+<ul class="subnav">
         
              
 
     <li class="toctree-l1 ">
-        <a class="" href="eus/">ElasTest User Emulator Service</a>
-        
-    </li>
-
-
-        
-             
-
-    <li class="toctree-l1 ">
-        <a class="" href="eim/">ElasTest Instrumentation Manager</a>
-        
-    </li>
-
-
-        
-             
-
-    <li class="toctree-l1 ">
-        <a class="" href="eds/">ElasTest Device Emulator Service</a>
-        
-    </li>
-
-
-        
-             
-
-    <li class="toctree-l1 ">
-        <a class="" href="ems/">ElasTest Monitoring Service</a>
-        
-    </li>
-
-
-        
-             
-
-    <li class="toctree-l1 ">
-        <a class="" href="ess/">ElasTest Security Service</a>
-        
-    </li>
-
-
-        
-             
-
-    <li class="toctree-l1 ">
-        <a class="" href="ebs/">ElasTest Bigdata Service</a>
-        
-    </li>
-
-
-        
-             
-
-    <li class="toctree-l1 ">
-        <a class="" href="emp/">ElasTest Monitoring Platform</a>
+        <a class="" href="../../deploying/deploying/">Deploying ElasTest</a>
         
     </li>
 
@@ -209,20 +230,8 @@ section-icon: mdi mdi-content-copy
 					
 					  <div class="range range-xs-left">
 <div class="cell-xs-10 cell-lg-6 text-md-left inset-md-right-80 cell-lg-push-1 offset-top-50 offset-lg-top-0">
-<h2 id="content" class="h1">ElasTest API</h2>
+<h2 id="content" class="h1">Running end to end tests: REST APIs</h2>
 <div class="offset-top-30 offset-md-top-50">
-<ul>
-<li><a href="/docs/api/epm">ElasTest Platform Manager</a></li>
-<li><a href="/docs/api/esm">ElasTest Service Manager</a></li>
-<li><a href="/docs/api/ece">ElasTest Cost Engine</a></li>
-<li><a href="/docs/api/etm">ElasTest Torm</a></li>
-<li><a href="/docs/api/eus">ElasTest User Emulator Service</a></li>
-<li><a href="/docs/api/eim">ElasTest Instrumentation Manager</a></li>
-<li><a href="/docs/api/eds">ElasTest Device Emulator Service</a></li>
-<li><a href="/docs/api/ems">ElasTest Monitoring Service</a></li>
-<li><a href="/docs/api/ess">ElasTest Security Service</a></li>
-<li><a href="/docs/api/ebs">ElasTest Bigdata Service</a></li>
-</ul>
 </div>
 </div>
 </div>
@@ -234,10 +243,10 @@ section-icon: mdi mdi-content-copy
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="epm/" class="btn btn-xs btn-primary float-right" title="ElasTest Platform Manager">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../e2e-browser/" class="btn btn-xs btn-primary float-right" title="Run end2end tests (Web Browser)">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href=".." class="btn btn-xs btn-primary" title="Home"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
+        <a href="../unit/" class="btn btn-xs btn-primary" title="Run unit tests"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
       
     </div>
   
@@ -245,7 +254,7 @@ section-icon: mdi mdi-content-copy
 
   
   
-	  <a href="https://github.com/elastest/elastest.io-docs/blob/master/docs/api/index.md" class="fa fa-github offset-xxs-top-30"> Edit Documentation on GitHub</a>
+	  <a href="https://github.com/elastest/elastest.io-docs/blob/master/docs/how-to/e2e-rest.md" class="fa fa-github offset-xxs-top-30"> Edit Documentation on GitHub</a>
   
 </footer>
 			  	  

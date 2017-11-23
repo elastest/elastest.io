@@ -1,6 +1,6 @@
 --- 
 layout: default 
-title: Elastest Documentation - What is ElasTest? 
+title: Elastest Documentation - Try ElasTest 
 active: documentation 
 section-title: Documentation 
 section-icon: mdi mdi-content-copy 
@@ -15,7 +15,7 @@ section-icon: mdi mdi-content-copy
 
 	$( document).ready(function(){
 	    $('li.subnav_drop').find('ul.subnav').hide();
-	       $( ".subnav" ).find( "li:contains('What is ElasTest?')" ).each(function(i,e){
+	       $( ".subnav" ).find( "li:contains('Try ElasTest')" ).each(function(i,e){
 		  var currentElement = $(e);
 		  currentElement.parent().css({"display":"block","visibility":"visible"}); //css("background-color","blue");
 		  currentElement.css({"display":"block","visibility":"visible"});
@@ -29,7 +29,7 @@ section-icon: mdi mdi-content-copy
             $('#doc-container').css('min-height', minHeight+'px');
 	});
 	   
-	$( ".wy-nav-content" ).find( "li:contains('What is ElasTest?')" ).css('color','red');
+	$( ".wy-nav-content" ).find( "li:contains('Try ElasTest')" ).css('color','red');
  </script>
 
 <div id="doc-container" class="container text-justify">
@@ -54,10 +54,8 @@ section-icon: mdi mdi-content-copy
         
              
 
-    <li class="toctree-l1 current">
-        <a class="current" href=".">What is ElasTest?</a>
-        
-         
+    <li class="toctree-l1 ">
+        <a class="" href="../..">What is ElasTest?</a>
         
     </li>
 
@@ -78,8 +76,10 @@ section-icon: mdi mdi-content-copy
         
              
 
-    <li class="toctree-l1 ">
-        <a class="" href="getting-started/installation/">Try ElasTest</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Try ElasTest</a>
+        
+         
         
     </li>
 
@@ -88,7 +88,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="getting-started/hello-world/">Hello world</a>
+        <a class="" href="../hello-world/">Hello world</a>
         
     </li>
 
@@ -97,7 +97,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="getting-started/user-guide/">User guide</a>
+        <a class="" href="../user-guide/">User guide</a>
         
     </li>
 
@@ -119,7 +119,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="fundamentals/core-concepts/">Core concepts</a>
+        <a class="" href="../../fundamentals/core-concepts/">Core concepts</a>
         
     </li>
 
@@ -128,7 +128,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="fundamentals/architecture/">Elastest Architecture</a>
+        <a class="" href="../../fundamentals/architecture/">Elastest Architecture</a>
         
     </li>
 
@@ -150,7 +150,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="how-to/unit/">Run unit tests</a>
+        <a class="" href="../../how-to/unit/">Run unit tests</a>
         
     </li>
 
@@ -159,7 +159,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="how-to/e2e-rest/">Run end2end tests (REST)</a>
+        <a class="" href="../../how-to/e2e-rest/">Run end2end tests (REST)</a>
         
     </li>
 
@@ -168,7 +168,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="how-to/e2e-browser/">Run end2end tests (Web Browser)</a>
+        <a class="" href="../../how-to/e2e-browser/">Run end2end tests (Web Browser)</a>
         
     </li>
 
@@ -177,7 +177,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="how-to/local-testing/">Local testing with ElasTest</a>
+        <a class="" href="../../how-to/local-testing/">Local testing with ElasTest</a>
         
     </li>
 
@@ -199,7 +199,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="deploying/deploying/">Deploying ElasTest</a>
+        <a class="" href="../../deploying/deploying/">Deploying ElasTest</a>
         
     </li>
 
@@ -228,19 +228,61 @@ section-icon: mdi mdi-content-copy
 				    <div role="main">
 				      <div class="section">
 					
-					  <div class="range range-xs-center">
+					  <div class="range range-xs-left">
 <div class="cell-xs-10 cell-lg-6 text-md-left inset-md-right-80 cell-lg-push-1 offset-top-50 offset-lg-top-0">
-<h2 id="content" class="h1">What is ElasTest?</h2>
+<h2 id="content" class="h1">Try Elastest</h2>
 <div class="offset-top-30 offset-md-top-50">
-<p>ElasTest is a platform aimed to ease end to end (e2e) testing of distributed systems. One of the key features of the platform is the ability to show and analyze logs and metrics of all elements involved in an end to end test.</p><p>For example, suppose a typical three tier web application with a database. A basic e2e test has the following components: the test itself, web browser, web application and database. All those elements can generate logs and metrics of several types (CPU, memory, network packets…). When a test is executed using ElasTest, the tester can see all that monitoring information in the same graphical user interface and with advanced analysis features. 
-</p>
-<blockquote>WARNING: ElasTest is currently in active development. This means that new features are constantly being added and unexpected bugs may appear.</blockquote>
 </div>
 </div>
-<div class="cell-xs-10 cell-lg-6 cell-lg-push-2"><img src="./images/portfolio-80-420x280.jpg" width="960" height="540" alt="No documentation yet" class="img-responsive reveal-inline-block offset-top-10"></div>
 </div>
 
-<h2 class="h3 no-border">ElasTest main features</h2>
+<p>ElasTest can be quickly installed in your own development machine.</p>
+
+<p>ElasTest is based on <strong>Docker</strong> technology. To execute ElasTest you need Docker CE installed on your machine following the official instructions for <a href="https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/" target="_blank">Ubuntu</a>, <a href="https://docs.docker.com/docker-for-mac/install/" target="_blank">Mac</a> or <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">Windows</a>.
+</p>
+
+<p>For <strong>Ubuntu</strong>, <strong>Mac</strong> and <strong>Windows</strong> (<em>Docker for Windows</em>):</p>
+<pre><code>docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --lite
+</code></pre>
+
+<p>For <strong>Windows</strong> (<em>Docker Toolbox</em>):</p>
+<pre><code>docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --lite --server-address=$(docker-machine ip)
+</code></pre>
+
+<p>You will see this output when ElasTest is ready:</p>
+<pre><code>Starting ElasTest Platform (Lite Mode)...
+
+Please wait a few seconds while we start the ElasTest services, the ElasTest URL will be shown when ready.
+
+ElasTest Platform is available at http://YOUR_MACHINE_IP:37000
+</code></pre>
+
+<p>You can then open in your web browser the shown URL to access to ElasTest dashboard.</p>
+<p>To stop ElasTest, press <code>Ctrl+C</code> in the shell used to start it.  </p>
+<h2 class="h3 no-border">Recommended system specifications</h2>
+
+<p>ElasTest needs some minimun system specifications in order to run smoothly:</p>
+<table>
+  <tr>
+    <td>Processor</td>
+    <td>1GHz or faster</td>
+  </tr>
+  <tr>
+    <td>RAM</td>
+    <td>8GB (strongly recommended 16GB)</td>
+  </tr>
+  <tr>
+    <td>SWAP</td>
+    <td>4GB (if RAM < 16GB)</td>
+  </tr>
+  <tr>
+    <td>Hard Disk</td>
+    <td>30GB</td>
+  </tr>
+</table>
+
+<p><br></p>
+<!--Note: In Linux OS you can use the command `free -m` to know if your machine has SWAP memory enabled.-->
 
 <!---
  Script for open external links in a new tab
@@ -265,8 +307,10 @@ section-icon: mdi mdi-content-copy
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="getting-started/installation/" class="btn btn-xs btn-primary float-right" title="Try ElasTest">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../hello-world/" class="btn btn-xs btn-primary float-right" title="Hello world">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
       
+      
+        <a href="../.." class="btn btn-xs btn-primary" title="What is ElasTest?"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
       
     </div>
   
@@ -274,7 +318,7 @@ section-icon: mdi mdi-content-copy
 
   
   
-	  <a href="https://github.com/elastest/elastest.io-docs/blob/master/docs/index.md" class="fa fa-github offset-xxs-top-30"> Edit Documentation on GitHub</a>
+	  <a href="https://github.com/elastest/elastest.io-docs/blob/master/docs/getting-started/installation.md" class="fa fa-github offset-xxs-top-30"> Edit Documentation on GitHub</a>
   
 </footer>
 			  	  

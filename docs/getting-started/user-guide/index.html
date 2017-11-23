@@ -1,6 +1,6 @@
 --- 
 layout: default 
-title: Elastest Documentation 
+title: Elastest Documentation - User guide 
 active: documentation 
 section-title: Documentation 
 section-icon: mdi mdi-content-copy 
@@ -15,7 +15,7 @@ section-icon: mdi mdi-content-copy
 
 	$( document).ready(function(){
 	    $('li.subnav_drop').find('ul.subnav').hide();
-	       $( ".subnav" ).find( "li:contains('')" ).each(function(i,e){
+	       $( ".subnav" ).find( "li:contains('User guide')" ).each(function(i,e){
 		  var currentElement = $(e);
 		  currentElement.parent().css({"display":"block","visibility":"visible"}); //css("background-color","blue");
 		  currentElement.css({"display":"block","visibility":"visible"});
@@ -29,7 +29,7 @@ section-icon: mdi mdi-content-copy
             $('#doc-container').css('min-height', minHeight+'px');
 	});
 	   
-	$( ".wy-nav-content" ).find( "li:contains('')" ).css('color','red');
+	$( ".wy-nav-content" ).find( "li:contains('User guide')" ).css('color','red');
  </script>
 
 <div id="doc-container" class="container text-justify">
@@ -55,7 +55,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="/">What is ElasTest?</a>
+        <a class="" href="../..">What is ElasTest?</a>
         
     </li>
 
@@ -77,7 +77,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="/getting-started/installation/">Try ElasTest</a>
+        <a class="" href="../installation/">Try ElasTest</a>
         
     </li>
 
@@ -86,7 +86,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="/getting-started/hello-world/">Hello world</a>
+        <a class="" href="../hello-world/">Hello world</a>
         
     </li>
 
@@ -94,8 +94,10 @@ section-icon: mdi mdi-content-copy
         
              
 
-    <li class="toctree-l1 ">
-        <a class="" href="/getting-started/user-guide/">User guide</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">User guide</a>
+        
+         
         
     </li>
 
@@ -117,7 +119,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="/fundamentals/core-concepts/">Core concepts</a>
+        <a class="" href="../../fundamentals/core-concepts/">Core concepts</a>
         
     </li>
 
@@ -126,7 +128,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="/fundamentals/architecture/">Elastest Architecture</a>
+        <a class="" href="../../fundamentals/architecture/">Elastest Architecture</a>
         
     </li>
 
@@ -148,7 +150,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="/how-to/unit/">Run unit tests</a>
+        <a class="" href="../../how-to/unit/">Run unit tests</a>
         
     </li>
 
@@ -157,7 +159,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="/how-to/e2e-rest/">Run end2end tests (REST)</a>
+        <a class="" href="../../how-to/e2e-rest/">Run end2end tests (REST)</a>
         
     </li>
 
@@ -166,7 +168,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="/how-to/e2e-browser/">Run end2end tests (Web Browser)</a>
+        <a class="" href="../../how-to/e2e-browser/">Run end2end tests (Web Browser)</a>
         
     </li>
 
@@ -175,7 +177,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="/how-to/local-testing/">Local testing with ElasTest</a>
+        <a class="" href="../../how-to/local-testing/">Local testing with ElasTest</a>
         
     </li>
 
@@ -197,7 +199,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="/deploying/deploying/">Deploying ElasTest</a>
+        <a class="" href="../../deploying/deploying/">Deploying ElasTest</a>
         
     </li>
 
@@ -226,25 +228,33 @@ section-icon: mdi mdi-content-copy
 				    <div role="main">
 				      <div class="section">
 					
-
-    <div class="row-fluid">
-      <div id="main-content" class="span12">
-        <h1 id="404-page-not-found" style="text-align: center">404</h1>
-        <p style="text-align: center"><strong>Page not found</strong></p>
-      </div>
-    </div>
-
-
+					  <div class="range range-xs-left">
+<div class="cell-xs-10 cell-lg-6 text-md-left inset-md-right-80 cell-lg-push-1 offset-top-50 offset-lg-top-0">
+<h2 id="content" class="h1">User guide</h2>
+<div class="offset-top-30 offset-md-top-50">
+</div>
+</div>
+</div>
+					
 				      </div>
 				    </div>
 				    <footer>
 <hr class="divider divider-100 divider-xs hr-lg-center-0 offset-xs-top-20 offset-sm-top-20 offset-md-top-20 offset-lg-top-20">
   
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../fundamentals/core-concepts/" class="btn btn-xs btn-primary float-right" title="Core concepts">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../hello-world/" class="btn btn-xs btn-primary" title="Hello world"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
+      
+    </div>
+  
 
 
   
   
-	  <a href="https://github.com/elastest/elastest.io-docs" class="fa fa-github offset-xxs-top-30"> Edit Documentation on GitHub</a>
+	  <a href="https://github.com/elastest/elastest.io-docs/blob/master/docs/getting-started/user-guide.md" class="fa fa-github offset-xxs-top-30"> Edit Documentation on GitHub</a>
   
 </footer>
 			  	  

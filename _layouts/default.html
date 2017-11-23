@@ -15,6 +15,7 @@
   <!-- Stylesheets-->
   <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Montserrat:400,700%7CLato:300,300italic,400,700,900%7CYesteryear">
   <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/custom_styles.css">
   <!--[if lt IE 10]>
     <div style="background: #212121; padding: 10px 0; box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3); clear: both; text-align:center; position: relative; z-index:1;"><a href="http://windows.microsoft.com/en-US/internet-explorer/"><img src="images/ie8-panel/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."></a></div>
     <script src="js/html5shiv.min.js"></script>
@@ -72,29 +73,29 @@
                     <!-- RD Navbar Nav-->
                     <ul class="rd-navbar-nav">
                       <li {% if page.active=="home" or layout.active=="home" %} class="active" {% endif %}>
-                        <a href="/"><span>Home</span></a>
+                        <a href="/"><span class="nav-button">Home</span></a>
                       </li>
                       <li {% if page.active=="project" or layout.active=="project" %} class="active" {% endif %}>
-                        <a href="/project.html"><span>Project</span></a>
+                        <a href="/project.html"><span class="nav-button">Project</span></a>
                       </li>
                       <li {% if page.active=="objectives" or layout.active=="objectives" %} class="active" {% endif %}>
-                        <a href="/objectives.html"><span>Objectives</span></a>
+                        <a href="/objectives.html"><span class="nav-button">Objectives</span></a>
                       </li>
                       <li {% if page.active=="community" or layout.active=="community" %} class="active" {% endif %}>
-                        <a href="/community.html"><span>Community</span></a>
+                        <a href="/community.html"><span class="nav-button">Community</span></a>
                       </li>
                       <li {% if page.active=="blog" or layout.active=="blog" %} class="active" {% endif %}>
-                        <a href="/blog/index.html"><span>Blog</span></a>
+                        <a href="/blog/index.html"><span class="nav-button">Blog</span></a>
                       </li>
                       <li {% if page.active=="news" or layout.active=="news" %} class="active" {% endif %}>
-                        <a href="/news.html"><span>News</span></a>
+                        <a href="/news.html"><span class="nav-button">News</span></a>
                       </li>
                       <li {% if page.active=="documentation" or layout.active=="documentation" %} class="active" {% endif %}>
-                        <a href="/docs"><span>Documentation</span></a>
+                        <a id="docs-btn" href="/docs"><span id="nav-button-docs">Documentation</span></a>
                       </li>
-                      <li>
+                      <!--<li>
                         <a href="#newsletter"><span>Newsletter</span></a>
-                      </li>
+                      </li>-->
                     </ul>
 
                   </div>
@@ -143,8 +144,7 @@
 
     </header>
 
-    {% if page.page-type
-    <>"home" %}
+    {% if page.page-type<>"home" %}{% if page.active<>"documentation" %}
 
       <!-- Classic Breadcrumbs-->
       <section class="breadcrumb-classic">
@@ -158,15 +158,19 @@
         </div>
       </section>
 
-      {% endif %}
+      {% endif %}{% endif %}
 
       <!-- Page Content-->
+      {% if page.active<>"documentation" %}
       <main class="page-content">
-
-        <!--The ElasTest members-->
         {{ content }}
-
       </main>
+      {% else %}
+      <main class="page-content main-documentation">
+        {{ content }}
+      </main>
+      {% endif %}
+
       <!-- Page Footers-->
       <!-- Default footer-->
       <footer class="section-relative section-top-66 section-bottom-34 page-footer bg-gray-base context-dark">

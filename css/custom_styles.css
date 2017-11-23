@@ -1,0 +1,137 @@
+
+.nav-button {
+    font-weight: bold;
+}
+
+#nav-button-docs {
+    color: #ffac2f;
+}
+
+footer hr.divider {
+    margin-top: 40px !important;
+}
+
+blockquote {
+    font-size: 16px;
+    color: #9c9c9c;
+}
+
+main.main-documentation section a {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+div.wy-menu.wy-menu-vertical {
+    margin-top: 0 !important;
+}
+
+header nav {
+    z-index: 99990 !important;
+}
+
+.docs-gallery a:hover {
+    border-left: none;
+}
+
+nav #docs-btn {
+    padding: 5px 10px 1px 10px;
+    border-radius: 3px;
+    margin-top: -5px;
+}
+
+nav.rd-navbar-dark #docs-btn {
+    background-color: rgba(255, 172, 47, 0.15) !important;
+}
+
+nav.rd-navbar-default #docs-btn { 
+    background-color: rgba(255, 172, 47, 0.25);
+}
+
+nav.rd-navbar-default.rd-navbar--is-stuck #docs-btn { 
+    background-color: rgba(255, 172, 47, 0.15) !important;
+}
+
+.no-border {
+    border: none !important;
+}
+
+.doc-hr {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+pre code {
+    font-size: 75% !important;
+    color: inherit !important;
+}
+
+code {
+    font-size: 13px !important;
+    color: #ffa31a !important;
+}
+
+main.main-documentation h3, .h3 {
+    margin-top: 50px;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+}
+
+td, th {
+    border-top: 1px solid rgb(204, 204, 204);
+    border-bottom: 1px solid rgb(204, 204, 204);
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: rgba(255, 172, 47, 0.25);
+}
+
+main.main-documentation section ul {
+    list-style: inherit;
+    padding-left: 24px;
+}
+
+main.main-documentation section li {
+    list-style: inherit;
+}
+
+main.main-documentation section img {
+    max-height: 500px;
+    border: 2px solid #666666;
+}
+
+@media (max-width: 479px) {
+    nav.wy-nav-side {
+        left: -8px !important;
+    }
+}
+
+@media (max-width: 1199px) {
+    .main-documentation {
+        margin-top: 0;
+    }
+    #float-panel {
+        margin-top: 50px;
+        padding-top: 41px;
+        padding-left: 45px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .main-documentation {
+        margin-top: 100px;
+    }
+    #float-panel {
+        padding-top: 41px;
+        margin-top: 0px;
+        padding-left: 45px;
+    }
+}
