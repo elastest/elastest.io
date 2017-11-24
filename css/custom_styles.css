@@ -19,6 +19,18 @@ blockquote {
 main.main-documentation section a {
     text-decoration: none;
     font-weight: bold;
+    color: #ff9900;
+}
+
+main.main-documentation section a.btn {
+    color: #ffffff;
+}
+
+main.main-documentation section li.subnav_drop a:hover,
+main.main-documentation section .subnav a:hover,
+main.main-documentation section a:active,
+main.main-documentation section .subnav li a:hover {
+    border-left: none;
 }
 
 .inline-block {
@@ -64,14 +76,25 @@ nav.rd-navbar-default.rd-navbar--is-stuck #docs-btn {
     margin-bottom: 40px;
 }
 
+pre {
+    background-color: #545454;
+    border: none;
+}
+
 pre code {
     font-size: 75% !important;
-    color: inherit !important;
+    color: #666666;
 }
 
 code {
     font-size: 13px !important;
-    color: #ffa31a !important;
+    color: #ffa31a;
+}
+
+li pre {
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-bottom: 40px !important;
 }
 
 main.main-documentation h3, .h3 {
@@ -106,7 +129,36 @@ main.main-documentation section li {
 main.main-documentation section img {
     max-height: 500px;
     border: 2px solid #666666;
+    margin-bottom: 20px;
 }
+
+.my-badge {
+    font-size: 25px;
+    width: 100px;
+    height: 33px;
+    border-radius: 5px;
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+.my-badge-disabled {
+    background-color: #d9d9d9;
+}
+
+.badges-menu {
+    margin-bottom: 40px;
+}
+
+ol.ordered-list{
+    margin-left: 40px;
+    list-style-type: decimal;
+}
+
+blockquote {
+    background-color: #f9f9f9;
+    margin-top: 20px;
+}
+
 
 @media (max-width: 479px) {
     nav.wy-nav-side {

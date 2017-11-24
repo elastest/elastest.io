@@ -1,6 +1,6 @@
 --- 
 layout: default 
-title: Elastest Documentation - Core concepts 
+title: Elastest Documentation - Monitoring 
 active: documentation 
 section-title: Documentation 
 section-icon: mdi mdi-content-copy 
@@ -15,7 +15,7 @@ section-icon: mdi mdi-content-copy
 
 	$( document).ready(function(){
 	    $('li.subnav_drop').find('ul.subnav').hide();
-	       $( ".subnav" ).find( "li:contains('Core concepts')" ).each(function(i,e){
+	       $( ".subnav" ).find( "li:contains('Monitoring')" ).each(function(i,e){
 		  var currentElement = $(e);
 		  currentElement.parent().css({"display":"block","visibility":"visible"}); //css("background-color","blue");
 		  currentElement.css({"display":"block","visibility":"visible"});
@@ -29,7 +29,7 @@ section-icon: mdi mdi-content-copy
             $('#doc-container').css('min-height', minHeight+'px');
 	});
 	   
-	$( ".wy-nav-content" ).find( "li:contains('Core concepts')" ).css('color','red');
+	$( ".wy-nav-content" ).find( "li:contains('Monitoring')" ).css('color','red');
  </script>
 
 <div id="doc-container" class="container text-justify">
@@ -116,10 +116,8 @@ section-icon: mdi mdi-content-copy
         
              
 
-    <li class="toctree-l1 current">
-        <a class="current" href="./">Core concepts</a>
-        
-         
+    <li class="toctree-l1 ">
+        <a class="" href="../../fundamentals/core-concepts/">Core concepts</a>
         
     </li>
 
@@ -128,7 +126,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../architecture/">Elastest Architecture</a>
+        <a class="" href="../../fundamentals/architecture/">Elastest Architecture</a>
         
     </li>
 
@@ -150,7 +148,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../../how-to/unit/">Run unit tests</a>
+        <a class="" href="../unit/">Run unit tests</a>
         
     </li>
 
@@ -159,7 +157,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../../how-to/e2e-rest/">Run end2end tests (REST)</a>
+        <a class="" href="../e2e-rest/">Run end2end tests (REST)</a>
         
     </li>
 
@@ -168,7 +166,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../../how-to/e2e-browser/">Run end2end tests (Web Browser)</a>
+        <a class="" href="../e2e-browser/">Run end2end tests (Web Browser)</a>
         
     </li>
 
@@ -177,7 +175,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../../how-to/local-testing/">Local testing with ElasTest</a>
+        <a class="" href="../local-testing/">Local testing with ElasTest</a>
         
     </li>
 
@@ -185,8 +183,10 @@ section-icon: mdi mdi-content-copy
         
              
 
-    <li class="toctree-l1 ">
-        <a class="" href="../../how-to/monitoring/">Monitoring</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Monitoring</a>
+        
+         
         
     </li>
 
@@ -239,22 +239,11 @@ section-icon: mdi mdi-content-copy
 					
 					  <div class="range range-xs-left">
 <div class="cell-xs-10 cell-lg-6 text-md-left inset-md-right-80 cell-lg-push-1 offset-top-50 offset-lg-top-0">
-<h2 id="content" class="h1">Core concepts</h2>
+<h2 id="content" class="h1">Monitoring</h2>
 <div class="offset-top-30 offset-md-top-50">
 </div>
 </div>
 </div>
-
-<p>ElasTest is built around three main elements:</p>
-<ul>
-<li><strong>TJob</strong> (<em>Test Job</em>): test to be executed against a piece of software (SuT).</li>
-<li><strong>SuT</strong> (<em>Software under Test</em>): the tested software itself. At the moment, all SuTs must be provided in the form of a Docker container. Dockerized SuT can be specified in two different ways:<ul>
-<li><strong>Docker image</strong>: SuT is packaged as a single docker image. The name of the image must be specified. If the docker image is not located in DockerHub, then the image name contains the FQDN of the registry.</li>
-<li><strong>Docker compose</strong>: SuT is composed by several containers and is defined with a <em>docker-compose.yml</em> file.</li>
-</ul>
-</li>
-<li><strong>TSS</strong> (<em>Test Support Services</em>): services offered by ElasTest to ease the execution and analysis of TJobs. At the moment, only <strong>web browsers</strong> are provided.</li>
-</ul>
 					
 				      </div>
 				    </div>
@@ -263,10 +252,10 @@ section-icon: mdi mdi-content-copy
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../architecture/" class="btn btn-xs btn-primary float-right" title="Elastest Architecture">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../../deploying/deploying/" class="btn btn-xs btn-primary float-right" title="Deploying ElasTest">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../../getting-started/user-guide/" class="btn btn-xs btn-primary" title="User guide"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
+        <a href="../local-testing/" class="btn btn-xs btn-primary" title="Local testing with ElasTest"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
       
     </div>
   
@@ -274,7 +263,7 @@ section-icon: mdi mdi-content-copy
 
   
   
-	  <a href="https://github.com/elastest/elastest.io-docs/blob/master/docs/fundamentals/core-concepts.md" class="fa fa-github offset-xxs-top-30"> Edit Documentation on GitHub</a>
+	  <a href="https://github.com/elastest/elastest.io-docs/blob/master/docs/how-to/monitoring.md" class="fa fa-github offset-xxs-top-30"> Edit Documentation on GitHub</a>
   
 </footer>
 			  	  

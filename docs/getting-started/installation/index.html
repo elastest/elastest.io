@@ -183,6 +183,15 @@ section-icon: mdi mdi-content-copy
 
 
         
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../how-to/monitoring/">Monitoring</a>
+        
+    </li>
+
+
+        
 </li>
 </ul>
     
@@ -242,15 +251,15 @@ section-icon: mdi mdi-content-copy
 </p>
 
 <p>For <strong>Ubuntu</strong>, <strong>Mac</strong> and <strong>Windows</strong> (<em>Docker for Windows</em>):</p>
-<pre><code>docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --lite
+<pre><code class="text">docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start
 </code></pre>
 
 <p>For <strong>Windows</strong> (<em>Docker Toolbox</em>):</p>
-<pre><code>docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --lite --server-address=$(docker-machine ip)
+<pre><code class="text">docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --server-address=$(docker-machine ip)
 </code></pre>
 
 <p>You will see this output when ElasTest is ready:</p>
-<pre><code>Starting ElasTest Platform (Lite Mode)...
+<pre><code class="text">Starting ElasTest Platform (Lite Mode)...
 
 Please wait a few seconds while we start the ElasTest services, the ElasTest URL will be shown when ready.
 
@@ -258,7 +267,7 @@ ElasTest Platform is available at http://YOUR_MACHINE_IP:37000
 </code></pre>
 
 <p>You can then open in your web browser the shown URL to access to ElasTest dashboard.</p>
-<p>To stop ElasTest, press <code>Ctrl+C</code> in the shell used to start it.  </p>
+<p>To stop ElasTest, press <code>Ctrl+C</code> in the shell used to start it. You can now try the <a href="../../getting-started/hello-world">Hello world</a> project available by default when launching ElasTest.</p>
 <h2 class="h3 no-border">Recommended system specifications</h2>
 
 <p>ElasTest needs some minimun system specifications in order to run smoothly:</p>
