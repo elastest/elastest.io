@@ -1,0 +1,455 @@
+--- 
+layout: default 
+title: Elastest Documentation - Run end2end tests (REST) 
+active: documentation 
+section-title: Documentation 
+section-icon: mdi mdi-content-copy 
+---
+<script src="/js/jquery-3.1.1.min.js"></script>
+<script src="/js/float-panel.js"></script>
+
+<script type="text/javascript">
+	/* Import docs theme css */
+	$('head').append('<link rel="stylesheet" type="text/css" href="/css/theme_extra.css">');
+	
+
+	$( document).ready(function(){
+	    $('li.subnav_drop').find('ul.subnav').hide();
+	       $( ".subnav" ).find( "li:contains('Run end2end tests (REST)')" ).each(function(i,e){
+		  var currentElement = $(e);
+		  currentElement.parent().css({"display":"block","visibility":"visible"}); //css("background-color","blue");
+		  currentElement.css({"display":"block","visibility":"visible"});
+	       });
+	    $('li.subnav_drop').click(function(i,e) {  
+	      $('li.subnav_drop').not(this).find('ul.subnav').hide();
+	      $(this).find('ul.subnav').toggle();
+	    }); 
+
+	    var minHeight = $('#float-panel').outerHeight() + 100;	
+            $('#doc-container').css('min-height', minHeight+'px');
+	});
+	   
+	$( ".wy-nav-content" ).find( "li:contains('Run end2end tests (REST)')" ).css('color','red');
+ </script>
+
+<div id="doc-container" class="container text-justify">
+  <div class="holder range"> 
+        <div id="float-panel" class="wy-grid-for-nav cell-xs-3 cell-md-3 cell-lg-2 float-panel" data-top="56">
+
+          
+          <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+            <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="main navigation">
+		<div id="site-menu-title">
+			<h3 class="h5">Explore docs</h3>
+			<hr class="divider hr-lg-left-0 bg-orange">    
+		</div>
+		<ul id="menu-list" class="current">
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Getting started</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../getting-started/">What is ElasTest?</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../getting-started/try-elastest/">Try ElasTest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../getting-started/your-first-test/">Your first test with ElasTest</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Testing with ElasTest</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../unit/">Run unit tests</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Run end2end tests (REST)</a>
+        
+         
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../e2e-browser/">Run end2end tests (Web Browser)</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Web Browsers</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../web-browsers/manual-browsers/">Launching Web Browsers on ElasTest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../web-browsers/outside-testing/">Testing with Web Browsers from outside ElasTest</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Log Analyzer</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../log-analyzer/">Log Analyzer</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Monitoring</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../monitoring/">Monitoring</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Jenkins integration</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../jenkins/">Jenkins integration</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Deploying ElasTest</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../deploying/">Deploying ElasTest</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+		</ul>
+            </div>
+            &nbsp;
+          </nav>
+        </div>
+
+	<section class="section-sm-41">
+		<div class="shell">
+		    <div class="range range-xs-right">
+		        <div class="cell-xs-10 cell-sm-8 cell-md-9 cell-lg-10 cell-xl-12 text-md-left cell-lg-push-1 offset-lg-top-0">
+			  
+				<div class="wy-nav-content">
+				  <div class="rst-content">
+				   
+				    <div role="main">
+				      <div class="section">
+					
+					  <div class="range range-xs-left">
+<div class="cell-xs-10 cell-lg-6 text-md-left inset-md-right-80 cell-lg-push-1 offset-top-50 offset-lg-top-0">
+<h2 id="content" class="h1">Running end to end tests: REST APIs</h2>
+<div class="offset-top-30 offset-md-top-50">
+</div>
+</div>
+</div>
+
+<div class="badges-menu">
+    <span class="badge badge-default my-badge">Java</span>
+    <span class="badge badge-default my-badge my-badge-disabled">Node</span>
+    <span class="badge badge-default my-badge my-badge-disabled">PHP</span>
+    <span class="badge badge-default my-badge my-badge-disabled">. . .</span>
+</div>
+
+<p>Unit and integration tests are important to verify that isolated and integrated software modules are behaving as expected. Nevertheless, <strong>end to end tests</strong> (sometimes called system tests) are also important, because they allow to test the system as a whole, as seen for the end user. End to end tests are different from unit and integration tests because the <a href="../../fundamentals/core-concepts/">SuT</a> is deployed in the same environment as in production. </p>
+<p>To execute an end to end test in ElasTest, the SuT have to be declared explicitly. Then, any TJob can be associated to that SuT. In this way, the SuT can be managed independently the number of TJob executed against it.</p>
+<p>Here we will run our <a href="https://github.com/elastest/demo-projects/tree/master/rest-java-test">REST Java Test</a>:</p>
+<div class="row">
+<div class="col-md-6">
+<h4>REST Controller to test</h4>
+<pre>
+<code class="java">
+@SpringBootApplication
+@RestController
+public class RestApp {
+
+    @GetMapping("/")
+    String home() {
+        return "Hello World!";
+    }
+
+    public static void main(String[] args) 
+    throws Exception {
+        SpringApplication.run(RestApp.class, args);
+    }
+}
+</code>
+</pre>
+<blockquote>Path "/" must return "Hello World!" on a GET request</blockquote>
+</div>
+<div class="col-md-6">
+<h4>E2E test</h4>
+<pre>
+<code class="java">
+public class RestAppTest {
+
+    @Test
+    public void rootServiceTest() {
+
+        String appHost = System.getenv("ET_SUT_HOST");
+
+        if(appHost == null) {
+            appHost = "localhost";
+        }
+
+        RestTemplate client = new RestTemplate();
+
+        String result = client.getForObject(
+            "http://" + appHost + ":8080/",
+            String.class);
+
+        assertThat(result).isEqualTo("Hello World!");
+    }
+
+}
+</code>
+</pre>
+<blockquote><code>ET_SUT_HOST</code> variable will be the IP of our SuT. ElasTest will automatically inject the right value (<code>localhost</code> if not defined)</blockquote>
+</div>
+</div>
+
+<h2 class="h4 no-border">1. Get into the desired project</h2>
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/how-to/images/e2eRest1.png"><img class="img-responsive img-wellcome" src="/docs/how-to/images/e2eRest1.png"/></a>
+</div>
+
+<h2 class="h4 no-border">2. Create a SuT</h2>
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-2" href="/docs/how-to/images/e2eRest2.png"><img class="img-responsive img-wellcome" src="/docs/how-to/images/e2eRest2.png"/></a>
+    <a data-fancybox="gallery-2" href="/docs/how-to/images/e2eRest3.png"><img class="img-responsive img-wellcome" src="/docs/how-to/images/e2eRest3.png"/></a>
+</div>
+
+<p>Right now all SuT's must be available as a Docker image or a docker-compose so ElasTest can deploy and monitor it automatically. Complete the form fields:</p>
+<ul>
+<li><strong>SuT Name</strong>: name of the Sut (<code>Rest App</code>)</li>
+<li><strong>SuT Description</strong>: description of the SuT (<code>Rest App description</code>)</li>
+<li><strong>With Docker Image</strong> / <strong>With Docker Compose</strong>: whether to deploy the SuT on ElasTest as a Docker <em>image</em> or a <em>docker-compose</em> (<code>With Docker Image</code>)</li>
+<li><strong>Docker Image</strong>: image of the SuT (<code>elastest/demo-rest-java-test-sut</code>)</li>
+<li><strong>Wait for http port</strong>: which port of the SuT should ElasTest wait to be available before starting the TJob (<code>8080</code>)</li>
+</ul>
+<p><br></p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-2" href="/docs/how-to/images/e2eRest4.png"><img class="img-responsive img-wellcome" src="/docs/how-to/images/e2eRest4.png"/></a>
+</div>
+
+<h2 class="h4 no-border">3. Create a new TJob</h2>
+
+<p>Complete the form fields:</p>
+<ul>
+<li><strong>TJob Name</strong>: name of the TJob (<code>Rest test</code>)</li>
+<li><strong>Select a SuT</strong>: already created SuT to be tested through to the TJob (<code>Rest App</code>)</li>
+<li><strong>Environment docker image</strong>: the docker image that will host your test. This docker images should contain a client to download your code from your repository hosting service. For example, if your tests are hosted in GitHub and implemented in a Maven project with Java, you need to include a git client, Maven and the Java Development Kit (JDK) in the image. Indeed, this image contains Git, Maven and Java (<code>elastest/test-etm-alpinegitjava</code>)
+<!-- Modify when all images are available for testing with different hostsing services and technologies: Java, Maven, Pyhton, Ruby, Node... --></li>
+<li><strong>Commands</strong>: these are the bash commands to be executed to download the code from a repository and to execute the tests. The specific commands depends on the source code repository type and the technology. For example, the following commands will clone a Maven/Java repository from GitHub and execute the tests:<pre><code>git clone https://github.com/elastest/demo-projects
+cd demo-projects/rest-java-test
+mvn test
+</code></pre>
+</li>
+</ul>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-3" href="/docs/how-to/images/e2eRest5.png"><img class="img-responsive img-wellcome" src="/docs/how-to/images/e2eRest5.png"/></a>
+</div>
+
+<h2 class="h4 no-border">4. Run the TJob from the Project's page</h2>
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-4" href="/docs/how-to/images/5.png"><img class="img-responsive img-wellcome" src="/docs/how-to/images/5.png"/></a>
+    <a data-fancybox="gallery-4" href="/docs/how-to/images/e2eRest6.png"><img class="img-responsive img-wellcome" src="/docs/how-to/images/e2eRest6.png"/></a>
+    <a data-fancybox="gallery-4" href="/docs/how-to/images/e2eRest7.png"><img class="img-responsive img-wellcome" src="/docs/how-to/images/e2eRest7.png"/></a>
+</div>
+
+<p>In this example, when the TJob is executed, the following steps are performed:
+<ol class="ordered-list">
+<li>SuT is executed starting the docker container <code>elastest/demo-rest-java-test-sut</code></li>
+<li>ElasTest waits until container has a http service available in port <code>8080</code></li>
+<li>When service is ready, the test container <code>elastest/test-etm-alpinegitjava</code> is started and specified commands are executed on it.</li>
+<li>The test implemented in <code>demo-projects/rest-java-test</code> maven project is executed. This test makes a http request to a REST endpoint in the SuT and verifies that current result is the expected one.</li>
+<li>When the test container finishes, ElasTest stops the SuT and TJob containers</li>
+</ol></p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-5" href="/docs/how-to/images/e2e-flow.png"><img class="img-responsive img-wellcome" style="padding: 10px" src="/docs/how-to/images/e2e-flow.png"/></a>
+</div>
+
+<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+
+<p><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script></p>
+<script>
+var galleries = $('div.docs-gallery');
+for (var i = 1; i <= galleries.length; i++) {
+    $().fancybox({
+    selector : '[data-fancybox="gallery-' + i + '"]',
+    infobar : true,
+    arrows : false,
+    loop: false,
+    protect: true,
+    transitionEffect: 'slide',
+    buttons : [
+        'close'
+    ],
+    clickOutside : 'close',
+    clickSlide   : 'close',
+  });
+}
+</script>
+					
+				      </div>
+				    </div>
+				    <footer>
+<hr class="divider divider-100 divider-xs hr-lg-center-0 offset-xs-top-20 offset-sm-top-20 offset-md-top-20 offset-lg-top-20">
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../e2e-browser/" class="btn btn-xs btn-primary float-right" title="Run end2end tests (Web Browser)">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../unit/" class="btn btn-xs btn-primary" title="Run unit tests"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
+      
+    </div>
+  
+
+
+  
+  
+	  <a href="https://github.com/elastest/elastest.io-docs/blob/master/docs/testing/e2e-rest.md" class="fa fa-github offset-xxs-top-30"> Edit Documentation on GitHub</a>
+  
+</footer>
+			  	  
+				  </div>
+				</div>
+			</div>
+		    </div>
+		</div>
+	</section>
+
+  </div>
+</div>

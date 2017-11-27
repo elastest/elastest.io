@@ -1,0 +1,354 @@
+--- 
+layout: default 
+title: Elastest Documentation - Your first test with ElasTest 
+active: documentation 
+section-title: Documentation 
+section-icon: mdi mdi-content-copy 
+---
+<script src="/js/jquery-3.1.1.min.js"></script>
+<script src="/js/float-panel.js"></script>
+
+<script type="text/javascript">
+	/* Import docs theme css */
+	$('head').append('<link rel="stylesheet" type="text/css" href="/css/theme_extra.css">');
+	
+
+	$( document).ready(function(){
+	    $('li.subnav_drop').find('ul.subnav').hide();
+	       $( ".subnav" ).find( "li:contains('Your first test with ElasTest')" ).each(function(i,e){
+		  var currentElement = $(e);
+		  currentElement.parent().css({"display":"block","visibility":"visible"}); //css("background-color","blue");
+		  currentElement.css({"display":"block","visibility":"visible"});
+	       });
+	    $('li.subnav_drop').click(function(i,e) {  
+	      $('li.subnav_drop').not(this).find('ul.subnav').hide();
+	      $(this).find('ul.subnav').toggle();
+	    }); 
+
+	    var minHeight = $('#float-panel').outerHeight() + 100;	
+            $('#doc-container').css('min-height', minHeight+'px');
+	});
+	   
+	$( ".wy-nav-content" ).find( "li:contains('Your first test with ElasTest')" ).css('color','red');
+ </script>
+
+<div id="doc-container" class="container text-justify">
+  <div class="holder range"> 
+        <div id="float-panel" class="wy-grid-for-nav cell-xs-3 cell-md-3 cell-lg-2 float-panel" data-top="56">
+
+          
+          <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+            <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="main navigation">
+		<div id="site-menu-title">
+			<h3 class="h5">Explore docs</h3>
+			<hr class="divider hr-lg-left-0 bg-orange">    
+		</div>
+		<ul id="menu-list" class="current">
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Getting started</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../">What is ElasTest?</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../try-elastest/">Try ElasTest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Your first test with ElasTest</a>
+        
+         
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Testing with ElasTest</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testing/unit/">Run unit tests</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testing/e2e-rest/">Run end2end tests (REST)</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testing/e2e-browser/">Run end2end tests (Web Browser)</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Web Browsers</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../web-browsers/manual-browsers/">Launching Web Browsers on ElasTest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../web-browsers/outside-testing/">Testing with Web Browsers from outside ElasTest</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Log Analyzer</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../log-analyzer/">Log Analyzer</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Monitoring</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../monitoring/">Monitoring</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Jenkins integration</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../jenkins/">Jenkins integration</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Deploying ElasTest</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../deploying/">Deploying ElasTest</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+		</ul>
+            </div>
+            &nbsp;
+          </nav>
+        </div>
+
+	<section class="section-sm-41">
+		<div class="shell">
+		    <div class="range range-xs-right">
+		        <div class="cell-xs-10 cell-sm-8 cell-md-9 cell-lg-10 cell-xl-12 text-md-left cell-lg-push-1 offset-lg-top-0">
+			  
+				<div class="wy-nav-content">
+				  <div class="rst-content">
+				   
+				    <div role="main">
+				      <div class="section">
+					
+					  <div class="range range-xs-left">
+<div class="cell-xs-10 cell-lg-6 text-md-left inset-md-right-80 cell-lg-push-1 offset-top-50 offset-lg-top-0">
+<h2 id="content" class="h1">Your first test with ElasTest</h2>
+<div class="offset-top-30 offset-md-top-50">
+</div>
+</div>
+</div>
+
+<p>After <a href="../../getting-started/installation">launching Elastest</a>, there will be a "Hello world" sample project available on the dashboard so users can quickly run their first test. To do so:</p>
+<h2 class="h4 no-border">1. Access your ElasTest dashboard</h2>
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/getting-started/images/dashboard.png"><img class="img-responsive img-wellcome" src="/docs/getting-started/images/dashboard.png"/></a>
+</div>
+
+<h2 class="h4 no-border">2. Get into "Hello world" project</h2>
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-2" href="/docs/getting-started/images/project_selection.png"><img class="img-responsive img-wellcome" src="/docs/getting-started/images/project_selection.png"/></a>
+</div>
+
+<h2 class="h4 no-border">3. Run the only TJob available for the project</h2>
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-3" href="/docs/getting-started/images/run_tjob.png"><img class="img-responsive img-wellcome" src="/docs/getting-started/images/run_tjob.png"/></a>
+</div>
+
+<h2 class="h4 no-border">4. Execution screen is open automatically</h2>
+
+<p>Our TJob will start running: you will see CPU metric on the chart and the Test log. Eventually the test should end succesfully.</p>
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-4" href="/docs/getting-started/images/execution_finished.png"><img class="img-responsive img-wellcome" src="/docs/getting-started/images/execution_finished.png"/></a>
+</div>
+
+<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+
+<p><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script></p>
+<script>
+var galleries = $('div.docs-gallery');
+for (var i = 1; i <= galleries.length; i++) {
+    $().fancybox({
+    selector : '[data-fancybox="gallery-' + i + '"]',
+    infobar : true,
+    arrows : false,
+    loop: true,
+    protect: true,
+    transitionEffect: 'slide',
+    buttons : [
+        'close'
+    ],
+    clickOutside : 'close',
+    clickSlide   : 'close',
+  });
+}
+</script>
+					
+				      </div>
+				    </div>
+				    <footer>
+<hr class="divider divider-100 divider-xs hr-lg-center-0 offset-xs-top-20 offset-sm-top-20 offset-md-top-20 offset-lg-top-20">
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../testing/unit/" class="btn btn-xs btn-primary float-right" title="Run unit tests">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../try-elastest/" class="btn btn-xs btn-primary" title="Try ElasTest"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
+      
+    </div>
+  
+
+
+  
+  
+	  <a href="https://github.com/elastest/elastest.io-docs/blob/master/docs/getting-started/your-first-test.md" class="fa fa-github offset-xxs-top-30"> Edit Documentation on GitHub</a>
+  
+</footer>
+			  	  
+				  </div>
+				</div>
+			</div>
+		    </div>
+		</div>
+	</section>
+
+  </div>
+</div>

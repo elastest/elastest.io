@@ -1,0 +1,368 @@
+--- 
+layout: default 
+title: Elastest Documentation - Try ElasTest 
+active: documentation 
+section-title: Documentation 
+section-icon: mdi mdi-content-copy 
+---
+<script src="/js/jquery-3.1.1.min.js"></script>
+<script src="/js/float-panel.js"></script>
+
+<script type="text/javascript">
+	/* Import docs theme css */
+	$('head').append('<link rel="stylesheet" type="text/css" href="/css/theme_extra.css">');
+	
+
+	$( document).ready(function(){
+	    $('li.subnav_drop').find('ul.subnav').hide();
+	       $( ".subnav" ).find( "li:contains('Try ElasTest')" ).each(function(i,e){
+		  var currentElement = $(e);
+		  currentElement.parent().css({"display":"block","visibility":"visible"}); //css("background-color","blue");
+		  currentElement.css({"display":"block","visibility":"visible"});
+	       });
+	    $('li.subnav_drop').click(function(i,e) {  
+	      $('li.subnav_drop').not(this).find('ul.subnav').hide();
+	      $(this).find('ul.subnav').toggle();
+	    }); 
+
+	    var minHeight = $('#float-panel').outerHeight() + 100;	
+            $('#doc-container').css('min-height', minHeight+'px');
+	});
+	   
+	$( ".wy-nav-content" ).find( "li:contains('Try ElasTest')" ).css('color','red');
+ </script>
+
+<div id="doc-container" class="container text-justify">
+  <div class="holder range"> 
+        <div id="float-panel" class="wy-grid-for-nav cell-xs-3 cell-md-3 cell-lg-2 float-panel" data-top="56">
+
+          
+          <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+            <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="main navigation">
+		<div id="site-menu-title">
+			<h3 class="h5">Explore docs</h3>
+			<hr class="divider hr-lg-left-0 bg-orange">    
+		</div>
+		<ul id="menu-list" class="current">
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Getting started</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../">What is ElasTest?</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Try ElasTest</a>
+        
+         
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../your-first-test/">Your first test with ElasTest</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Testing with ElasTest</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testing/unit/">Run unit tests</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testing/e2e-rest/">Run end2end tests (REST)</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testing/e2e-browser/">Run end2end tests (Web Browser)</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Web Browsers</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../web-browsers/manual-browsers/">Launching Web Browsers on ElasTest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../web-browsers/outside-testing/">Testing with Web Browsers from outside ElasTest</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Log Analyzer</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../log-analyzer/">Log Analyzer</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Monitoring</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../monitoring/">Monitoring</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Jenkins integration</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../jenkins/">Jenkins integration</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Deploying ElasTest</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../deploying/">Deploying ElasTest</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+		</ul>
+            </div>
+            &nbsp;
+          </nav>
+        </div>
+
+	<section class="section-sm-41">
+		<div class="shell">
+		    <div class="range range-xs-right">
+		        <div class="cell-xs-10 cell-sm-8 cell-md-9 cell-lg-10 cell-xl-12 text-md-left cell-lg-push-1 offset-lg-top-0">
+			  
+				<div class="wy-nav-content">
+				  <div class="rst-content">
+				   
+				    <div role="main">
+				      <div class="section">
+					
+					  <div class="range range-xs-left">
+<div class="cell-xs-10 cell-lg-6 text-md-left inset-md-right-80 cell-lg-push-1 offset-top-50 offset-lg-top-0">
+<h2 id="content" class="h1">Try Elastest</h2>
+<div class="offset-top-30 offset-md-top-50">
+</div>
+</div>
+</div>
+
+<p>ElasTest can be quickly installed in your own development machine.</p>
+
+<p>ElasTest is based on <strong>Docker</strong> technology. To execute ElasTest you need Docker CE installed on your machine following the official instructions for <a href="https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/" target="_blank">Ubuntu</a>, <a href="https://docs.docker.com/docker-for-mac/install/" target="_blank">Mac</a> or <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">Windows</a>.
+</p>
+
+<p>For <strong>Ubuntu</strong>, <strong>Mac</strong> and <strong>Windows</strong> (<em>Docker for Windows</em>):</p>
+<pre><code class="text">docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start
+</code></pre>
+
+<p>For <strong>Windows</strong> (<em>Docker Toolbox</em>):</p>
+<pre><code class="text">docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --server-address=$(docker-machine ip)
+</code></pre>
+
+<p>You will see this output when ElasTest is ready:</p>
+<pre><code class="text">Starting ElasTest Platform (Lite Mode)...
+
+Please wait a few seconds while we start the ElasTest services, the ElasTest URL will be shown when ready.
+
+ElasTest Platform is available at http://YOUR_MACHINE_IP:37000
+</code></pre>
+
+<p>You can then open in your web browser the shown URL to access to ElasTest dashboard.</p>
+<p>To stop ElasTest, press <code>Ctrl+C</code> in the shell used to start it. You can now try the <a href="../../getting-started/hello-world">Hello world</a> project available by default when launching ElasTest.</p>
+<h2 class="h3 no-border">Recommended system specifications</h2>
+
+<p>ElasTest needs some minimun system specifications in order to run smoothly:</p>
+<table>
+  <tr>
+    <td>Processor</td>
+    <td>1GHz or faster</td>
+  </tr>
+  <tr>
+    <td>RAM</td>
+    <td>8GB (strongly recommended 16GB)</td>
+  </tr>
+  <tr>
+    <td>SWAP</td>
+    <td>4GB (if RAM < 16GB)</td>
+  </tr>
+  <tr>
+    <td>Hard Disk</td>
+    <td>30GB</td>
+  </tr>
+</table>
+
+<p><br></p>
+<!--Note: In Linux OS you can use the command `free -m` to know if your machine has SWAP memory enabled.-->
+
+<!---
+ Script for open external links in a new tab
+-->
+
+<script type="text/javascript" charset="utf-8">
+      // Creating custom :external selector
+      $.expr[':'].external = function(obj){
+          return !obj.href.match(/^mailto\:/)
+                  && (obj.hostname != location.hostname);
+      };
+      $(function(){
+        $('a:external').addClass('external');
+        $(".external").attr('target','_blank');
+      })
+</script>
+					
+				      </div>
+				    </div>
+				    <footer>
+<hr class="divider divider-100 divider-xs hr-lg-center-0 offset-xs-top-20 offset-sm-top-20 offset-md-top-20 offset-lg-top-20">
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../your-first-test/" class="btn btn-xs btn-primary float-right" title="Your first test with ElasTest">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../" class="btn btn-xs btn-primary" title="What is ElasTest?"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
+      
+    </div>
+  
+
+
+  
+  
+	  <a href="https://github.com/elastest/elastest.io-docs/blob/master/docs/getting-started/try-elastest.md" class="fa fa-github offset-xxs-top-30"> Edit Documentation on GitHub</a>
+  
+</footer>
+			  	  
+				  </div>
+				</div>
+			</div>
+		    </div>
+		</div>
+	</section>
+
+  </div>
+</div>

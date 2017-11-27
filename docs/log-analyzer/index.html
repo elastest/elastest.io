@@ -1,6 +1,6 @@
 --- 
 layout: default 
-title: Elastest Documentation 
+title: Elastest Documentation - Log Analyzer 
 active: documentation 
 section-title: Documentation 
 section-icon: mdi mdi-content-copy 
@@ -15,7 +15,7 @@ section-icon: mdi mdi-content-copy
 
 	$( document).ready(function(){
 	    $('li.subnav_drop').find('ul.subnav').hide();
-	       $( ".subnav" ).find( "li:contains('')" ).each(function(i,e){
+	       $( ".subnav" ).find( "li:contains('Log Analyzer')" ).each(function(i,e){
 		  var currentElement = $(e);
 		  currentElement.parent().css({"display":"block","visibility":"visible"}); //css("background-color","blue");
 		  currentElement.css({"display":"block","visibility":"visible"});
@@ -29,7 +29,7 @@ section-icon: mdi mdi-content-copy
             $('#doc-container').css('min-height', minHeight+'px');
 	});
 	   
-	$( ".wy-nav-content" ).find( "li:contains('')" ).css('color','red');
+	$( ".wy-nav-content" ).find( "li:contains('Log Analyzer')" ).css('color','red');
  </script>
 
 <div id="doc-container" class="container text-justify">
@@ -55,7 +55,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="/getting-started/">What is ElasTest?</a>
+        <a class="" href="../getting-started/">What is ElasTest?</a>
         
     </li>
 
@@ -64,7 +64,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="/getting-started/try-elastest/">Try ElasTest</a>
+        <a class="" href="../getting-started/try-elastest/">Try ElasTest</a>
         
     </li>
 
@@ -73,7 +73,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="/getting-started/your-first-test/">Your first test with ElasTest</a>
+        <a class="" href="../getting-started/your-first-test/">Your first test with ElasTest</a>
         
     </li>
 
@@ -95,7 +95,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="/testing/unit/">Run unit tests</a>
+        <a class="" href="../testing/unit/">Run unit tests</a>
         
     </li>
 
@@ -104,7 +104,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="/testing/e2e-rest/">Run end2end tests (REST)</a>
+        <a class="" href="../testing/e2e-rest/">Run end2end tests (REST)</a>
         
     </li>
 
@@ -113,7 +113,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="/testing/e2e-browser/">Run end2end tests (Web Browser)</a>
+        <a class="" href="../testing/e2e-browser/">Run end2end tests (Web Browser)</a>
         
     </li>
 
@@ -135,7 +135,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="/web-browsers/manual-browsers/">Launching Web Browsers on ElasTest</a>
+        <a class="" href="../web-browsers/manual-browsers/">Launching Web Browsers on ElasTest</a>
         
     </li>
 
@@ -144,7 +144,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="/web-browsers/outside-testing/">Testing with Web Browsers from outside ElasTest</a>
+        <a class="" href="../web-browsers/outside-testing/">Testing with Web Browsers from outside ElasTest</a>
         
     </li>
 
@@ -165,8 +165,10 @@ section-icon: mdi mdi-content-copy
         
              
 
-    <li class="toctree-l1 ">
-        <a class="" href="/log-analyzer/">Log Analyzer</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Log Analyzer</a>
+        
+         
         
     </li>
 
@@ -188,7 +190,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="/monitoring/">Monitoring</a>
+        <a class="" href="../monitoring/">Monitoring</a>
         
     </li>
 
@@ -210,7 +212,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="/jenkins/">Jenkins integration</a>
+        <a class="" href="../jenkins/">Jenkins integration</a>
         
     </li>
 
@@ -232,7 +234,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="/deploying/">Deploying ElasTest</a>
+        <a class="" href="../deploying/">Deploying ElasTest</a>
         
     </li>
 
@@ -261,25 +263,33 @@ section-icon: mdi mdi-content-copy
 				    <div role="main">
 				      <div class="section">
 					
-
-    <div class="row-fluid">
-      <div id="main-content" class="span12">
-        <h1 id="404-page-not-found" style="text-align: center">404</h1>
-        <p style="text-align: center"><strong>Page not found</strong></p>
-      </div>
-    </div>
-
-
+					  <div class="range range-xs-left">
+<div class="cell-xs-10 cell-lg-6 text-md-left inset-md-right-80 cell-lg-push-1 offset-top-50 offset-lg-top-0">
+<h2 id="content" class="h1">Log Analyzer</h2>
+<div class="offset-top-30 offset-md-top-50">
+</div>
+</div>
+</div>
+					
 				      </div>
 				    </div>
 				    <footer>
 <hr class="divider divider-100 divider-xs hr-lg-center-0 offset-xs-top-20 offset-sm-top-20 offset-md-top-20 offset-lg-top-20">
   
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../monitoring/" class="btn btn-xs btn-primary float-right" title="Monitoring">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../web-browsers/outside-testing/" class="btn btn-xs btn-primary" title="Testing with Web Browsers from outside ElasTest"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
+      
+    </div>
+  
 
 
   
   
-	  <a href="https://github.com/elastest/elastest.io-docs" class="fa fa-github offset-xxs-top-30"> Edit Documentation on GitHub</a>
+	  <a href="https://github.com/elastest/elastest.io-docs/blob/master/docs/log-analyzer/index.md" class="fa fa-github offset-xxs-top-30"> Edit Documentation on GitHub</a>
   
 </footer>
 			  	  
