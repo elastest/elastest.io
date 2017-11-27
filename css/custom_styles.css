@@ -136,7 +136,7 @@ main.main-documentation section img {
     font-size: 25px;
     width: 100px;
     height: 33px;
-    border-radius: 5px;
+    border-radius: 3px;
     margin-right: 8px;
     cursor: pointer;
 }
@@ -144,14 +144,6 @@ main.main-documentation section img {
 .my-badge:hover {
     background-color: #ff9900;
 }
-
-.my-badge.selected::after {
-        background: -moz-linear-gradient(90deg, #ffac2f 0%, #ffac2f 100%);
-        background: -webkit-linear-gradient(90deg, #ffac2f 0%, #ffac2f 100%);
-        background: -o-linear-gradient(90deg, #ffac2f 0%, #ffac2f 100%);
-        background: -ms-linear-gradient(90deg, #ffac2f 0%, #ffac2f 100%);
-        background: linear-gradient(90deg, #ffac2f 0%, #ffac2f 100%);
-        }
 
 .my-badge-disabled {
     background-color: #d9d9d9;
