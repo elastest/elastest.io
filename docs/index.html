@@ -237,31 +237,41 @@ section-icon: mdi mdi-content-copy
 
 <p>
 ElasTest is built around three main elements:
-<ul>
 
-<li style="margin-top: 30px">
-    <strong>SuT</strong> (<i>Software under Test</i>): the tested software itself. At the moment, all SuTs must be provided in the form of a Docker container. Dockerized SuT can be specified in two different ways:
+<div style="margin-top: 30px">
+    <h4>SuT</h4>
+    Software under Test: the tested software itself. ElasTest supports two kinds of SuTs:
     <ul>
-        <li><i>Docker image</i>: SuT is packaged as a single docker image. The name of the image must be specified. If the docker image is not located in DockerHub, then the image name contains the FQDN of the registry.</li>
-        <li><i>Docker compose</i>: SuT is composed by several containers and is defined with a <i>docker-compose.yml</i> file.</li>
+        <li><strong>Dockerized SuT</strong>: your software is hosted inside Docker container/s
+            <ul>
+                <li><i>Docker image</i>: SuT is packaged as a single docker image. The name of the image must be specified. If the docker image is not located in DockerHub, then the image name contains the FQDN of the registry.</li>
+                <li><i>Docker compose</i>: SuT is composed by several containers and is defined with a <i>docker-compose.yml</i> file.</li>
+            </ul>
+        </li>
+        <li><strong>Deployed Sut</strong>: your software is already deployed somewhere on the cloud
+            <ul>
+                <li><i>Manual instrumentation</i>: ElasTest won't gather any monitoring information from the SuT unless you install some agents</li>
+                <li><i>Automated instrumetnation</i>: let ElasTest configure your deployed SuT to send metrics and logs</li>
+            </ul>
+        </li>
     </ul>
-</li>
+</div>
 
-<li style="margin-top: 30px">
-    <strong>TJob</strong> (<i>Test Job</i>): test to be executed against a piece of software (SuT). In a TJob several things have to be specified:
+<div style="margin-top: 30px">
+    <h4>TJob</h4>
+    Test Job: test to be executed against a piece of software (SuT). In a TJob several things have to be specified:
     <ul>
         <li><i>Environment needed to execute the tests</i>: This is defined with a docker image that contains all tools used by the tests.</li>
         <li><i>How to retrieve and execute the tests</i>: Specified as a set of commands written in bash that will be executed inside the environment defined before (docker container).</li>
         <li><i>The SuT against which tests are executed</i>: That is, the SuT description. If the Sut is already deployed, it is necessary to specify how to reach it (usually with its IP). If the SuT lifecycle is managed by ElasTest, ElasTest needs to know how to deploy and undeploy the SuT. At the moment, a SuT’s docker image can be specified in this case.</li></br>
     A TJob can be executed several times. That can be useful, for example, because SuT has changes and we want to verify that old features are still working. Or if we add more tests to the same TJob test repo, we can execute them against the SuT.
     </ul>
-</li>
+</div>
 
-<li style="margin-top: 30px">
-    <strong>TSS</strong> (<i>Test Support Services</i>): services offered by ElasTest to ease the execution and analysis of TJobs. At the moment, only <strong>web browsers</strong> are provided, but in the near future ElasTest will offer mobile devices emulators, IoT devices, security services, Big Data services, WebRTC testing capablities...
-</li>
-
-</ul>
+<div style="margin-top: 30px">
+   <h4>TSS</h4>
+   Test Support Services: services offered by ElasTest to ease the execution and analysis of TJobs. At the moment, only <strong>web browsers</strong> are provided, but in the near future ElasTest will offer mobile devices emulators, IoT devices, security services, Big Data services, WebRTC testing capablities...
+</div>
 
 <blockquote>
 These three elements are the core concepts of ElasTest platform and they are also the <strong>components targeted</strong> by ElasTest platform.
