@@ -49,7 +49,7 @@ section-icon: mdi mdi-content-copy
 					<li><ul> 
     
    
-    <li class="subnav_drop"><span>What is ElasTest?</span>
+    <li class="subnav_drop"><span>Getting started</span>
 <ul class="subnav">
         
              
@@ -63,23 +63,10 @@ section-icon: mdi mdi-content-copy
 
 
         
-</li>
-</ul>
-    
-</ul></li>
-				
-			
-				
-					<li><ul> 
-    
-   
-    <li class="subnav_drop"><span>Getting started</span>
-<ul class="subnav">
-        
              
 
     <li class="toctree-l1 ">
-        <a class="" href="getting-started/installation/">Try ElasTest</a>
+        <a class="" href="try-elastest/">Try ElasTest</a>
         
     </li>
 
@@ -88,16 +75,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="getting-started/hello-world/">Hello world</a>
-        
-    </li>
-
-
-        
-             
-
-    <li class="toctree-l1 ">
-        <a class="" href="getting-started/user-guide/">User guide</a>
+        <a class="" href="your-first-test/">Your first test with ElasTest</a>
         
     </li>
 
@@ -113,13 +91,13 @@ section-icon: mdi mdi-content-copy
 					<li><ul> 
     
    
-    <li class="subnav_drop"><span>Fundamentals</span>
+    <li class="subnav_drop"><span>Testing with ElasTest</span>
 <ul class="subnav">
         
              
 
     <li class="toctree-l1 ">
-        <a class="" href="fundamentals/core-concepts/">Core concepts</a>
+        <a class="" href="testing/unit/">Run unit tests</a>
         
     </li>
 
@@ -128,7 +106,16 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="fundamentals/architecture/">Elastest Architecture</a>
+        <a class="" href="testing/e2e-rest/">Run end2end tests (REST)</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="testing/e2e-browser/">Run end2end tests (Web Browser)</a>
         
     </li>
 
@@ -144,13 +131,13 @@ section-icon: mdi mdi-content-copy
 					<li><ul> 
     
    
-    <li class="subnav_drop"><span>How to ...</span>
+    <li class="subnav_drop"><span>Web Browsers</span>
 <ul class="subnav">
         
              
 
     <li class="toctree-l1 ">
-        <a class="" href="how-to/unit/">Run unit tests</a>
+        <a class="" href="web-browsers/manual-browsers/">Launching Web Browsers on ElasTest</a>
         
     </li>
 
@@ -159,34 +146,73 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="how-to/e2e-rest/">Run end2end tests (REST)</a>
+        <a class="" href="web-browsers/outside-testing/">Testing with Web Browsers from outside ElasTest</a>
         
     </li>
 
 
         
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Log Analyzer</span>
+<ul class="subnav">
+        
              
 
     <li class="toctree-l1 ">
-        <a class="" href="how-to/e2e-browser/">Run end2end tests (Web Browser)</a>
+        <a class="" href="log-analyzer/">Log Analyzer</a>
         
     </li>
 
 
         
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Monitoring</span>
+<ul class="subnav">
+        
              
 
     <li class="toctree-l1 ">
-        <a class="" href="how-to/local-testing/">Local testing with ElasTest</a>
+        <a class="" href="monitoring/">Monitoring</a>
         
     </li>
 
 
         
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Jenkins integration</span>
+<ul class="subnav">
+        
              
 
     <li class="toctree-l1 ">
-        <a class="" href="how-to/monitoring/">Monitoring</a>
+        <a class="" href="jenkins/">Jenkins integration</a>
         
     </li>
 
@@ -208,7 +234,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="deploying/deploying/">Deploying ElasTest</a>
+        <a class="" href="deploying/">Deploying ElasTest</a>
         
     </li>
 
@@ -251,6 +277,46 @@ section-icon: mdi mdi-content-copy
 
 <h2 class="h3 no-border">ElasTest main features</h2>
 
+<h2 class="h3 no-border">ElasTest core concepts</h2>
+
+<p>
+ElasTest is built around three main elements:
+<ul>
+
+<li style="margin-top: 30px">
+    <strong>SuT</strong> (<i>Software under Test</i>): the tested software itself. At the moment, all SuTs must be provided in the form of a Docker container. Dockerized SuT can be specified in two different ways:
+    <ul>
+        <li><i>Docker image</i>: SuT is packaged as a single docker image. The name of the image must be specified. If the docker image is not located in DockerHub, then the image name contains the FQDN of the registry.</li>
+        <li><i>Docker compose</i>: SuT is composed by several containers and is defined with a <i>docker-compose.yml</i> file.</li>
+    </ul>
+</li>
+
+<li style="margin-top: 30px">
+    <strong>TJob</strong> (<i>Test Job</i>): test to be executed against a piece of software (SuT). In a TJob several things have to be specified:
+    <ul>
+        <li><i>Environment needed to execute the tests</i>: This is defined with a docker image that contains all tools used by the tests.</li>
+        <li><i>How to retrieve and execute the tests</i>: Specified as a set of commands written in bash that will be executed inside the environment defined before (docker container).</li>
+        <li><i>The SuT against which tests are executed</i>: That is, the SuT description. If the Sut is already deployed, it is necessary to specify how to reach it (usually with its IP). If the SuT lifecycle is managed by ElasTest, ElasTest needs to know how to deploy and undeploy the SuT. At the moment, a SuT’s docker image can be specified in this case.</li></br>
+    A TJob can be executed several times. That can be useful, for example, because SuT has changes and we want to verify that old features are still working. Or if we add more tests to the same TJob test repo, we can execute them against the SuT.
+    </ul>
+</li>
+
+<li style="margin-top: 30px">
+    <strong>TSS</strong> (<i>Test Support Services</i>): services offered by ElasTest to ease the execution and analysis of TJobs. At the moment, only <strong>web browsers</strong> are provided, but in the near future ElasTest will offer mobile devices emulators, IoT devices, security services, Big Data services, WebRTC testing capablities...
+</li>
+
+</ul>
+
+<blockquote>
+These three elements are the core concepts of ElasTest platform and they are also the <strong>components targeted</strong> by ElasTest platform.
+<br>
+In other words: <strong>SuT's, TJob's and TSS's are the modules that ElasTest can monitore and analyse for you</strong>. You can gather information and check logs and metrics for any SuT, TJob or TSS. To learn more check <a href="/docs/monitoring">Monitoring</a> section.
+</blockquote>
+
+</p>
+
+<h2 class="h3 no-border">ElasTest technologies</h2>
+
 <!---
  Script for open external links in a new tab
 -->
@@ -274,7 +340,7 @@ section-icon: mdi mdi-content-copy
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="getting-started/installation/" class="btn btn-xs btn-primary float-right" title="Try ElasTest">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
+        <a href="try-elastest/" class="btn btn-xs btn-primary float-right" title="Try ElasTest">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
       
       
     </div>
