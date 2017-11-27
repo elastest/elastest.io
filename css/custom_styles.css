@@ -49,24 +49,6 @@ header nav {
     border-left: none;
 }
 
-nav #docs-btn {
-    padding: 5px 10px 1px 10px;
-    border-radius: 3px;
-    margin-top: -5px;
-}
-
-nav.rd-navbar-dark #docs-btn {
-    background-color: rgba(255, 172, 47, 0.15) !important;
-}
-
-nav.rd-navbar-default #docs-btn { 
-    background-color: rgba(255, 172, 47, 0.25);
-}
-
-nav.rd-navbar-default.rd-navbar--is-stuck #docs-btn { 
-    background-color: rgba(255, 172, 47, 0.15) !important;
-}
-
 .no-border {
     border: none !important;
 }
