@@ -136,13 +136,13 @@ blockquote {
     margin-top: 20px;
 }
 
-div > ul > li > ul > li:hover {
+div > ul#menu-list > li > ul > li:hover {
     background: none;
     border-left: 4px solid #f9c308;
     background-color: rgba(255, 172, 47, 0.08);
 }
 
-div > ul > li > ul > li.toctree-l1  > a {
+div > ul#menu-list > li > ul > li.toctree-l1  > a {
     line-height: 18px;
     padding: 0.6045em 0em 0.6045em 1.4045em;
     display: block;
@@ -152,7 +152,7 @@ div > ul > li > ul > li.toctree-l1  > a {
     border-bottom: 1px solid #e1e1e5;
 }
 
-div > ul > li > ul > li.toctree-l1  > a.current {
+div > ul#menu-list > li > ul > li.toctree-l1  > a.current {
     line-height: 18px;
     padding: 0.6045em 0em 0.6045em 1.4045em;
     display: block;
@@ -162,26 +162,26 @@ div > ul > li > ul > li.toctree-l1  > a.current {
     border-bottom: 1px solid #e1e1e5;
 }
 
-div > ul > li > ul > li.toctree-l1  > a:active {
+div > ul#menu-list > li > ul > li.toctree-l1  > a:active {
     border-left: none;
 }
 
-div > ul > li > ul > li > ul > li.toctree-l1  > a:hover {
+div > ul#menu-list > li > ul > li > ul > li.toctree-l1  > a:hover {
     background-color: rgba(255, 172, 47, 0.08);    
 }
 
-div > ul > li > ul > li.subnav_drop > span:hover {
+div > ul#menu-list > li > ul > li.subnav_drop > span:hover {
     background: none;
     border-left: 4px solid #f9c308;
     background-color: rgba(255, 172, 47, 0.08);
 }
 
-ul > li.toctree-l1.current  > a.current:hover {
+div > ul#menu-list ul > li.toctree-l1.current  > a.current:hover {
     border-left: none;
     background-color: rgba(255, 172, 47, 0.08);
 }
 
-div > ul > li > ul > li.subnav_drop:hover {
+div > ul#menu-list > li > ul > li.subnav_drop:hover {
     background: none;
     border-left: none;
 }
