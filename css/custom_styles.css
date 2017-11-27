@@ -176,7 +176,7 @@ div > ul > li > ul > li.subnav_drop > span:hover {
     background-color: rgba(255, 172, 47, 0.08);
 }
 
-div > ul > li > ul > li.toctree-l1  > a.current:hover {
+ul > li.toctree-l1.current  > a.current:hover {
     border-left: none;
     background-color: rgba(255, 172, 47, 0.08);
 }
