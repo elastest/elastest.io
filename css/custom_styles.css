@@ -186,9 +186,44 @@ div > ul#menu-list > li > ul > li.subnav_drop:hover {
     border-left: none;
 }
 
+.holder h2 {
+    border-bottom: #ffac2f 4px solid !important;
+}
+
+.link-top {
+    border-top: 100px solid transparent !important; 
+    margin-top: -50px;
+}
+
+.holder-subtitle {
+    border-bottom: #ffac2f 2px solid;
+    padding-bottom: 12px;
+    text-align: left;
+    max-width: 40%;
+}
+
+.small-subtitle {
+    color: #666666;
+    font-weight: bolder;
+    margin-top: 42px;
+}
+
+.smaller-subtitle {
+    margin-top: 25px;
+    margin-bottom: 18px;
+    font-weight: bolder;
+    font-size: 16px;
+    color: black;
+    font-family: inherit;
+}
+
+
 @media (max-width: 479px) {
     nav.wy-nav-side {
         left: -8px !important;
+    }
+    .holder-subtitle {
+        max-width: 100% !important;
     }
 }
 
@@ -200,6 +235,9 @@ div > ul#menu-list > li > ul > li.subnav_drop:hover {
         margin-top: 50px;
         padding-top: 41px;
         padding-left: 45px;
+    }
+    .holder-subtitle {
+        max-width: 70%;
     }
 }
 
