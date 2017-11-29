@@ -192,14 +192,15 @@ div > ul#menu-list > li > ul > li.subnav_drop:hover {
 
 .link-top {
     border-top: 100px solid transparent !important; 
-    margin-top: -50px;
+    margin-top: -100px !important;
 }
 
-.holder-subtitle {
+.holder-subtitle.link-top {
     border-bottom: #ffac2f 2px solid;
     padding-bottom: 12px;
     text-align: left;
     max-width: 40%;
+    margin-top: -50px !important;
 }
 
 .small-subtitle {
