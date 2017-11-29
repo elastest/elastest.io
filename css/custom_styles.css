@@ -24,6 +24,16 @@ main.main-documentation section .subnav li a:hover {
     border-left: none;
 }
 
+.noselectionable {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome and Opera */
+  }
+
 .inline-block {
     display: inline-block;
 }
@@ -112,6 +122,17 @@ main.main-documentation section img {
     border-radius: 3px;
     margin-right: 8px;
     cursor: pointer;
+    font-weight: 400;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
+.my-big-badge {
+    width: 160px;
+    height: 60px;
 }
 
 .my-badge:hover {
@@ -120,6 +141,21 @@ main.main-documentation section img {
 
 .my-badge-disabled {
     background-color: #d9d9d9;
+    cursor: default;
+}
+
+.my-badge-disabled:hover {
+    background-color: #d9d9d9;
+    font-weight: 400;
+}
+
+.my-badge.selected {
+    background-color: #ff9900;
+    font-weight: bolder;
+}
+
+.my-badge.selected:hover {
+    cursor: default;
 }
 
 .badges-menu {
@@ -216,6 +252,33 @@ div > ul#menu-list > li > ul > li.subnav_drop:hover {
     font-size: 16px;
     color: black;
     font-family: inherit;
+}
+
+.badges-menu-beats {
+    margin-bottom: -2px;
+}
+
+.beats-tutorial {
+    border: 2px solid rgba(255, 172, 47, 0.3);
+    border-radius: 3px;
+    border-top-left-radius: 0px;
+    padding: 30px;
+}
+
+#float-panel li a {
+    -webkit-transition: background-color 0.2s ease-in-out;
+    -moz-transition: background-color 0.2s ease-in-out;
+    -ms-transition: background-color 0.2s ease-in-out;
+    -o-transition: background-color 0.2s ease-in-out;
+    transition: background-color 0.2s ease-in-out;
+}
+
+#float-panel span {
+    -webkit-transition: background-color 0.2s ease-in-out;
+    -moz-transition: background-color 0.2s ease-in-out;
+    -ms-transition: background-color 0.2s ease-in-out;
+    -o-transition: background-color 0.2s ease-in-out;
+    transition: background-color 0.2s ease-in-out;
 }
 
 
