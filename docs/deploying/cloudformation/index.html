@@ -1,6 +1,6 @@
 --- 
 layout: default 
-title: Elastest Documentation - Testing with Web Browsers from outside ElasTest 
+title: Elastest Documentation - CloudFormation 
 active: documentation 
 section-title: Documentation 
 section-icon: mdi mdi-content-copy 
@@ -15,7 +15,7 @@ section-icon: mdi mdi-content-copy
 
 	$( document).ready(function(){
 	    $('li.subnav_drop').find('ul.subnav').hide();
-	       $( ".subnav" ).find( "li:contains('Testing with Web Browsers from outside ElasTest')" ).each(function(i,e){
+	       $( ".subnav" ).find( "li:contains('CloudFormation')" ).each(function(i,e){
 		  var currentElement = $(e);
 		  currentElement.parent().css({"display":"block","visibility":"visible"}); //css("background-color","blue");
 		  currentElement.css({"display":"block","visibility":"visible"});
@@ -29,7 +29,7 @@ section-icon: mdi mdi-content-copy
             $('#doc-container').css('min-height', minHeight+'px');
 	});
 	   
-	$( ".wy-nav-content" ).find( "li:contains('Testing with Web Browsers from outside ElasTest')" ).css('color','red');
+	$( ".wy-nav-content" ).find( "li:contains('CloudFormation')" ).css('color','red');
  </script>
 
 <div id="doc-container" class="container text-justify">
@@ -135,7 +135,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../manual-browsers/">Launching Web Browsers on ElasTest</a>
+        <a class="" href="../../web-browsers/manual-browsers/">Launching Web Browsers on ElasTest</a>
         
     </li>
 
@@ -143,10 +143,8 @@ section-icon: mdi mdi-content-copy
         
              
 
-    <li class="toctree-l1 current">
-        <a class="current" href="./">Testing with Web Browsers from outside ElasTest</a>
-        
-         
+    <li class="toctree-l1 ">
+        <a class="" href="../../web-browsers/outside-testing/">Testing with Web Browsers from outside ElasTest</a>
         
     </li>
 
@@ -238,8 +236,10 @@ section-icon: mdi mdi-content-copy
         
              
 
-    <li class="toctree-l1 ">
-        <a class="" href="../../deploying/cloudformation/">CloudFormation</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">CloudFormation</a>
+        
+         
         
     </li>
 
@@ -248,7 +248,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../../deploying/native/">Native deployment</a>
+        <a class="" href="../native/">Native deployment</a>
         
     </li>
 
@@ -279,94 +279,120 @@ section-icon: mdi mdi-content-copy
 					
 					  <div class="range range-xs-left">
 <div class="cell-xs-10 cell-lg-6 text-md-left inset-md-right-80 cell-lg-push-1 offset-top-50 offset-lg-top-0">
-<h2 id="content" class="h1">Testing with Web Browsers from outside ElasTest</h2>
+<h2 id="content" class="h1">Deploying ElasTest with CloudFormation</h2>
 <div class="offset-top-30 offset-md-top-50">
 </div>
 </div>
 </div>
 
-<p>You can make use of ElastTest Web Browser services to <strong>run your local or CI end-to-end tests on any browser and version</strong> you want.</p>
-<p>This is a deal breaker for developers: whatever platform you are coding in and whatever framework you are using, you can easily launch any browser in ElasTest dashboard and use it remotely to run your tests straight from your machine, as you would do in your favourite IDE. Do you want to test your web on Microsoft's Edge but you don't even have a Windows machine? No problem, just launch an Edge instance on ElasTest and run your test against it. Any other browser provided in ElasTest Web Browser services could serve as an example of this use case.</p>
-<p>In order to run your test on ElasTest browsers, you just need to use the <strong>URL shown on "Web Browsers" page</strong>. There are no restrictions on the environment your test is being executed: you can run it on your development machine from the command line or even directly from your favourite editor. Or you can run your test on ElasTest browsers as part of your CI platform, so that in the event of any failure you can check the window recording and browser's console. The advantages are considerable compared to other alternatives.</p>
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-2" href="/docs/images/test.png"><img class="img-responsive img-wellcome" src="/docs/images/test.png"/></a>
-</div>
-
-<p>To illustrate this scenarios, let's see how to start a Selenium Web Driver using different languages to remotely use ElasTest browsers. If the URL provided in "Web Browsers" page is <code>https://MY_REMOTE_WEB_BROWSER_URL.com</code>:</p>
-<div class="badges-menu">
-    <span id="java-test-btn" class="badge badge-default my-badge">Java</span>
-    <span id="js-test-btn" class="badge badge-default my-badge">JS</span>
-    <span class="badge badge-default my-badge my-badge-disabled">. . .</span>
-</div>
-
-<div id="java-test">
-<pre><code class="java">// Chrome
-
-DesiredCapabilities caps = new DesiredCapabilities().chrome();
-WebDriver driver = new RemoteWebDriver(new URL("https://MY_REMOTE_WEB_BROWSER_URL.com"), caps);
-
-// Firefox
-
-DesiredCapabilities caps = new DesiredCapabilities().firefox();
-WebDriver driver = new RemoteWebDriver(new URL("https://MY_REMOTE_WEB_BROWSER_URL.com"), caps);</code></pre>
-</div>
-
-<div id="js-test">
-<pre><code class="javascript">// Chrome
-
-var browserBuilder = new webdriver.Builder().forBrowser("chrome");
-browserBuilder.usingServer("https://MY_REMOTE_WEB_BROWSER_URL.com");
-driver = browserBuilder.build();
-
-// Firefox
-
-var browserBuilder = new webdriver.Builder().forBrowser("firefox");
-browserBuilder.usingServer("https://MY_REMOTE_WEB_BROWSER_URL.com");
-driver = browserBuilder.build();</code></pre>
-</div>
-
-<p>
-That's all the extra configuration needed. The rest of the code is exactly the same as in a regular Selenium test.
-Whenever you run it, ElasTest will launch the requested browser on-demand and the test will be remotely executed against it.
-</p>
-
-<p>
-You will have available the browser's window in real time to see your test in action. When it finishes, a <i>.mp4</i> file will be available for download.
-</p>
+<p>The easiest way to deploy ElasTest is by using our Amazon CloudFormation template. In a few steps by clicking a couple of buttons and filling a form you will have your ElasTest ready to go. If you don't have an AWS account you will need one (follow those <a href="http://docs.aws.amazon.com/AmazonSimpleDB/latest/DeveloperGuide/AboutAWSAccounts.html">steps</a> to get it).</p>
+<h6 class="small-subtitle">1) Go to <a href="https://eu-west-1.console.aws.amazon.com/cloudformation/">AWS CloudFormation dashboard</a> and create a new stack</h6>
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-2" href="/docs/images/test.png"><img class="img-responsive img-wellcome" src="/docs/images/test.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/deploying/images/new_stack.png"><img class="img-responsive img-wellcome" src="/docs/deploying/images/new_stack.png"/></a>
 </div>
 
-<script>
-function navigateTo(subpage) {
-    switch(subpage) {
-        case 'java':
-            $('#js-test').hide();
-            $('#java-test').show();
-            break;
-        case 'js':
-            $('#java-test').hide();
-            $('#js-test').show();
-            break;
-        default:
-            navigateTo('java');
-            break;
-    }
-}
+<h6 class="small-subtitle">2) Select option "Choose a template" and use <a href="https://raw.githubusercontent.com/elastest/elastest-toolbox/master/AWS/cloud-formation-latest.json">this JSON file</a></h6>
 
-$('#java-test-btn').click(function() {
-  navigateTo('java');
-});
-$('#js-test-btn').click(function() {
-  navigateTo('js');
-});
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/deploying/images/template.png"><img class="img-responsive img-wellcome" src="/docs/deploying/images/template.png"/></a>
+</div>
 
-window.onload = function() {
-  navigateTo(('java'));
-};
-</script>
+<h6 class="small-subtitle">3) Complete the form shown on the next step with the following information</h6>
 
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Details</th>
+<th>Currently available?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Stack name</td>
+<td>The name of the stack</td>
+<td>Elastest is OK</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>ElastestCertificateType</td>
+<td><em>selfsigned</em>, <em>letsencrypt</em> or <em>owncert</em></td>
+<td>You can choose which type of certificate use with elastest</td>
+<td>no (only <em>selfsigned</em>)</td>
+</tr>
+<tr>
+<td>ElastestExecutionMode</td>
+<td><em>normal</em>, <em>experimental-lite</em> or <em>experimental</em></td>
+<td>Choose Elastest execution mode</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>ElastestPassword</td>
+<td>Your password</td>
+<td>Password to access the platform</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>ElastestUsername</td>
+<td>Your username</td>
+<td>Username to access the platform</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>ElastestVersion</td>
+<td><em>latest</em></td>
+<td>which version of elastest do you want to launch</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>InstanceType</td>
+<td>The type of machine you want (recommended at least <em>m4.large</em>)</td>
+<td>Elastest needs resources to run, please be genereous</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>KeyName</td>
+<td>One of your AWS keys</td>
+<td>RSA key to access the instance through SSH</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>LetsEncryptEmail</td>
+<td>Your email</td>
+<td>Email to recive Let's Encrypt notifications</td>
+<td>no</td>
+</tr>
+<tr>
+<td>OwnCertCRT</td>
+<td>Your <em>.crt</em> file content (if <em>owncert</em> on <em>ElastestCertificateType</em>)</td>
+<td>The certificate chain</td>
+<td>no</td>
+</tr>
+<tr>
+<td>OwnCertKEY</td>
+<td>Your <em>.key</em> file content (if <em>owncert</em> on <em>ElastestCertificateType</em>)</td>
+<td>The private key</td>
+<td>no</td>
+</tr>
+<tr>
+<td>SwapSize</td>
+<td>4</td>
+<td>The amount of swap memory in GB</td>
+<td>yes</td>
+</tr>
+</tbody>
+</table>
+<h6 class="small-subtitle">4) Deploy your stack</h6>
+
+<p>No more configuration is needed. Click on <strong>Next</strong> -&gt; <strong>Next</strong> -&gt; <strong>Create</strong></p>
+<p>Your stack status will show <em>CREATE_IN_PROGRESS</em>. Wait a few minutes until it shows <em>CREATE_COMPLETE</em>. Then you can check <em>Output</em> tab to see the URL where you can access your ElasTest dashboard.</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/deploying/images/output_tab.png"><img class="img-responsive img-wellcome" src="/docs/deploying/images/output_tab.png"/></a>
+</div>
+
+<p>That's all. <em>Happy testing!</em></p>
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 
 <p><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" />
@@ -378,7 +404,7 @@ for (var i = 1; i <= galleries.length; i++) {
     selector : '[data-fancybox="gallery-' + i + '"]',
     infobar : true,
     arrows : false,
-    loop: false,
+    loop: true,
     protect: true,
     transitionEffect: 'slide',
     buttons : [
@@ -397,10 +423,10 @@ for (var i = 1; i <= galleries.length; i++) {
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../../log-analyzer/" class="btn btn-xs btn-primary float-right" title="Log Analyzer">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../native/" class="btn btn-xs btn-primary float-right" title="Native deployment">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../manual-browsers/" class="btn btn-xs btn-primary" title="Launching Web Browsers on ElasTest"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
+        <a href="../../jenkins/" class="btn btn-xs btn-primary" title="Jenkins integration"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
       
     </div>
   
@@ -408,7 +434,7 @@ for (var i = 1; i <= galleries.length; i++) {
 
   
   
-	  <a href="https://github.com/elastest/elastest.io-docs/blob/master/docs/web-browsers/outside-testing.md" class="fa fa-github offset-xxs-top-30"> Edit Documentation on GitHub</a>
+	  <a href="https://github.com/elastest/elastest.io-docs/blob/master/docs/deploying/cloudformation.md" class="fa fa-github offset-xxs-top-30"> Edit Documentation on GitHub</a>
   
 </footer>
 			  	  

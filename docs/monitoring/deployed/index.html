@@ -1,0 +1,501 @@
+--- 
+layout: default 
+title: Elastest Documentation - Deployed monitoring 
+active: documentation 
+section-title: Documentation 
+section-icon: mdi mdi-content-copy 
+---
+<script src="/js/jquery-3.1.1.min.js"></script>
+<script src="/js/float-panel.js"></script>
+
+<script type="text/javascript">
+	/* Import docs theme css */
+	$('head').append('<link rel="stylesheet" type="text/css" href="/css/theme_extra.css">');
+	
+
+	$( document).ready(function(){
+	    $('li.subnav_drop').find('ul.subnav').hide();
+	       $( ".subnav" ).find( "li:contains('Deployed monitoring')" ).each(function(i,e){
+		  var currentElement = $(e);
+		  currentElement.parent().css({"display":"block","visibility":"visible"}); //css("background-color","blue");
+		  currentElement.css({"display":"block","visibility":"visible"});
+	       });
+	    $('li.subnav_drop').click(function(i,e) {  
+	      $('li.subnav_drop').not(this).find('ul.subnav').hide();
+	      $(this).find('ul.subnav').toggle();
+	    }); 
+
+	    var minHeight = $('#float-panel').outerHeight() + 100;	
+            $('#doc-container').css('min-height', minHeight+'px');
+	});
+	   
+	$( ".wy-nav-content" ).find( "li:contains('Deployed monitoring')" ).css('color','red');
+ </script>
+
+<div id="doc-container" class="container text-justify">
+  <div class="holder range"> 
+        <div id="float-panel" class="wy-grid-for-nav cell-xs-3 cell-md-3 cell-lg-2 float-panel" data-top="56">
+
+          
+          <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+            <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="main navigation">
+		<div id="site-menu-title">
+			<h3 class="h5">Explore docs</h3>
+			<hr class="divider hr-lg-left-0 bg-orange">    
+		</div>
+		<ul id="menu-list" class="current">
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Getting started</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../..">What is ElasTest?</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../try-elastest/">Try ElasTest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../your-first-test/">Your first test with ElasTest</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Testing with ElasTest</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testing/unit/">Run unit tests</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testing/e2e-rest/">Run end2end tests (REST)</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testing/e2e-browser/">Run end2end tests (Web Browser)</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Web Browsers</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../web-browsers/manual-browsers/">Launching Web Browsers on ElasTest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../web-browsers/outside-testing/">Testing with Web Browsers from outside ElasTest</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../log-analyzer/">Log Analyzer</a>
+        
+    </li>
+
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Monitoring</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../">Intro</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../dockerized/">Dockerized monitoring</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Deployed monitoring</a>
+        
+         
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../custom/">Custom monitoring</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../jenkins/">Jenkins integration</a>
+        
+    </li>
+
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Deploying ElasTest</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../deploying/cloudformation/">CloudFormation</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../deploying/native/">Native deployment</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+		</ul>
+            </div>
+            &nbsp;
+          </nav>
+        </div>
+
+	<section class="section-sm-41">
+		<div class="shell">
+		    <div class="range range-xs-right">
+		        <div class="cell-xs-10 cell-sm-8 cell-md-9 cell-lg-10 cell-xl-12 text-md-left cell-lg-push-1 offset-lg-top-0">
+			  
+				<div class="wy-nav-content">
+				  <div class="rst-content">
+				   
+				    <div role="main">
+				      <div class="section">
+					
+					  <div class="range range-xs-left">
+<div class="cell-xs-10 cell-lg-6 text-md-left inset-md-right-80 cell-lg-push-1 offset-top-50 offset-lg-top-0">
+<h2 id="content" class="h1">Deployed monitoring</h2>
+<div class="offset-top-30 offset-md-top-50">
+</div>
+</div>
+</div>
+
+<p>When ElasTest is executing tests against an already deployed <a href="../../../docs#elastest-core-concepts">SuT</a>, it is necessary to explicitly gather monitoring information from it if we want to benefit from ElasTest monitoring and analysis features. The required instrumentation can be done in two different ways:</p>
+<ul>
+<li><strong>Automated instrumentation</strong>: If the SuT is a linux box with ssh access, ElasTest will be able to instrument it automatically. <strong><em>(Feature coming soon)</em></strong></li>
+<li><strong>Manual instrumentation</strong>: The SuT admin may install itself the instrumentation agents or configure the platform to send monitoring information to ElasTest.</li>
+</ul>
+<h4 class="holder-subtitle">Manual instrumentation</h4>
+
+<p>Manual instrumentation can be done by:</p>
+<ul>
+<li>
+<p><strong>Using Beats technology: <a href="https://www.elastic.co/products/beats">Beats</a></strong> is a platform for single-purpose data shippers created to work with Logstash and ElasticSearch. There are a lot of beats agents to collect monitoring information from all kinds of sources. For example: <a href="https://www.elastic.co/products/beats/filebeat">Filebeat</a>, <a href="https://www.elastic.co/products/beats/metricbeat">Metricbeat</a> or <a href="https://www.elastic.co/products/beats/packetbeat">Packetbeat</a>. If you can't find a certain beat agent among the official ones, you can always search <a href="https://www.elastic.co/guide/en/beats/libbeat/current/community-beats.html">beats bult by the community</a> or <a href="https://www.elastic.co/guide/en/beats/devguide/current/new-beat.html">create your own beat</a>.</p>
+</li>
+<li>
+<p><strong>Sending metrics with http POST requests</strong>: If beats agents doesn’t suit your needs, you can always send monitoring information with http requests. <strong><em>(Feature coming soon)</em></strong></p>
+</li>
+</ul>
+<p>To create a SuT ready to be manually instrumented, fill the form as shown in the image below on "New SuT" page:</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/monitoring/images/new_SuT_manual_instrumentation_1.png"><img class="img-responsive img-wellcome" src="/docs/monitoring/images/new_SuT_manual_instrumentation_1.png"/></a>
+</div>
+
+<p>Once you click on <em>Save and get monitoring details</em>  button, the following configuration parameters will be shown:</p>
+<ul>
+<li><strong>Logstash IP</strong>: The public host (IP or FQDN) in which Logstash is located.</li>
+<li><strong>Logstash Beats Port</strong>: The port in which Logstash can receive beats monitoring information.</li>
+<li><strong>HTTP port</strong>: The port in which Logstash listens for http requests with monitoring information.</li>
+<li><strong>Exec ID</strong>: The execution identification value that has to be included in events sent to Logstash. This value is used to identify what events belongs to this SuT.</li>
+</ul>
+<p>We will be using them in the following section.</p>
+<div class="docs-gallery more-margin-top inline-block">
+    <a data-fancybox="gallery-2" href="/docs/monitoring/images/new_SuT_manual_instrumentation_2.png"><img class="img-responsive img-wellcome" src="/docs/monitoring/images/new_SuT_manual_instrumentation_2.png"/></a>
+</div>
+
+<h4 id="send-metrics-with-beats" class="holder-subtitle link-top">Send metrics with Beats</h4>
+
+<p>As ElasTest already includes the required packages for using Beats (<a href="https://www.elastic.co/products/logstash">Logstash</a> and <a href="https://www.elastic.co/products/elasticsearch">ElasticSearch</a>), you will only have to follow the <a href="https://www.elastic.co/guide/en/beats/libbeat/current/installing-beats.html">official documentation</a> for installing and configuring beat agents inside your deployed SuT.</p>
+<p>To illustrate this process, let's see a pretty common use case: you have an app deployed somewhere in the cloud, and you want to run a TJob in ElasTest to test some feature of it.</p>
+<h6 style="color: #666666">1. Create a new SuT</h6>
+
+<p>First of all, create a new SuT inside any Project in your ElasTest dashboard. Do it with <strong>Deployed SuT</strong> and <strong>Instrumented by SuT Admin</strong> options, just as shown in the images above.</p>
+<h6 style="color: #666666">2. Install Filebeat on your SuT machine</h6>
+
+<p>Let's suppose we have an Ubuntu machine hosting our app. We connect to it through <em>ssh</em> and run the command that <a href="https://www.elastic.co/guide/en/beats/filebeat/6.0/filebeat-installation.html">Step 1 of Filebeat documentation</a> tells us. In this case, by using Debian packages:</p>
+<pre><code class="bash">curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-6.0.0-amd64.deb
+sudo dpkg -i filebeat-6.0.0-amd64.deb
+</code></pre>
+
+<h6 style="color: #666666">3. Configure Filebeat agent to suit your needs</h6>
+
+<p>Take a look to <a href="https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-configuration.html">Step 2 of Filebeat documentation</a>. The predefined default value for Filebeat is to gather all logs inside "/var/log/" folder:</p>
+<pre><code class="yml">filebeat.prospectors:
+- type: log
+  enabled: true
+  paths:
+    - /var/log/*.log
+</code></pre>
+
+<h6 style="color: #666666">4. Configure Filebeat agent to connect to ElasTest</h6>
+
+<p>Again, just need to take a quick look to <a href="https://www.elastic.co/guide/en/beats/filebeat/current/config-filebeat-logstash.html">Step 3 of Filebeat documentation</a>.</p>
+<p>Our brand new agent has to be configured to send information to the Logstash instance of ElasTest. Logstash Host and beats port have to be used in Filebeat configuration file (in our machine that is <code>/etc/filebeat/filebeat.yml</code>):</p>
+<pre><code class="yml">#----------------------------- Logstash output --------------------------------
+output.logstash:
+  hosts: [&quot;127.0.0.1:5044&quot;]
+</code></pre>
+
+<p>Where <strong>127.0.0.1</strong> has to be changed to the value of <strong>Logstash IP</strong> and <strong>5044</strong> to the value of <strong>Logstash Beats Port</strong>. To include the <strong>Exec ID</strong> value, it is necessary to add custom fields in config file. Those fields are:</p>
+<pre><code class="yml">fields_under_root: true
+fields:
+  exec: XX
+  component: YY
+  stream: ZZ
+</code></pre>
+
+<p>The value of the fields are:</p>
+<ul>
+<li><strong>exec</strong>: The value of <strong>Exec ID</strong> shown in ElasTest dashboard when SuT is created.</li>
+<li><strong>component</strong>: The name of the component in which this log is generated. For example: <code>sut</code>, <code>sut-webapp</code>, <code>sut-bbdd</code>. It is recommended that this name starts with "sut-" to allow to group SuT components in ElasTest.</li>
+<li><strong>stream</strong>: The name of the event stream. If the stream is a log and this is the only log for the component, it is recommended to call it <code>default_log</code>. </li>
+</ul>
+<h4 id="send-metrics-with-http" class="holder-subtitle link-top">Send metrics with HTTP</h4>
+
+<p>If it is not possible to use beats agents, you can always send SuT metric information with http requests. The URL is created with <strong>Logstash IP</strong> and <strong>HTTP port</strong> params:</p>
+<pre><code class="text">http://&lt;logstash_host&gt;:&lt;http_port&gt;/
+</code></pre>
+
+<p>The request has to use the POST method. There are different formats to send different types of information:</p>
+<h6 class="small-subtitle">Send one log entry in one request</h6>
+
+<pre><code class="json">{
+   &quot;@timestamp&quot;: 9999999999,
+   &quot;exec&quot;: &quot;XX&quot;,
+   &quot;component&quot;: &quot;YY&quot;,
+   &quot;stream&quot;: &quot;ZZ&quot;,
+   &quot;message&quot;: &quot;Complete log message entry&quot;
+}
+</code></pre>
+
+<div style="margin-top: 20px"></div>
+
+<ul>
+<li><strong>@timestamp</strong>: is optional and contains the timestamp when event was generated.</li>
+<li><strong>exec</strong>: The value of <strong>Exec ID</strong> shown in ElasTest dashboard when SuT is created.</li>
+<li><strong>component</strong>: identified the component that sends the metric. For example, if there is only a SuT app without any other service, it can be "sut". But if the SuT is a web application with database, it is good idea to have "sut_webapp" and "sut_ddbb" for logs of that two services. Note: use underscore like separator. Dash (-) is not allowed.</li>
+<li><strong>stream</strong>: Used to distinguish several logs from the same component. In this case only one log exists for the component, its value is usually "default_log".</li>
+<li><strong>message</strong>: Complete log message entry.</li>
+</ul>
+<h6 class="small-subtitle">Send several log entries in one request</h6>
+
+<pre><code class="json">{
+   &quot;@timestamp&quot;: 9999999999,
+   &quot;exec&quot;: &quot;XX&quot;,
+   &quot;component&quot;: &quot;YY&quot;,
+   &quot;stream&quot;: &quot;ZZ&quot;,
+   &quot;messages&quot;: [
+      &quot;Complete log message entry 1&quot;,
+      &quot;Complete log message entry 2&quot;,
+      &quot;Complete log message entry 3&quot;,
+      &quot;Complete log message entry 4&quot;
+   ]
+}
+</code></pre>
+
+<h6 class="small-subtitle">Send one atomic metric in one request</h6>
+
+<pre><code class="json">{
+   &quot;@timestamp&quot;: 9999999999,
+   &quot;exec&quot;: &quot;XX&quot;,
+   &quot;component&quot;: &quot;YY&quot;,
+   &quot;stream&quot;: &quot;cpu_usage&quot;,
+   &quot;stream_type&quot;: &quot;atomic_metric&quot;,
+   &quot;cpu_usage&quot;: 80,
+   &quot;unit&quot;: &quot;%&quot;
+}
+</code></pre>
+
+<div style="margin-top: 20px"></div>
+
+<ul>
+<li><strong>stream</strong> field can be whatever you want (it has to be used below when setting the numeric value)</li>
+</ul>
+<h6 class="small-subtitle">Send one composed metric in one request</h6>
+
+<pre><code class="json">{
+   &quot;@timestamp&quot;: 9999999999,
+   &quot;exec&quot;: &quot;XX&quot;,
+   &quot;component&quot;: &quot;YY&quot;,
+   &quot;type&quot;: &quot;cpu&quot;,
+   &quot;stream_type&quot;: &quot;composed_metric&quot;,
+   &quot;cpu&quot;: {
+     &quot;total_usage&quot;: 80,
+     &quot;max_usage&quot;: 100
+   }
+   &quot;units&quot;: {
+     &quot;total_usage&quot;: &quot;%&quot;,
+     &quot;max_usage&quot;: &quot;%&quot;
+   }
+}
+</code></pre>
+
+<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+
+<p><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script></p>
+<script>
+var galleries = $('div.docs-gallery');
+for (var i = 1; i <= galleries.length; i++) {
+    $().fancybox({
+    selector : '[data-fancybox="gallery-' + i + '"]',
+    infobar : true,
+    arrows : false,
+    loop: true,
+    protect: true,
+    transitionEffect: 'slide',
+    buttons : [
+        'close'
+    ],
+    clickOutside : 'close',
+    clickSlide   : 'close',
+  });
+}
+</script>
+					
+				      </div>
+				    </div>
+				    <footer>
+<hr class="divider divider-100 divider-xs hr-lg-center-0 offset-xs-top-20 offset-sm-top-20 offset-md-top-20 offset-lg-top-20">
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../custom/" class="btn btn-xs btn-primary float-right" title="Custom monitoring">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../dockerized/" class="btn btn-xs btn-primary" title="Dockerized monitoring"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
+      
+    </div>
+  
+
+
+  
+  
+	  <a href="https://github.com/elastest/elastest.io-docs/blob/master/docs/monitoring/deployed.md" class="fa fa-github offset-xxs-top-30"> Edit Documentation on GitHub</a>
+  
+</footer>
+			  	  
+				  </div>
+				</div>
+			</div>
+		    </div>
+		</div>
+	</section>
+
+  </div>
+</div>

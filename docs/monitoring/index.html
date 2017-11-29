@@ -1,6 +1,6 @@
 --- 
 layout: default 
-title: Elastest Documentation - Monitoring 
+title: Elastest Documentation - Intro 
 active: documentation 
 section-title: Documentation 
 section-icon: mdi mdi-content-copy 
@@ -15,7 +15,7 @@ section-icon: mdi mdi-content-copy
 
 	$( document).ready(function(){
 	    $('li.subnav_drop').find('ul.subnav').hide();
-	       $( ".subnav" ).find( "li:contains('Monitoring')" ).each(function(i,e){
+	       $( ".subnav" ).find( "li:contains('Intro')" ).each(function(i,e){
 		  var currentElement = $(e);
 		  currentElement.parent().css({"display":"block","visibility":"visible"}); //css("background-color","blue");
 		  currentElement.css({"display":"block","visibility":"visible"});
@@ -29,7 +29,7 @@ section-icon: mdi mdi-content-copy
             $('#doc-container').css('min-height', minHeight+'px');
 	});
 	   
-	$( ".wy-nav-content" ).find( "li:contains('Monitoring')" ).css('color','red');
+	$( ".wy-nav-content" ).find( "li:contains('Intro')" ).css('color','red');
  </script>
 
 <div id="doc-container" class="container text-justify">
@@ -169,14 +169,52 @@ section-icon: mdi mdi-content-copy
 			
 				
 					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Monitoring</span>
+<ul class="subnav">
+        
+             
 
     <li class="toctree-l1 current">
-        <a class="current" href="./">Monitoring</a>
+        <a class="current" href="./">Intro</a>
         
          
         
     </li>
 
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="dockerized/">Dockerized monitoring</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="deployed/">Deployed monitoring</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="custom/">Custom monitoring</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
 </ul></li>
 				
 			
@@ -193,12 +231,32 @@ section-icon: mdi mdi-content-copy
 			
 				
 					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Deploying ElasTest</span>
+<ul class="subnav">
+        
+             
 
     <li class="toctree-l1 ">
-        <a class="" href="../deploying/">Deploying ElasTest</a>
+        <a class="" href="../deploying/cloudformation/">CloudFormation</a>
         
     </li>
 
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../deploying/native/">Native deployment</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
 </ul></li>
 				
 			
@@ -227,8 +285,10 @@ section-icon: mdi mdi-content-copy
 </div>
 </div>
 
-<p>One of the key features of ElasTest is the ability to <strong>show and analyze logs and metrics</strong> of all elements involved in a test. This is particularly interesting for <strong>end-to-end tests</strong>, which usually involve more complex system architectures in distributed environments. For example, suppose a typical three tier web application with a database. A basic e2e test has the following components: the test itself, web browser, web application and database. All those elements can generate logs and metrics of several types (CPU, memory, network packets…). When a test is executed using ElasTest, the tester can see all that monitoring information in the same graphical user interface and with advanced analysis features.</p>
-<p>Here we will see how these monitoring features can be used from the tester perspective and how are implemented internally.</p>
+<p>One of the key features of ElasTest is the ability to <strong>show and analyze logs and metrics</strong> of all elements involved in a test. This is particularly interesting for <strong>end-to-end tests</strong>, which usually involve more complex system architectures in distributed environments. For example, suppose a typical three tier web application with a database. A basic e2e test has the following components: the test itself, web browser (or browsers!), web application and database. All those elements can generate logs and metrics of several types (CPU, memory, network packets…). When a test is executed using ElasTest, the tester can see all that monitoring information in the same graphical user interface and with advanced analysis features.</p>
+<p>As stated on <a href="./../../docs#elastest-core-concepts">ElasTest core concepts</a>, SuT's, TJob's and TSS's are the modules that ElasTest can monitore and analyse for you. You can gather information and check logs and metrics for any SuT, TJob or TSS.</p>
+<p>ElasTest monitoring service is based on <strong>event streams</strong>. Every log and metric entry is called an <strong>event</strong>. The collection of events containing information about the same metric or log is called <strong>event stream</strong>. Any SuT, TJob or TSS can generate multiple event streams. All of them can be gathered and visualized by ElasTest on useful graphs in real time and stored for future reviewing.</p>
+<p>ElasTest monitoring service is offered as <a href="./dockerized">Dockerized monitoring</a>, <a href="./deployed">Deployed monitoring</a> and <a href="./custom">Custom monitoring</a>.</p>
 					
 				      </div>
 				    </div>
@@ -237,7 +297,7 @@ section-icon: mdi mdi-content-copy
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../jenkins/" class="btn btn-xs btn-primary float-right" title="Jenkins integration">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
+        <a href="dockerized/" class="btn btn-xs btn-primary float-right" title="Dockerized monitoring">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../log-analyzer/" class="btn btn-xs btn-primary" title="Log Analyzer"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>

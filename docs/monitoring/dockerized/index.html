@@ -1,6 +1,6 @@
 --- 
 layout: default 
-title: Elastest Documentation - Deploying ElasTest 
+title: Elastest Documentation - Dockerized monitoring 
 active: documentation 
 section-title: Documentation 
 section-icon: mdi mdi-content-copy 
@@ -15,7 +15,7 @@ section-icon: mdi mdi-content-copy
 
 	$( document).ready(function(){
 	    $('li.subnav_drop').find('ul.subnav').hide();
-	       $( ".subnav" ).find( "li:contains('Deploying ElasTest')" ).each(function(i,e){
+	       $( ".subnav" ).find( "li:contains('Dockerized monitoring')" ).each(function(i,e){
 		  var currentElement = $(e);
 		  currentElement.parent().css({"display":"block","visibility":"visible"}); //css("background-color","blue");
 		  currentElement.css({"display":"block","visibility":"visible"});
@@ -29,7 +29,7 @@ section-icon: mdi mdi-content-copy
             $('#doc-container').css('min-height', minHeight+'px');
 	});
 	   
-	$( ".wy-nav-content" ).find( "li:contains('Deploying ElasTest')" ).css('color','red');
+	$( ".wy-nav-content" ).find( "li:contains('Dockerized monitoring')" ).css('color','red');
  </script>
 
 <div id="doc-container" class="container text-justify">
@@ -55,7 +55,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="..">What is ElasTest?</a>
+        <a class="" href="../..">What is ElasTest?</a>
         
     </li>
 
@@ -64,7 +64,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../try-elastest/">Try ElasTest</a>
+        <a class="" href="../../try-elastest/">Try ElasTest</a>
         
     </li>
 
@@ -73,7 +73,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../your-first-test/">Your first test with ElasTest</a>
+        <a class="" href="../../your-first-test/">Your first test with ElasTest</a>
         
     </li>
 
@@ -95,7 +95,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../testing/unit/">Run unit tests</a>
+        <a class="" href="../../testing/unit/">Run unit tests</a>
         
     </li>
 
@@ -104,7 +104,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../testing/e2e-rest/">Run end2end tests (REST)</a>
+        <a class="" href="../../testing/e2e-rest/">Run end2end tests (REST)</a>
         
     </li>
 
@@ -113,7 +113,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../testing/e2e-browser/">Run end2end tests (Web Browser)</a>
+        <a class="" href="../../testing/e2e-browser/">Run end2end tests (Web Browser)</a>
         
     </li>
 
@@ -135,7 +135,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../web-browsers/manual-browsers/">Launching Web Browsers on ElasTest</a>
+        <a class="" href="../../web-browsers/manual-browsers/">Launching Web Browsers on ElasTest</a>
         
     </li>
 
@@ -144,7 +144,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../web-browsers/outside-testing/">Testing with Web Browsers from outside ElasTest</a>
+        <a class="" href="../../web-browsers/outside-testing/">Testing with Web Browsers from outside ElasTest</a>
         
     </li>
 
@@ -160,7 +160,7 @@ section-icon: mdi mdi-content-copy
 					<li><ul> 
 
     <li class="toctree-l1 ">
-        <a class="" href="../log-analyzer/">Log Analyzer</a>
+        <a class="" href="../../log-analyzer/">Log Analyzer</a>
         
     </li>
 
@@ -169,36 +169,94 @@ section-icon: mdi mdi-content-copy
 			
 				
 					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Monitoring</span>
+<ul class="subnav">
+        
+             
 
     <li class="toctree-l1 ">
-        <a class="" href="../monitoring/">Monitoring</a>
+        <a class="" href="../">Intro</a>
         
     </li>
 
-</ul></li>
-				
-			
-				
-					<li><ul> 
 
-    <li class="toctree-l1 ">
-        <a class="" href="../jenkins/">Jenkins integration</a>
         
-    </li>
-
-</ul></li>
-				
-			
-				
-					<li><ul> 
+             
 
     <li class="toctree-l1 current">
-        <a class="current" href="./">Deploying ElasTest</a>
+        <a class="current" href="./">Dockerized monitoring</a>
         
          
         
     </li>
 
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../deployed/">Deployed monitoring</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../custom/">Custom monitoring</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../jenkins/">Jenkins integration</a>
+        
+    </li>
+
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Deploying ElasTest</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../deploying/cloudformation/">CloudFormation</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../deploying/native/">Native deployment</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
 </ul></li>
 				
 			
@@ -221,104 +279,14 @@ section-icon: mdi mdi-content-copy
 					
 					  <div class="range range-xs-left">
 <div class="cell-xs-10 cell-lg-6 text-md-left inset-md-right-80 cell-lg-push-1 offset-top-50 offset-lg-top-0">
-<h2 id="content" class="h1">Deploying ElasTest</h2>
+<h2 id="content" class="h1">Dockerized monitoring</h2>
 <div class="offset-top-30 offset-md-top-50">
 </div>
 </div>
 </div>
 
-<h2 class="h3 no-border">Native deployment: Docker</h2>
-
-<p><em>(Automatic launching ElasTest on startup)</em></p>
-<h2 class="h3 no-border">Cloud Formation</h2>
-
-<p>First of all you'll need an AWS account. To achive that, follow those <a href="http://docs.aws.amazon.com/AmazonSimpleDB/latest/DeveloperGuide/AboutAWSAccounts.html">steps</a>.</p>
-<p>Then, you can go to <a href="https://eu-west-1.console.aws.amazon.com/cloudformation/">AWS CloudFormation Pane</a> and create a <strong>new stack</strong>. You will need the <strong>json</strong> included on this repo to complete the task. The form you'll see on the second step have to be filled with the following information:</p>
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Value</th>
-<th>Details</th>
-<th>Ready?</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Stack name</td>
-<td>The name of the stack</td>
-<td>Elastest is OK</td>
-<td>yes</td>
-</tr>
-<tr>
-<td>ElastestCertificateType</td>
-<td>selfsigned or own cert</td>
-<td>You can choose which type of certificate use with elastest</td>
-<td>no</td>
-</tr>
-<tr>
-<td>ElastestExecutionMode</td>
-<td>normal, experimental-lite or experimental</td>
-<td>Choose Elastest' execution mode</td>
-<td>yes</td>
-</tr>
-<tr>
-<td>ElastestPassword</td>
-<td>elastest</td>
-<td>Password to access the platform</td>
-<td>no</td>
-</tr>
-<tr>
-<td>ElastestUsername</td>
-<td>elastest</td>
-<td>Username to access the platform</td>
-<td>no</td>
-</tr>
-<tr>
-<td>ElastestVersion</td>
-<td>latest</td>
-<td>which version of elastest do you want to launch</td>
-<td>yes</td>
-</tr>
-<tr>
-<td>InstanceType</td>
-<td>m4.large</td>
-<td>Elastest needs resources to run, please be genereous</td>
-<td>yes</td>
-</tr>
-<tr>
-<td>KeyName</td>
-<td></td>
-<td>RSA key to access the instance through SSH</td>
-<td>yes</td>
-</tr>
-<tr>
-<td>LetsEncryptEmail</td>
-<td></td>
-<td>Email to recive Let's Encrypt notifications</td>
-<td>no</td>
-</tr>
-<tr>
-<td>OwnCertCRT</td>
-<td>Block</td>
-<td>The certificate chain</td>
-<td>no</td>
-</tr>
-<tr>
-<td>OwnCertKEY</td>
-<td>Block</td>
-<td>The private key</td>
-<td>no</td>
-</tr>
-<tr>
-<td>SwapSize</td>
-<td>4</td>
-<td>The amount of swap memory in GB</td>
-<td>yes</td>
-</tr>
-</tbody>
-</table>
-<p>When the stack has finished the deployment, you can check <em>output</em> tab to see the URL to access your application.</p>
+<p>When launching tests against Dockerized SuTs, ElasTest manages the SuT lifecycle itself and can use Docker features of <a href="https://docs.docker.com/engine/reference/commandline/logs/">logs</a> and <a href="https://docs.docker.com/engine/reference/commandline/stats/">metrics</a> to automatically get monitoring information from it. This is the quickest and easiest way of monitoring with ElasTest.</p>
+<p>To see how to send custom metrics to ElasTest from the Dockerized SuT itself, check <a href="../../monitoring/custom#custom-monitoring-from-sut">Custom monitoring from SuT</a>.</p>
 					
 				      </div>
 				    </div>
@@ -327,8 +295,10 @@ section-icon: mdi mdi-content-copy
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
+        <a href="../deployed/" class="btn btn-xs btn-primary float-right" title="Deployed monitoring">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
       
-        <a href="../jenkins/" class="btn btn-xs btn-primary" title="Jenkins integration"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
+      
+        <a href="../" class="btn btn-xs btn-primary" title="Intro"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
       
     </div>
   
@@ -336,7 +306,7 @@ section-icon: mdi mdi-content-copy
 
   
   
-	  <a href="https://github.com/elastest/elastest.io-docs/blob/master/docs/deploying/index.md" class="fa fa-github offset-xxs-top-30"> Edit Documentation on GitHub</a>
+	  <a href="https://github.com/elastest/elastest.io-docs/blob/master/docs/monitoring/dockerized.md" class="fa fa-github offset-xxs-top-30"> Edit Documentation on GitHub</a>
   
 </footer>
 			  	  

@@ -1,6 +1,6 @@
 --- 
 layout: default 
-title: Elastest Documentation - Launching Web Browsers on ElasTest 
+title: Elastest Documentation - Custom monitoring 
 active: documentation 
 section-title: Documentation 
 section-icon: mdi mdi-content-copy 
@@ -15,7 +15,7 @@ section-icon: mdi mdi-content-copy
 
 	$( document).ready(function(){
 	    $('li.subnav_drop').find('ul.subnav').hide();
-	       $( ".subnav" ).find( "li:contains('Launching Web Browsers on ElasTest')" ).each(function(i,e){
+	       $( ".subnav" ).find( "li:contains('Custom monitoring')" ).each(function(i,e){
 		  var currentElement = $(e);
 		  currentElement.parent().css({"display":"block","visibility":"visible"}); //css("background-color","blue");
 		  currentElement.css({"display":"block","visibility":"visible"});
@@ -29,7 +29,7 @@ section-icon: mdi mdi-content-copy
             $('#doc-container').css('min-height', minHeight+'px');
 	});
 	   
-	$( ".wy-nav-content" ).find( "li:contains('Launching Web Browsers on ElasTest')" ).css('color','red');
+	$( ".wy-nav-content" ).find( "li:contains('Custom monitoring')" ).css('color','red');
  </script>
 
 <div id="doc-container" class="container text-justify">
@@ -134,10 +134,8 @@ section-icon: mdi mdi-content-copy
         
              
 
-    <li class="toctree-l1 current">
-        <a class="current" href="./">Launching Web Browsers on ElasTest</a>
-        
-         
+    <li class="toctree-l1 ">
+        <a class="" href="../../web-browsers/manual-browsers/">Launching Web Browsers on ElasTest</a>
         
     </li>
 
@@ -146,7 +144,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../outside-testing/">Testing with Web Browsers from outside ElasTest</a>
+        <a class="" href="../../web-browsers/outside-testing/">Testing with Web Browsers from outside ElasTest</a>
         
     </li>
 
@@ -179,7 +177,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../../monitoring/">Intro</a>
+        <a class="" href="../">Intro</a>
         
     </li>
 
@@ -188,7 +186,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../../monitoring/dockerized/">Dockerized monitoring</a>
+        <a class="" href="../dockerized/">Dockerized monitoring</a>
         
     </li>
 
@@ -197,7 +195,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../../monitoring/deployed/">Deployed monitoring</a>
+        <a class="" href="../deployed/">Deployed monitoring</a>
         
     </li>
 
@@ -205,8 +203,10 @@ section-icon: mdi mdi-content-copy
         
              
 
-    <li class="toctree-l1 ">
-        <a class="" href="../../monitoring/custom/">Custom monitoring</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Custom monitoring</a>
+        
+         
         
     </li>
 
@@ -279,54 +279,47 @@ section-icon: mdi mdi-content-copy
 					
 					  <div class="range range-xs-left">
 <div class="cell-xs-10 cell-lg-6 text-md-left inset-md-right-80 cell-lg-push-1 offset-top-50 offset-lg-top-0">
-<h2 id="content" class="h1">Launching Web Browsers on ElasTest</h2>
+<h2 id="content" class="h1">Custom monitoring</h2>
 <div class="offset-top-30 offset-md-top-50">
 </div>
 </div>
 </div>
 
-<p>
-ElasTest Web Browser service allows you to launch any browser and version you want directly from its dashboard, so you can <strong>manually test your web application's behaviour on any browser from any browser</strong>. If you want to let ElasTest launch the browsers itself, check section <a href="/docs/web-browsers/outside-testing/">Testing with Web Browsers from outside ElasTest</a>.
-</p>
+<h4 id="custom-monitoring-from-sut" class="holder-subtitle link-top">Custom monitoring from SuT</h4>
 
-<p>
-To launch a browser from ElasTest dashboard (<i>Web Browsers</i> page), select the desired browser and version and launch it:
-</p>
+<p>You maybe want your Dockerized SuT to send custom metrics to ElasTest appart from those automatically retrieved by our standard monitoring agents. In that case, all techniques used to instrument manually an already deployed SuT can be used in a SuT deployed by ElasTest. Check <a href="../../../docs/monitoring/deployed">Deployed monitoring</a> section.</p>
+<h4 class="holder-subtitle link-top">Custom monitoring from tests</h4>
 
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-2" href="/docs/images/test.png"><img class="img-responsive img-wellcome" src="/docs/images/test.png"/></a>
-</div>
-
-<p>
-Now the selected browser will be downloaded (it will take some time only for the first time you run certain version). Once it is up and running, you can click on "View" button inside "Web Browsers" card in order to see the browser as any end user would on their own computer. You can also interact directly with it.
-</p>
-
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-2" href="/docs/images/test.png"><img class="img-responsive img-wellcome" src="/docs/images/test.png"/></a>
-</div>
-
-<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
-
-<p><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script></p>
-<script>
-var galleries = $('div.docs-gallery');
-for (var i = 1; i <= galleries.length; i++) {
-    $().fancybox({
-    selector : '[data-fancybox="gallery-' + i + '"]',
-    infobar : true,
-    arrows : false,
-    loop: false,
-    protect: true,
-    transitionEffect: 'slide',
-    buttons : [
-        'close'
-    ],
-    clickOutside : 'close',
-    clickSlide   : 'close',
-  });
+<p>It can be useful to graph some custom information generated in the tests alongside with other metrics. You maybe want to graph some variables of your test, whatever they are. </p>
+<p>For example: if your SuT is a web application, your test can send the number of users connecting to it as it executes and you can compare it with the CPU consumption or memory usage of the SuT. For this reason, testers can send to ElasTest any monitoring information they want.</p>
+<p>When a TJob is executed, the following environment variables are injected so you can use them in your test code:</p>
+<ul>
+<li><em><code>ET_MON_LSHTTP_API</code></em>: Logstash API URL to send http requests with monitoring information.  </li>
+<li><em><code>ET_MON_EXEC</code></em>: The execution identifier to set the value of <code>exec</code> field. </li>
+</ul>
+<p>The allowed formats are the same as described for Deployed SuT in <a href="../../../docs/monitoring/deployed#send-metrics-with-http">Send metrics with HTTP</a>, but with the following considerations: </p>
+<ul>
+<li>Field <strong>exec</strong> must have the value of environment variable <code>ET_MON_EXEC</code>.</li>
+<li>Field <strong>component</strong> must contain the value <code>test</code>, because the event is generated in the test.</li>
+<li>The URL of the POST request must be the value of environment variable <code>ET_MON_LSHTTP_API</code></li>
+</ul>
+<p>With these changes, the body of a POST request sending a custom metric with the number of concurrent users would be</p>
+<pre><code class="json">{
+   &quot;@timestamp&quot;: 9999999999,
+   &quot;exec&quot;: &quot;XX&quot;,
+   &quot;component&quot;: &quot;test&quot;,
+   &quot;type&quot;: &quot;users&quot;,
+   &quot;stream_type&quot;: &quot;atomic_metric&quot;,
+   &quot;users&quot;: 80,
+   &quot;unit&quot;: &quot;users&quot;
 }
-</script>
+</code></pre>
+
+<p>"users" can be customized as you want.</p>
+<h4 class="holder-subtitle link-top">Custom monitoring from TSS</h4>
+
+<p>Some of the key drivers of ElasTest development is to make life easier to testers. For this reason, <a href="../../#tss">Test Support Services</a> can send custom metrics to ElasTest. For example, when a test is making use of Web Browsers service, the browser console is sent to ElasTest and can be visualized alongside SuT and Test logs.</p>
+<p>For every TSS used on a TJob execution, the tester will be able to select all the desired metrics to be shown from a predefined set (different for each TSS).</p>
 					
 				      </div>
 				    </div>
@@ -335,10 +328,10 @@ for (var i = 1; i <= galleries.length; i++) {
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../outside-testing/" class="btn btn-xs btn-primary float-right" title="Testing with Web Browsers from outside ElasTest">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../../jenkins/" class="btn btn-xs btn-primary float-right" title="Jenkins integration">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../../testing/e2e-browser/" class="btn btn-xs btn-primary" title="Run end2end tests (Web Browser)"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
+        <a href="../deployed/" class="btn btn-xs btn-primary" title="Deployed monitoring"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
       
     </div>
   
@@ -346,7 +339,7 @@ for (var i = 1; i <= galleries.length; i++) {
 
   
   
-	  <a href="https://github.com/elastest/elastest.io-docs/blob/master/docs/web-browsers/manual-browsers.md" class="fa fa-github offset-xxs-top-30"> Edit Documentation on GitHub</a>
+	  <a href="https://github.com/elastest/elastest.io-docs/blob/master/docs/monitoring/custom.md" class="fa fa-github offset-xxs-top-30"> Edit Documentation on GitHub</a>
   
 </footer>
 			  	  

@@ -171,12 +171,50 @@ section-icon: mdi mdi-content-copy
 			
 				
 					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Monitoring</span>
+<ul class="subnav">
+        
+             
 
     <li class="toctree-l1 ">
-        <a class="" href="../monitoring/">Monitoring</a>
+        <a class="" href="../monitoring/">Intro</a>
         
     </li>
 
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../monitoring/dockerized/">Dockerized monitoring</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../monitoring/deployed/">Deployed monitoring</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../monitoring/custom/">Custom monitoring</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
 </ul></li>
 				
 			
@@ -193,12 +231,32 @@ section-icon: mdi mdi-content-copy
 			
 				
 					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Deploying ElasTest</span>
+<ul class="subnav">
+        
+             
 
     <li class="toctree-l1 ">
-        <a class="" href="../deploying/">Deploying ElasTest</a>
+        <a class="" href="../deploying/cloudformation/">CloudFormation</a>
         
     </li>
 
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../deploying/native/">Native deployment</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
 </ul></li>
 				
 			
@@ -226,6 +284,37 @@ section-icon: mdi mdi-content-copy
 </div>
 </div>
 </div>
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/log-analyzer/images/log-analizer1.png"><img class="img-responsive img-wellcome" src="/docs/log-analyzer/images/log-analizer1.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/log-analyzer/images/log-analizer2.png"><img class="img-responsive img-wellcome" src="/docs/log-analyzer/images/log-analizer2.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/log-analyzer/images/log-analizer3.png"><img class="img-responsive img-wellcome" src="/docs/log-analyzer/images/log-analizer3.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/log-analyzer/images/log-analizer4.png"><img class="img-responsive img-wellcome" src="/docs/log-analyzer/images/log-analizer4.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/log-analyzer/images/log-analizer5.png"><img class="img-responsive img-wellcome" src="/docs/log-analyzer/images/log-analizer5.png"/></a>
+</div>
+
+<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+
+<p><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script></p>
+<script>
+var galleries = $('div.docs-gallery');
+for (var i = 1; i <= galleries.length; i++) {
+    $().fancybox({
+    selector : '[data-fancybox="gallery-' + i + '"]',
+    infobar : true,
+    arrows : false,
+    loop: false,
+    protect: true,
+    transitionEffect: 'slide',
+    buttons : [
+        'close'
+    ],
+    clickOutside : 'close',
+    clickSlide   : 'close',
+  });
+}
+</script>
 					
 				      </div>
 				    </div>
@@ -234,7 +323,7 @@ section-icon: mdi mdi-content-copy
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../monitoring/" class="btn btn-xs btn-primary float-right" title="Monitoring">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../monitoring/" class="btn btn-xs btn-primary float-right" title="Intro">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../web-browsers/outside-testing/" class="btn btn-xs btn-primary" title="Testing with Web Browsers from outside ElasTest"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
