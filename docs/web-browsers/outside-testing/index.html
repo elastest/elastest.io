@@ -302,13 +302,13 @@ section-icon: mdi mdi-content-copy
 </div>
 
 <p>To illustrate this scenarios, let's see how to start a Selenium Web Driver using different languages to remotely use ElasTest browsers. If the URL provided in "Web Browsers" page is <code>https://MY_REMOTE_WEB_BROWSER_URL.com</code>:</p>
-<div class="badges-menu">
-    <span id="java-test-btn" class="badge badge-default my-badge">Java</span>
+<div class="badges-menu noselectionable">
+    <span id="java-test-btn" class="badge badge-default my-badge selected">Java</span>
     <span id="js-test-btn" class="badge badge-default my-badge">JS</span>
     <span class="badge badge-default my-badge my-badge-disabled">. . .</span>
 </div>
 
-<div id="java-test">
+<div id="java-test" class="web-langs">
 <pre><code class="java">// Chrome
 
 DesiredCapabilities caps = new DesiredCapabilities().chrome();
@@ -320,7 +320,7 @@ DesiredCapabilities caps = new DesiredCapabilities().firefox();
 WebDriver driver = new RemoteWebDriver(new URL("https://MY_REMOTE_WEB_BROWSER_URL.com"), caps);</code></pre>
 </div>
 
-<div id="js-test">
+<div id="js-test" class="web-langs" hidden>
 <pre><code class="javascript">// Chrome
 
 var browserBuilder = new webdriver.Builder().forBrowser("chrome");
@@ -348,32 +348,19 @@ You will have available the browser's window in real time to see your test in ac
 </div>
 
 <script>
-function navigateTo(subpage) {
-    switch(subpage) {
-        case 'java':
-            $('#js-test').hide();
-            $('#java-test').show();
-            break;
-        case 'js':
-            $('#java-test').hide();
-            $('#js-test').show();
-            break;
-        default:
-            navigateTo('java');
-            break;
-    }
+$('#java-test-btn').click(function(event) {
+  activateBadge('java-test');
+});
+$('#js-test-btn').click(function(event) {
+  activateBadge('js-test');
+});
+
+function activateBadge(sectionName) {
+  $('.web-langs').hide();
+  $('#' + sectionName).show();
+  $('.selected').removeClass('selected');
+  $('#' + sectionName + '-btn').addClass('selected');
 }
-
-$('#java-test-btn').click(function() {
-  navigateTo('java');
-});
-$('#js-test-btn').click(function() {
-  navigateTo('js');
-});
-
-window.onload = function() {
-  navigateTo(('java'));
-};
 </script>
 
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>

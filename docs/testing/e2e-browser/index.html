@@ -294,19 +294,9 @@ section-icon: mdi mdi-content-copy
 </div>
 </div>
 
-<div class="badges-menu noselectionable">
-    <span id="java-test-btn" class="badge badge-default my-badge selected">Java</span>
-    <span id="js-test-btn" class="badge badge-default my-badge">JS</span>
-    <span class="badge badge-default my-badge my-badge-disabled">PHP</span>
-    <span class="badge badge-default my-badge my-badge-disabled">. . .</span>
-</div>
-
 <p>If you want to use a web browser in your test, you can “install” a web browser in your <a href="../../fundamentals/core-concepts/">SuT</a> Docker container. The problem with this approach is that you can not see what happens in the browser. You can not see the browser console. Also, it is a bit of a challenge to execute the same tests with different browser versions.</p>
 <p>One of the main features provided by ElasTest is allowing tests to use web browsers. That browsers will be fully monitored, showing its windows in real time in ElasTest web interface and also recording it to later inspection. Also, the browser console will be shown alongside test and SuT logs.</p>
-<div id="java-test" class="lang-section">
-
-Let's see how to launch a TJob that makes use of a web browser inside Elastest. We will use our <a href="https://github.com/elastest/demo-projects/tree/master/simpleweb-java-test" target="_blank">Simple Web Java Test</a>:
-
+<p>Let's see how to launch a TJob that makes use of a web browser inside Elastest. As an example we will use our <a href="https://github.com/elastest/demo-projects/tree/master/simpleweb-java-test" target="_blank">Simple Web Java Test</a> (you can check the code for this test and similar ones in other languages in section <a href="#sample-test-code">Sample test code</a>):</p>
 <h4 class="holder-subtitle link-top">1. Get into the desired project</h4>
 
 <div class="docs-gallery inline-block">
@@ -332,16 +322,14 @@ Right now all SuT's must be available as a Docker image or a docker-compose so E
     <li><strong>Wait for http port</strong>: which port of the SuT should ElasTest wait to be available before starting the TJob (<code>8080</code>)</li>
 </ul>
 
-<br>
-
+<p><br></p>
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-1-2" href="/docs/images/e2eRest4.png"><img class="img-responsive img-wellcome" src="/docs/images/e2eRest4.png"/></a>
 </div>
 
-<h4 class="holder-subtitle link-top">3. Create a new TJob</h4>
+<h4 id="3-create-a-new-tjob" class="holder-subtitle link-top">3. Create a new TJob</h4>
 
-Complete the form fields:
-
+<p>Complete the form fields:</p>
 <ul>
 <li><strong>TJob Name</strong>: name of the TJob (<code>Chrome Test</code>)</li>
 <li><strong>Select a SuT</strong>: already created SuT to be tested through to the TJob (<code>Webapp</code>)</li>
@@ -355,8 +343,7 @@ mvn test</code></pre>
 <li><strong>Web Browser</strong>: if your test is gonna require a browser or not (<code>Checked</code>)</li>
 </ul>
 
-<br><br>
-
+<p><br></p>
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-1-3" href="/docs/images/e2eRest5.png"><img class="img-responsive img-wellcome" src="/docs/images/e2eRest5.png"/></a>
 </div>
@@ -372,20 +359,50 @@ When this TJob is executed, a web application is started (the Sut). When the web
 </p>
 
 <p>You can see the browser in real time as test runs</p>
+
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-1-5" href="/docs/images/e2eWeb1.png"><img class="img-responsive img-wellcome" src="/docs/images/e2eWeb1.png"/></a>
     <a data-fancybox="gallery-1-5" href="/docs/images/e2eWeb2.png"><img class="img-responsive img-wellcome" src="/docs/images/e2eWeb2.png"/></a>
 </div>
 
 <p>When the test have been executed, the browser recording can be downloaded as a mp4 video file</p>
+
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-1-6" href="/docs/images/e2eWeb3.png"><img class="img-responsive img-wellcome" src="/docs/images/e2eWeb3.png"/></a>
     <a data-fancybox="gallery-1-6" href="/docs/images/e2eWeb4.png"><img class="img-responsive img-wellcome" src="/docs/images/e2eWeb4.png"/></a>
 </div>
 
-<p>Let's take a look at the test code. It is implemented with JUnit 5:</p>
+<h4 id="sample-test-code" class="holder-subtitle link-top">Sample test code</h4>
+
+<div class="badges-menu noselectionable">
+    <span id="java-test-btn" class="badge badge-default my-badge selected">Java</span>
+    <span id="js-test-btn" class="badge badge-default my-badge">JS</span>
+    <span class="badge badge-default my-badge my-badge-disabled">PHP</span>
+    <span class="badge badge-default my-badge my-badge-disabled">. . .</span>
+</div>
+
+<div id="java-test" class="lang-section">
+
+<p>Let's take a look at the test code. It is implemented with <a href="http://junit.org/junit5/" target="_blank">JUnit 5</a> and Selenium webdriver libraries.</p>
+
+<hr>
+
+<h4>Field values when <a href="#3-create-a-new-tjob">creating the TJob</a></h4>
+
+<p><strong>Commands</strong> field:</p>
+
+<pre style="margin-bottom: 20px !important"><code>git clone https://github.com/elastest/demo-projects
+cd demo-projects/simpleweb-java-test
+mvn test</code></pre>
+
+<p><strong>Environment docker image</strong> field:</p>
+
+<code>elastest/test-etm-alpinegitjava</code>
+
+<hr>
 
 <div class="row" style="margin-top: 40px">
+
 
 <div class="col-md-6">
 <h4><i>BeforeAll</i> method</h4>
@@ -437,8 +454,8 @@ public void setupTest() throws MalformedURLException {
 </pre>
 <blockquote>This method is called before every test in this class.<br> It creates a browser with its window maximized: if Elastest Web Browser service is available, then the browser is a remote web browser. If not, it is a local browser. Selenium API is slightly differente in each case</blockquote>
 </div>
-
 </div>
+
 <div class="row" style="margin-top: 20px">
 
 <div class="col-md-6">
@@ -491,93 +508,29 @@ public void test() throws InterruptedException {
 </pre>
 <blockquote>This test is the only one defined in this class. Its logic just simulates the navigation of a real user in our webpage, sending some data within a form and checking the received data.<br>Sentences "Thread.sleep()" just give us some more time to see the browser in action. They are not necessary in a real project</blockquote>
 </div>
-
 </div>
-
 </div>
 
 <div id="js-test" class="lang-section">
 
-Let's see how to launch a TJob that makes use of a web browser inside Elastest. We will use our <a href="https://github.com/elastest/demo-projects/tree/master/simpleweb-js-test" target="_blank">Simple Web JS Test</a>:
+<p>Let's take a look at the test code. It is implemented in JavaScript with <a href="https://mochajs.org/" target="_blank">mocha</a>, <a href="http://chaijs.com/" target="_blank">chai</a> and Selenium webdriver libraries.</p>
 
-<h4 class="holder-subtitle link-top">1. Get into the desired project</h4>
+<hr>
 
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-2-1" href="/docs/images/e2eRest1.png"><img class="img-responsive img-wellcome" src="/docs/images/e2eRest1.png"/></a>
-</div>
+<h4>Field values when <a href="#3-create-a-new-tjob">creating the TJob</a></h4>
 
-<h4 class="holder-subtitle link-top">2. Create a SuT</h4>
+<p><strong>Commands</strong> field:</p>
 
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-2-2" href="/docs/images/e2eRest2.png"><img class="img-responsive img-wellcome" src="/docs/images/e2eRest2.png"/></a>
-    <a data-fancybox="gallery-2-2" href="/docs/images/e2eRest3.png"><img class="img-responsive img-wellcome" src="/docs/images/e2eRest3.png"/></a>
-</div>
-
-<p>
-Right now all SuT's must be available as a Docker image or a docker-compose so ElasTest can deploy and monitor it automatically. Complete the form fields:
-</p>
-
-<ul>
-    <li><strong>SuT Name</strong>: name of the Sut (<code>Webapp</code>)</li>
-    <li><strong>SuT Description</strong>: description of the SuT (<code>Webapp description</code>)</li>
-    <li><strong>With Docker Image</strong> / <strong>With Docker Compose</strong>: whether to deploy the SuT on ElasTest as a Docker <i>image</i> or a <i>docker-compose</i> (<code>With Docker Image</code>)</li>
-    <li><strong>Docker Image</strong>: image of the SuT (<code>elastest/demo-web-java-test-sut</code>)</li>
-    <li><strong>Wait for http port</strong>: which port of the SuT should ElasTest wait to be available before starting the TJob (<code>8080</code>)</li>
-</ul>
-
-<br>
-
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-2-2" href="/docs/images/e2eRest4.png"><img class="img-responsive img-wellcome" src="/docs/images/e2eRest4.png"/></a>
-</div>
-
-<h4 class="holder-subtitle link-top">3. Create a new TJob</h4>
-
-Complete the form fields:
-
-<ul>
-<li><strong>TJob Name</strong>: name of the TJob (<code>Chrome Test</code>)</li>
-<li><strong>Select a SuT</strong>: already created SuT to be tested through to the TJob (<code>Webapp</code>)</li>
-<li><strong>Environment docker image</strong>: the docker image that will host your test. This docker images should contain a client to download your code from your repository hosting service. For example, if your tests are hosted in GitHub and implemented in JavaScript, you'll need an image with node and a git client installed. Indeed, here we will be using exactly that (<code>elastest/demo-env-node</code>)</li>
-<!-- Modify when all images are available for testing with different hostsing services and technologies: Java, Maven, Pyhton, Ruby, Node... -->
-<li><strong>Commands</strong>: these are the bash commands to be executed to download the code from a repository and to execute the tests. The specific commands depends on the source code repository type and the technology. For example, the following commands will clone a Maven/Java repository from GitHub and execute the tests:
 <pre style="margin-bottom: 20px !important"><code>git clone https://github.com/elastest/demo-projects
 cd demo-projects/simpleweb-js-test
 npm install
 npm test</code></pre>
-</li>
-<li><strong>Web Browser</strong>: if your test is gonna require a browser or not (<code>Checked</code>)</li>
-</ul>
 
-<br><br>
+<p><strong>Environment docker image</strong> field:</p>
 
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-2-3" href="/docs/images/e2eRest5.png"><img class="img-responsive img-wellcome" src="/docs/images/e2eRest5.png"/></a>
-</div>
+<code>elastest/demo-env-node</code>
 
-<h4 class="holder-subtitle link-top">4. Run the TJob from the Project's page</h4>
-
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-2-4" href="/docs/images/5.png"><img class="img-responsive img-wellcome" src="/docs/images/5.png"/></a>
-</div>
-
-<p>
-When this TJob is executed, a web application is started (the Sut). When the web application is ready, the test container is executed with the specified commands. Whenever the test code requests a certain browser of a specific version using standard web driver protocol and libraries, Elastest provides it automatically. When browser is ready, test uses it to interact with the SuT and verify that web behaves as expected.
-</p>
-
-<p>You can see the browser in real time as test runs</p>
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-2-5" href="/docs/images/e2eWeb1.png"><img class="img-responsive img-wellcome" src="/docs/images/e2eWeb1.png"/></a>
-    <a data-fancybox="gallery-2-5" href="/docs/images/e2eWeb2.png"><img class="img-responsive img-wellcome" src="/docs/images/e2eWeb2.png"/></a>
-</div>
-
-<p>When the test have been executed, the browser recording can be downloaded as a mp4 video file</p>
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-2-6" href="/docs/images/e2eWeb3.png"><img class="img-responsive img-wellcome" src="/docs/images/e2eWeb3.png"/></a>
-    <a data-fancybox="gallery-2-6" href="/docs/images/e2eWeb4.png"><img class="img-responsive img-wellcome" src="/docs/images/e2eWeb4.png"/></a>
-</div>
-
-<p>Let's take a look at the test code. It is implemented in JavaScript with <a href="https://mochajs.org/" target="_blank">mocha</a>, <a href="http://chaijs.com/" target="_blank">chai</a> and Selenium webdriver libraries:</p>
+<hr>
 
 <div class="row" style="margin-top: 40px">
 
@@ -661,7 +614,7 @@ describe("Web page", () => {
 </pre>
 <blockquote>This test is the only one defined in this class. Its logic just simulates the navigation of a real user in our webpage, sending some data within a form and checking the received data</blockquote>
 </div>
-
+</div>
 </div>
 
 <script>
@@ -696,9 +649,9 @@ window.onload = function() {
 </script>
 
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
 
+<p><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script></p>
 <script>
 var galleries = $('div.docs-gallery');
 for (var i = 1; i <= galleries.length; i++) {
