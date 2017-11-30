@@ -331,7 +331,7 @@ section-icon: mdi mdi-content-copy
 
 <p>As ElasTest already includes the required packages for using Beats (<a href="https://www.elastic.co/products/logstash">Logstash</a> and <a href="https://www.elastic.co/products/elasticsearch">ElasticSearch</a>), you will only have to follow the <a href="https://www.elastic.co/guide/en/beats/libbeat/current/installing-beats.html">official documentation</a> for installing and configuring beat agents inside your deployed SuT.</p>
 <p>To illustrate this process, let's see a pretty common use case: you have an app deployed somewhere in the cloud, and you want to run a TJob in ElasTest to test some feature of it. And you also want ElasTest to <strong>monitore certain log</strong> that your app produces on some custom path and the <strong>CPU usage on your server</strong>.</p>
-<div class="badges-menu badges-menu-beats noselectionable">
+<div id="badges-beats" class="badges-menu badges-menu-beats noselectionable link-top">
     <span id="monitore-custom-log-btn" class="badge badge-default my-badge my-big-badge selected">Monitore my<br>custom log</span>
     <span id="monitore-custom-metric-btn" class="badge badge-default my-badge my-big-badge">Monitore my<br>CPU usage</span>
 </div>
@@ -482,19 +482,35 @@ fields:
 
 <script>
 $('#monitore-custom-log-btn').click(function(event) {
-  $('#monitore-custom-metric').hide();
-  $('#monitore-custom-log').show();
-  newSelectedBadge(event);
+  activateBadge('monitore-custom-log');
 });
 $('#monitore-custom-metric-btn').click(function(event) {
-  $('#monitore-custom-log').hide();
-  $('#monitore-custom-metric').show();
-  newSelectedBadge(event);
+  activateBadge('monitore-custom-metric');
 });
 
-function newSelectedBadge(event) {
-  $(".selected").removeClass("selected");
-  $(event.target).addClass("selected");
+function activateBadge(sectionName) {
+  $('.beats-tutorial').hide();
+  $('#' + sectionName).show();
+  $('.selected').removeClass('selected');
+  $('#' + sectionName + '-btn').addClass('selected');
+  window.location.hash = sectionName + '-beats';
+}
+
+var badgesSections = [
+  "monitore-custom-log-beats",
+  "monitore-custom-metric-beats"
+];
+
+window.onload = function() {
+  var hash = window.location.hash.replace('#', '');
+  if (badgesSections.indexOf(hash) > -1) {
+    activateBadge(hash.substring(0, hash.indexOf('-beats')));
+
+    // Go to section of beats tutorials if location has proper hash
+    $('html, body').animate({
+      scrollTop: $("#badges-beats").offset().top
+    }, 1);
+  }
 }
 </script>
 
