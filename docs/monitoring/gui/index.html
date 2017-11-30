@@ -1,6 +1,6 @@
 --- 
 layout: default 
-title: Elastest Documentation - Launching Web Browsers on ElasTest 
+title: Elastest Documentation - Monitoring user interface 
 active: documentation 
 section-title: Documentation 
 section-icon: mdi mdi-content-copy 
@@ -15,7 +15,7 @@ section-icon: mdi mdi-content-copy
 
 	$( document).ready(function(){
 	    $('li.subnav_drop').find('ul.subnav').hide();
-	       $( ".subnav" ).find( "li:contains('Launching Web Browsers on ElasTest')" ).each(function(i,e){
+	       $( ".subnav" ).find( "li:contains('Monitoring user interface')" ).each(function(i,e){
 		  var currentElement = $(e);
 		  currentElement.parent().css({"display":"block","visibility":"visible"}); //css("background-color","blue");
 		  currentElement.css({"display":"block","visibility":"visible"});
@@ -29,7 +29,7 @@ section-icon: mdi mdi-content-copy
             $('#doc-container').css('min-height', minHeight+'px');
 	});
 	   
-	$( ".wy-nav-content" ).find( "li:contains('Launching Web Browsers on ElasTest')" ).css('color','red');
+	$( ".wy-nav-content" ).find( "li:contains('Monitoring user interface')" ).css('color','red');
  </script>
 
 <div id="doc-container" class="container text-justify">
@@ -134,10 +134,8 @@ section-icon: mdi mdi-content-copy
         
              
 
-    <li class="toctree-l1 current">
-        <a class="current" href="./">Launching Web Browsers on ElasTest</a>
-        
-         
+    <li class="toctree-l1 ">
+        <a class="" href="../../web-browsers/manual-browsers/">Launching Web Browsers on ElasTest</a>
         
     </li>
 
@@ -146,7 +144,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../outside-testing/">Testing with Web Browsers from outside ElasTest</a>
+        <a class="" href="../../web-browsers/outside-testing/">Testing with Web Browsers from outside ElasTest</a>
         
     </li>
 
@@ -179,7 +177,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../../monitoring/">Intro</a>
+        <a class="" href="../">Intro</a>
         
     </li>
 
@@ -188,7 +186,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../../monitoring/dockerized/">Dockerized monitoring</a>
+        <a class="" href="../dockerized/">Dockerized monitoring</a>
         
     </li>
 
@@ -197,7 +195,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../../monitoring/deployed/">Deployed monitoring</a>
+        <a class="" href="../deployed/">Deployed monitoring</a>
         
     </li>
 
@@ -206,7 +204,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../../monitoring/custom/">Custom monitoring</a>
+        <a class="" href="../custom/">Custom monitoring</a>
         
     </li>
 
@@ -214,8 +212,10 @@ section-icon: mdi mdi-content-copy
         
              
 
-    <li class="toctree-l1 ">
-        <a class="" href="../../monitoring/gui/">Monitoring user interface</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Monitoring user interface</a>
+        
+         
         
     </li>
 
@@ -288,30 +288,26 @@ section-icon: mdi mdi-content-copy
 					
 					  <div class="range range-xs-left">
 <div class="cell-xs-10 cell-lg-6 text-md-left inset-md-right-80 cell-lg-push-1 offset-top-50 offset-lg-top-0">
-<h2 id="content" class="h1">Launching Web Browsers on ElasTest</h2>
+<h2 id="content" class="h1">Monitoring user interface</h2>
 <div class="offset-top-30 offset-md-top-50">
 </div>
 </div>
 </div>
 
-<p>
-ElasTest Web Browser service allows you to launch any browser and version you want directly from its dashboard, so you can <strong>manually test your web application's behaviour on any browser from any browser</strong>. If you want to let ElasTest launch the browsers itself, check section <a href="/docs/web-browsers/outside-testing/">Testing with Web Browsers from outside ElasTest</a>.
-</p>
-
-<p>
-To launch a browser from ElasTest dashboard (<i>Web Browsers</i> page), select the desired browser and version and launch it:
-</p>
-
+<p>ElasTest provides testers with a direct way of customizing their dashboards on TJob executions, so they can see only the metrics and logs that matter to them.</p>
+<p>During any TJob execution, you can add so many logs and metrics you want from "Monitoring Configuration card". There you can find all the monitoring choices available for that specific TJob exexcution. For example, for this TJob we can add to our dashboard the log and CPU usage of the SuT, the log and CPU usage of the TJob and the browser's console (we are making use of ElasTest Web Browsers service):</p>
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-2" href="/docs/images/test.png"><img class="img-responsive img-wellcome" src="/docs/images/test.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/monitoring/images/monitoring_conf_gui.png"><img class="img-responsive img-wellcome" src="/docs/monitoring/images/monitoring_conf_gui.png"/></a>
 </div>
 
-<p>
-Now the selected browser will be downloaded (it will take some time only for the first time you run certain version). Once it is up and running, you can click on "View" button inside "Web Browsers" card in order to see the browser as any end user would on their own computer. You can also interact directly with it.
-</p>
-
+<p>Our dashboard would look like this:</p>
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-2" href="/docs/images/test.png"><img class="img-responsive img-wellcome" src="/docs/images/test.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/images/test.png"><img class="img-responsive img-wellcome" src="/docs/images/test.png"/></a>
+</div>
+
+<p>If you want to save your current monitoring configuration for future executions of the same TJob, you just need to press "Save Monitoring Configuration" button. Thus, each time you launch that TJob you will see the same logs and graphs. This can be useful for regression tests, as you can compare the same information from two diffrent executions of the same TJob.</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/images/test.png"><img class="img-responsive img-wellcome" src="/docs/images/test.png"/></a>
 </div>
 
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -325,7 +321,7 @@ for (var i = 1; i <= galleries.length; i++) {
     selector : '[data-fancybox="gallery-' + i + '"]',
     infobar : true,
     arrows : false,
-    loop: false,
+    loop: true,
     protect: true,
     transitionEffect: 'slide',
     buttons : [
@@ -344,10 +340,10 @@ for (var i = 1; i <= galleries.length; i++) {
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../outside-testing/" class="btn btn-xs btn-primary float-right" title="Testing with Web Browsers from outside ElasTest">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../../jenkins/" class="btn btn-xs btn-primary float-right" title="Jenkins integration">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../../testing/e2e-browser/" class="btn btn-xs btn-primary" title="Run end2end tests (Web Browser)"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
+        <a href="../custom/" class="btn btn-xs btn-primary" title="Custom monitoring"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
       
     </div>
   
@@ -355,7 +351,7 @@ for (var i = 1; i <= galleries.length; i++) {
 
   
   
-	  <a href="https://github.com/elastest/elastest.io-docs/blob/master/docs/web-browsers/manual-browsers.md" class="fa fa-github offset-xxs-top-30"> Edit Documentation on GitHub</a>
+	  <a href="https://github.com/elastest/elastest.io-docs/blob/master/docs/monitoring/gui.md" class="fa fa-github offset-xxs-top-30"> Edit Documentation on GitHub</a>
   
 </footer>
 			  	  

@@ -212,6 +212,15 @@ section-icon: mdi mdi-content-copy
 
 
         
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../monitoring/gui/">Monitoring user interface</a>
+        
+    </li>
+
+
+        
 </li>
 </ul>
     
@@ -285,12 +294,44 @@ section-icon: mdi mdi-content-copy
 </div>
 </div>
 
+<p>ElasTest's Log Analyzer service provides an advanced tool for analyzing any log gathered during any finished or running TJob execution. Let's see its capabilities for a TJob that was configured during its execution for registering the following metrics (see <a href="./../monitoring/gui/">Monitoring user interface</a> to learn more):</p>
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-1" href="/docs/log-analyzer/images/log-analizer1.png"><img class="img-responsive img-wellcome" src="/docs/log-analyzer/images/log-analizer1.png"/></a>
-    <a data-fancybox="gallery-1" href="/docs/log-analyzer/images/log-analizer2.png"><img class="img-responsive img-wellcome" src="/docs/log-analyzer/images/log-analizer2.png"/></a>
-    <a data-fancybox="gallery-1" href="/docs/log-analyzer/images/log-analizer3.png"><img class="img-responsive img-wellcome" src="/docs/log-analyzer/images/log-analizer3.png"/></a>
-    <a data-fancybox="gallery-1" href="/docs/log-analyzer/images/log-analizer4.png"><img class="img-responsive img-wellcome" src="/docs/log-analyzer/images/log-analizer4.png"/></a>
-    <a data-fancybox="gallery-1" href="/docs/log-analyzer/images/log-analizer5.png"><img class="img-responsive img-wellcome" src="/docs/log-analyzer/images/log-analizer5.png"/></a>
+</div>
+
+<p>Whenever you click on "Log Analyzer" menu button, a dialog will pop up to let you select the specific TJob execution(s) you want to analyze. To do so:</p>
+<ol>
+<li>Select the <strong>Project</strong> to which the TJob belongs</li>
+<li>Select the <strong>TJob</strong></li>
+<li>Select all the <strong>TJob Executions</strong> you want to load</li>
+</ol>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-2" href="/docs/log-analyzer/images/log-analizer5.png"><img class="img-responsive img-wellcome" src="/docs/log-analyzer/images/log-analizer5.png"/></a>
+</div>
+
+<p>After clicking "OK" button, your logs will load into the Log Analyzer. Every entry is divided into many fields, which include:</p>
+<ul>
+<li><strong>timestamp</strong>: timestamp of the entry</li>
+<li><strong>component</strong>: component that generated the entry (SuT, TJob, TSS)</li>
+<li><strong>stream</strong>: specific stream that generated the entry (remember that one single component can generate different logs and metrics)</li>
+<li><strong>exec</strong>: TJob Execution to which the entry belongs</li>
+<li><strong>message</strong>: the log entry message</li>
+<li><strong>level</strong>: the logging level of the entry (DEBUG, INFO, WARNING, ERROR...)</li>
+</ul>
+<p>You can order your columns as you want just by drag-and-dropping.</p>
+<p>On the right menu you have the two main tools currently provided by ElasTest Log Analyzer: the <strong>Filter</strong> tool and the <strong>Mark</strong> tool.</p>
+<h4 class="holder-subtitle link-top">Filter tool</h4>
+
+<p>Filter tool allows you to do a filtered load of entries. You can filter by <strong>date</strong> (applied to the timestamp of the entries), by <strong>component/stream</strong> and by <strong>level</strong>. Bottom options let you set the number of entries you want ElasTest to load.</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-3" href="/docs/log-analyzer/images/log-analizer2.png"><img class="img-responsive img-wellcome" src="/docs/log-analyzer/images/log-analizer2.png"/></a>
+</div>
+
+<h4 class="holder-subtitle link-top">Mark tool</h4>
+
+<p>Mark tool allows you to perform a coloured search in your loaded entries.</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-4" href="/docs/log-analyzer/images/log-analizer4.png"><img class="img-responsive img-wellcome" src="/docs/log-analyzer/images/log-analizer4.png"/></a>
 </div>
 
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
