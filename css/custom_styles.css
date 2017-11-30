@@ -24,15 +24,21 @@ main.main-documentation section .subnav li a:hover {
     border-left: none;
 }
 
+#doc-container ol {
+    list-style: decimal;
+    padding-left: 24px;
+    padding-bottom: 24px;
+}
+
 .noselectionable {
-    -webkit-touch-callout: none; /* iOS Safari */
-      -webkit-user-select: none; /* Safari */
-       -khtml-user-select: none; /* Konqueror HTML */
-         -moz-user-select: none; /* Firefox */
-          -ms-user-select: none; /* Internet Explorer/Edge */
-              user-select: none; /* Non-prefixed version, currently
-                                    supported by Chrome and Opera */
-  }
+-webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+        -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                supported by Chrome and Opera */
+}
 
 .inline-block {
     display: inline-block;
