@@ -287,6 +287,15 @@ div > ul#menu-list > li > ul > li.subnav_drop:hover {
     transition: background-color 0.2s ease-in-out;
 }
 
+hr.doc-features {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 30px;
+    margin-right: 30px;
+    border: 0;
+    border-top: 1px solid #ffac2f;
+}
+
 
 @media (max-width: 479px) {
     nav.wy-nav-side {
