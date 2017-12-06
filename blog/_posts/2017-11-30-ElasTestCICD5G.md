@@ -10,7 +10,7 @@ The ElasTest team participated to this year’s Berlin5GWeek, by demoing the pla
 
 Open Baton is one of the few open source projects compliant with the ETSI Network Function Virtualization (NFV) MANO specifications. For those not familiar with this ETSI NFV standardization, it is an operators’ lead initiative with the objective of defining an architecture for network infrastructures development by porting and further adapting network functions to the specific cloud environment. ETSI NFV and, in particular, the architecture proposed, as shown in Figure 1, comprises three different domains: the Virtual Network Function (VNF), the Network Function Virtualization Infrastructure (NFVI), and the MANO domain. 
 
-![NFV Reference Architecture](/images/blog/5grefarch.png)
+![NFV Reference Architecture](/images/blog/5grefarch.png){: .img-responsive reveal-inline-block offset-top-10 }
 
 On the bottom left we have the NFVI domain constituted by all the hardware components providing on-demand computing, storage, and networking resources. Hardware resources are typically exposed through a virtualization layer to the other domains where VNFs are executed. This domain has been strongly influenced by cloud computing technologies where virtual compute, storage, and networking resources are provided on demand to the components part of the MANO domain. Typically, this layer is implemented by OpenStack considered as the de facto standard. 
 
@@ -22,7 +22,7 @@ Open Baton is the result of an agile design process having as major objective th
 
 The integration with ElasTest provides a comprehensive continuous integration system where network services as the System(s) Under Test (SUT) are deployed and managed through the Open Baton framework. Figure 2 provides an architectural overview of the integration between the ElasTest platform and the Open Baton framework.
 
-![ElasTest Architecture](/images/blog/elastestarch.png)
+![ElasTest Architecture](/images/blog/elastestarch.png){: .img-responsive reveal-inline-block offset-top-10 }
 
 The SUT can be of any type. What ElasTest users have to do is to define a [network service descriptor](http://openbaton.org/documentation/ns-descriptor/) as composition of multiple VNFs, and deploy them on the NFV Infrastructure of preference (i.e. OpenStack). Once the deployment operation is executed, Open Baton provides runtime information (like endpoints, IPs, configuration parameters, etc.) which can be used for configuring testing jobs. Furthermore, the ElasTest and Open Baton communities are working together in automating the deployment operations of such network services directly from the ElasTest platform, as managed SUT. In this way, the user can define different kind of testing jobs, and execute them including the re-deployment operation of the SUT on top of the NFVI through Open Baton. 
 
