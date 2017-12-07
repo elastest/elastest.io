@@ -301,6 +301,35 @@ hr.doc-features {
     border-top: 1px solid #ffac2f;
 }
 
+#features hr.doc-features {
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+#features .icon-xlg.icon-rect, #features .icon-xlg.icon-rounded, #features .icon-xlg.icon-circle, #features .icon-xlg.icon-outlined {
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    font-size: 38px;
+}
+
+img.index {
+    border: 2px solid #ffac2f;
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.index-range {
+    margin-top: 75px !important;
+}
+
+.index-range .index-inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 
 @media (max-width: 479px) {
     nav.wy-nav-side {
