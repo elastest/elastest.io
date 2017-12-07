@@ -245,6 +245,11 @@ div > ul#menu-list > li > ul > li.subnav_drop:hover {
     margin-top: -50px !important;
 }
 
+.link-top-index {
+    border-top: 50px solid transparent !important;
+    margin-top: -80px !important;
+}
+
 .small-subtitle {
     color: #666666;
     font-weight: bolder;
@@ -317,6 +322,10 @@ hr.doc-features {
     }
     .holder-subtitle {
         max-width: 70%;
+    }
+    .link-top-index {
+        border-top: 1vh solid transparent !important;
+        margin-top: 0vh !important;
     }
 }
 
