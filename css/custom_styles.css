@@ -271,6 +271,7 @@ div > ul#menu-list > li > ul > li.subnav_drop:hover {
 
 .beats-tutorial {
     border: 2px solid rgba(255, 172, 47, 0.3);
+    background-color: rgba(255, 172, 47, 0.08);
     border-radius: 3px;
     border-top-left-radius: 0px;
     padding: 30px;
