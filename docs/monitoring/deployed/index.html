@@ -346,14 +346,14 @@ section-icon: mdi mdi-content-copy
 
   <h6 style="color: #666666">2. Install Filebeat on your SuT machine</h6>
 
-  <p>Let's suppose we have an Ubuntu machine hosting our app. We connect to it through _ssh_ and run the command that <a href="https://www.elastic.co/guide/en/beats/filebeat/6.0/filebeat-installation.html">Step 1 of Filebeat documentation</a> tells us. In this case, by using Debian packages:</p>
+  <p>Let's suppose we have an Ubuntu machine hosting our app. We connect to it through <i>ssh</i> and run the command that <a href="https://www.elastic.co/guide/en/beats/filebeat/6.0/filebeat-installation.html">Step 1 of Filebeat documentation</a> tells us. In this case, by using Debian packages:</p>
 
   <pre><code class="bash hljs">curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-6.0.0-amd64.deb
 sudo dpkg -i filebeat-6.0.0-amd64.deb</code></pre>
 
   <h6 style="color: #666666">3. Configure Filebeat agent to suit your needs</h6>
 
-  <p>Take a look to <a href="https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-configuration.html">Step 2 of Filebeat documentation</a>. The predefined default value for Filebeat is to gather all logs inside "/var/log/" folder:</p>
+  <p>Take a look to <a href="https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-configuration.html">Step 2 of Filebeat documentation</a>. In our machine the Filebeat configuration file is <code>/etc/filebeat/filebeat.yml</code>. The predefined default value for Filebeat is to gather all logs inside "/var/log/" folder:</p>
 
   <pre><code class="yml hljs">filebeat.prospectors:
 - type: log
@@ -365,7 +365,7 @@ sudo dpkg -i filebeat-6.0.0-amd64.deb</code></pre>
 
   <p>Again, just need to take a quick look to <a href="https://www.elastic.co/guide/en/beats/filebeat/current/config-filebeat-logstash.html">Step 3 of Filebeat documentation</a>.</p>
 
-  <p>Our brand new agent has to be configured to send information to the Logstash instance of ElasTest. Logstash Host and beats port have to be used in Filebeat configuration file (in our machine that is <code>/etc/filebeat/filebeat.yml</code>):</p>
+  <p>Our brand new agent has to be configured to send information to the Logstash instance of ElasTest. Logstash Host and beats port have to be used in Filebeat configuration file (again <code>/etc/filebeat/filebeat.yml</code>):</p>
 
   <pre><code class="yml hljs">#----------------------------- Logstash output --------------------------------
 output.logstash:
@@ -382,10 +382,53 @@ fields:
   <p>The value of the fields are:</p>
 
   <ul>
-    <li><strong>exec</strong>: The value of **Exec ID** shown in ElasTest dashboard when SuT is created.</li>
-    <li><strong>component</strong>: The name of the component in which this log is generated. For example: <code>sut</code>, <code>sut-webapp</code>, <code>sut-bbdd</code>. It is recommended that this name starts with <code>sut-</code> to allow to group SuT components in ElasTest.</li>
+    <li><strong>exec</strong>: The value of <strong>Exec ID</strong> shown in ElasTest dashboard when SuT is created.</li>
+    <li><strong>component</strong>: <code>sut</code></li>
     <li><strong>stream</strong>: The name of the event stream. If the stream is a log and this is the only log for the component, it is recommended to call it <code>default_log</code>.</li>
   </ul>
+
+  <p>So the final look of <code>filebeat.yml</code> in its simplest form is:
+    <pre><code class="yml hljs">#====== "filebeat.yml" to send to ElasTest the logs generated on "/path/to/MY_CUSTOM_LOG.log" ======
+
+filebeat.prospectors:
+
+- type: log
+  enabled: true
+  paths:
+    - /path/to/MY_CUSTOM_LOG.log
+
+filebeat.config.modules:
+  path: ${path.config}/modules.d/*.yml
+  reload.enabled: false
+
+output.logstash:
+  hosts: ["54.229.1.228:5044"]
+
+fields_under_root: true
+fields:
+  exec: s1_e1
+  component: sut
+  stream: mystream
+</code></pre>
+  </p>
+
+  <p>Whenever you are happy with your Filebeat configuration, run the service:
+  <pre><code class="bash hljs">service filebeat start</code></pre>
+  </p>
+
+  <p>And that's all. You can now see on ElasTest dashboard these remote logs when running your TJob. To do so click on Monitoring Configuration button:
+  </p>
+
+  <div class="docs-gallery more-margin-top inline-block">
+    <a data-fancybox="gallery-3" href="/docs/monitoring/images/monitoring_conf.png"><img class="img-responsive img-wellcome" src="/docs/monitoring/images/monitoring_conf.png"/></a>
+  </div>
+
+  <p>And select your new log stream. It is called "mystream", beacuse that's the name we gave it in "filebeat.yml" file on our server.
+  </p>
+
+  <div class="docs-gallery more-margin-top inline-block">
+    <a data-fancybox="gallery-3" href="/docs/monitoring/images/my_stream.png"><img class="img-responsive img-wellcome" src="/docs/monitoring/images/my_stream.png"/></a>
+  </div>
 </div>
 
 <div id="monitore-custom-metric" class="beats-tutorial" hidden>

@@ -295,19 +295,30 @@ section-icon: mdi mdi-content-copy
 </div>
 
 <p>ElasTest provides testers with a direct way of customizing their dashboards on TJob executions, so they can see only the metrics and logs that matter to them.</p>
-<p>During any TJob execution, you can add so many logs and metrics you want from "Monitoring Configuration card". There you can find all the monitoring choices available for that specific TJob exexcution. For example, for this TJob we can add to our dashboard the log and CPU usage of the SuT, the log and CPU usage of the TJob and the browser's console (we are making use of ElasTest Web Browsers service):</p>
+<p>During any TJob execution, you can add so many logs and metrics you want by clicking the Monitoring Configuration button:</p>
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/monitoring/images/monitoring_conf_gui.png"><img class="img-responsive img-wellcome" src="/docs/monitoring/images/monitoring_conf_gui.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/monitoring/images/monitoring_conf.png"><img class="img-responsive img-wellcome" src="/docs/monitoring/images/monitoring_conf.png"/></a>
 </div>
 
-<p>Our dashboard would look like this:</p>
+<p>There you can find all the monitoring choices available for that specific TJob exexcution.
+For example, for this TJob we are adding 3 different log streams:</p>
+<ul>
+<li>The default log of our SuT</li>
+<li>The default log of our test</li>
+<li>The browser's console (we are making use of ElasTest Web Browsers service)</li>
+</ul>
+<p>And 3 different metrics for the container of our test:</p>
+<ul>
+<li>The CPU usage</li>
+<li>The memory usage</li>
+<li>The number of bytes received from the network per second</li>
+</ul>
+<p></br><div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/monitoring/images/monitoring_sample.png"><img class="img-responsive img-wellcome" src="/docs/monitoring/images/monitoring_sample.png"/></a>
+</div></p>
+<p>When clicking on "Apply" button, you will see one monitoring card for each selected option (a log card for each log and a chart card for each metric). If you want to save your current monitoring configuration for future executions of the same TJob, you just need to press "Apply and Save" button instead. Thus, each time you launch that TJob you will see the same logs and graphs. This can be useful for regression tests, as you can compare the same information from two diffrent executions of the same TJob.</p>
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/images/test.png"><img class="img-responsive img-wellcome" src="/docs/images/test.png"/></a>
-</div>
-
-<p>If you want to save your current monitoring configuration for future executions of the same TJob, you just need to press "Save Monitoring Configuration" button. Thus, each time you launch that TJob you will see the same logs and graphs. This can be useful for regression tests, as you can compare the same information from two diffrent executions of the same TJob.</p>
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/images/test.png"><img class="img-responsive img-wellcome" src="/docs/images/test.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/monitoring/images/apply_and_save.png"><img class="img-responsive img-wellcome" src="/docs/monitoring/images/apply_and_save.png"/></a>
 </div>
 
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
