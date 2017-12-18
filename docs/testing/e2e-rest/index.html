@@ -1,6 +1,6 @@
 --- 
 layout: default 
-title: Elastest Documentation - Run end2end tests (REST) 
+title: Elastest Documentation - Run end2end tests 
 active: documentation 
 section-title: Documentation 
 section-icon: mdi mdi-content-copy 
@@ -15,7 +15,7 @@ section-icon: mdi mdi-content-copy
 
 	$( document).ready(function(){
 	    $('li.subnav_drop').find('ul.subnav').hide();
-	       $( ".subnav" ).find( "li:contains('Run end2end tests (REST)')" ).each(function(i,e){
+	       $( ".subnav" ).find( "li:contains('Run end2end tests')" ).each(function(i,e){
 		  var currentElement = $(e);
 		  currentElement.parent().css({"display":"block","visibility":"visible"}); //css("background-color","blue");
 		  currentElement.css({"display":"block","visibility":"visible"});
@@ -29,7 +29,7 @@ section-icon: mdi mdi-content-copy
             $('#doc-container').css('min-height', minHeight+'px');
 	});
 	   
-	$( ".wy-nav-content" ).find( "li:contains('Run end2end tests (REST)')" ).css('color','red');
+	$( ".wy-nav-content" ).find( "li:contains('Run end2end tests')" ).css('color','red');
  </script>
 
 <div id="doc-container" class="container text-justify">
@@ -104,18 +104,9 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 current">
-        <a class="current" href="./">Run end2end tests (REST)</a>
+        <a class="current" href="./">Run end2end tests</a>
         
          
-        
-    </li>
-
-
-        
-             
-
-    <li class="toctree-l1 ">
-        <a class="" href="../e2e-browser/">Run end2end tests (Web Browser)</a>
         
     </li>
 
@@ -138,6 +129,15 @@ section-icon: mdi mdi-content-copy
 
     <li class="toctree-l1 ">
         <a class="" href="../../web-browsers/manual-browsers/">Launching Web Browsers on ElasTest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../web-browsers/e2e-browser/">Run en2end tests with Web Browsers</a>
         
     </li>
 
@@ -288,7 +288,7 @@ section-icon: mdi mdi-content-copy
 					
 					  <div class="range range-xs-left">
 <div class="cell-xs-10 cell-lg-6 text-md-left inset-md-right-80 cell-lg-push-1 offset-top-50 offset-lg-top-0">
-<h2 id="content" class="h1">Running end to end tests: REST APIs</h2>
+<h2 id="content" class="h1">Running end to end tests (REST APIs)</h2>
 <div class="offset-top-30 offset-md-top-50">
 </div>
 </div>
@@ -361,17 +361,17 @@ public class RestAppTest {
 <h4 class="holder-subtitle link-top">1. Get into the desired project</h4>
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/testing/images/e2eRest1.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/e2eRest1.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/testing/images/unit_test_1.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/unit_test_1.png"/></a>
 </div>
 
 <h4 class="holder-subtitle link-top">2. Create a SuT</h4>
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-2" href="/docs/testing/images/e2eRest2.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/e2eRest2.png"/></a>
-    <a data-fancybox="gallery-2" href="/docs/testing/images/e2eRest3.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/e2eRest3.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/testing/images/e2e_test_2.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/e2e_test_2.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/testing/images/e2e_test_3.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/e2e_test_3.png"/></a>
 </div>
 
-<p>Right now all SuT's must be available as a Docker image or a docker-compose so ElasTest can deploy and monitor it automatically. Complete the form fields:</p>
+<p>Complete the form fields:</p>
 <ul>
 <li><strong>SuT Name</strong>: name of the Sut (<code>Rest App</code>)</li>
 <li><strong>SuT Description</strong>: description of the SuT (<code>Rest App description</code>)</li>
@@ -381,14 +381,18 @@ public class RestAppTest {
 </ul>
 <p><br></p>
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-2" href="/docs/testing/images/e2eRest4.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/e2eRest4.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/testing/images/e2e_test_4.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/e2e_test_4.png"/></a>
 </div>
 
 <h4 class="holder-subtitle link-top">3. Create a new TJob</h4>
 
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/testing/images/e2e_test_5.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/e2e_test_5.png"/></a>
+</div>
+
 <p>Complete the form fields:</p>
 <ul>
-<li><strong>TJob Name</strong>: name of the TJob (<code>Rest test</code>)</li>
+<li><strong>TJob Name</strong>: name of the TJob</li>
 <li><strong>Select a SuT</strong>: already created SuT to be tested through to the TJob (<code>Rest App</code>)</li>
 <li><strong>Environment docker image</strong>: the docker image that will host your test. This docker images should contain a client to download your code from your repository hosting service. For example, if your tests are hosted in GitHub and implemented in a Maven project with Java, you need to include a git client, Maven and the Java Development Kit (JDK) in the image. Indeed, this image contains Git, Maven and Java (<code>elastest/test-etm-alpinegitjava</code>)
 <!-- Modify when all images are available for testing with different hostsing services and technologies: Java, Maven, Pyhton, Ruby, Node... --></li>
@@ -399,15 +403,15 @@ mvn test
 </li>
 </ul>
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-3" href="/docs/testing/images/e2eRest5.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/e2eRest5.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/testing/images/e2e_test_6.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/e2e_test_6.png"/></a>
 </div>
 
 <h4 class="holder-subtitle link-top">4. Run the TJob from the Project's page</h4>
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-4" href="/docs/testing/images/5.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/5.png"/></a>
-    <a data-fancybox="gallery-4" href="/docs/testing/images/e2eRest6.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/e2eRest6.png"/></a>
-    <a data-fancybox="gallery-4" href="/docs/testing/images/e2eRest7.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/e2eRest7.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/testing/images/e2e_test_7.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/e2e_test_7.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/testing/images/e2e_test_8.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/e2e_test_8.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/testing/images/e2e_test_9.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/e2e_test_9.png"/></a>
 </div>
 
 <p>In this example, when the TJob is executed, the following steps are performed:
@@ -452,7 +456,7 @@ for (var i = 1; i <= galleries.length; i++) {
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../e2e-browser/" class="btn btn-xs btn-primary float-right" title="Run end2end tests (Web Browser)">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../../web-browsers/manual-browsers/" class="btn btn-xs btn-primary float-right" title="Launching Web Browsers on ElasTest">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../unit/" class="btn btn-xs btn-primary" title="Run unit tests"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
