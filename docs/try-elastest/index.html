@@ -323,6 +323,12 @@ ElasTest Platform is available at http://YOUR_MACHINE_IP:37000
 
 <p>You can then open in your web browser the shown URL to access to ElasTest dashboard.</p>
 <p>To stop ElasTest, press <code>Ctrl+C</code> in the shell used to start it. You can now try the <a href="../your-first-test">Hello world</a> project available by default when launching ElasTest.</p>
+<h4 class="holder-subtitle link-top">Updating ElasTest</h4>
+
+<p>To update ElasTest to the latest version available, just need to change <code>start</code> to <code>update</code> in the launching command. For example:</p>
+<pre><code class="text">docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform update
+</code></pre>
+
 <h4 class="holder-subtitle link-top">Recommended system specifications</h4>
 
 <p>ElasTest needs some minimun system specifications in order to run smoothly:</p>
