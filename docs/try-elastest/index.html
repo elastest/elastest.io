@@ -294,9 +294,13 @@ section-icon: mdi mdi-content-copy
 </div>
 </div>
 
-<p>ElasTest can be quickly installed in your own development machine. If you want to deploy ElasTest on your server, please check <a href="../deploying/cloudformation">Deploying ElasTest</a>.</p>
 <p>ElasTest is based on <strong>Docker</strong> technology. To execute ElasTest you need Docker CE installed on your machine following the official instructions for <a href="https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/" target="_blank">Ubuntu</a>, <a href="https://docs.docker.com/docker-for-mac/install/" target="_blank">Mac</a> or <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">Windows</a>.
 </p>
+
+<div class="range range-xs-center">
+  <div class="cell-xs-4 cell-lg-1 cell-lg-push-1" style="text-align: center;"><img src="/docs/images/info.svg" style="border: none; display: inline-block; height: 100%; vertical-align: middle"/></div>
+  <div class="cell-xs-8 cell-lg-11 cell-lg-push-11"><p><i>ElasTest is intended to be deployed on a dedicated server due to the considerable amount of modules and technologies that are part of it. If you really want ElasTest to show its true potential, it is strongly recommended to launch it in a powerful environment (see <a href="#system-specs">Recommended system specifications</a>). To deploy ElasTest in the cloud as a service, please check section <a href="/docs/deploying/cloudformation">Deploying ElasTest</a>.</i></p></div>
+</div>
 
 <h4 class="holder-subtitle link-top">For Ubuntu and Mac</h4>
 
@@ -334,7 +338,7 @@ ElasTest Platform is available at http://YOUR_MACHINE_IP:37000
 The pulling has finished.
 </code></pre>
 
-<h4 class="holder-subtitle link-top">Recommended system specifications</h4>
+<h4 class="holder-subtitle link-top" id="system-specs">Recommended system specifications</h4>
 
 <p>ElasTest needs some minimun system specifications in order to run smoothly:</p>
 <table>
@@ -344,7 +348,7 @@ The pulling has finished.
   </tr>
   <tr>
     <td>RAM</td>
-    <td>8GB (strongly recommended 16GB)</td>
+    <td>8GB (highly recommended 16GB)</td>
   </tr>
   <tr>
     <td>SWAP</td>
