@@ -81,6 +81,15 @@ section-icon: mdi mdi-content-copy
 
 
         
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="support/">Get support from ElasTest team</a>
+        
+    </li>
+
+
+        
 </li>
 </ul>
     
@@ -291,7 +300,7 @@ section-icon: mdi mdi-content-copy
 <h2 id="content" class="h1">What is ElasTest?</h2>
 <div class="offset-top-30 offset-md-top-50">
 <p><i>ElasTest : a platform made by testers for testers</i></p>
-<p>ElasTest is a platform aimed to ease end to end testing of distributed systems. One of the key features of the platform is the ability to show and analyze logs and metrics of all elements involved in an end to end test.</p><p>For example, suppose a typical three tier web application with a database. A basic e2e test has the following components: the test itself, web browser, web application and database. All those elements can generate logs and metrics of several types (CPU, memory, network packets…). When a test is executed using ElasTest, the tester can see all that monitoring information in the same graphical user interface and with advanced analysis features. 
+<p>ElasTest is a platform aimed to ease end to end testing of distributed systems. The two key features of the platform are: 1) Provide an easy deployment process and easy access to the necessary services usually involved in an end to end test and 2) Provide easy-to-use tools to show and analyze logs and metrics of all elements involved in an end to end test.</p><p>For example, suppose a typical three tier web application with a database. A basic e2e test has the following components: the test itself, web browser, web application and database. All those elements have to be properly deployed, linked and executed, and all of them can generate logs and metrics of several types (CPU, memory, network packets…). A test being executed in ElasTest can make direct use of multiple integrated services (such as Web Browsers), and the tester can see all that monitoring information in the same graphical user interface and with advanced analysis features.
 </p>
 <blockquote><strong>WARNING</strong>: ElasTest is currently in active development. This means that new features are constantly being added and unexpected bugs may appear.</blockquote>
 </div>
@@ -326,45 +335,37 @@ section-icon: mdi mdi-content-copy
 ElasTest is built around 3 main elements:
 
 <div style="margin-top: 30px">
-    <h4 id="sut" class="link-top">SuT</h4>
-    Software under Test: the tested software itself. ElasTest supports two kinds of SuTs:
+    <h4 id="sut" class="link-top">Software under Test (SuT)</h4>
+    The tested software itself. ElasTest supports two deployment modes of SuT:
     <ul>
-        <li><strong>Dockerized SuT</strong>: your software is hosted inside Docker container/s
-            <ul>
-                <li><i>Docker image</i>: SuT is packaged as a single docker image. The name of the image must be specified. If the docker image is not located in DockerHub, then the image name contains the FQDN of the registry.</li>
-                <li><i>Docker compose</i>: SuT is composed by several containers and is defined with a <i>docker-compose.yml</i> file.</li>
-            </ul>
+        <li><strong>SuT deployed by ElasTest</strong>: your software is packaged as Docker container/s. It can be a single Docker image or a docker-compose
         </li>
-        <li><strong>Deployed Sut</strong>: your software is already deployed somewhere on the cloud
-            <ul>
-                <li><i>Manual instrumentation</i>: ElasTest won't gather any monitoring information from the SuT unless you manually install some agents</li>
-                <li><i>Automated instrumentation</i>: let ElasTest configure your deployed SuT to send metrics and logs</li>
-            </ul>
+        <li><strong>SuT outside ElasTest</strong>: your software is already deployed somewhere
         </li>
     </ul>
 </div>
 
 <div style="margin-top: 30px">
-    <h4 id="tjob" class="link-top">TJob</h4>
-    Test Job: test to be executed against a piece of software (SuT). In a TJob several things have to be specified:
+    <h4 id="tjob" class="link-top">Test Job (TJob)</h4>
+    Test to be executed against a your SuT. In a TJob several things have to be specified:
     <ul>
-        <li><i>Environment needed to execute the tests</i>: This is defined with a docker image that contains all tools used by the tests.</li>
-        <li><i>How to retrieve and execute the tests</i>: Specified as a set of commands written in bash that will be executed inside the environment defined before (docker container).</li>
-        <li><i>The SuT against which tests are executed</i>: That is, the SuT description. If the Sut is already deployed, it is necessary to specify how to reach it (usually with its IP). If the SuT lifecycle is managed by ElasTest, ElasTest needs to know how to deploy and undeploy the SuT.</li></br>
-    A TJob can be executed several times. That can be useful, for example, because SuT has changes and we want to verify that old features are still working. Or if we add more tests to the same TJob test repo, we can execute them against the SuT. For unit and integration tests, TJobs can manage themselves the deployment of the tested software (SuT not necessary). To learn more about this, you can check our <a href="/docs/testing/unit/">unit test tutorial</a>.
+        <li><i>Environment to execute the tests</i>: This is defined with a docker image that contains all tools used by the tests.</li>
+        <li><i>How to retrieve and execute the tests</i>: Specified as a set of commands written in bash that will be executed inside the docker container defined as environment.</li>
+        <li><i>The SuT against which tests are executed</i>: That is, the SuT description. If the SuT is deployed by ElasTest, it only needs the Docker image or docker-compose. If the Sut is outside ElasTest, it is necessary to specify how to reach it (usually with its IP).</li></br>
     </ul>
+    A TJob can be executed several times. That can be useful, for example, because SuT has changes and we want to verify that old features are still working. Or if we add more tests to the same TJob test repo, we can execute them against the SuT.
 </div>
 
 <div style="margin-top: 30px">
-   <h4 id="tss" class="link-top">TSS</h4>
-   Test Support Services: services offered by ElasTest to ease the execution and analysis of TJobs. At the moment, only <strong>web browsers</strong> are provided, but in the near future ElasTest will offer other services as <strong>mobile devices emulators</strong>, <strong>IoT devices</strong>, <strong>security services</strong> and <strong>Big Data services</strong>.
+   <h4 id="tss" class="link-top">Services</h4>
+   Services offered by ElasTest to ease the execution and analysis of TJobs. At the moment, ElasTest only provides <strong>Web Browser Service</strong> and <strong>Log Analyzer Service</strong>, but in the near future ElasTest will offer other services as <strong>mobile devices emulators</strong>, <strong>IoT devices</strong>, <strong>security services</strong> and <strong>Big Data services</strong>.
 </div>
 
-<blockquote>
+<!--<blockquote>
 These three elements are the core concepts of ElasTest platform and they are also the <strong>components targeted</strong> by ElasTest platform.
 <br>
 In other words: <strong>SuT's, TJob's and TSS's are the modules that ElasTest can monitor and analyse for you</strong>. You can gather information and check logs and metrics for any SuT, TJob or TSS. To learn more check <a href="/docs/monitoring">Monitoring</a> section.
-</blockquote>
+</blockquote>-->
 
 </p>
 
