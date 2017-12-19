@@ -343,6 +343,16 @@ footer ul.list-inline a:active {
     background-color: #ffac2f71;
 }
 
+.warning-row {
+    margin-bottom: 40px;
+}
+
+p.warning-text {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
 @media (max-width: 479px) {
     nav.wy-nav-side {
         left: -8px !important;
