@@ -331,6 +331,17 @@ img.index {
     align-items: center;
 }
 
+footer ul.list-inline a:hover {
+    text-decoration: none;
+    outline: none;
+    color: inherit;
+    background-color: #6666664f;
+}
+
+footer ul.list-inline a:active {
+    border-left: none;
+    background-color: #ffac2f71;
+}
 
 @media (max-width: 479px) {
     nav.wy-nav-side {
