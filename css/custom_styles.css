@@ -178,6 +178,10 @@ blockquote {
     margin-top: 20px;
 }
 
+div > ul#menu-list li.subnav_drop > ul.subnav  {
+    display: none;
+}
+
 div > ul#menu-list > li > ul > li:hover {
     background: none;
     border-left: 4px solid #f9c308;
