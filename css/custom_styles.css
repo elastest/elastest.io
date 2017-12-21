@@ -431,6 +431,10 @@ footer ul.list-inline a:active {
     }
 }
 
+.fa {
+    font-family: "Lato", Helvetica, Arial, sans-serif;
+}
+
 a.deploy-icon {
     margin-left: 3px;
     width: 130px;
@@ -457,7 +461,7 @@ a.deploy-icon {
     font-style: normal;
   }
   
-  [class^="icon-"], [class*=" icon-"] {
+  #aws-icon {
     /* use !important to prevent issues with browser extensions that change fonts */
     font-family: 'icomoon' !important;
     speak: none;
