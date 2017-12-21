@@ -344,7 +344,7 @@ section-icon: mdi mdi-content-copy
 <p><strong>Using Beats technology: <a href="https://www.elastic.co/products/beats">Beats</a></strong> is a platform for single-purpose data shippers created to work with Logstash and ElasticSearch. There are a lot of beats agents to collect monitoring information from all kinds of sources. For example: <a href="https://www.elastic.co/products/beats/filebeat">Filebeat</a>, <a href="https://www.elastic.co/products/beats/metricbeat">Metricbeat</a> or <a href="https://www.elastic.co/products/beats/packetbeat">Packetbeat</a>. If you can't find a certain beat agent among the official ones, you can always search <a href="https://www.elastic.co/guide/en/beats/libbeat/current/community-beats.html">beats bult by the community</a> or <a href="https://www.elastic.co/guide/en/beats/devguide/current/new-beat.html">create your own beat</a>.</p>
 </li>
 <li>
-<p><strong>Sending metrics with http POST requests</strong>: If beats agents doesn’t suit your needs, you can always send monitoring information with http requests.</p>
+<p><strong>Sending metrics with http POST requests</strong>: If beats agents doesn’t suit your needs, you can always send monitoring information with http requests. Check out section <a href="../../monitoring/custom">Custom monitoring</a> to learn how.</p>
 </li>
 </ul>
 <p>To create a SuT ready to be manually instrumented, fill the form as shown in the image below on "New SuT" page:</p>
@@ -562,86 +562,6 @@ fields:
   </div>
 
 </div>
-
-<h4 id="send-metrics-with-http" class="holder-subtitle link-top">Send metrics with HTTP</h4>
-
-<p>If it is not possible to use beats agents, you can always send SuT metric information with http requests. The URL is created with <strong>Logstash IP</strong> and <strong>HTTP port</strong> params:</p>
-<pre><code class="text">http://&lt;logstash_host&gt;:&lt;http_port&gt;/
-</code></pre>
-
-<p>The request has to use the POST method. There are different formats to send different types of information:</p>
-<h6 class="small-subtitle">Send one log entry in one request</h6>
-
-<pre><code class="json">{
-   &quot;@timestamp&quot;: 9999999999,
-   &quot;exec&quot;: &quot;XX&quot;,
-   &quot;component&quot;: &quot;YY&quot;,
-   &quot;stream&quot;: &quot;ZZ&quot;,
-   &quot;message&quot;: &quot;Complete log message entry&quot;
-}
-</code></pre>
-
-<div style="margin-top: 20px"></div>
-
-<ul>
-<li><strong>@timestamp</strong>: is optional and contains the timestamp when event was generated.</li>
-<li><strong>exec</strong>: The value of <strong>Exec ID</strong> shown in ElasTest dashboard when SuT is created.</li>
-<li><strong>component</strong>: identified the component that sends the metric. For example, if there is only a SuT app without any other service, it can be "sut". But if the SuT is a web application with database, it is good idea to have "sut_webapp" and "sut_ddbb" for logs of that two services. Note: use underscore like separator. Dash (-) is not allowed.</li>
-<li><strong>stream</strong>: Used to distinguish several logs from the same component. In this case only one log exists for the component, its value is usually "default_log".</li>
-<li><strong>message</strong>: Complete log message entry.</li>
-</ul>
-<h6 class="small-subtitle">Send several log entries in one request</h6>
-
-<pre><code class="json">{
-   &quot;@timestamp&quot;: 9999999999,
-   &quot;exec&quot;: &quot;XX&quot;,
-   &quot;component&quot;: &quot;YY&quot;,
-   &quot;stream&quot;: &quot;ZZ&quot;,
-   &quot;messages&quot;: [
-      &quot;Complete log message entry 1&quot;,
-      &quot;Complete log message entry 2&quot;,
-      &quot;Complete log message entry 3&quot;,
-      &quot;Complete log message entry 4&quot;
-   ]
-}
-</code></pre>
-
-<h6 class="small-subtitle">Send one atomic metric in one request</h6>
-
-<pre><code class="json">{
-   &quot;@timestamp&quot;: 9999999999,
-   &quot;exec&quot;: &quot;XX&quot;,
-   &quot;component&quot;: &quot;YY&quot;,
-   &quot;stream&quot;: &quot;cpu_usage&quot;,
-   &quot;stream_type&quot;: &quot;atomic_metric&quot;,
-   &quot;cpu_usage&quot;: 80,
-   &quot;unit&quot;: &quot;%&quot;
-}
-</code></pre>
-
-<div style="margin-top: 20px"></div>
-
-<ul>
-<li><strong>stream</strong> field can be whatever you want (it has to be used below when setting the numeric value)</li>
-</ul>
-<h6 class="small-subtitle">Send one composed metric in one request</h6>
-
-<pre><code class="json">{
-   &quot;@timestamp&quot;: 9999999999,
-   &quot;exec&quot;: &quot;XX&quot;,
-   &quot;component&quot;: &quot;YY&quot;,
-   &quot;type&quot;: &quot;cpu&quot;,
-   &quot;stream_type&quot;: &quot;composed_metric&quot;,
-   &quot;cpu&quot;: {
-     &quot;total_usage&quot;: 80,
-     &quot;max_usage&quot;: 100
-   }
-   &quot;units&quot;: {
-     &quot;total_usage&quot;: &quot;%&quot;,
-     &quot;max_usage&quot;: &quot;%&quot;
-   }
-}
-</code></pre>
 
 <script>
 $('#monitor-custom-log-btn').click(function(event) {

@@ -331,42 +331,129 @@ section-icon: mdi mdi-content-copy
 </div>
 </div>
 
-<h4 id="custom-monitoring-from-sut" class="holder-subtitle link-top">Custom monitoring from SuT</h4>
-
-<p>You maybe want your Dockerized SuT to send custom metrics to ElasTest appart from those automatically retrieved by our standard monitoring agents. In that case, all techniques used to instrument manually an already deployed SuT can be used in a SuT deployed by ElasTest. Check <a href="../../../docs/monitoring/deployed">Deployed monitoring</a> section.</p>
-<h4 class="holder-subtitle link-top">Custom monitoring from tests</h4>
-
-<p>It can be useful to graph some custom information generated in the tests alongside with other metrics. You maybe want to graph some variables of your test, whatever they are. </p>
-<p>For example: if your SuT is a web application, your test can send the number of users connecting to it as it executes and you can compare it with the CPU consumption or memory usage of the SuT. For this reason, testers can send to ElasTest any monitoring information they want.</p>
-<p>When a TJob is executed, the following environment variables are injected so you can use them in your test code:</p>
+<p>ElasTest automatically gathers metrics and logs from all TJobs and from all SuTs deployed by the platform itself (dockerized SuTs), as explained <a href="../../monitoring/">here</a>. And ElasTest allows configuring already deployed SuTs for sending metrics and logs thanks to Beats technology, as explained <a href="../../monitoring/deployed">here</a>. But what if you want to send some custom information to ElasTest to be shown or graphed during a TJob execution? For example:</p>
 <ul>
-<li><em><code>ET_MON_LSHTTP_API</code></em>: Logstash API URL to send http requests with monitoring information.  </li>
-<li><em><code>ET_MON_EXEC</code></em>: The execution identifier to set the value of <code>exec</code> field. </li>
+<li>If your SuT is a web application, the code in your TJob can send the number of users connecting to it as it executes so you can compare it with the CPU consumption or memory usage of the SuT.</li>
+<li>If you are interested in a specific metric of your SuT for which there's no Beat agent available (<a href="https://www.elastic.co/products/beats">official agents</a> or <a href="https://www.elastic.co/guide/en/beats/libbeat/current/community-beats.html">community agents</a>), you can always send it through http.</li>
 </ul>
-<p>The allowed formats are the same as described for Deployed SuT in <a href="../../../docs/monitoring/deployed#send-metrics-with-http">Send metrics with HTTP</a>, but with the following considerations: </p>
-<ul>
-<li>Field <strong>exec</strong> must have the value of environment variable <code>ET_MON_EXEC</code>.</li>
-<li>Field <strong>component</strong> must contain the value <code>test</code>, because the event is generated in the test.</li>
-<li>The URL of the POST request must be the value of environment variable <code>ET_MON_LSHTTP_API</code></li>
-</ul>
-<p>With these changes, the body of a POST request sending a custom metric with the number of concurrent users would be</p>
+<p>For this reason, ElasTest allows users to send any log or metric through http requests.</p>
+<h4 id="send-metrics-with-http" class="holder-subtitle link-top">Send metrics with HTTP</h4>
+
+<p>You can send to ElasTest metric information with http requests from any TJob or any SuT.</p>
+<h6 class="small-subtitle">IP of http request in a TJob or a SuT deployed by ElasTest</h6>
+
+<p>Value of environment variable <em><code>ET_MON_LSHTTP_API</code></em>.</p>
+<h6 class="small-subtitle">IP of http request in a SuT deployed outside ElasTest</h6>
+
+<p>The URL can be built with <strong>Logstash IP</strong> and <strong>HTTP port</strong> params, available from the SuT information page:</p>
+<div class="docs-gallery more-margin-top inline-block">
+    <a data-fancybox="gallery-2" href="/docs/monitoring/images/logstash_ip.png"><img class="img-responsive img-wellcome" src="/docs/monitoring/images/logstash_ip.png"/></a>
+</div>
+
+<pre><code class="text">http://&lt;logstash_ip&gt;:&lt;http_port&gt;/
+</code></pre>
+
+<p>For to the image above, the URL where to send the post requests would be:</p>
+<pre><code class="text">http://www.elastestip.com:5003/
+</code></pre>
+
+<p><br></p>
+<p>The request has to use the POST method. There are different formats to send different types of information:</p>
+<h6 class="small-subtitle">Send one log entry in one request</h6>
+
 <pre><code class="json">{
    &quot;@timestamp&quot;: 9999999999,
    &quot;exec&quot;: &quot;XX&quot;,
-   &quot;component&quot;: &quot;test&quot;,
-   &quot;type&quot;: &quot;users&quot;,
-   &quot;stream_type&quot;: &quot;atomic_metric&quot;,
-   &quot;users&quot;: 80,
-   &quot;unit&quot;: &quot;users&quot;
+   &quot;component&quot;: &quot;YY&quot;,
+   &quot;stream&quot;: &quot;ZZ&quot;,
+   &quot;message&quot;: &quot;Complete log message entry&quot;
 }
 </code></pre>
 
-<p>"users" can be customized as you want.</p>
-<!--<h4 class="holder-subtitle link-top">Custom monitoring from TSS</h4>
+<div style="margin-top: 20px"></div>
 
-Some of the key drivers of ElasTest development is to make life easier to testers. For this reason, [Test Support Services](/#tss) can send custom metrics to ElasTest. For example, when a test is making use of Web Browsers service, the browser console is sent to ElasTest and can be visualized alongside SuT and Test logs.
+<ul>
+<li><strong>@timestamp</strong>: is optional and contains the timestamp when event was generated.</li>
+<li><strong>exec</strong>: The value of <strong>Exec ID</strong> shown in ElasTest dashboard for SuTs deployed outside ElasTest or the value of <code>ET_MON_EXEC</code> environment variable for TJobs or SuTs deployed by ElasTest.</li>
+<li><strong>component</strong>: <code>sut</code> for http requests sent from the SuT and <code>test</code> for http requests sent from the TJob.</li>
+<li><strong>stream</strong>: Used to distinguish several logs from the same component. In this case only one log exists for the component, its value is usually "default_log".</li>
+<li><strong>message</strong>: Complete log message entry.</li>
+</ul>
+<h6 class="small-subtitle">Send several log entries in one request</h6>
 
-For every TSS used on a TJob execution, the tester will be able to select all the desired metrics to be shown from a predefined set (different for each TSS).-->
+<pre><code class="json">{
+   &quot;@timestamp&quot;: 9999999999,
+   &quot;exec&quot;: &quot;XX&quot;,
+   &quot;component&quot;: &quot;YY&quot;,
+   &quot;stream&quot;: &quot;ZZ&quot;,
+   &quot;messages&quot;: [
+      &quot;Complete log message entry 1&quot;,
+      &quot;Complete log message entry 2&quot;,
+      &quot;Complete log message entry 3&quot;,
+      &quot;Complete log message entry 4&quot;
+   ]
+}
+</code></pre>
+
+<h6 class="small-subtitle">Send one atomic metric in one request</h6>
+
+<pre><code class="json">{
+   &quot;@timestamp&quot;: 9999999999,
+   &quot;exec&quot;: &quot;XX&quot;,
+   &quot;component&quot;: &quot;YY&quot;,
+   &quot;stream&quot;: &quot;cpu_usage&quot;,
+   &quot;stream_type&quot;: &quot;atomic_metric&quot;,
+   &quot;cpu_usage&quot;: 80,
+   &quot;unit&quot;: &quot;%&quot;
+}
+</code></pre>
+
+<div style="margin-top: 20px"></div>
+
+<ul>
+<li><strong>stream</strong> field can be whatever you want (it has to be used below when setting the numeric value)</li>
+</ul>
+<h6 class="small-subtitle">Send one composed metric in one request</h6>
+
+<pre><code class="json">{
+   &quot;@timestamp&quot;: 9999999999,
+   &quot;exec&quot;: &quot;XX&quot;,
+   &quot;component&quot;: &quot;YY&quot;,
+   &quot;type&quot;: &quot;cpu&quot;,
+   &quot;stream_type&quot;: &quot;composed_metric&quot;,
+   &quot;cpu&quot;: {
+     &quot;total_usage&quot;: 80,
+     &quot;max_usage&quot;: 100
+   }
+   &quot;units&quot;: {
+     &quot;total_usage&quot;: &quot;%&quot;,
+     &quot;max_usage&quot;: &quot;%&quot;
+   }
+}
+</code></pre>
+
+<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+
+<p><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script></p>
+<script>
+var galleries = $('div.docs-gallery');
+for (var i = 1; i <= galleries.length; i++) {
+    $().fancybox({
+    selector : '[data-fancybox="gallery-' + i + '"]',
+    infobar : true,
+    arrows : false,
+    loop: true,
+    protect: true,
+    transitionEffect: 'slide',
+    buttons : [
+        'close'
+    ],
+    clickOutside : 'close',
+    clickSlide   : 'close',
+  });
+}
+</script>
 					
 				      </div>
 				    </div>
