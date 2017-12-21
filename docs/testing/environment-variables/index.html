@@ -330,6 +330,48 @@ section-icon: mdi mdi-content-copy
 </div>
 </div>
 </div>
+
+<table>
+<thead>
+<tr>
+<th>Variable name</th>
+<th>Description</th>
+<th>Sample value</th>
+<th>Available when</th>
+<th>Accesible from</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ET_SUT_HOST</td>
+<td>IP of th SuT. Can be used inside the TJobs to connect to the SuT</td>
+<td>"172.18.0.16"</td>
+<td>There's a SuT configured for the TJob</td>
+<td>TJob</td>
+</tr>
+<tr>
+<td>ET_EUS_API</td>
+<td>HTTP endpoint to launch remote web drivers from the TJobs</td>
+<td>"http://172.18.0.14:8040/eus/v1/"</td>
+<td>Web Browser Service is enabled for the TJob</td>
+<td>TJob</td>
+</tr>
+<tr>
+<td>ET_MON_LSHTTP_API</td>
+<td>Logstash API URL to send http requests with custom monitoring information to ElasTest</td>
+<td>"http://100.10.10.10:5003"</td>
+<td>Always available</td>
+<td>TJob, SuT</td>
+</tr>
+<tr>
+<td>ET_MON_EXEC</td>
+<td>The execution identifier to set the value of <em>exec</em> field when sending http requests with custom monitoring information to ElasTest</td>
+<td>"s1_e1"</td>
+<td>Always available</td>
+<td>TJob, SuT</td>
+</tr>
+</tbody>
+</table>
 					
 				      </div>
 				    </div>
