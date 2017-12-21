@@ -1,6 +1,6 @@
 --- 
 layout: default 
-title: Elastest Documentation 
+title: Elastest Documentation - Environment variables 
 active: documentation 
 section-title: Documentation 
 section-icon: mdi mdi-content-copy 
@@ -16,7 +16,7 @@ section-icon: mdi mdi-content-copy
 	$( document).ready(function(){
 		$('#menu-list').show();
 	    $('li.subnav_drop').find('ul.subnav').hide();
-	       $( ".subnav" ).find( "li:contains('')" ).each(function(i,e){
+	       $( ".subnav" ).find( "li:contains('Environment variables')" ).each(function(i,e){
 		  var currentElement = $(e);
 		  currentElement.parent().css({"display":"block","visibility":"visible"}); //css("background-color","blue");
 		  currentElement.css({"display":"block","visibility":"visible"});
@@ -30,7 +30,7 @@ section-icon: mdi mdi-content-copy
 						$('#doc-container').css('min-height', minHeight+'px');
 	});
 	   
-	$( ".wy-nav-content" ).find( "li:contains('')" ).css('color','red');
+	$( ".wy-nav-content" ).find( "li:contains('Environment variables')" ).css('color','red');
  </script>
 
 <div id="doc-container" class="container text-justify">
@@ -56,7 +56,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="/">What is ElasTest?</a>
+        <a class="" href="../..">What is ElasTest?</a>
         
     </li>
 
@@ -65,7 +65,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="/try-elastest/">Try ElasTest</a>
+        <a class="" href="../../try-elastest/">Try ElasTest</a>
         
     </li>
 
@@ -74,7 +74,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="/your-first-test/">Your first test with ElasTest</a>
+        <a class="" href="../../your-first-test/">Your first test with ElasTest</a>
         
     </li>
 
@@ -83,7 +83,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="/support/">Get support from ElasTest team</a>
+        <a class="" href="../../support/">Get support from ElasTest team</a>
         
     </li>
 
@@ -105,7 +105,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="/testing/unit/">Run unit tests</a>
+        <a class="" href="../unit/">Run unit tests</a>
         
     </li>
 
@@ -114,7 +114,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="/testing/e2e-rest/">Run end2end tests</a>
+        <a class="" href="../e2e-rest/">Run end2end tests</a>
         
     </li>
 
@@ -123,7 +123,18 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="/testing/parameterized-tests/">Parameterized tests</a>
+        <a class="" href="../parameterized-tests/">Parameterized tests</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Environment variables</a>
+        
+         
         
     </li>
 
@@ -132,16 +143,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="/testing/environment-variables/">Environment variables</a>
-        
-    </li>
-
-
-        
-             
-
-    <li class="toctree-l1 ">
-        <a class="" href="/testing/sut/">Software under Test</a>
+        <a class="" href="../sut/">Software under Test</a>
         
     </li>
 
@@ -163,7 +165,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="/web-browsers/manual-browsers/">Launching Web Browsers on ElasTest</a>
+        <a class="" href="../../web-browsers/manual-browsers/">Launching Web Browsers on ElasTest</a>
         
     </li>
 
@@ -172,7 +174,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="/web-browsers/e2e-browser/">Run en2end tests with Web Browsers</a>
+        <a class="" href="../../web-browsers/e2e-browser/">Run en2end tests with Web Browsers</a>
         
     </li>
 
@@ -181,7 +183,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="/web-browsers/outside-testing/">Testing with Web Browsers from outside ElasTest</a>
+        <a class="" href="../../web-browsers/outside-testing/">Testing with Web Browsers from outside ElasTest</a>
         
     </li>
 
@@ -197,7 +199,7 @@ section-icon: mdi mdi-content-copy
 					<li><ul> 
 
     <li class="toctree-l1 ">
-        <a class="" href="/log-analyzer/">Log Analyzer</a>
+        <a class="" href="../../log-analyzer/">Log Analyzer</a>
         
     </li>
 
@@ -214,7 +216,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="/monitoring/">Intro</a>
+        <a class="" href="../../monitoring/">Intro</a>
         
     </li>
 
@@ -223,7 +225,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="/monitoring/dockerized/">Dockerized monitoring</a>
+        <a class="" href="../../monitoring/dockerized/">Dockerized monitoring</a>
         
     </li>
 
@@ -232,7 +234,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="/monitoring/deployed/">Deployed monitoring</a>
+        <a class="" href="../../monitoring/deployed/">Deployed monitoring</a>
         
     </li>
 
@@ -241,7 +243,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="/monitoring/custom/">Custom monitoring</a>
+        <a class="" href="../../monitoring/custom/">Custom monitoring</a>
         
     </li>
 
@@ -250,7 +252,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="/monitoring/gui/">Monitoring user interface</a>
+        <a class="" href="../../monitoring/gui/">Monitoring user interface</a>
         
     </li>
 
@@ -266,7 +268,7 @@ section-icon: mdi mdi-content-copy
 					<li><ul> 
 
     <li class="toctree-l1 ">
-        <a class="" href="/jenkins/">Jenkins integration</a>
+        <a class="" href="../../jenkins/">Jenkins integration</a>
         
     </li>
 
@@ -283,7 +285,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="/deploying/aws/">Amazon Web Services</a>
+        <a class="" href="../../deploying/aws/">Amazon Web Services</a>
         
     </li>
 
@@ -292,7 +294,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="/deploying/ubuntu/">Ubuntu</a>
+        <a class="" href="../../deploying/ubuntu/">Ubuntu</a>
         
     </li>
 
@@ -321,25 +323,33 @@ section-icon: mdi mdi-content-copy
 				    <div role="main">
 				      <div class="section">
 					
-
-    <div class="row-fluid">
-      <div id="main-content" class="span12">
-        <h1 id="404-page-not-found" style="text-align: center">404</h1>
-        <p style="text-align: center"><strong>Page not found</strong></p>
-      </div>
-    </div>
-
-
+					  <div class="range range-xs-left">
+<div class="cell-xs-10 cell-lg-6 text-md-left inset-md-right-80 cell-lg-push-1 offset-top-50 offset-lg-top-0">
+<h2 id="content" class="h1">Environment variables</h2>
+<div class="offset-top-30 offset-md-top-50">
+</div>
+</div>
+</div>
+					
 				      </div>
 				    </div>
 				    <footer>
 <hr class="divider divider-100 divider-xs hr-lg-center-0 offset-xs-top-20 offset-sm-top-20 offset-md-top-20 offset-lg-top-20">
   
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../sut/" class="btn btn-xs btn-primary float-right" title="Software under Test">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../parameterized-tests/" class="btn btn-xs btn-primary" title="Parameterized tests"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
+      
+    </div>
+  
 
 
   
   
-	  <a href="https://github.com/elastest/elastest.io-docs" class="fa fa-github offset-xxs-top-30"> Edit Documentation on GitHub</a>
+	  <a href="https://github.com/elastest/elastest.io-docs/blob/master/docs/testing/environment-variables.md" class="fa fa-github offset-xxs-top-30"> Edit Documentation on GitHub</a>
   
 </footer>
 			  	  

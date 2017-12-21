@@ -1,6 +1,6 @@
 --- 
 layout: default 
-title: Elastest Documentation - Amazon Web Services 
+title: Elastest Documentation - Software under Test 
 active: documentation 
 section-title: Documentation 
 section-icon: mdi mdi-content-copy 
@@ -16,7 +16,7 @@ section-icon: mdi mdi-content-copy
 	$( document).ready(function(){
 		$('#menu-list').show();
 	    $('li.subnav_drop').find('ul.subnav').hide();
-	       $( ".subnav" ).find( "li:contains('Amazon Web Services')" ).each(function(i,e){
+	       $( ".subnav" ).find( "li:contains('Software under Test')" ).each(function(i,e){
 		  var currentElement = $(e);
 		  currentElement.parent().css({"display":"block","visibility":"visible"}); //css("background-color","blue");
 		  currentElement.css({"display":"block","visibility":"visible"});
@@ -30,7 +30,7 @@ section-icon: mdi mdi-content-copy
 						$('#doc-container').css('min-height', minHeight+'px');
 	});
 	   
-	$( ".wy-nav-content" ).find( "li:contains('Amazon Web Services')" ).css('color','red');
+	$( ".wy-nav-content" ).find( "li:contains('Software under Test')" ).css('color','red');
  </script>
 
 <div id="doc-container" class="container text-justify">
@@ -105,7 +105,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../../testing/unit/">Run unit tests</a>
+        <a class="" href="../unit/">Run unit tests</a>
         
     </li>
 
@@ -114,7 +114,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../../testing/e2e-rest/">Run end2end tests</a>
+        <a class="" href="../e2e-rest/">Run end2end tests</a>
         
     </li>
 
@@ -123,7 +123,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../../testing/parameterized-tests/">Parameterized tests</a>
+        <a class="" href="../parameterized-tests/">Parameterized tests</a>
         
     </li>
 
@@ -132,7 +132,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../../testing/environment-variables/">Environment variables</a>
+        <a class="" href="../environment-variables/">Environment variables</a>
         
     </li>
 
@@ -140,8 +140,10 @@ section-icon: mdi mdi-content-copy
         
              
 
-    <li class="toctree-l1 ">
-        <a class="" href="../../testing/sut/">Software under Test</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Software under Test</a>
+        
+         
         
     </li>
 
@@ -282,10 +284,8 @@ section-icon: mdi mdi-content-copy
         
              
 
-    <li class="toctree-l1 current">
-        <a class="current" href="./">Amazon Web Services</a>
-        
-         
+    <li class="toctree-l1 ">
+        <a class="" href="../../deploying/aws/">Amazon Web Services</a>
         
     </li>
 
@@ -294,7 +294,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../ubuntu/">Ubuntu</a>
+        <a class="" href="../../deploying/ubuntu/">Ubuntu</a>
         
     </li>
 
@@ -325,92 +325,82 @@ section-icon: mdi mdi-content-copy
 					
 					  <div class="range range-xs-left">
 <div class="cell-xs-10 cell-lg-6 text-md-left inset-md-right-80 cell-lg-push-1 offset-top-50 offset-lg-top-0">
-<h2 id="content" class="h1">Deploying ElasTest on Amazon Web Services</h2>
+<h2 id="content" class="h1">Software under Test</h2>
 <div class="offset-top-30 offset-md-top-50">
 </div>
 </div>
 </div>
 
-<p>The easiest way to deploy ElasTest is by using our Amazon CloudFormation template. In a few steps by clicking a couple of buttons and filling a form you will have your ElasTest ready to go. If you don't have an AWS account you will need one (follow those <a href="http://docs.aws.amazon.com/AmazonSimpleDB/latest/DeveloperGuide/AboutAWSAccounts.html">steps</a> to get it).</p>
-<h6 class="small-subtitle">1) Go to <a href="https://eu-west-1.console.aws.amazon.com/cloudformation/">AWS CloudFormation dashboard</a> and create a new stack</h6>
+<p>ElasTest supports two deployment modes of SuT:</p>
+<ul>
+<li><strong>SuT deployed by ElasTest</strong>: your software is packaged as Docker container/s. It can be a single Docker image or a docker-compose.</li>
+<li><strong>SuT outside ElasTest</strong>: your software is already deployed somewhere.</li>
+</ul>
+<p>When creating a new SuT you are able to defined what mode of deployment ElasTest should work with.</p>
+<h4 class="holder-subtitle link-top">SuT deployed by ElasTest</h4>
+
+<h6 class="small-subtitle">With Docker image</h6>
+
+<p>Your SuT is packaged as a Docker image. ElasTest will pull it from DockerHub and run it as the <code>Dockerfile</code> states.</p>
+<p>Fields to declare:</p>
+<ul>
+<li><strong>Docker image</strong>: name of the image (tagged or untagged)</li>
+<li><strong>Wait for http port</strong>: port that ElasTest should wait for to be available before running your TJobs</li>
+</ul>
+<p></p>
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/deploying/images/new_stack.png"><img class="img-responsive img-wellcome" src="/docs/deploying/images/new_stack.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/testing/images/docker_image.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/docker_image.png"/></a>
 </div>
 
-<h6 class="small-subtitle">2) Select option "Choose a template" and use <a href="https://raw.githubusercontent.com/elastest/elastest-toolbox/master/AWS/cloud-formation-latest.json">this JSON file</a></h6>
+<h6 class="small-subtitle">With docker-compose</h6>
+
+<p>Your SuT is declared as a docker-compose. ElasTest will pull all the necessary images from DockerHub and run them as the field <em>Docker Compose</em> states</p>
+<p>Fields to declare:</p>
+<ul>
+<li><strong>Docker Compose</strong>: your <code>docker-compose.yml</code> file. Simply copy-paste its content here</li>
+<li><strong>Main Service Name</strong>: the name of the service that ElasTest should wait for to be up before running your TJobs (the specific port is declared in the next field <em>Wait for http port</em>)</li>
+<li><strong>Wait for http port</strong>: port that ElasTest should wait for to be available before running your TJobs (applied to the service declared in the previous field <em>Main Service Name</em>)</li>
+</ul>
+<p></p>
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/deploying/images/template.png"><img class="img-responsive img-wellcome" src="/docs/deploying/images/template.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/testing/images/docker_compose.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/docker_compose.png"/></a>
 </div>
 
-<h6 id="step-3" class="small-subtitle">3) Complete the form shown on the next step with the following information</h6>
+<h4 class="holder-subtitle link-top">SuT outside ElasTest</h4>
 
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Value</th>
-<th>Details</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Stack name</td>
-<td>The name of the stack</td>
-<td>Elastest is OK</td>
-</tr>
-<tr>
-<td>ElastestExecutionMode</td>
-<td><em>normal</em>, <em>experimental-lite</em> or <em>experimental</em></td>
-<td>Choose Elastest execution mode</td>
-</tr>
-<tr>
-<td>ElastestPassword</td>
-<td>Your password</td>
-<td>Password to access the platform</td>
-</tr>
-<tr>
-<td>ElastestUsername</td>
-<td>Your username</td>
-<td>Username to access the platform</td>
-</tr>
-<tr>
-<td>ElastestVersion</td>
-<td><em>latest</em></td>
-<td>Which version of elastest do you want to launch. <strong><em>latest</em></strong> version points to the last stable release of ElasTest, so it is always safe to use</td>
-</tr>
-<tr>
-<td>InstanceType</td>
-<td>The type of machine you want (recommended at least <em>m4.large</em>)</td>
-<td>Elastest needs resources to run, please be genereous</td>
-</tr>
-<tr>
-<td>KeyName</td>
-<td>One of your AWS keys</td>
-<td>RSA key to access the instance through SSH</td>
-</tr>
-<tr>
-<td>SwapSize</td>
-<td>Recommended at least <em>4</em></td>
-<td>The amount of swap memory in GB</td>
-</tr>
-</tbody>
-</table>
-<p><br></p>
+<h6 class="small-subtitle">No instrumentation</h6>
+
+<p>Your SuT is already deployed on an external server and you don't want to send any logs or metrics to ElasTest.</p>
+<p>Fields to declare:</p>
+<ul>
+<li><strong>SuT IP</strong>: IP or DNS of your SuT. Thanks to this field your TJobs may know how to reach your SuT through environment variable <code>ET_SUT_HOST</code>. Check <a href="../../testing/environment-variables">Environment variables</a> to learn more.</li>
+</ul>
+<p></p>
+
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/deploying/images/conf.png"><img class="img-responsive img-wellcome" src="/docs/deploying/images/conf.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/testing/images/no_instrumentation.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/no_instrumentation.png"/></a>
 </div>
 
-<h6 class="small-subtitle">4) Deploy your stack</h6>
+<h6 class="small-subtitle">Manual instrumentation</h6>
 
-<p>No more configuration is needed. Click on <strong>Next</strong> -&gt; <strong>Next</strong> -&gt; <strong>Create</strong></p>
-<p>Your stack status will show <em>CREATE_IN_PROGRESS</em>. Wait a few minutes until it shows <em>CREATE_COMPLETE</em>. Then you can check <em>Output</em> tab to see the URL where you can access your ElasTest dashboard.</p>
+<p>Your SuT is already deployed on an external server and you want to manually send its logs and metrics to ElasTest.</p>
+<p>Fields to declare:</p>
+<ul>
+<li><strong>SuT IP</strong>: IP or DNS of your SuT. Thanks to this field your TJobs may know how to reach your SuT through environment variable <code>ET_SUT_HOST</code>. Check <a href="../../testing/environment-variables">Environment variables</a> to learn more.</li>
+</ul>
+<p></p>
+
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/deploying/images/output_tab.png"><img class="img-responsive img-wellcome" src="/docs/deploying/images/output_tab.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/testing/images/manual_instrumentation.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/manual_instrumentation.png"/></a>
 </div>
 
-<p>That's all. When you connect to your ElasTest URL, enter the username and password you declared in the <a href="#step-3">third step</a>. <em>Happy testing!</em></p>
+<p>After filling SuT name and description fields, click on <em>Save and get monitoring details</em> button to get all the necessary fields to manually instrument your server following <a href="">these instructions</a>.</p>
+<h6 class="small-subtitle">Automatic instrumentation</h6>
+
+<p>Your SuT is already deployed on an external server and you want to automatically send its logs and metrics to ElasTest.</p>
+<p><strong><em>(Coming soon)</em></strong></p>
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 
 <p><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" />
@@ -422,7 +412,7 @@ for (var i = 1; i <= galleries.length; i++) {
     selector : '[data-fancybox="gallery-' + i + '"]',
     infobar : true,
     arrows : false,
-    loop: true,
+    loop: false,
     protect: true,
     transitionEffect: 'slide',
     buttons : [
@@ -441,10 +431,10 @@ for (var i = 1; i <= galleries.length; i++) {
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../ubuntu/" class="btn btn-xs btn-primary float-right" title="Ubuntu">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../../web-browsers/manual-browsers/" class="btn btn-xs btn-primary float-right" title="Launching Web Browsers on ElasTest">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../../jenkins/" class="btn btn-xs btn-primary" title="Jenkins integration"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
+        <a href="../environment-variables/" class="btn btn-xs btn-primary" title="Environment variables"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
       
     </div>
   
@@ -452,7 +442,7 @@ for (var i = 1; i <= galleries.length; i++) {
 
   
   
-	  <a href="https://github.com/elastest/elastest.io-docs/blob/master/docs/deploying/aws.md" class="fa fa-github offset-xxs-top-30"> Edit Documentation on GitHub</a>
+	  <a href="https://github.com/elastest/elastest.io-docs/blob/master/docs/testing/sut.md" class="fa fa-github offset-xxs-top-30"> Edit Documentation on GitHub</a>
   
 </footer>
 			  	  
