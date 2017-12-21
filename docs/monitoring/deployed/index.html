@@ -14,6 +14,7 @@ section-icon: mdi mdi-content-copy
 	
 
 	$( document).ready(function(){
+		$('#menu-list').show();
 	    $('li.subnav_drop').find('ul.subnav').hide();
 	       $( ".subnav" ).find( "li:contains('Deployed monitoring')" ).each(function(i,e){
 		  var currentElement = $(e);
@@ -26,7 +27,7 @@ section-icon: mdi mdi-content-copy
 	    }); 
 
 	    var minHeight = $('#float-panel').outerHeight() + 100;	
-            $('#doc-container').css('min-height', minHeight+'px');
+						$('#doc-container').css('min-height', minHeight+'px');
 	});
 	   
 	$( ".wy-nav-content" ).find( "li:contains('Deployed monitoring')" ).css('color','red');
@@ -43,7 +44,7 @@ section-icon: mdi mdi-content-copy
 			<h3 class="h5">Explore docs</h3>
 			<hr class="divider hr-lg-left-0 bg-orange">    
 		</div>
-		<ul id="menu-list" class="current">
+		<ul id="menu-list" class="current" hidden>
 			
 				
 					<li><ul> 
