@@ -103,7 +103,7 @@ td, th {
 }
 
 tr:nth-child(even) {
-    background-color: rgba(255, 172, 47, 0.25);
+    background-color: rgba(255, 172, 47, 0.12);
 }
 
 main.main-documentation section ul {
