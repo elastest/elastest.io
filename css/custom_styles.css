@@ -377,6 +377,23 @@ footer ul.list-inline a:active {
     transform: translateY(-50%);
 }
 
+.metric-options-row .metric-options-col {
+    margin-top: 0 !important;
+    margin-bottom: 30px;
+}
+
+.metric-options-row .metric-options-col > div {
+    height: 100%;
+    padding: 0 10px 15px 10px;
+    border: 2px solid rgba(255, 172, 47, 0.3);
+    background-color: rgba(255, 172, 47, 0.08);
+    border-radius: 3px;
+}
+
+.metric-options-row .metric-options-col > div h3 {
+    margin-top: 25px;
+}
+
 @media only screen and (max-width: 800px) {
     #doc-container .holder {
         padding-right: 0 !important;
