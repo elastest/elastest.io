@@ -315,9 +315,9 @@ section-icon: mdi mdi-content-copy
 
 <p>One of the key features of ElasTest is the ability to <strong>show and analyze logs and metrics</strong> of all elements involved in a test. This is particularly interesting for <strong>end-to-end tests</strong>, which usually involve more complex system architectures in distributed environments. For example, suppose a typical three tier web application with a database. A basic e2e test has the following components: the test itself, web browser (or browsers!), web application and database. All those elements can generate logs and metrics of several types (CPU, memory, network packets…). When a test is executed using ElasTest, the tester can see all that monitoring information in the same graphical user interface and with advanced analysis features.</p>
 <p>ElasTest monitoring service is based on <strong>event streams</strong>. Every log and metric entry is called an <strong>event</strong>. The collection of events containing information about the same metric or log is called <strong>event stream</strong>. Any SuT, TJob or Service can generate multiple event streams. All of them can be gathered and visualized by ElasTest on useful graphs in real time and stored for future reviewing.</p>
-<!--</br><div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/monitoring/images/monitoring_sample.png"><img class="img-responsive img-wellcome" src="/docs/monitoring/images/monitoring_sample.png"/></a>
-</div>-->
+<div class="docs-gallery inline-block" style="width: 100%; text-align: center">
+    <a data-fancybox="gallery-1" href="/docs/monitoring/images/monitoring-diagram.png"><img style="max-height: 660px; border: none" src="/docs/monitoring/images/monitoring-diagram.png"/></a>
+</div>
 
 <p>For all TJobs and for all SuTs deployed by ElasTest, you will have available by default some useful logs and metrics. This is possible thanks to Docker features of <a href="https://docs.docker.com/engine/reference/commandline/logs/">logs</a> and <a href="https://docs.docker.com/engine/reference/commandline/stats/">stats</a>, that allow ElasTest to automatically gather monitoring information from the containers. Therefore, this is the easiest and quickest way to monitor your tests.</p>
 <h4 id="send-metrics-with-http" class="holder-subtitle link-top">Monitoring user interface</h4>
