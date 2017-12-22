@@ -214,7 +214,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../">Intro</a>
+        <a class="" href="../">Monitoring</a>
         
     </li>
 
@@ -223,16 +223,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../dockerized/">Dockerized monitoring</a>
-        
-    </li>
-
-
-        
-             
-
-    <li class="toctree-l1 ">
-        <a class="" href="../deployed/">Deployed monitoring</a>
+        <a class="" href="../outside-elastest/">Monitoring outside Elastest</a>
         
     </li>
 
@@ -244,15 +235,6 @@ section-icon: mdi mdi-content-copy
         <a class="current" href="./">Custom monitoring</a>
         
          
-        
-    </li>
-
-
-        
-             
-
-    <li class="toctree-l1 ">
-        <a class="" href="../gui/">Monitoring user interface</a>
         
     </li>
 
@@ -331,7 +313,7 @@ section-icon: mdi mdi-content-copy
 </div>
 </div>
 
-<p>ElasTest automatically gathers metrics and logs from all TJobs and from all SuTs deployed by the platform itself (dockerized SuTs), as explained <a href="../../monitoring/">here</a>. And ElasTest allows configuring already deployed SuTs for sending metrics and logs thanks to Beats technology, as explained <a href="../../monitoring/deployed">here</a>. But what if you want to send some custom information to ElasTest to be shown or graphed during a TJob execution? For example:</p>
+<p>ElasTest automatically gathers metrics and logs from all TJobs and from all SuTs deployed by the platform itself (dockerized SuTs), as explained <a href="../../monitoring/">here</a>. And ElasTest allows configuring already deployed SuTs for sending metrics and logs thanks to Beats technology, as explained <a href="../../monitoring/outside-elastest/">here</a>. But what if you want to send some custom information to ElasTest to be shown or graphed during a TJob execution? For example:</p>
 <ul>
 <li>If your SuT is a web application, the code in your TJob can send the number of users connecting to it as it executes so you can compare it with the CPU consumption or memory usage of the SuT.</li>
 <li>If you are interested in a specific metric of your SuT for which there's no Beat agent available (<a href="https://www.elastic.co/products/beats">official agents</a> or <a href="https://www.elastic.co/guide/en/beats/libbeat/current/community-beats.html">community agents</a>), you can always send it through http.</li>
@@ -462,10 +444,10 @@ for (var i = 1; i <= galleries.length; i++) {
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../gui/" class="btn btn-xs btn-primary float-right" title="Monitoring user interface">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../../jenkins/" class="btn btn-xs btn-primary float-right" title="Jenkins integration">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../deployed/" class="btn btn-xs btn-primary" title="Deployed monitoring"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
+        <a href="../outside-elastest/" class="btn btn-xs btn-primary" title="Monitoring outside Elastest"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
       
     </div>
   
