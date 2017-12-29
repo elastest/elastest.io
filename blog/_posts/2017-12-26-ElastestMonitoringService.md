@@ -6,7 +6,7 @@ main-image: "/images/blog/ems.png"
 image-alt: "ElasTest Monitoring Service architectural diagram"
 authors:
 - cesar_sanchez
-- felipe_ortega
+- felipe_gorostiaga
 ---
 
 Software is becoming more and more oblivious in all aspects of our lives. Software based companies are becoming economically more dominant, opening new economic sectors with surprising innovations and making economic processes more efficient (see, for example, Marc Andreeseen "Why software is eating the world" [1]). Even in classical industries, like the automotive industry, software is involved in more and more functionalities, and very rapidly gaining a higher ratio of costs and resources in car development.
