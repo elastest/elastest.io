@@ -4,6 +4,9 @@ title:  "ElasTest demo at NFV"
 date:   2017-10-05 15:30:00 +0200
 main-image: "/images/blog/nfv.png"
 image-alt: "ElasTest demo at NFV"
+authors:
+- ilie_daniel
+- patxi_gortazar
 ---
 
 Elastest is announcing its participation at the [Berlin 5G Week](http://www.berlin5gweek.org/), by demoing the platform at the [IEEE Conference on Network Function Virtualization and Software Defined Networks](http://nfvsdn2017.ieee-nfvsdn.org/). The demo will showcase the successful integration of [OpenBaton](https://openbaton.github.io/) and [Open5GCore](https://www.open5gcore.org/) with the ElasTest Platform. 

@@ -5,7 +5,6 @@ active: blog
 section-title: Blog
 section-icon: mdi mdi-newspaper
 ---
-
       <section class="section-98 section-sm-110 post">
         <div class="shell">
           <div class="range range-xs-center">
@@ -13,6 +12,23 @@ section-icon: mdi mdi-newspaper
             <div class="cell-xs-10 cell-lg-12 text-md-left cell-lg-push-1 offset-top-50 offset-lg-top-0">
               <h2 class="h1">{{page.title}}</h2>
               <hr class="divider hr-lg-left-0 bg-orange">
+              <p>
+                {% assign authorCount = page.authors | size %}
+                {% if authorCount == 1 %}
+                    {% assign author = page.authors | first %}
+                    {{ site.authors[author].name }} ({{ site.authors[author].employer }})
+                {% elsif authorCount > 1 %}
+                    {% for author in page.authors %}
+                        {% if forloop.first %}
+                            {{ site.authors[author].name }} ({{ site.authors[author].employer }})
+                        {% elsif forloop.last %}
+                            and {{ site.authors[author].name }} ({{ site.authors[author].employer }})
+                        {% else %}
+                            , {{ site.authors[author].name }} ({{ site.authors[author].employer }})
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+                </p>
               <div class="post-date text-left">{{page.date | date_to_string}}</div>
               <div class="offset-top-30 offset-md-top-50 text-justify">
                 <div class="range">

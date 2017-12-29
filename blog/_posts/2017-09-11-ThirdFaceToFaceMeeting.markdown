@@ -4,6 +4,8 @@ title:  "Third face to face meeting in Madrid on 5-6 September"
 date:   2017-09-11 11:30:00 +0200
 main-image: "/images/blog/3rdMeeting.jpg"
 image-alt: "ElasTest third face to face meeting"
+authors:
+- patxi_gortazar
 ---
 
 During the 5th and 6th of September we held our third face to face ElasTest meeting, this time in Madrid. For this meeting we were supposed to have a proof of concept (PoC) for each component, hence we were a bit nervous. Obviously, having PoCs for each of them by the first week of September required us to work hard during the Summer. However, during the 2nd face to face meeting in Berlin we defined carefully this second iteration so we could finish assets in time. 

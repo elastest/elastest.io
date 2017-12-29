@@ -4,6 +4,8 @@ title:  "ElasTest awarded in ExpoQA'17"
 date:   2017-06-12 11:32:00 +0200
 main-image: "/images/blog/mica-award2.jpg"
 image-alt: "ElasTest ExpoQA"
+authors:
+- patxi_gortazar
 ---
 
 Micael Gallego, Technical Coordinator of the ElasTest project, was awarded with the best session award at the international conference ExpoQA held on 13-15 June in Madrid.

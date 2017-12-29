@@ -22,3 +22,24 @@ exclude:
 paginate: 10 #show N posts
 paginate_path: "/blog/page:num/"
 #permalink: /:categories/:title
+
+authors:
+  patxi_gortazar:
+    name: Patxi Gortázar
+    email: francisco.gortazar@urjc.es
+    employer: Universidad Rey Juan Carlos
+  antonia_bertolino:
+    name: Antonia Bertolino
+    employer: Consiglio Nazionale delle Ricerche 
+  daniel_ilie:
+    name: Ilie-Daniel Gheorghe-Pop
+    employer: Fraunhofer FOKUS
+  michael_pauls:
+    name: Michael Pauls
+    employer: Technische Universität Berlin
+  cesar_sanchez:
+    name: César Sánchez
+    employer: IMDEA Software
+  felipe_ortega:
+    name: Felipe Ortega
+    employer: IMDEA Software

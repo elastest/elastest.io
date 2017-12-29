@@ -4,6 +4,8 @@ title:  "Contributing to ElasTest"
 date:   2017-06-07 11:32:00 +0200
 main-image: "/images/blog/OpenSource-s.jpg"
 image-alt: "Contributing to ElasTest"
+authors:
+- patxi_gortazar
 ---
 
 Hi again. We are really busy these days setting up CI infrastructure for our repositories and starting the development of ElasTest, but I'd like to stop for a while and talk to you about how can you contribute to the project. At the end of the day, ElasTest is an open source project from the community for the community, and all the people involved at the moment want to see it succeed. Success in the context of an open source project means gathering community, traction, and interest enough among developers and end-users. Fundamentally this is so that it can survive when the project that is funding its initial development efforts is gone. So, let us briefly go through the different things you can do to contribute to the ElasTest project.

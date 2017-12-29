@@ -4,6 +4,8 @@ title:  "Introducing ElasTest"
 date:   2017-04-28 15:32:00 +0200
 main-image: "/images/blog/elastest_logo_grey_horizontal_706x200.png"
 image-alt: "ElasTest logo"
+authors:
+- patxi_gortazar
 ---
 
 It has been almost six years since Marc Andreessen published his article "Why software is eating the world" [1], but it could have been written just a month ago. Wherever we look, we find software supporting our actions, likings, and jobs. Software is becoming so pervasive that software developers are pushed towards their limits by developing applications that scale in and out, that are adapted to the cloud, fault-tolerant and resilient. From small startups and SMEs to big companies, nowadays everyone is running complex distributed systems on cloud infrastructures. Whether you build your own or you rely on third party services (Amazon RDS is a good example), your system is distributed in nature. 

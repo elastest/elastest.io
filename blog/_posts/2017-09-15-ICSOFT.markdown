@@ -4,6 +4,8 @@ title:  "ElasTest at ICSOFT 2017"
 date:   2017-09-14 10:30:00 +0200
 main-image: "/images/blog/ICSOFT-Boni-presenting.jpg"
 image-alt: "ElasTest at ICSOFT"
+authors:
+- micael_gallego
 ---
 
 On July 24-26 the **12th International Conference on Software Technologies (ICSOFT)** was held in Madrid, and ElasTest was there. It was a great occasion to share advances of software development with other international researchers. 

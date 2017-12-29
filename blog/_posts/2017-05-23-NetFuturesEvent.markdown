@@ -4,6 +4,8 @@ title:  "ElasTest will participate in NetFutures event"
 date:   2017-05-23 15:32:00 +0200
 main-image: "/images/blog/NetFutures.jpg"
 image-alt: "NetFutures 2017"
+authors:
+- patxi_gortazar
 ---
 
 [**NET FUTURES 2017**](http://netfuturesconference.eu) will serve as a forum to debate the shape of Internet in the years to come. How will Internet look like in 2027? This event is for everyone to discuss and learn where the "Internetisation" of everything will lead us to. 

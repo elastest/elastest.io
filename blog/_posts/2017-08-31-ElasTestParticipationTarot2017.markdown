@@ -4,6 +4,8 @@ title:  "Challenges and Opportunities for Software Testing in the Cloud"
 date:   2017-08-30 11:30:00 +0200
 main-image: "/images/blog/Tarot2017.jpg"
 image-alt: "ElasTest Tarot 2017"
+authors:
+- antonia_bertolino
 ---
 
 Hi again!

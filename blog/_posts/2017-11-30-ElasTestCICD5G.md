@@ -4,6 +4,8 @@ title:  "ElasTest as CI/CD for future 5G software-based networks"
 date:   2017-11-30 15:30:00 +0200
 main-image: "/images/blog/5Gdemo.png"
 image-alt: "ElasTest demo at 5G Week"
+authors:
+- michael_pauls
 ---
 
 The ElasTest team participated to this year’s Berlin5GWeek, by demoing the platform at the [IEEE Conference on Network Function Virtualization and Software Defined Networks](http://nfvsdn2017.ieee-nfvsdn.org/). The demo showcased the successful integration of the ElasTest Platform and the Management and Orchestration (MANO) platform [Open Baton](https://openbaton.github.io/) for the continuous integration and future 5G software based networks system validation. 

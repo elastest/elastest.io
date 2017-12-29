@@ -4,6 +4,8 @@ title:  "Face to face meeting in Berlin"
 date:   2017-05-8 15:32:00 +0200
 main-image: "/images/blog/ElasTest_team.jpg"
 image-alt: "ElasTest team"
+authors:
+- patxi_gortazar
 ---
 
 During 4th and 5th May, we held our second face to face meeting, this time in Berlin, hosted by the Fraunhofer Institute. The [Fraunhofer Institute for Open Communication Systems (FOKUS)](https://www.fokus.fraunhofer.de/en) makes research in and develops application-oriented solutions related to communication technologies and services and their interoperability. They are paving the way for architectures and protocols of future communication networks and platforms by measuring and testing distributed telecommunication and software systems. Fraunhofer FOKUS has been developing innovative processes from the original concept to the pre-product in companies and institutions for more than 20 years. The institute can be considered a link between university research and industry.
