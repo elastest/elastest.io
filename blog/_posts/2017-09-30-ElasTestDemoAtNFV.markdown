@@ -5,7 +5,7 @@ date:   2017-10-05 15:30:00 +0200
 main-image: "/images/blog/nfv.png"
 image-alt: "ElasTest demo at NFV"
 authors:
-- ilie_daniel
+- daniel_ilie
 - patxi_gortazar
 ---
 
