@@ -7,7 +7,7 @@ github_username:  elastest
 
 # Build settings
 markdown: kramdown
-highlighter: pygments
+highlighter: rouge
 theme: minima
 gems:
   - jekyll-feed

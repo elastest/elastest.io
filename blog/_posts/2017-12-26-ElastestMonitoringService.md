@@ -29,15 +29,15 @@ The project ElasTest aims to improve the process of testing large cloud applicat
   complex failure dependencies between components. This is witnessed by
   the merge of programming and operation activities in the same group of
   experts, modernly known as DevOps [3].
-- The /elasticity/ of cloud applications makes the problem even more
+- The **elasticity** of cloud applications makes the problem even more
   difficult because concurrent and distributed components can be
   spawned and connected dynamically.
 - As a consequence of the previous points, the run-time system that
   cloud applications depend on is more sophisticated than in earlier
   platforms and more often less reliable itself.
-- Cloud applications are /reactive/, in the sense that there is an environment
+- Cloud applications are **reactive**, in the sense that there is an environment
   that the application interacts with including the cloud infrastructure, other
-  applications and  the users. Cloud applications are typically /interactive/
+  applications and  the users. Cloud applications are typically **interactive**
   so unknown users are meant to use the application.
 - The users of cloud applications can also sometimes be malicious,
   exercising the software in unexpected ways sometimes with the
@@ -64,8 +64,8 @@ We encourage you to follow us on [**Twitter**](https://twitter.com/elastestio). 
 
 Happy testing!!
 
-[1] Marc Andreessen, Why software is eating the world, Wall Street Journal, Oct. 2011
+[1] Marc Andreessen, [Why software is eating the world](https://www.wsj.com/articles/SB10001424053111903480904576512250915629460), Wall Street Journal, Oct. 2011
 
-[2] Wikipedia entry on Runtime Verification https://en.wikipedia.org/wiki/Runtime_verification
+[2] [Wikipedia entry on Runtime Verification](https://en.wikipedia.org/wiki/Runtime_verification)
 
-[3] Wikipedia entry on devops https://en.wikipedia.org/wiki/DevOps
+[3] [Wikipedia entry on devops](https://en.wikipedia.org/wiki/DevOps)
