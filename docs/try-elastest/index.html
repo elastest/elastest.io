@@ -379,16 +379,18 @@ ElasTest Platform is available at http://localhost:37000
 
 <p>The <code>update</code> command will being improved and in the next vervion <code>0.6.0-beta4</code>, it will provide the following new functionality:</p>
 <ul>
-<li>The <code>update</code> command will detect if you are running an ElasTest with the same version that you want to update and, if so, warn you that if you continue that instance it will stop.
-  <code>[text]
+<li>The <code>update</code> command will detect if you are running an ElasTest with the same version that you want to update and, if so, warn you that if you continue that instance it will stop.</li>
+</ul>
+<p><code>text
   docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform update
   Updating ElasTest Platform version ...
   You are going to update the ElasTest version unspecified. Continue? [Y/n]
-  The version of ElasTest that you want to update is already running and it is necessary to stop it. Continue? [Y/n]</code>
-  If your answer is 'Y', then the following message will appear while ElasTest stops.
-  <code>[text]
+  The version of ElasTest that you want to update is already running and it is necessary to stop it. Continue? [Y/n]</code></p>
+<p>If your answer is 'Y', then the following message will appear while ElasTest stops.</p>
+<p><code>text
   Preparing the environment...
-  Stopping ElasTest..............</code></li>
+  Stopping ElasTest..............</code></p>
+<ul>
 <li>The old images associated with the current version of ElasTest installed on your PC, will be removed from the system to free up space.</li>
 </ul>
 <h4 class="holder-subtitle link-top" id="system-specs">Recommended system specifications</h4>
