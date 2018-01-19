@@ -375,24 +375,24 @@ ElasTest Platform is available at http://localhost:37000
 <pre><code class="text">Update finished successfully.
 </code></pre>
 
+<div style="margin-top: 30px">
 <h4 id="next-update" class="link-top">In following versions</h4>
+</div>
 
-<p>The <code>update</code> command will being improved and in the next vervion <code>0.6.0-beta4</code>, it will provide the following new functionality:</p>
-<ul>
-<li>The <code>update</code> command will detect if you are running an ElasTest with the same version that you want to update and, if so, warn you that if you continue that instance it will stop.</li>
-</ul>
-<p><code>text
-  docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform update
-  Updating ElasTest Platform version ...
-  You are going to update the ElasTest version unspecified. Continue? [Y/n]
-  The version of ElasTest that you want to update is already running and it is necessary to stop it. Continue? [Y/n]</code></p>
+<p>The <code>update</code> command will being improved and in the next vervion <code>0.6.0-beta4</code>, it will provide the following new functionality.</p>
+<p>The <code>update</code> command will detect if you are running an ElasTest with the same version that you want to update and, if so, warn you that if you continue that instance it will stop.</p>
+<pre><code class="text">docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform update
+Updating ElasTest Platform version ...
+You are going to update the ElasTest version unspecified. Continue? [Y/n]
+The version of ElasTest that you want to update is already running and it is  necessary to stop it. Continue? [Y/n]
+</code></pre>
+
 <p>If your answer is 'Y', then the following message will appear while ElasTest stops.</p>
-<p><code>text
-  Preparing the environment...
-  Stopping ElasTest..............</code></p>
-<ul>
-<li>The old images associated with the current version of ElasTest installed on your PC, will be removed from the system to free up space.</li>
-</ul>
+<pre><code class="text">Preparing the environment...
+Stopping ElasTest..............
+</code></pre>
+
+<p>To clean the ElasTest installation, when the updating have finished, the old images associated with the current version of ElasTest installed on your PC will be removed from the system.</p>
 <h4 class="holder-subtitle link-top" id="system-specs">Recommended system specifications</h4>
 
 <p>ElasTest needs some minimun system specifications in order to run smoothly:</p>
