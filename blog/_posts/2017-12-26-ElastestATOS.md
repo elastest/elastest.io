@@ -41,4 +41,4 @@ In the mobile sector, testing is particularly critical and complex, characterize
 
 Worldline plays therefore a key role in the project with more than 10 years of experience in the mobility sector and more than 70 people exclusively dedicated to the design, development and testing of applications. Atos Worldline will provide and test in their own systems large set of web and mobile projects to verify the behavior of ElasTest platform.
 
-Join us today! And engage in our conversation about testing and stay tuned for more in our user's mailing list, Twitter channel, or subscribe to our newsletter.
+Join us today! And engage in our conversation about testing and stay tuned for more in our [user's mailing list](https://groups.google.com/forum/#!forum/elastest-users), [Twitter channel](https://twitter.com/elastestio), or subscribe to [our newsletter](http://elastest.io/#newsletter).
