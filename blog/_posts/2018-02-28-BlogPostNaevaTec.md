@@ -8,8 +8,6 @@ authors:
 - guiomar_tunon
 ---
 
-# WebRTC QoE and testing
-
 The multimedia real-time communications area has been traditionally a complex arena where different interests, standards, technologies and visions compete pushing into divergent directions. The arrival of **WebRTC** brought promises of convergence and openness. 
 
 ## But what WebRTC exactly is?
