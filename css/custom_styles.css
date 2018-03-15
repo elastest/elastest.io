@@ -394,9 +394,64 @@ footer ul.list-inline a:active {
     margin-top: 25px;
 }
 
+.col-50 {
+    display: inline-flex;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+.btn-banner {
+    background-color: #a1a1a1 !important;
+    border-color: #a1a1a1 !important;
+    font-size: 13px;
+    padding: 5px 12px 5px 12px;
+    width: 106px;
+}
+
+.btn-banner:hover {
+    background-color: #191919 !important;
+    border-color: #191919 !important;
+}
+
+.banner-buttons {
+    margin-top: 20px;
+}
+
+.inner-50 {
+    height: 100%;
+}
+
+.right-side-banner {
+    display: grid;
+}
+
 @media only screen and (max-width: 800px) {
     #doc-container .holder {
         padding-right: 0 !important;
+    }
+    .col-50 {
+        width: 100%;
+    }
+    .inner-50 {
+        display: inline-table;
+        height: initial;
+    }
+    .banner-1 {
+        margin-bottom: 70px;
+    }
+}
+
+@media only screen and (min-width: 801px) {
+    .col-50 {
+        width: 50%;
+    }
+    .banner-1 {
+        padding-right: 30px;
+    }
+    .banner-2 {
+        padding-left: 30px;
     }
 }
 
