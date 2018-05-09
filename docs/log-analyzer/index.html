@@ -208,6 +208,17 @@ section-icon: mdi mdi-content-copy
 			
 				
 					<li><ul> 
+
+    <li class="toctree-l1 ">
+        <a class="" href="../testlink/">TestLink with ElasTest</a>
+        
+    </li>
+
+</ul></li>
+				
+			
+				
+					<li><ul> 
     
    
     <li class="subnav_drop"><span>Monitoring</span>
@@ -248,12 +259,41 @@ section-icon: mdi mdi-content-copy
 			
 				
 					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Jenkins</span>
+<ul class="subnav">
+        
+             
 
     <li class="toctree-l1 ">
         <a class="" href="../jenkins/">Jenkins integration</a>
         
     </li>
 
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../jenkins/try-jenkins/">Try jenkins</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../jenkins/advanced-example/">Advanced example</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
 </ul></li>
 				
 			
@@ -321,6 +361,7 @@ section-icon: mdi mdi-content-copy
 
 <p>Or load so many TJob executions logs as you want by clicking on "Log Analyzer" menu button. A dialog will pop up to let you select the specific TJob execution(s) you want to analyze. To do so:</p>
 <ol>
+<li>Select the project <strong>Type</strong></li>
 <li>Select the <strong>Project</strong> to which the TJob belongs</li>
 <li>Select the <strong>TJob</strong></li>
 <li>Select all the <strong>TJob Executions</strong> you want to load</li>
@@ -332,18 +373,18 @@ section-icon: mdi mdi-content-copy
 <p>After clicking "OK" button, your logs will load into the Log Analyzer. Every entry is divided into many fields, which include:</p>
 <ul>
 <li><strong>timestamp</strong>: timestamp of the entry</li>
+<li><strong>message</strong>: the log entry message</li>
+<li><strong>level</strong>: the logging level of the entry (DEBUG, INFO, WARNING, ERROR...)</li>
 <li><strong>component</strong>: component that generated the entry (SuT, TJob, TSS)</li>
 <li><strong>stream</strong>: specific stream that generated the entry (remember that one single component can generate different logs and metrics)</li>
 <li><strong>exec</strong>: TJob Execution to which the entry belongs</li>
-<li><strong>message</strong>: the log entry message</li>
-<li><strong>level</strong>: the logging level of the entry (DEBUG, INFO, WARNING, ERROR...)</li>
 </ul>
 <p><br>
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-4" href="/docs/log-analyzer/images/logs.png"><img class="img-responsive img-wellcome" src="/docs/log-analyzer/images/logs.png"/></a>
 </div></p>
 <p>You can order your columns as you want just by drag-and-dropping.</p>
-<p>On the right menu you have the two main tools currently provided by ElasTest Log Analyzer: the <strong>Filter</strong> tool and the <strong>Mark</strong> tool.</p>
+<p>On the right menu you have the three main tools currently provided by ElasTest Log Analyzer: the <strong>Filter</strong> tool,  the <strong>Mark</strong> tool and the <strong>Config</strong> tool.</p>
 <h4 class="holder-subtitle link-top">Filter tool</h4>
 
 <p>Filter tool allows you to do a filtered load of entries. You can filter by:</p>
@@ -366,9 +407,13 @@ section-icon: mdi mdi-content-copy
     <a data-fancybox="gallery-6" href="/docs/log-analyzer/images/mark.png"><img class="img-responsive img-wellcome" src="/docs/log-analyzer/images/mark.png"/></a>
 </div>
 
-<h4 class="holder-subtitle link-top">Known issues</h4>
+<h4 class="holder-subtitle link-top">Config tool</h4>
 
-<p>There's a known issue when log entries have the same timestamp in the order of milliseconds (it can result in data appearing in random order).</p>
+<p>Config tool allows you to save and load your columns position configuration. Moreover, you can set the row height automatically enabling the last button.</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-6" href="/docs/log-analyzer/images/mark.png"><img class="img-responsive img-wellcome" src="/docs/log-analyzer/images/config.png"/></a>
+</div>
+
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 
 <p><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" />
@@ -399,7 +444,7 @@ for (var i = 1; i <= galleries.length; i++) {
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../monitoring/" class="btn btn-xs btn-primary float-right" title="Monitoring">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../testlink/" class="btn btn-xs btn-primary float-right" title="TestLink with ElasTest">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../web-browsers/outside-testing/" class="btn btn-xs btn-primary" title="Testing with Web Browsers from outside ElasTest"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>

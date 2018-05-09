@@ -208,6 +208,17 @@ section-icon: mdi mdi-content-copy
 			
 				
 					<li><ul> 
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testlink/">TestLink with ElasTest</a>
+        
+    </li>
+
+</ul></li>
+				
+			
+				
+					<li><ul> 
     
    
     <li class="subnav_drop"><span>Monitoring</span>
@@ -248,12 +259,41 @@ section-icon: mdi mdi-content-copy
 			
 				
 					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Jenkins</span>
+<ul class="subnav">
+        
+             
 
     <li class="toctree-l1 ">
         <a class="" href="../../jenkins/">Jenkins integration</a>
         
     </li>
 
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../jenkins/try-jenkins/">Try jenkins</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../jenkins/advanced-example/">Advanced example</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
 </ul></li>
 				
 			
@@ -316,12 +356,57 @@ section-icon: mdi mdi-content-copy
 <p>ElasTest supports two deployment modes of SuT:</p>
 <ul>
 <li><strong>SuT deployed by ElasTest</strong>: your software is packaged as Docker container/s. It can be a single Docker image or a docker-compose.</li>
-<li><strong>SuT outside ElasTest</strong>: your software is already deployed somewhere.</li>
+<li><strong>SuT deployed outside ElasTest</strong>: your software is already deployed somewhere.</li>
 </ul>
 <p>When creating a new SuT you are able to defined what mode of deployment ElasTest should work with.</p>
 <h4 class="holder-subtitle link-top">SuT deployed by ElasTest</h4>
 
-<h6 class="small-subtitle">With Docker image</h6>
+<h5 class="small-subtitle">With Commands Container</h5>
+
+<p>Your SuT is packaged as a Docker image. You must write the <em>Commands Container Image</em> and the commands below. These commands will run like the docker image CMD.</p>
+<p>Fields to declare:</p>
+<ul>
+<li><strong>Commands container images</strong>: name of the container image</li>
+<li><strong>Commands</strong>: commands to execute</li>
+<li><strong>Wait for http port</strong>: port that ElasTest should wait for to be available before running your TJobs</li>
+</ul>
+<p></p>
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/testing/images/docker_image.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/commands_container.png"/></a>
+</div>
+
+<p>Furthermore you can choose between three options into <code>With Commands Container</code>:</p>
+<h6 class="small-subtitle">SuT In Commands Container</h6>
+
+<p>You can start a SuT from commands. For example, you can clone and build maven project from GitHub and after start generated java jar file.</p>
+<p></p>
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/testing/images/sut_in_commands_container.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/sut_in_commands_container.png"/></a>
+</div>
+
+<h6 class="small-subtitle">SuT In New Container</h6>
+
+<p>You can start a SuT from docker image. The difference with <code>With Docker Image</code> option is that you can generate a docker image in execution time. For example, you can clone a project from GitHub and after generate docker image and start it.</p>
+<p>It's necessary sets on <code>docker run</code> command the <code>--name</code> parameter with the <code>$ET_SUT_CONTAINER_NAME</code> environment variable.</p>
+<p></p>
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/testing/images/sut_in_new_container.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/sut_in_new_container.png"/></a>
+</div>
+
+<h6 class="small-subtitle">SuT In Docker Compose</h6>
+
+<p>You can start a SuT from docker compose. The difference with <code>With Docker Compose</code> option is that you can use a docker-compose file stored, for example, into GitHub instead of copy and paste it into ElasTest.</p>
+<p>It's necessary sets on <code>docker-compose up</code> command the <code>-p</code> parameter with the <code>$ET_SUT_CONTAINER_NAME</code> environment variable.</p>
+<p></p>
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/testing/images/sut_in_docker_compose.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/sut_in_docker_compose.png"/></a>
+</div>
+
+<h5 class="small-subtitle">With Docker image</h5>
 
 <p>Your SuT is packaged as a Docker image. ElasTest will pull it from DockerHub and run it as the <code>Dockerfile</code> states.</p>
 <p>Fields to declare:</p>
@@ -335,7 +420,7 @@ section-icon: mdi mdi-content-copy
     <a data-fancybox="gallery-1" href="/docs/testing/images/docker_image.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/docker_image.png"/></a>
 </div>
 
-<h6 class="small-subtitle">With docker-compose</h6>
+<h5 class="small-subtitle">With docker-compose</h5>
 
 <p>Your SuT is declared as a docker-compose. ElasTest will pull all the necessary images from DockerHub and run them as the field <em>Docker Compose</em> states</p>
 <p>Fields to declare:</p>
@@ -352,7 +437,7 @@ section-icon: mdi mdi-content-copy
 
 <h4 class="holder-subtitle link-top">SuT outside ElasTest</h4>
 
-<h6 class="small-subtitle">No instrumentation</h6>
+<h5 class="small-subtitle">No instrumentation</h5>
 
 <p>Your SuT is already deployed on an external server and you don't want to send any logs or metrics to ElasTest.</p>
 <p>Fields to declare:</p>
@@ -365,7 +450,7 @@ section-icon: mdi mdi-content-copy
     <a data-fancybox="gallery-1" href="/docs/testing/images/no_instrumentation.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/no_instrumentation.png"/></a>
 </div>
 
-<h6 class="small-subtitle">Manual instrumentation</h6>
+<h5 class="small-subtitle">Manual instrumentation</h5>
 
 <p>Your SuT is already deployed on an external server and you want to manually send its logs and metrics to ElasTest.</p>
 <p>Fields to declare:</p>
@@ -379,7 +464,7 @@ section-icon: mdi mdi-content-copy
 </div>
 
 <p>After filling SuT name and description fields, click on <em>Save and get monitoring details</em> button to get all the necessary fields to manually instrument your server following <a href="">these instructions</a>.</p>
-<h6 class="small-subtitle">Automatic instrumentation</h6>
+<h5 class="small-subtitle">Automatic instrumentation</h5>
 
 <p>Your SuT is already deployed on an external server and you want to automatically send its logs and metrics to ElasTest.</p>
 <p><strong><em>(Coming soon)</em></strong></p>

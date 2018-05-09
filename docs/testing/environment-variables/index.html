@@ -208,6 +208,17 @@ section-icon: mdi mdi-content-copy
 			
 				
 					<li><ul> 
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testlink/">TestLink with ElasTest</a>
+        
+    </li>
+
+</ul></li>
+				
+			
+				
+					<li><ul> 
     
    
     <li class="subnav_drop"><span>Monitoring</span>
@@ -248,12 +259,41 @@ section-icon: mdi mdi-content-copy
 			
 				
 					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Jenkins</span>
+<ul class="subnav">
+        
+             
 
     <li class="toctree-l1 ">
         <a class="" href="../../jenkins/">Jenkins integration</a>
         
     </li>
 
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../jenkins/try-jenkins/">Try jenkins</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../jenkins/advanced-example/">Advanced example</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
 </ul></li>
 				
 			
@@ -325,35 +365,65 @@ section-icon: mdi mdi-content-copy
 </thead>
 <tbody>
 <tr>
-<td>ET_SUT_HOST</td>
+<td><strong>ET_SUT_HOST</strong></td>
 <td>IP of th SuT. Can be used inside the TJobs to connect to the SuT</td>
 <td>"172.18.0.16"</td>
 <td>There's a SuT configured for the TJob</td>
 <td>TJob</td>
 </tr>
 <tr>
-<td>ET_EUS_API</td>
+<td><strong>ET_EUS_API</strong></td>
 <td>HTTP endpoint to launch remote web drivers from the TJobs</td>
 <td>"http://172.18.0.14:8040/eus/v1/"</td>
 <td>Web Browser Service is enabled for the TJob</td>
 <td>TJob</td>
 </tr>
 <tr>
-<td>ET_MON_LSHTTP_API</td>
+<td><strong>ET_MON_LSHTTP_API</strong></td>
 <td>Logstash API URL to send http requests with custom monitoring information to ElasTest</td>
-<td>"http://100.10.10.10:5003/"</td>
+<td>"http://172.18.0.12:80/logstash/"</td>
 <td>Always available</td>
-<td>TJob, SuT</td>
+<td>TJob, SuT, TSS</td>
 </tr>
 <tr>
-<td>ET_MON_EXEC</td>
+<td><strong>ET_MON_LSHTTPS_API</strong></td>
+<td>Logstash Secure API URL to send http requests with custom monitoring information to ElasTest</td>
+<td>"http://172.18.0.12:443/logstash/"</td>
+<td>Always available</td>
+<td>TJob, SuT, TSS</td>
+</tr>
+<tr>
+<td><strong>ET_MON_EXEC</strong></td>
 <td>The execution identifier to set the value of <em>exec</em> field when sending http requests with custom monitoring information to ElasTest</td>
 <td>"s1_e1"</td>
 <td>Always available</td>
-<td>TJob, SuT</td>
+<td>TJob, SuT, TSS</td>
+</tr>
+<tr>
+<td><strong>ET_SUT_CONTAINER_NAME</strong></td>
+<td>SuT container name</td>
+<td>"sut_37"</td>
+<td>Always available</td>
+<td>TJob, SuT, TSS</td>
+</tr>
+<tr>
+<td><strong>ET_MON_INTERNAL_LSBEATS_PORT</strong></td>
+<td>Port through which traces are sent to logstash</td>
+<td>"5037"</td>
+<td>Always available</td>
+<td>TJob, SuT, TSS</td>
+</tr>
+<tr>
+<td><strong>ET_SUT_LOG_TAG</strong></td>
+<td>It allows us to assign a label in the log driver output of the SuT container. This tag contains information that ElasTest uses internally to identify logs</td>
+<td>"sut_37_exec"</td>
+<td>Is an external TJob</td>
+<td>TJob</td>
 </tr>
 </tbody>
 </table>
+<p><br>
+* <strong>TSS</strong>: Test Support Services</p>
 					
 				      </div>
 				    </div>

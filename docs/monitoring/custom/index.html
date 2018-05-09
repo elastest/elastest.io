@@ -206,6 +206,17 @@ section-icon: mdi mdi-content-copy
 			
 				
 					<li><ul> 
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testlink/">TestLink with ElasTest</a>
+        
+    </li>
+
+</ul></li>
+				
+			
+				
+					<li><ul> 
     
    
     <li class="subnav_drop"><span>Monitoring</span>
@@ -248,12 +259,41 @@ section-icon: mdi mdi-content-copy
 			
 				
 					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Jenkins</span>
+<ul class="subnav">
+        
+             
 
     <li class="toctree-l1 ">
         <a class="" href="../../jenkins/">Jenkins integration</a>
         
     </li>
 
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../jenkins/try-jenkins/">Try jenkins</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../jenkins/advanced-example/">Advanced example</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
 </ul></li>
 				
 			
@@ -327,16 +367,13 @@ section-icon: mdi mdi-content-copy
 <p>Value of environment variable <em><code>ET_MON_LSHTTP_API</code></em>.</p>
 <h6 class="small-subtitle">IP of http request in a SuT deployed outside ElasTest</h6>
 
-<p>The URL can be built with <strong>Logstash IP</strong> and <strong>HTTP port</strong> params, available from the SuT information page:</p>
+<p>The URL can be built with <strong>HTTP Api Url</strong> param, available from the SuT information page:</p>
 <div class="docs-gallery more-margin-top inline-block">
     <a data-fancybox="gallery-2" href="/docs/monitoring/images/logstash_ip.png"><img class="img-responsive img-wellcome" src="/docs/monitoring/images/logstash_ip.png"/></a>
 </div>
 
-<pre><code class="text">http://&lt;logstash_ip&gt;:&lt;http_port&gt;/
-</code></pre>
-
 <p>For to the image above, the URL where to send the post requests would be:</p>
-<pre><code class="text">http://www.elastestip.com:5003/
+<pre><code class="text">http://172.18.0.11:80/logstash/
 </code></pre>
 
 <p><br></p>

@@ -208,6 +208,17 @@ section-icon: mdi mdi-content-copy
 			
 				
 					<li><ul> 
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testlink/">TestLink with ElasTest</a>
+        
+    </li>
+
+</ul></li>
+				
+			
+				
+					<li><ul> 
     
    
     <li class="subnav_drop"><span>Monitoring</span>
@@ -248,12 +259,41 @@ section-icon: mdi mdi-content-copy
 			
 				
 					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Jenkins</span>
+<ul class="subnav">
+        
+             
 
     <li class="toctree-l1 ">
         <a class="" href="../../jenkins/">Jenkins integration</a>
         
     </li>
 
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../jenkins/try-jenkins/">Try jenkins</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../jenkins/advanced-example/">Advanced example</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
 </ul></li>
 				
 			
@@ -320,7 +360,7 @@ section-icon: mdi mdi-content-copy
     <span class="badge badge-default my-badge my-badge-disabled">. . .</span>
 </div>
 
-<p>Unit and integration tests are important to verify that isolated and integrated software modules are behaving as expected. Nevertheless, <strong>end to end tests</strong> (sometimes called system tests) are also important, because they allow to test the system as a whole, as seen for the end user. End to end tests are different from unit and integration tests because the <a href="../../fundamentals/core-concepts/">SuT</a> is deployed in the same environment as in production. </p>
+<p>Unit and integration tests are important to verify that isolated and integrated software modules are behaving as expected. Nevertheless, <strong>end to end tests</strong> (sometimes called system tests) are also important, because they allow to test the system as a whole, as seen for the end user. End to end tests are different from unit and integration tests because the <a href="../../fundamentals/core-concepts/">SuT</a> is deployed in the same environment as in production.</p>
 <p>To execute an end to end test in ElasTest, the SuT have to be declared explicitly. Then, any TJob can be associated to that SuT. In this way, the SuT can be managed independently the number of TJob executed against it.</p>
 <p>Here we will run our <a href="https://github.com/elastest/demo-projects/tree/master/rest-java-test">REST Java Test</a>:</p>
 <div class="row">
@@ -372,6 +412,7 @@ public class RestAppTest {
 
 }
 </code>
+
 </pre>
 <blockquote><code>ET_SUT_HOST</code> variable will be the IP of our SuT. ElasTest will automatically inject the right value (<code>localhost</code> if not defined)</blockquote>
 </div>
@@ -394,13 +435,18 @@ public class RestAppTest {
 <ul>
 <li><strong>SuT Name</strong>: name of the Sut (<code>Rest App</code>)</li>
 <li><strong>SuT Description</strong>: description of the SuT (<code>Rest App description</code>)</li>
-<li><strong>With Docker Image</strong> / <strong>With Docker Compose</strong>: whether to deploy the SuT on ElasTest as a Docker <em>image</em> or a <em>docker-compose</em> (<code>With Docker Image</code>)</li>
+<li><strong>With Commands Container</strong> / <strong>With Docker Image</strong> / <strong>With Docker Compose</strong>: whether to deploy the SuT on ElasTest as <em>commands container</em>, as a Docker <em>image</em> or a <em>docker-compose</em> (<code>With Docker Image</code>)</li>
 <li><strong>Docker Image</strong>: image of the SuT (<code>elastest/demo-rest-java-test-sut</code>)</li>
 <li><strong>Wait for http port</strong>: which port of the SuT should ElasTest wait to be available before starting the TJob (<code>8080</code>)</li>
 </ul>
 <p><br></p>
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-1" href="/docs/testing/images/e2e_test_4.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/e2e_test_4.png"/></a>
+</div>
+
+<div class="range range-xs-center warning-range">
+  <div class="cell-xs-4 cell-lg-1 cell-lg-push-1" style="text-align: center;"><span class="icon mdi mdi-information-outline warning-span"></span></div>
+  <div class="cell-xs-8 cell-lg-11 cell-lg-push-11 warning-text"><p><i> You can read <a href="/docs/deploying/aws"> Software under Test </a> if you need help with the SuT.</i></p></div>
 </div>
 
 <h4 class="holder-subtitle link-top">3. Create a new TJob</h4>
@@ -414,10 +460,10 @@ public class RestAppTest {
 <li><strong>TJob Name</strong>: name of the TJob</li>
 <li><strong>Select a SuT</strong>: already created SuT to be tested through to the TJob (<code>Rest App</code>)</li>
 <li><strong>Environment docker image</strong>: the docker image that will host your test. This docker images should contain a client to download your code from your repository hosting service. For example, if your tests are hosted in GitHub and implemented in a Maven project with Java, you need to include a git client, Maven and the Java Development Kit (JDK) in the image. Indeed, this image contains Git, Maven and Java (<code>elastest/test-etm-alpinegitjava</code>)
-<!-- Modify when all images are available for testing with different hostsing services and technologies: Java, Maven, Pyhton, Ruby, Node... --></li>
-<li><strong>Commands</strong>: these are the bash commands to be executed to download the code from a repository and to execute the tests. The specific commands depends on the source code repository type and the technology. For example, the following commands will clone a Maven/Java repository from GitHub and execute the tests:<pre><code>git clone https://github.com/elastest/demo-projects
-cd demo-projects/rest-java-test
-mvn test
+    <!-- Modify when all images are available for testing with different hostsing services and technologies: Java, Maven, Pyhton, Ruby, Node... --></li>
+<li><strong>Commands</strong>: these are the bash commands to be executed to download the code from a repository and to execute the tests. The specific commands depends on the source code repository type and the technology. For example, the following commands will clone a Maven/Java repository from GitHub and execute the tests:<pre><code>  git clone https://github.com/elastest/demo-projects
+  cd demo-projects/rest-java-test
+  mvn test
 </code></pre>
 </li>
 </ul>
@@ -433,14 +479,15 @@ mvn test
     <a data-fancybox="gallery-1" href="/docs/testing/images/e2e_test_9.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/e2e_test_9.png"/></a>
 </div>
 
-<p>In this example, when the TJob is executed, the following steps are performed:
+<p>In this example, when the TJob is executed, the following steps are performed:</p>
 <ol class="ordered-list">
 <li>SuT is executed starting the docker container <code>elastest/demo-rest-java-test-sut</code></li>
 <li>ElasTest waits until container has a http service available in port <code>8080</code></li>
 <li>When service is ready, the test container <code>elastest/test-etm-alpinegitjava</code> is started and specified commands are executed on it.</li>
 <li>The test implemented in <code>demo-projects/rest-java-test</code> maven project is executed. This test makes a http request to a REST endpoint in the SuT and verifies that current result is the expected one.</li>
 <li>When the test container finishes, ElasTest stops the SuT and TJob containers</li>
-</ol></p>
+</ol>
+
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-5" href="/docs/testing/images/e2e-rest-flow.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/e2e-rest-flow.png"/></a>
 </div>

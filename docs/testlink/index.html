@@ -1,0 +1,483 @@
+--- 
+layout: default 
+title: Elastest Documentation - TestLink with ElasTest 
+active: documentation 
+section-title: Documentation 
+section-icon: mdi mdi-content-copy 
+---
+<script src="/js/jquery-3.1.1.min.js"></script>
+<script src="/js/float-panel.js"></script>
+
+<script type="text/javascript">
+	/* Import docs theme css */
+	$('head').append('<link rel="stylesheet" type="text/css" href="/css/theme_extra.css">');
+	
+
+	$( document).ready(function(){
+		$('#menu-list').show();
+	    $('li.subnav_drop').find('ul.subnav').hide();
+	       $( ".subnav" ).find( "li:contains('TestLink with ElasTest')" ).each(function(i,e){
+		  var currentElement = $(e);
+		  currentElement.parent().css({"display":"block","visibility":"visible"}); //css("background-color","blue");
+		  currentElement.css({"display":"block","visibility":"visible"});
+	       });
+	    $('li.subnav_drop').click(function(i,e) {  
+	      $('li.subnav_drop').not(this).find('ul.subnav').hide();
+	      $(this).find('ul.subnav').toggle();
+	    }); 
+
+	    var minHeight = $('#float-panel').outerHeight() + 100;	
+						$('#doc-container').css('min-height', minHeight+'px');
+	});
+	   
+	$( ".wy-nav-content" ).find( "li:contains('TestLink with ElasTest')" ).css('color','red');
+ </script>
+
+<div id="doc-container" class="container text-justify">
+  <div class="holder range"> 
+        <div id="float-panel" class="wy-grid-for-nav cell-xs-3 cell-md-3 cell-lg-2 float-panel" data-top="56">
+
+          
+          <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+            <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="main navigation">
+		<div id="site-menu-title">
+			<h3 class="h5">Explore docs</h3>
+			<hr class="divider hr-lg-left-0 bg-orange">    
+		</div>
+		<ul id="menu-list" class="current" hidden>
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Getting started</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="..">What is ElasTest?</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../try-elastest/">Try ElasTest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../your-first-test/">Your first test with ElasTest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../support/">Get support from ElasTest team</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Testing with ElasTest</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../testing/unit/">Run unit tests</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../testing/e2e-rest/">Run end2end tests</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../testing/parameterized-tests/">Parameterized tests</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../testing/environment-variables/">Environment variables</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../testing/sut/">Software under Test</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Web Browsers</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../web-browsers/manual-browsers/">Launching Web Browsers on ElasTest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../web-browsers/e2e-browser/">Run en2end tests with Web Browsers</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../web-browsers/outside-testing/">Testing with Web Browsers from outside ElasTest</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+
+    <li class="toctree-l1 ">
+        <a class="" href="../log-analyzer/">Log Analyzer</a>
+        
+    </li>
+
+</ul></li>
+				
+			
+				
+					<li><ul> 
+
+    <li class="toctree-l1 current">
+        <a class="current" href="./">TestLink with ElasTest</a>
+        
+         
+        
+    </li>
+
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Monitoring</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../monitoring/">Monitoring</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../monitoring/outside-elastest/">Monitoring outside Elastest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../monitoring/custom/">Custom monitoring</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Jenkins</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../jenkins/">Jenkins integration</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../jenkins/try-jenkins/">Try jenkins</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../jenkins/advanced-example/">Advanced example</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Deploying ElasTest</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../deploying/aws/">Amazon Web Services</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../deploying/ubuntu/">Ubuntu</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+		</ul>
+            </div>
+            &nbsp;
+          </nav>
+        </div>
+
+	<section class="section-sm-41">
+		<div class="shell">
+		    <div class="range range-xs-right">
+		        <div class="cell-xs-10 cell-sm-8 cell-md-9 cell-lg-10 cell-xl-12 text-md-left cell-lg-push-1 offset-lg-top-0">
+			  
+				<div class="wy-nav-content">
+				  <div class="rst-content">
+				   
+				    <div role="main">
+				      <div class="section">
+					
+					  <div class="range range-xs-left">
+<div class="cell-xs-10 cell-lg-6 text-md-left inset-md-right-80 cell-lg-push-1 offset-top-50 offset-lg-top-0">
+<h2 id="content" class="h1">TestLink</h2>
+<div class="offset-top-30 offset-md-top-50">
+</div>
+</div>
+</div>
+
+<p>TestLink is the most widely used web-based test management tool and ElasTest provides integration with TestLink. With this tool you will can easily catch videos, logs, metrics to our manual execution of the test.</p>
+<p>TestLink GUI is accessible from ElasTest. When ElasTest is started, a TestLink instance is also started to allow us the management of manual test.</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-2" href="/docs/testlink/images/testlink_web.png"><img class="img-responsive img-wellcome" src="/docs/testlink/images/testlink_web.png"/></a>
+</div>
+
+<p>Another feature that provides the integration between Elastest and TestLink is the possibility to access from the notes of a test case in TestLink to its execution in Elastest.</p>
+<h4>TestLink UI in ElasTest</h4>
+
+<p>The GUI provided by ElasTest to execute the manual test cases has the following sections:</p>
+<ul>
+<li>TestLink Home</li>
+<li>TestLink Projects</li>
+<li>TestLink Test Plan</li>
+<li>TestLink Test Plan Execution</li>
+<li>TestLink Test Plan Execution Results</li>
+</ul>
+<h5>TestLink Home</h5>
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-3" href="/docs/testlink/images/testlink.png"><img class="img-responsive img-wellcome" src="/docs/testlink/images/testlink.png"/></a>
+</div>
+
+<p>Clicking TestLink button in left side menu of ElasTest will display the TestLink page.</p>
+<p>Here, you can see all your projects created. Moreover, if you want to synchronize the displayed data in ElasTest with the TestLink data, you can use the synchronize button located on the top right.</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-3" href="/docs/testlink/images/testlink_home.png"><img class="img-responsive img-wellcome" src="/docs/testlink/images/testlink_home.png"/></a>
+</div>
+
+<h5>TestLink Project</h5>
+
+<p>This page will allow you to have an overview of all the components of the project, such as Test Suites, Test Plans and SuTs. In addition, you can run a test plan or create a new SuT.</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-3" href="/docs/testlink/images/testlink_project.png"><img class="img-responsive img-wellcome" src="/docs/testlink/images/testlink_project.png"/></a>
+</div>
+
+<h5>TestLink Test Plan</h5>
+
+<p>On this page, not only can you see all the information about the Test Plan, but you can also edit it by clicking on the edit button located at the top.</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-4" href="/docs/testlink/images/testplan_edit.png"><img class="img-responsive img-wellcome" src="/docs/testlink/images/testplan_edit.png"/></a>
+</div>
+
+<p>You can associate a SuT previously created in the editing page.</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-4" href="/docs/testlink/images/edit_testplan.png"><img class="img-responsive img-wellcome" src="/docs/testlink/images/edit_testplan.png"/></a>
+</div>
+
+<h5>TestLink Test Plan Execution</h5>
+
+<p>On the other hand, you can run the test plan clicking the "Execute Test Plan" button located on the top right. Immediately after clicking on the button, a modal will be displayed and you must select a build to run the test.</p>
+<p>You must wait a few seconds until the browser loads. After that, you can see the Test Plan information on the left and a web browser on the right. On the bottom, you will can see all the logs of your test.</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-4" href="/docs/testlink/images/testplan_execute.png"><img class="img-responsive img-wellcome" src="/docs/testlink/images/testplan_execute.png"/></a>
+</div>
+
+<p>When your test is finished, you must fill the fields for each Test Case and click "Save &amp; Next" button.</p>
+<h5>TestLink Test Plan Execution Result</h5>
+
+<p>Once you have completed all the test cases you will can see an overview of your test executed.</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-4" href="/docs/testlink/images/execution_view.png"><img class="img-responsive img-wellcome" src="/docs/testlink/images/execution_view.png"/></a>
+</div>
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-4" href="/docs/testlink/images/execution_files.png"><img class="img-responsive img-wellcome" src="/docs/testlink/images/execution_files.png"/></a>
+</div>
+
+<p>The video recordings of these are shown at the bottom of this page.</p>
+<p>If you click on a Test Case Execution, you will see specific information about it, such as the start and end dates, its status, notes, records and video recordings.</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-4" href="/docs/testlink/images/execution_details.png"><img class="img-responsive img-wellcome" src="/docs/testlink/images/execution_details.png"/></a>
+</div>
+
+<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+
+<p><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script></p>
+<script>
+var galleries = $('div.docs-gallery');
+for (var i = 1; i <= galleries.length; i++) {
+    $().fancybox({
+    selector : '[data-fancybox="gallery-' + i + '"]',
+    infobar : true,
+    arrows : false,
+    loop: false,
+    protect: true,
+    transitionEffect: 'slide',
+    buttons : [
+        'close'
+    ],
+    clickOutside : 'close',
+    clickSlide   : 'close',
+  });
+}
+</script>
+					
+				      </div>
+				    </div>
+				    <footer>
+<hr class="divider divider-100 divider-xs hr-lg-center-0 offset-xs-top-20 offset-sm-top-20 offset-md-top-20 offset-lg-top-20">
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../monitoring/" class="btn btn-xs btn-primary float-right" title="Monitoring">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../log-analyzer/" class="btn btn-xs btn-primary" title="Log Analyzer"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
+      
+    </div>
+  
+
+
+  
+  
+	  <a href="https://github.com/elastest/elastest.io-docs/blob/master/docs/testlink/index.md" class="fa fa-github offset-xxs-top-30"> Edit Documentation on GitHub</a>
+  
+</footer>
+			  	  
+				  </div>
+				</div>
+			</div>
+		    </div>
+		</div>
+	</section>
+
+  </div>
+</div>

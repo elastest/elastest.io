@@ -1,0 +1,527 @@
+--- 
+layout: default 
+title: Elastest Documentation - Advanced example 
+active: documentation 
+section-title: Documentation 
+section-icon: mdi mdi-content-copy 
+---
+<script src="/js/jquery-3.1.1.min.js"></script>
+<script src="/js/float-panel.js"></script>
+
+<script type="text/javascript">
+	/* Import docs theme css */
+	$('head').append('<link rel="stylesheet" type="text/css" href="/css/theme_extra.css">');
+	
+
+	$( document).ready(function(){
+		$('#menu-list').show();
+	    $('li.subnav_drop').find('ul.subnav').hide();
+	       $( ".subnav" ).find( "li:contains('Advanced example')" ).each(function(i,e){
+		  var currentElement = $(e);
+		  currentElement.parent().css({"display":"block","visibility":"visible"}); //css("background-color","blue");
+		  currentElement.css({"display":"block","visibility":"visible"});
+	       });
+	    $('li.subnav_drop').click(function(i,e) {  
+	      $('li.subnav_drop').not(this).find('ul.subnav').hide();
+	      $(this).find('ul.subnav').toggle();
+	    }); 
+
+	    var minHeight = $('#float-panel').outerHeight() + 100;	
+						$('#doc-container').css('min-height', minHeight+'px');
+	});
+	   
+	$( ".wy-nav-content" ).find( "li:contains('Advanced example')" ).css('color','red');
+ </script>
+
+<div id="doc-container" class="container text-justify">
+  <div class="holder range"> 
+        <div id="float-panel" class="wy-grid-for-nav cell-xs-3 cell-md-3 cell-lg-2 float-panel" data-top="56">
+
+          
+          <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+            <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="main navigation">
+		<div id="site-menu-title">
+			<h3 class="h5">Explore docs</h3>
+			<hr class="divider hr-lg-left-0 bg-orange">    
+		</div>
+		<ul id="menu-list" class="current" hidden>
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Getting started</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../..">What is ElasTest?</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../try-elastest/">Try ElasTest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../your-first-test/">Your first test with ElasTest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../support/">Get support from ElasTest team</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Testing with ElasTest</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testing/unit/">Run unit tests</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testing/e2e-rest/">Run end2end tests</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testing/parameterized-tests/">Parameterized tests</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testing/environment-variables/">Environment variables</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testing/sut/">Software under Test</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Web Browsers</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../web-browsers/manual-browsers/">Launching Web Browsers on ElasTest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../web-browsers/e2e-browser/">Run en2end tests with Web Browsers</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../web-browsers/outside-testing/">Testing with Web Browsers from outside ElasTest</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../log-analyzer/">Log Analyzer</a>
+        
+    </li>
+
+</ul></li>
+				
+			
+				
+					<li><ul> 
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testlink/">TestLink with ElasTest</a>
+        
+    </li>
+
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Monitoring</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../monitoring/">Monitoring</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../monitoring/outside-elastest/">Monitoring outside Elastest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../monitoring/custom/">Custom monitoring</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Jenkins</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../">Jenkins integration</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../try-jenkins/">Try jenkins</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Advanced example</a>
+        
+         
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Deploying ElasTest</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../deploying/aws/">Amazon Web Services</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../deploying/ubuntu/">Ubuntu</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+		</ul>
+            </div>
+            &nbsp;
+          </nav>
+        </div>
+
+	<section class="section-sm-41">
+		<div class="shell">
+		    <div class="range range-xs-right">
+		        <div class="cell-xs-10 cell-sm-8 cell-md-9 cell-lg-10 cell-xl-12 text-md-left cell-lg-push-1 offset-lg-top-0">
+			  
+				<div class="wy-nav-content">
+				  <div class="rst-content">
+				   
+				    <div role="main">
+				      <div class="section">
+					
+					  <div class="range range-xs-left">
+<div class="cell-xs-10 cell-lg-6 text-md-left inset-md-right-80 cell-lg-push-1 offset-top-50 offset-lg-top-0">
+<h2 id="content" class="h1">Advanced example</h2>
+<div class="offset-top-30 offset-md-top-50">
+</div>
+</div>
+</div>
+
+<h4 class="holder-subtitle link-top">Pipeline Job Examples</h4>
+
+<p>Bellow, you will find two examples of pipeline where using the ElasTest plugin and implements severals configurations, a SUT is started and a test battery is executed on it.
+To configure this option, ElasTest provides the connection info using <a href="../../testing/environment-variables">environment variables</a></p>
+<p>The installation of ElasTest, Jenkins and the collaboration between them, allows several configurations. In this case, ElasTest and Jenkins are installed on the same machine.</p>
+<h5>Web App</h5>
+
+<p>This pipeline configures the ElasTes plugin, clones the repository with the test, starts the SUT, starts a beat service to send metrics to ElasTest and configures the log output of the SUT container to send the logs to ElasTest as well.</p>
+<pre><code>node{
+    elastest(tss: ['EUS']) {
+        stage ('Executing Test') {
+            echo 'Print env variables'
+            sh 'env'
+
+            def sutImage = docker.image('elastest/demo-web-java-test-sut')
+            def beatImage = docker.image('elastest/etm-dockbeat:latest')
+            echo 'Start beat'
+            beatImage.withRun(&quot;-e LOGSTASHHOST=${env.ET_MON_LSBEATS_HOST} -e LOGSTASHPORT=${env.ET_MON_INTERNAL_LSBEATS_PORT} -v /var/run/docker.sock:/var/run/docker.sock --network=elastest_elastest&quot;) { c1 -&gt;
+                sh 'sleep 5'
+                echo 'Start SUT'
+                sutImage.withRun(&quot;--name ${env.ET_SUT_CONTAINER_NAME} --log-driver=syslog --log-opt syslog-address=tcp://${env.ET_MON_LSTCP_HOST}:${env.ET_MON_LSTCP_PORT} --log-opt tag=${env.ET_SUT_LOG_TAG} --network=elastest_elastest&quot;) { c -&gt;
+                    echo &quot;${c.id}&quot;
+                    sh 'sleep 5'
+                    def sutIp = containerIp(&quot;${env.ET_SUT_CONTAINER_NAME}&quot;)
+                    withEnv(['ET_SUT_HOST=' + sutIp]) {
+                        echo 'Set up test environment'
+                        mvnHome = tool 'M3.3.9'
+                        echo 'Cloning repository'
+                        git 'https://github.com/elastest/demo-projects'
+                        echo 'Run test'
+                        sh &quot;cd ./web-java-test/;'${mvnHome}/bin/mvn' -Dtest=WebAppTest test&quot;
+                    }
+                }
+            }
+        }        
+    }
+}
+
+def containerIp(containerName) {
+    echo &quot;Inside containerIp function&quot;
+    containerIp = sh (
+        script: &quot;docker inspect --format=\&quot;{{.NetworkSettings.Networks.elastest_elastest.IPAddress}}\&quot; &quot;+ containerName,
+        returnStdout: true
+    ).trim()
+
+    echo containerName+&quot; IP = &quot; + containerIp;
+    return containerIp;
+}
+</code></pre>
+
+<p>The example above can be split into the following sections:</p>
+<ul>
+<li><strong>ElasTest plugin configuration</strong> : You can choose to send the logs of your build</li>
+</ul>
+<p></p>
+
+<pre><code>node{
+    elastest() {
+        .......
+    {
+</code></pre>
+
+<p></p>
+
+<ul>
+<li><strong>Docker beat configuration</strong> : To send the SUT’s metrics to ElasTest it is necessary to start a dockbeat service</li>
+</ul>
+<p></p>
+
+<pre><code>.......
+
+def beatImage = docker.image('elastest/etm-dockbeat:latest')
+echo 'Start beat'
+beatImage.withRun(&quot;-e LOGSTASHHOST=${env.ET_MON_LSBEATS_HOST} -e LOGSTASHPORT=${env.ET_MON_INTERNAL_LSBEATS_PORT} -v /var/run/docker.sock:/var/run/docker.sock --network=elastest_elastest&quot;) { c1 -&gt;
+  .......
+}
+</code></pre>
+
+<p></p>
+
+<ul>
+<li><strong>Sut configuration</strong> : Once the dockbeat has already been started, the SUT must be started
+<p></p></li>
+</ul>
+<pre><code>def sutImage = docker.image('elastest/demo-web-java-test-sut')
+....
+echo 'Start SUT'
+sutImage.withRun(&quot;--name ${env.ET_SUT_CONTAINER_NAME} --log-driver=syslog --log-opt syslog-address=tcp://${env.ET_MON_LSTCP_HOST}:${env.ET_MON_LSTCP_PORT} --log-opt tag=${env.ET_SUT_LOG_TAG} --network=elastest_elastest&quot;) { c -&gt;
+    ....
+}
+</code></pre>
+
+<p></p>
+
+<ul>
+<li><strong>Test Execution</strong> : Finally, the tests should be executed to verify that the SUT is working correctly. Remember that you have to obtain the SUT ip and configure it as a environment variable or pass it as a maven property due to the browsers we have used need to know where is the SUT located.</li>
+</ul>
+<p></p>
+
+<pre><code>....
+
+def sutIp = containerIp(&quot;${env.ET_SUT_CONTAINER_NAME}&quot;)
+withEnv(['ET_SUT_HOST=' + sutIp]) {
+    echo 'Set up test environment'
+    mvnHome = tool 'M3.3.9'
+    echo 'Cloning repository'
+    git 'https://github.com/elastest/demo-projects'
+    echo 'Run test'
+    sh &quot;cd ./web-java-test/;'${mvnHome}/bin/mvn' -Dtest=WebAppTest test&quot;
+}
+....
+</code></pre>
+
+<div class="range range-xs-center warning-range">
+  <div class="cell-xs-4 cell-lg-1 cell-lg-push-1" style="text-align: center;"><span class="icon mdi mdi-information-outline warning-span"></span></div>
+  <div class="cell-xs-8 cell-lg-11 cell-lg-push-11 warning-text"><p><i>You can refresh your mind visiting our tutorial <a href="/docs/testing/e2e-rest">How implement a test</a>.</i></p></div>
+</div>
+
+<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+
+<p><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script></p>
+<script>
+var galleries = $('div.docs-gallery');
+for (var i = 1; i <= galleries.length; i++) {
+    $().fancybox({
+    selector : '[data-fancybox="gallery-' + i + '"]',
+    infobar : true,
+    arrows : false,
+    loop: false,
+    protect: true,
+    transitionEffect: 'slide',
+    buttons : [
+        'close'
+    ],
+    clickOutside : 'close',
+    clickSlide   : 'close',
+  });
+}
+</script>
+					
+				      </div>
+				    </div>
+				    <footer>
+<hr class="divider divider-100 divider-xs hr-lg-center-0 offset-xs-top-20 offset-sm-top-20 offset-md-top-20 offset-lg-top-20">
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../deploying/aws/" class="btn btn-xs btn-primary float-right" title="Amazon Web Services">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../try-jenkins/" class="btn btn-xs btn-primary" title="Try jenkins"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
+      
+    </div>
+  
+
+
+  
+  
+	  <a href="https://github.com/elastest/elastest.io-docs/blob/master/docs/jenkins/advanced-example.md" class="fa fa-github offset-xxs-top-30"> Edit Documentation on GitHub</a>
+  
+</footer>
+			  	  
+				  </div>
+				</div>
+			</div>
+		    </div>
+		</div>
+	</section>
+
+  </div>
+</div>

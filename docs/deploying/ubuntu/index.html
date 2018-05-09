@@ -206,6 +206,17 @@ section-icon: mdi mdi-content-copy
 			
 				
 					<li><ul> 
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testlink/">TestLink with ElasTest</a>
+        
+    </li>
+
+</ul></li>
+				
+			
+				
+					<li><ul> 
     
    
     <li class="subnav_drop"><span>Monitoring</span>
@@ -246,12 +257,41 @@ section-icon: mdi mdi-content-copy
 			
 				
 					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Jenkins</span>
+<ul class="subnav">
+        
+             
 
     <li class="toctree-l1 ">
         <a class="" href="../../jenkins/">Jenkins integration</a>
         
     </li>
 
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../jenkins/try-jenkins/">Try jenkins</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../jenkins/advanced-example/">Advanced example</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
 </ul></li>
 				
 			
@@ -390,9 +430,9 @@ Swap:             0           0           0
 <p>There isn't an easy way to run Elastest with the system, but there's a few tips you can considerate.</p>
 <h6 class="small-subtitle">Removing all volumes</h6>
 
-<p>We recommend to remove all the volumes except the MySQL one, because is the one who maintain the test data.</p>
-<p>To do so:</p>
-<pre><code class="bash">for volume in $(docker volume ls | grep -v mysql | tail -n +2 | awk '{print $2}'); do docker volume rm $volume; done
+<p>We recommend to remove all the volumes except MySQL, TestLink and Elasticsearch, because they are the ones that maintain the test data.</p>
+<p>To do this, you can use the following bash code (CAUTION: All volumes will be removed except <code>elastest_edm-mysql</code>, <code>elastest_elasticsearch-data</code> and <code>elastest_etm-testlink</code>):</p>
+<pre><code class="bash">for volume in $(sudo docker volume ls | grep -v mysql | grep -v elastest_elasticsearch-data | grep -v elastest_etm-testlink | tail -n +2 | awk '{print $2}'); do sudo docker volume rm $volume; done
 </code></pre>
 
 <h6 class="small-subtitle">Removing all containers</h6>
@@ -411,9 +451,9 @@ Swap:             0           0           0
 # Delete all containers
 docker rm -f $(docker ps -a -q)
 
-for volume in $(docker volume ls | grep -v mysql | tail -n +2 | awk '{print $2}')
+for volume in $(sudo docker volume ls | grep -v elastest_edm-mysql | grep -v elastest_elasticsearch-data | grep -v elastest_etm-testlink | tail -n +2 | awk '{print $2}')
 do
-  docker volume rm $volume
+ sudo docker volume rm $volume 
 done
 </code></pre>
 

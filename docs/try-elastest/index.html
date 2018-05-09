@@ -208,6 +208,17 @@ section-icon: mdi mdi-content-copy
 			
 				
 					<li><ul> 
+
+    <li class="toctree-l1 ">
+        <a class="" href="../testlink/">TestLink with ElasTest</a>
+        
+    </li>
+
+</ul></li>
+				
+			
+				
+					<li><ul> 
     
    
     <li class="subnav_drop"><span>Monitoring</span>
@@ -248,12 +259,41 @@ section-icon: mdi mdi-content-copy
 			
 				
 					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Jenkins</span>
+<ul class="subnav">
+        
+             
 
     <li class="toctree-l1 ">
         <a class="" href="../jenkins/">Jenkins integration</a>
         
     </li>
 
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../jenkins/try-jenkins/">Try jenkins</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../jenkins/advanced-example/">Advanced example</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
 </ul></li>
 				
 			
@@ -362,24 +402,37 @@ ElasTest Platform is available at http://localhost:37000
 <pre><code class="text">docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --server-address=$(docker-machine ip)
 </code></pre>
 
+<h4 class="holder-subtitle link-top">Options</h4>
+
+<p>You can include the option <strong><code>--server-address=(docker-machine ip)</code></strong> to set up the machine ip address.</p>
+<pre><code class="text">docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --server-address=&quot;localhost&quot;
+</code></pre>
+
+<p>The <strong><code>-l</code></strong> option allows you to show all the containers logs.</p>
+<pre><code>docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start -l
+</code></pre>
+
+<p>You can add <strong><code>-tl</code></strong> if you want to start the TestLink integrated in ElasTest and enable access to it.</p>
+<pre><code class="text">docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start -tl
+</code></pre>
+
+<p>If you add <strong><code>--dev</code></strong> you will enable developer options. For now, it only implements the binding of service ports to allow access to them from external tools.</p>
+<pre><code class="text">docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --dev
+</code></pre>
+
+<p>You can execute <strong><code>-h</code></strong> if you need more information about the options.</p>
+<pre><code>docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform -h
+</code></pre>
+
 <h4 class="holder-subtitle link-top">ElasTest on Amazon Web Services</h4>
 
 <p>ElasTest has been designed from the outset to offer an extremely simple deployment in Amazon Web Services. Check <a href="../deploying/aws/">Amazon Web Services</a> section to learn how to do it in a couple of minutes.</p>
 <h4 class="holder-subtitle link-top">Updating ElasTest</h4>
 
-<p>To update ElasTest to the latest version available, just need to change <code>start</code> to <code>update</code> in the launching command. For example:</p>
-<pre><code class="text">docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform update
+<p>To update ElasTest to the latest version available, just need to change <code>start</code> to <code>update</code> and add <code>-it</code> in the launching command:</p>
+<pre><code class="text">docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform update
 </code></pre>
 
-<p>When all containers have been pulled you will see an output similiar to:</p>
-<pre><code class="text">Update finished successfully.
-</code></pre>
-
-<div style="margin-top: 30px">
-<h4 id="next-update" class="link-top">In following versions</h4>
-</div>
-
-<p>The <code>update</code> command is being improved and in the next version <code>0.6.0-beta4</code> it will provide the following new functionality.</p>
 <p>The <code>update</code> command will detect if you are currently running ElasTest with the same version you want to update to and, if so, warn you that if you continue that instance will be stoppped.</p>
 <pre><code class="text">docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform update
 Updating ElasTest Platform version ...
@@ -387,9 +440,12 @@ You are going to update the ElasTest version unspecified. Continue? [Y/n]
 The version of ElasTest that you want to update is already running and it is  necessary to stop it. Continue? [Y/n]
 </code></pre>
 
-<p>If your answer is 'Y', then the following message will appear while ElasTest stops.</p>
+<p>If your answer is 'Y', then the following message will appear while ElasTest is being Updating.</p>
 <pre><code class="text">Preparing the environment...
-Stopping ElasTest..............
+</code></pre>
+
+<p>When all containers have been pulled you will see an output similiar to:</p>
+<pre><code class="text">Update finished successfully.
 </code></pre>
 
 <p>In order to clean the ElasTest installation, the old images associated with the previous version will be removed from the system after the update process has finished.</p>

@@ -206,6 +206,17 @@ section-icon: mdi mdi-content-copy
 			
 				
 					<li><ul> 
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testlink/">TestLink with ElasTest</a>
+        
+    </li>
+
+</ul></li>
+				
+			
+				
+					<li><ul> 
     
    
     <li class="subnav_drop"><span>Monitoring</span>
@@ -248,12 +259,41 @@ section-icon: mdi mdi-content-copy
 			
 				
 					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Jenkins</span>
+<ul class="subnav">
+        
+             
 
     <li class="toctree-l1 ">
         <a class="" href="../../jenkins/">Jenkins integration</a>
         
     </li>
 
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../jenkins/try-jenkins/">Try jenkins</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../jenkins/advanced-example/">Advanced example</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
 </ul></li>
 				
 			
@@ -336,10 +376,11 @@ section-icon: mdi mdi-content-copy
 
 <p>Once you click on <em>Save and get monitoring details</em>  button, the following configuration parameters will be shown:</p>
 <ul>
-<li><strong>Logstash IP</strong>: The public host (IP or FQDN) in which Logstash is located.</li>
+<li><strong>Logstash Container IP</strong>: The Logstash Container IP.</li>
+<li><strong>Logstash Beats Host</strong>: The public host (IP or FQDN) in which Logstash is located for send Beats traces (along with the Beats Port).</li>
 <li><strong>Logstash Beats Port</strong>: The port in which Logstash can receive beats monitoring information.</li>
-<li><strong>HTTP port</strong>: The port in which Logstash listens for http requests with monitoring information.</li>
-<li><strong>Exec ID</strong>: The execution identification value that has to be included in events sent to Logstash. This value is used to identify what events belongs to this SuT.</li>
+<li><strong>HTTP Api Url</strong>: The complete URL for send http requests to Logstash with monitoring information.</li>
+<li><strong>Execution ID</strong>: The execution identification value that has to be included in events sent to Logstash. This value is used to identify what events belongs to this SuT.</li>
 </ul>
 <p>We will be using them in the following section.</p>
 <div class="docs-gallery more-margin-top inline-block">
@@ -416,7 +457,7 @@ filebeat.prospectors:
     - /path/to/MY_CUSTOM_LOG.log
 
 output.logstash:
-  hosts: ["YOUR_SUT_IP:5044"]
+  hosts: ["LOGSTASH_IP:LOGSTASH_BEATS_PORT"]
 
 fields_under_root: true
 fields:

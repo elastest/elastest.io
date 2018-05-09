@@ -1,6 +1,6 @@
 --- 
 layout: default 
-title: Elastest Documentation - Monitoring user interface 
+title: Elastest Documentation - Try jenkins 
 active: documentation 
 section-title: Documentation 
 section-icon: mdi mdi-content-copy 
@@ -16,7 +16,7 @@ section-icon: mdi mdi-content-copy
 	$( document).ready(function(){
 		$('#menu-list').show();
 	    $('li.subnav_drop').find('ul.subnav').hide();
-	       $( ".subnav" ).find( "li:contains('Monitoring user interface')" ).each(function(i,e){
+	       $( ".subnav" ).find( "li:contains('Try jenkins')" ).each(function(i,e){
 		  var currentElement = $(e);
 		  currentElement.parent().css({"display":"block","visibility":"visible"}); //css("background-color","blue");
 		  currentElement.css({"display":"block","visibility":"visible"});
@@ -30,7 +30,7 @@ section-icon: mdi mdi-content-copy
 						$('#doc-container').css('min-height', minHeight+'px');
 	});
 	   
-	$( ".wy-nav-content" ).find( "li:contains('Monitoring user interface')" ).css('color','red');
+	$( ".wy-nav-content" ).find( "li:contains('Try jenkins')" ).css('color','red');
  </script>
 
 <div id="doc-container" class="container text-justify">
@@ -206,6 +206,17 @@ section-icon: mdi mdi-content-copy
 			
 				
 					<li><ul> 
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testlink/">TestLink with ElasTest</a>
+        
+    </li>
+
+</ul></li>
+				
+			
+				
+					<li><ul> 
     
    
     <li class="subnav_drop"><span>Monitoring</span>
@@ -214,7 +225,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../">Intro</a>
+        <a class="" href="../../monitoring/">Monitoring</a>
         
     </li>
 
@@ -223,7 +234,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../dockerized/">Dockerized monitoring</a>
+        <a class="" href="../../monitoring/outside-elastest/">Monitoring outside Elastest</a>
         
     </li>
 
@@ -232,27 +243,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../deployed/">Deployed monitoring</a>
-        
-    </li>
-
-
-        
-             
-
-    <li class="toctree-l1 ">
-        <a class="" href="../custom/">Custom monitoring</a>
-        
-    </li>
-
-
-        
-             
-
-    <li class="toctree-l1 current">
-        <a class="current" href="./">Monitoring user interface</a>
-        
-         
+        <a class="" href="../../monitoring/custom/">Custom monitoring</a>
         
     </li>
 
@@ -266,12 +257,43 @@ section-icon: mdi mdi-content-copy
 			
 				
 					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Jenkins</span>
+<ul class="subnav">
+        
+             
 
     <li class="toctree-l1 ">
-        <a class="" href="../../jenkins/">Jenkins integration</a>
+        <a class="" href="../">Jenkins integration</a>
         
     </li>
 
+
+        
+             
+
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Try jenkins</a>
+        
+         
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../advanced-example/">Advanced example</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
 </ul></li>
 				
 			
@@ -325,38 +347,103 @@ section-icon: mdi mdi-content-copy
 					
 					  <div class="range range-xs-left">
 <div class="cell-xs-10 cell-lg-6 text-md-left inset-md-right-80 cell-lg-push-1 offset-top-50 offset-lg-top-0">
-<h2 id="content" class="h1">Monitoring user interface</h2>
+<h2 id="content" class="h1">Try jenkins</h2>
 <div class="offset-top-30 offset-md-top-50">
 </div>
 </div>
 </div>
 
-<p>ElasTest provides testers with a direct way of customizing their dashboards on TJob executions, so they can see only the metrics and logs that matter to them.</p>
-<p>During any TJob execution, you can add so many logs and metrics you want by clicking the Monitoring Configuration button:</p>
+<p>From a standard Jenkins Job, this plugin allows you:</p>
+<ul>
+<li>Send the logs generated during the build of a Job to ElasTest</li>
+<li>Request an EUS TSS that provides browsers on demand, which can be used during the build.</li>
+</ul>
+<h4 class="holder-subtitle link-top">Freestyle Job</h4>
+
+<p>To configure a Freestyle Job with ElasTest integrated, you will must select the <em>Integrate Jenkins with ElasTest</em> field. In this case, the  <em>EUS</em> field is not required that is why this example do not need a web browser. </p>
+<p>To complete this freestyle job, you must download the project inside of this <a href="https://github.com/elastest/demo-projects">repository</a> and introduce <code>cd unit-java-test;mvn test</code> in the <strong>Build command</strong>.</p>
+<p><br>
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/monitoring/images/monitoring_conf.png"><img class="img-responsive img-wellcome" src="/docs/monitoring/images/monitoring_conf.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/jenkins/images/job.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/job.png"/></a>
+</div>
+<br></p>
+<h5>Job result</h5>
+
+<p>After we run the Freestyle Job, we can check the results in both platforms, <strong>Jenkins</strong> and <strong>ElasTest</strong>. 
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-4" href="/docs/jenkins/images/jenkins_log.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/jenkins_log.png"/></a>
+    <a data-fancybox="gallery-4" href="/docs/jenkins/images/elastest_log.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/elastest_log.png"/></a>
+</div></p>
+<h4 class="holder-subtitle link-top">Pipeline</h4>
+
+<p>From a Pipeline this plugin allows:</p>
+<ul>
+<li>Send the Job’s logs to ElasTest.</li>
+<li>Use the browsers you need in the tests executed during a build. To do this, you must indicate that you want the provision of a EUS TSS, passing this requirement as a parameter in the plugin.</li>
+<li>
+<p>Send logs and metrics of a dockerized SUT from a Job's execution to ElasTest and the logs generated by the browsers used.</p>
+</li>
+<li>
+<p>Run a SUT using docker or docker-compose</p>
+</li>
+</ul>
+<h5>Basics examples</h5>
+
+<h6>Example 1</h6>
+
+<p>This code will be us useful, due to, adding it in the Pipeline script and executing the Pipeline, it will download the <a href="https://github.com/elastest/demo-projects"> demo-projects </a> repository and it will run the test.</p>
+<pre><code>node{ 
+    elastest() {
+        stage ('Executing Test') {
+            echo 'Print env variables'
+            sh 'env'
+            mvnHome = tool 'M3.3.9'
+            echo 'Cloning repository'
+            git 'https://github.com/elastest/demo-projects'
+            echo 'Run test'
+            sh &quot;cd ./unit-java-test/;'${mvnHome}/bin/mvn' test&quot;
+        }    
+    }
+}
+</code></pre>
+
+<p></p>
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-2" href="/docs/jenkins/images/pipeline.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/pipeline.png"/></a>
 </div>
 
-<p>There you can find all the monitoring choices available for that specific TJob exexcution.
-For example, for this TJob we are adding 3 different log streams:</p>
-<ul>
-<li>The default log of our SuT</li>
-<li>The default log of our test</li>
-<li>The browser's console (we are making use of ElasTest Web Browsers service)</li>
-</ul>
-<p>And 3 different metrics for the container of our test:</p>
-<ul>
-<li>The CPU usage</li>
-<li>The memory usage</li>
-<li>The number of bytes received from the network per second</li>
-</ul>
-<p></br><div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/monitoring/images/monitoring_sample.png"><img class="img-responsive img-wellcome" src="/docs/monitoring/images/monitoring_sample.png"/></a>
-</div></p>
-<p>When clicking on "Apply" button, you will see one monitoring card for each selected option (a log card for each log and a chart card for each metric). If you want to save your current monitoring configuration for future executions of the same TJob, you just need to press "Apply and Save" button instead. Thus, each time you launch that TJob you will see the same logs and graphs. This can be useful for regression tests, as you can compare the same information from two diffrent executions of the same TJob.</p>
+<h6>Example 1 result</h6>
+
+<p>In the same way as in Freestyle Job, result can be checked in Jenkins and ElasTest.</p>
+<p></p>
+
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/monitoring/images/apply_and_save.png"><img class="img-responsive img-wellcome" src="/docs/monitoring/images/apply_and_save.png"/></a>
+    <a data-fancybox="gallery-2" href="/docs/jenkins/images/pipeline_result.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/pipeline_result.png"/></a>
 </div>
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-2" href="/docs/jenkins/images/pipeline_result_2.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/pipeline_result_2.png"/></a>
+</div>
+
+<h6>Example 2</h6>
+
+<p>We can execute this code in another Pipeline. The difference with the previous example is that in this case, we are using the EUS service adding <code>tss: ['EUS']</code>. This example will use a web browser to do a little test on it.</p>
+<pre><code>node{
+    elastest(tss: ['EUS']) {
+        stage ('Executing Test') {
+            echo 'Print env variables'
+            sh 'env'
+            echo 'Set up test environment'
+            mvnHome = tool 'M3.3.9'
+            echo 'Cloning repository'
+            git 'https://github.com/elastest/demo-projects'
+            echo 'Run test'
+            sh &quot;cd ./simple-web-java-test/;'${mvnHome}/bin/mvn' test&quot;
+        }        
+    }
+}
+</code></pre>
 
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 
@@ -369,7 +456,7 @@ for (var i = 1; i <= galleries.length; i++) {
     selector : '[data-fancybox="gallery-' + i + '"]',
     infobar : true,
     arrows : false,
-    loop: true,
+    loop: false,
     protect: true,
     transitionEffect: 'slide',
     buttons : [
@@ -388,10 +475,10 @@ for (var i = 1; i <= galleries.length; i++) {
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../../jenkins/" class="btn btn-xs btn-primary float-right" title="Jenkins integration">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../advanced-example/" class="btn btn-xs btn-primary float-right" title="Advanced example">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../custom/" class="btn btn-xs btn-primary" title="Custom monitoring"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
+        <a href="../" class="btn btn-xs btn-primary" title="Jenkins integration"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
       
     </div>
   
@@ -399,7 +486,7 @@ for (var i = 1; i <= galleries.length; i++) {
 
   
   
-	  <a href="https://github.com/elastest/elastest.io-docs/blob/master/docs/monitoring/gui.md" class="fa fa-github offset-xxs-top-30"> Edit Documentation on GitHub</a>
+	  <a href="https://github.com/elastest/elastest.io-docs/blob/master/docs/jenkins/try-jenkins.md" class="fa fa-github offset-xxs-top-30"> Edit Documentation on GitHub</a>
   
 </footer>
 			  	  
