@@ -23,6 +23,6 @@ The new ElasTest release, version 0.9.1, has brought some new features, along wi
 
 If you want to give it a try, follow our [(brief) instructions here](https://elastest.io/docs/try-elastest/). If you already have ElasTest installed, update instructions can be found [here](https://elastest.io/docs/try-elastest/) in the Update section.
 
-Please, if you find any issue, let us know by reporting it in our [ElasTest GitHub repository](https://github.com/elastest/elastest) using the template provided.
+Please, if you find any issue, let us know by reporting it in our [issue tracker](https://github.com/elastest/elastest) using the template provided.
 
-Do you want to support the project, and keep it going? **Give us extra energy by starring the repository!!**
+Do you want to support the project, and keep it going? **Give us extra energy by starring the [ElasTest repository](https://github.com/elastest/elastest)!!**
