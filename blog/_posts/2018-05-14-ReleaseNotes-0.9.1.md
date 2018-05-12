@@ -8,7 +8,7 @@ authors:
 - patxi_gortazar
 ---
 
-The new ElasTest release, version 0.9.1, has brought some new features, along with a more stabilized core platform. The following is a list of the main improvements in the project.
+One year after starting the development efforts in the project we are shipping a new version which includes many important new features we've been developing during the last four months. This new ElasTest release, version 0.9.1, has brought some new features, along with a more stabilized core platform. The following is a list of the main improvements in the project:
 
 * [**Jenkins integration**](/docs/jenkins/). You don't need to abandon your CI tools. Use ElasTest straight from your Jenkins jobs (Freestyle or Pipeline). For instance, if you're using Pipeline jobs, just wrap up your Pipeline in an elastest step, and you'll be ready to use all the fancy features we bring to testers and developers, like managed browsers! See our [advanced example](/docs/jenkins/advanced-example/) for a more complex scenario.
 * [**TestLink integration**](https://elastest.io/docs/testlink/). TestLink is the most widely used web-based test management tool and ElasTest provides integration with TestLink. With this integration now you can easily record videos and gather logs and metrics when manually running your tests.
