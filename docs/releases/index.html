@@ -1,6 +1,6 @@
 --- 
 layout: default 
-title: Elastest Documentation - Log Analyzer 
+title: Elastest Documentation - Releases 
 active: documentation 
 section-title: Documentation 
 section-icon: mdi mdi-content-copy 
@@ -16,7 +16,7 @@ section-icon: mdi mdi-content-copy
 	$( document).ready(function(){
 		$('#menu-list').show();
 	    $('li.subnav_drop').find('ul.subnav').hide();
-	       $( ".subnav" ).find( "li:contains('Log Analyzer')" ).each(function(i,e){
+	       $( ".subnav" ).find( "li:contains('Releases')" ).each(function(i,e){
 		  var currentElement = $(e);
 		  currentElement.parent().css({"display":"block","visibility":"visible"}); //css("background-color","blue");
 		  currentElement.css({"display":"block","visibility":"visible"});
@@ -30,7 +30,7 @@ section-icon: mdi mdi-content-copy
 						$('#doc-container').css('min-height', minHeight+'px');
 	});
 	   
-	$( ".wy-nav-content" ).find( "li:contains('Log Analyzer')" ).css('color','red');
+	$( ".wy-nav-content" ).find( "li:contains('Releases')" ).css('color','red');
  </script>
 
 <div id="doc-container" class="container text-justify">
@@ -196,10 +196,8 @@ section-icon: mdi mdi-content-copy
 				
 					<li><ul> 
 
-    <li class="toctree-l1 current">
-        <a class="current" href="./">Log Analyzer</a>
-        
-         
+    <li class="toctree-l1 ">
+        <a class="" href="../log-analyzer/">Log Analyzer</a>
         
     </li>
 
@@ -331,8 +329,10 @@ section-icon: mdi mdi-content-copy
 				
 					<li><ul> 
 
-    <li class="toctree-l1 ">
-        <a class="" href="../releases/">Releases</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Releases</a>
+        
+         
         
     </li>
 
@@ -358,95 +358,34 @@ section-icon: mdi mdi-content-copy
 					
 					  <div class="range range-xs-left">
 <div class="cell-xs-10 cell-lg-6 text-md-left inset-md-right-80 cell-lg-push-1 offset-top-50 offset-lg-top-0">
-<h2 id="content" class="h1">Log Analyzer</h2>
-<div class="offset-top-30 offset-md-top-50">
-</div>
+<h2 id="content" class="h1">Releases</h2>
 </div>
 </div>
 
-<p>ElasTest's Log Analyzer service provides an advanced tool for analyzing any log gathered during any finished or running TJob execution.</p>
-<p>You can load the logs directly from the page of any TJob execution:</p>
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-2" href="/docs/log-analyzer/images/tjob_exec_link.png"><img class="img-responsive img-wellcome" src="/docs/log-analyzer/images/tjob_exec_link.png"/></a>
-</div>
-
-<p>Or load so many TJob executions logs as you want by clicking on "Log Analyzer" menu button. A dialog will pop up to let you select the specific TJob execution(s) you want to analyze. To do so:</p>
-<ol>
-<li>Select the project <strong>Type</strong></li>
-<li>Select the <strong>Project</strong> to which the TJob belongs</li>
-<li>Select the <strong>TJob</strong></li>
-<li>Select all the <strong>TJob Executions</strong> you want to load</li>
-</ol>
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-3" href="/docs/log-analyzer/images/tjob_exec_selection.png"><img class="img-responsive img-wellcome" src="/docs/log-analyzer/images/tjob_exec_selection.png"/></a>
-</div>
-
-<p>After clicking "OK" button, your logs will load into the Log Analyzer. Every entry is divided into many fields, which include:</p>
+<div id="0.9.1">
+<h3>0.9.1</h3>
 <ul>
-<li><strong>timestamp</strong>: timestamp of the entry</li>
-<li><strong>message</strong>: the log entry message</li>
-<li><strong>level</strong>: the logging level of the entry (DEBUG, INFO, WARNING, ERROR...)</li>
-<li><strong>component</strong>: component that generated the entry (SuT, TJob, TSS)</li>
-<li><strong>stream</strong>: specific stream that generated the entry (remember that one single component can generate different logs and metrics)</li>
-<li><strong>exec</strong>: TJob Execution to which the entry belongs</li>
+<li><a target="_blank" href="/docs/jenkins/">Jenkins integration.</a> You don’t need to abandon your CI tools. Use ElasTest straight from your Jenkins jobs (Freestyle or Pipeline). For instance, if you’re using Pipeline jobs, just wrap up your Pipeline in an elastest step, and you’ll be ready to use all the fancy features we bring to testers and developers, like managed browsers! See our advanced example for a more complex scenario.</li>
+
+<li><a target="_blank" href="/docs/testlink/">TestLink integration.</a> TestLink is the most widely used web-based test management tool and ElasTest provides integration with TestLink. With this integration now you can easily record videos and gather logs and metrics when manually running your tests.</li>
+
+<li><a target="_blank" href="https://hub.docker.com/u/elastestbrowsers/">New Docker images for browsers.</a> We have been developing a new set of browser Docker images that brings the benefits of both Selenoid and Selenium docker images. These images are ready for some awesome features we will be developing in the following months, like changing browser resolution to adapt better to the desktop of our users.</li>
+
+<li><a target="_blank" href="/docs/web-browsers/manual-browsers/">Browser recordings</a> can now be opened as a new tab or on a floating dialog.</li>
+
+<li><a target="_blank" href="/docs/log-analyzer/">Our powerful Log Analyzer</a> now remembers previous configurations.</li>
+
+<li><a target="_blank" href="/docs/testing/sut/">Generate your SuT on the fly with Commands Containers</a>: a new Docker image can be generated on the fly, and this image will be run as the SuT.</li>
+
+<li><a target="_blank" href="/docs/docs/try-elastest/">ElasTest Command line options documented</a> in its own subsection within the installation page.</li>
+
+<li><a target="_blank" href="/docs/testing/environment-variables/">Changes in environment variables: the ElasTest endpoint</a> for sending metrics from an external SuT has changed, and the ET_MON_LSHTTP_API environment variable is now available also for Test Support Services.</li>
+
+<li><a target="_blank" href="/docs/testing/environment-variables/">There are new environment variables available</a>: ET_SUT_CONTAINER_NAME, ET_MON_INTERNAL_LSBEATS_PORT and ET_SUT_LOG_TAG. Those allows ElasTest to do a better job when identifying what’s coming from which SuT.</li>
+
+<li>We have changed the name of the status for a TJob that has been stopped manually to STOPPED.</li>
 </ul>
-<p><br>
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-4" href="/docs/log-analyzer/images/logs.png"><img class="img-responsive img-wellcome" src="/docs/log-analyzer/images/logs.png"/></a>
-</div></p>
-<p>You can order your columns as you want just by drag-and-dropping.</p>
-<p>On the right menu you have the three main tools currently provided by ElasTest Log Analyzer: the <strong>Filter</strong> tool,  the <strong>Mark</strong> tool and the <strong>Config</strong> tool.</p>
-<h4 class="holder-subtitle link-top">Filter tool</h4>
-
-<p>Filter tool allows you to do a filtered load of entries. You can filter by:</p>
-<ul>
-<li><strong>Date</strong>: load logs within a certain time frame, applied to the timestamp of the entries</li>
-<li><strong>Component/Stream</strong>: load logs produced by certain component(s) for certain stream(s)</li>
-<li><strong>Level</strong>: load logs of certain level of logging</li>
-<li><strong>Message</strong>: load logs whose <em>message</em> filed contains certain word</li>
-</ul>
-<p><br>
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-5" href="/docs/log-analyzer/images/logs.png"><img class="img-responsive img-wellcome" src="/docs/log-analyzer/images/logs.png"/></a>
-</div></p>
-<p>Bottom options let you establish the number of entries you want ElasTest to load (the first ones that match your filters).</p>
-<p><em>Add from last</em> and <em>Add from selected</em> will append only the new entries starting from that specific entry.</p>
-<h4 class="holder-subtitle link-top">Mark tool</h4>
-
-<p>Mark tool allows you to perform a coloured search in your loaded entries. You can then easily navigate between the entries for each search just by clicking on the arrow buttons for the desired serach.</p>
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-6" href="/docs/log-analyzer/images/mark.png"><img class="img-responsive img-wellcome" src="/docs/log-analyzer/images/mark.png"/></a>
 </div>
-
-<h4 class="holder-subtitle link-top">Config tool</h4>
-
-<p>Config tool allows you to save and load your columns position configuration. Moreover, you can set the row height automatically enabling the last button.</p>
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-6" href="/docs/log-analyzer/images/mark.png"><img class="img-responsive img-wellcome" src="/docs/log-analyzer/images/config.png"/></a>
-</div>
-
-<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
-
-<p><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script></p>
-<script>
-var galleries = $('div.docs-gallery');
-for (var i = 1; i <= galleries.length; i++) {
-    $().fancybox({
-    selector : '[data-fancybox="gallery-' + i + '"]',
-    infobar : true,
-    arrows : false,
-    loop: false,
-    protect: true,
-    transitionEffect: 'slide',
-    buttons : [
-        'close'
-    ],
-    clickOutside : 'close',
-    clickSlide   : 'close',
-  });
-}
-</script>
 					
 				      </div>
 				    </div>
@@ -455,10 +394,8 @@ for (var i = 1; i <= galleries.length; i++) {
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../testlink/" class="btn btn-xs btn-primary float-right" title="TestLink with ElasTest">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
       
-      
-        <a href="../web-browsers/outside-testing/" class="btn btn-xs btn-primary" title="Testing with Web Browsers from outside ElasTest"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
+        <a href="../deploying/ubuntu/" class="btn btn-xs btn-primary" title="Ubuntu"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
       
     </div>
   
@@ -466,7 +403,7 @@ for (var i = 1; i <= galleries.length; i++) {
 
   
   
-	  <a href="https://github.com/elastest/elastest.io-docs/blob/master/docs/log-analyzer/index.md" class="fa fa-github offset-xxs-top-30"> Edit Documentation on GitHub</a>
+	  <a href="https://github.com/elastest/elastest.io-docs/blob/master/docs/releases/index.md" class="fa fa-github offset-xxs-top-30"> Edit Documentation on GitHub</a>
   
 </footer>
 			  	  
