@@ -35,13 +35,10 @@
       <!-- RD Navbar Transparent-->
       <div class="rd-navbar-wrap">
 
-        {% if page.page-type=="home" %}
-        <nav data-md-device-layout="rd-navbar-fixed" data-lg-device-layout="rd-navbar-static" class="rd-navbar rd-navbar-default rd-atata rd-navbar-transparent"
-          data-lg-auto-height="true" data-md-layout="rd-navbar-fixed" data-lg-layout="rd-navbar-static" data-lg-stick-up="true">
-          {% else %}
+       
           <nav data-md-device-layout="rd-navbar-fixed" data-lg-device-layout="rd-navbar-static" class="rd-navbar rd-navbar-default rd-navbar-dark"
             data-lg-auto-height="true" data-md-layout="rd-navbar-fixed" data-lg-layout="rd-navbar-static" data-lg-stick-up="true">
-            {% endif %}
+            
 
             <div class="rd-navbar-inner">
               <!-- RD Navbar Panel-->
@@ -105,42 +102,6 @@
           </nav>
       </div>
 
-      {% if page.page-type=="home" %}
-
-      <!--Swiper-->
-      <div class="rd-parallax rd-parallax-swiper">
-        <div data-speed="0.3" data-sm-speed="1" data-type="html" class="rd-parallax-layer">
-          <div data-loop="true" data-height="100vh" data-dragable="false" data-min-height="750px" class="swiper-container swiper-slider swiper-no-swiping">
-            <div class="swiper-wrapper text-center">
-              <div id="page-loader" data-slide-bg="images/intros/intro-08-1920x1078.jpg" data-preview-bg="images/intros/intro-08-1920x1078.jpg"
-                class="swiper-slide">
-                <div data-speed="0.5" data-fade="true" class="swiper-caption swiper-parallax">
-                  <div class="swiper-slide-caption">
-                    <div class="shell">
-                      <div class="range range-lg-center">
-                        <div class="cell-lg-12">
-                          <div data-caption-animate="fadeInUp" data-caption-delay="700">
-                            <img id="page-loader-logo" style="margin-top:25px" src="images/logos_elastest/logo-white.png" alt="ElasTest" />
-                          </div>
-                        </div>
-                        <div class="cell-lg-10 offset-top-30">
-                          <p data-caption-animate="fadeInUp" data-caption-delay="900" class="hidden reveal-sm-block text-light h4">
-                            An elastic platform to ease end to end testing
-                          </p>
-                        </div>
-                        <div class="offset-top-66 range range-md-center range-sm-center range-xs-center"><a href="/#features" data-waypoint-to="#features" data-caption-animate="fadeInUp" data-caption-delay="1200"
-                            class="btn btn-default btn-lg btn-anis-effect"><span class="btn-text">Start a journey</span></a></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {% endif %}
 
     </header>
 
