@@ -1,0 +1,473 @@
+--- 
+layout: default 
+title: Elastest Documentation - Experimental 
+active: documentation 
+section-title: Documentation 
+section-icon: mdi mdi-content-copy 
+---
+<script src="/js/jquery-3.1.1.min.js"></script>
+<script src="/js/float-panel.js"></script>
+
+<script type="text/javascript">
+	/* Import docs theme css */
+	$('head').append('<link rel="stylesheet" type="text/css" href="/css/theme_extra.css">');
+	
+
+	$( document).ready(function(){
+		$('#menu-list').show();
+	    $('li.subnav_drop').find('ul.subnav').hide();
+	       $( ".subnav" ).find( "li:contains('Experimental')" ).each(function(i,e){
+		  var currentElement = $(e);
+		  currentElement.parent().css({"display":"block","visibility":"visible"}); //css("background-color","blue");
+		  currentElement.css({"display":"block","visibility":"visible"});
+	       });
+	    $('li.subnav_drop').click(function(i,e) {  
+	      $('li.subnav_drop').not(this).find('ul.subnav').hide();
+	      $(this).find('ul.subnav').toggle();
+	    }); 
+
+	    var minHeight = $('#float-panel').outerHeight() + 100;	
+						$('#doc-container').css('min-height', minHeight+'px');
+	});
+	   
+	$( ".wy-nav-content" ).find( "li:contains('Experimental')" ).css('color','red');
+ </script>
+
+<div id="doc-container" class="container text-justify">
+  <div class="holder range"> 
+        <div id="float-panel" class="wy-grid-for-nav cell-xs-3 cell-md-3 cell-lg-2 float-panel" data-top="56">
+
+          
+          <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+            <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="main navigation">
+		<div id="site-menu-title">
+			<h3 class="h5">Explore docs</h3>
+			<hr class="divider hr-lg-left-0 bg-orange">    
+		</div>
+		<ul id="menu-list" class="current" hidden>
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Getting started</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="..">What is ElasTest?</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../try-elastest/">Try ElasTest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../your-first-test/">Your first test with ElasTest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../support/">Get support from ElasTest team</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Testing with ElasTest</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../testing/unit/">Run unit tests</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../testing/e2e-rest/">Run end2end tests</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../testing/parameterized-tests/">Parameterized tests</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../testing/environment-variables/">Environment variables</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../testing/sut/">Software under Test</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Web Browsers</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../web-browsers/manual-browsers/">Launching Web Browsers on ElasTest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../web-browsers/e2e-browser/">Run en2end tests with Web Browsers</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../web-browsers/outside-testing/">Testing with Web Browsers from outside ElasTest</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+
+    <li class="toctree-l1 ">
+        <a class="" href="../log-analyzer/">Log Analyzer</a>
+        
+    </li>
+
+</ul></li>
+				
+			
+				
+					<li><ul> 
+
+    <li class="toctree-l1 ">
+        <a class="" href="../testlink/">TestLink with ElasTest</a>
+        
+    </li>
+
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Monitoring</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../monitoring/">Monitoring</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../monitoring/outside-elastest/">Monitoring outside Elastest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../monitoring/custom/">Custom monitoring</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Jenkins</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../jenkins/">Jenkins integration</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../jenkins/try-jenkins/">Try jenkins</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../jenkins/advanced-example/">Advanced example</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Deploying ElasTest</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../deploying/aws/">Amazon Web Services</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../deploying/ubuntu/">Ubuntu</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+
+    <li class="toctree-l1 ">
+        <a class="" href="../releases/">Releases</a>
+        
+    </li>
+
+</ul></li>
+				
+			
+				
+					<li><ul> 
+
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Experimental</a>
+        
+         
+        
+    </li>
+
+</ul></li>
+				
+			
+		</ul>
+            </div>
+            &nbsp;
+          </nav>
+        </div>
+
+	<section class="section-sm-41">
+		<div class="shell">
+		    <div class="range range-xs-right">
+		        <div class="cell-xs-10 cell-sm-8 cell-md-9 cell-lg-10 cell-xl-12 text-md-left cell-lg-push-1 offset-lg-top-0">
+			  
+				<div class="wy-nav-content">
+				  <div class="rst-content">
+				   
+				    <div role="main">
+				      <div class="section">
+					
+					  <div class="range range-xs-left">
+<div class="cell-xs-10 cell-lg-6 text-md-left inset-md-right-80 cell-lg-push-1 offset-top-50 offset-lg-top-0">
+<h2 id="content" class="h1">Experimental</h2>
+</div>
+</div>
+
+<p>ElasTest has three execution modes. Normal mode (default mode), Experimental-lite and Experimental. Each of them increases the number of features offered by ElasTest from less to more.</p>
+<p>The Normal mode has already been mentioned in this documentation as it is the default mode in which ElasTest works and offers users the following basic functionalities:</p>
+<ul>
+<li><strong>Basic element Management.</strong> You can create Projects, TJobs and Suts.</li>
+<li><strong>Web Browser provisión and Test Session Recording.</strong> You can ask ElasTest for a web browser instance to perform manual tests or use it in an automated test from a TJob. The browser provider is the EUS (ElasTest User Impersonation Service), a TSS that is provided by default in the normal mode.</li>
+<li><strong>Log analysis</strong>. You can use the Log Analyzer tool for in-depth study of the logs generated by the TJobs, browser and Suts</li>
+<li><strong>TestLink integration</strong>. If you already use Testlink in your test lifecycle, you can now integrate it with ElasTest to speed it up. You can use the browsers provided by ElasTest to perform the tests, store the necessary evidence as video recordings of the tests or the records generated by the tests and comment on the test results from the ElasTest GUI.</li>
+</ul>
+<p>All of these features are available in all three operating modes, except for manual provisioning of web browsers.
+The experimental modes are described below.</p>
+<h4 class="holder-subtitle link-top">1. Experimental Lite</h4>
+
+<p>The Experimental lite mode adds components to ElasTest that give it new functionalities.
+<p></p>
+<ul>
+<li>
+<p><strong>Test Support Services (TSSs).</strong> Conceived as services that are enabled on demand, they provide additional functionality that can be used during the execution of a TJob. One instance of these services will be created each time a job is executed.</p>
+<ul>
+<li><strong><a href="https://github.com/elastest/elastest-device-emulator-service/blob/master/docs/index.md">ElasTest Device Service (EDS).</a></strong> Emulates the behaviors of the sensors, actuators and smart devices you need to perform your tests.</li>
+<li><strong><a href="https://github.com/elastest/elastest-monitoring-service/blob/master/docs/user-docs.md">ElasTest Monitoring Service (EMS).</a></strong> Service that allows monitoring the execution of the TJobs and SUTs, in a similar way to the normal mode, but with a greater capacity of configuration.</li>
+<li><strong><a href="https://github.com/elastest/elastest-bigdata-service/blob/master/docs/user-docs.md">ElasTest Bigdata Service (EBS).</a></strong></li>
+<li><strong><a href="https://github.com/elastest/elastest-security-service/blob/master/docs/user-docs.md">ElasTest Security Service (ESS).</a></strong> Service that can be used to detect security vulnerabilities in the System Under Test (SuT).</li>
+</ul>
+</li>
+</ul>
+<p></p>
+<p></p>
+<ul>
+<li><strong>Test Engines(TEs).</strong> Similar to the TSSs with the difference that a single instance of a Test Engine will be used by all the TJobs configured in the platform.<ul>
+<li><strong><a href="https://github.com/elastest/elastest-cost-engine/blob/master/docs/user-docs.md">ElasTest Cost Engine (ECE).</a></strong> Service that provides to the users the information to consider the financial of using clouds. Using clouds cost money, in third party clouds you pay for the time and resources you use. As well as in on-premises clouds, you pay for the energy and the hardware resources utilization.</li>
+</ul>
+</li>
+</ul>
+</p>
+
+<ul>
+<li><strong><a href="https://github.com/elastest/elastest-instrumentation-manager/blob/master/docs/user-docs.md">ElasTest Instrumentation Manager (EIM).</a></strong> Service that controls and orchestrates the Instrumentation Agents that are deployed in ElasTest platform automatically. These agents will instrument the operating system kernel of the SuT. An interesting feature for monitoring external SUTs and not managed by ElasTest.</li>
+</ul>
+<p>To start ElasTest in Experimental-lite mode execute this command from the shell:</p>
+<pre><code class="text">docker run -v /var/run/docker.sock:/var/run/docker.sock --rm elastest/platform:dev start -m=experimental-lite
+</code></pre>
+
+<h4 class="holder-subtitle link-top">2. Experimental</h4>
+
+<p>And finally the Experimental mode, the heaviest of all, which like the previous one, increases the functionality offered by elastest. This mode adds three new components to the platform:</p>
+<ul>
+<li>
+<p><strong><a href="https://github.com/elastest/elastest-monitoring-platform/blob/master/docs/index.md">ElasTest Monitoring Platform (EMP).</a></strong> Service that will be used to primarily monitor the health of various componets of ElasTest platform and allows correlated queries aiding the fault location within the platform in an optimized manner.
+<p></p>
+</li>
+<li>
+<p><strong><a href="https://github.com/elastest/elastest-data-manager/blob/master/docs/index.md">ElasTest Data Manager (EDM).</a></strong> Service responsible for providing the different persistent services available to the ElasTest platform. The persistent services under the responsibility of EDM are the following:</p>
+<ul>
+<li>Relational database (MySQL)</li>
+<li>Persistance control service (API-including Alluxio, S3 &amp; HDFS compatible)</li>
+<li>ElasticSearch (for both logs and metrics)</li>
+<li>API for exporting and importing data</li>
+</ul>
+</li>
+</ul>
+</p>
+
+<ul>
+<li><strong><a href="https://github.com/elastest/elastest-platform-manager/blob/master/docs/index.md">ElasTest Platform Manager (EPM).</a></strong> A very interesting component that makes the interface between the ElasTest testing components (e.g. ElasTest Test Manager, TSS, etc.) and the cloud infrastructure where ElasTest is deployed. Hence, this Platform Manager must abstract the cloud services so that ElasTest becomes fully agnostic to them and provide this abstraction via Software Development Toolkits (SDK) or REST APIs to the northbound consumers (i.e. ElasTest Test Manager).</li>
+</ul>
+<p>To start ElasTest in Experimental mode execute this command from the shell:</p>
+<pre><code class="text">docker run -v /var/run/docker.sock:/var/run/docker.sock --rm elastest/platform:dev start -m=experimental
+</code></pre>
+					
+				      </div>
+				    </div>
+				    <footer>
+<hr class="divider divider-100 divider-xs hr-lg-center-0 offset-xs-top-20 offset-sm-top-20 offset-md-top-20 offset-lg-top-20">
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../releases/" class="btn btn-xs btn-primary" title="Releases"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
+      
+    </div>
+  
+
+
+  
+  
+	  <a href="https://github.com/elastest/elastest.io-docs/blob/master/docs/experimental/index.md" class="fa fa-github offset-xxs-top-30"> Edit Documentation on GitHub</a>
+  
+</footer>
+			  	  
+				  </div>
+				</div>
+			</div>
+		    </div>
+		</div>
+	</section>
+
+  </div>
+</div>
