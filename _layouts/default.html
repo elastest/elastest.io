@@ -17,14 +17,11 @@
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/custom_styles.css">
   <script src="/js/analytics.js"></script>
-  <script src='https://www.google.com/recaptcha/api.js'></script>
+  <script src='https://www.google.com/recaptcha/api.js'></script> {% if page.active=="documentation" %}
+  <link rel="stylesheet" href="/css/syntax.css" />
+  <script src="/js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> {% endif %}
 
-  {% if page.active=="documentation" %}
-    <link rel="stylesheet" href="/css/syntax.css" />
-    <script src="/js/highlight.pack.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
-  {% endif %}
-  
 </head>
 
 <body>
@@ -35,218 +32,270 @@
       <!-- RD Navbar Transparent-->
       <div class="rd-navbar-wrap">
 
-       
-          <nav data-md-device-layout="rd-navbar-fixed" data-lg-device-layout="rd-navbar-static" class="rd-navbar rd-navbar-default rd-navbar-dark"
-            data-lg-auto-height="true" data-md-layout="rd-navbar-fixed" data-lg-layout="rd-navbar-static" data-lg-stick-up="true">
-            
 
-            <div class="rd-navbar-inner">
-              <!-- RD Navbar Panel-->
-              <div class="rd-navbar-panel">
-                <!-- RD Navbar Toggle-->
-                <button data-rd-navbar-toggle=".rd-navbar, .rd-navbar-nav-wrap" class="rd-navbar-toggle" aria-label="Home"><span></span></button>
-                <!--Navbar Brand-->
-                <div class="rd-navbar-brand">
-                  <a href="/"><img style='margin-top: 0px;margin-left: -15px;' width='165' height='35' src='/images/intense/elastest-logo-dark.png'
-                      alt='ElasTest' /></a>
-                </div>
+        <nav data-md-device-layout="rd-navbar-fixed" data-lg-device-layout="rd-navbar-static" class="rd-navbar rd-navbar-default rd-navbar-dark"
+          data-lg-auto-height="true" data-md-layout="rd-navbar-fixed" data-lg-layout="rd-navbar-static" data-lg-stick-up="true">
+
+
+          <div class="rd-navbar-inner">
+            <!-- RD Navbar Panel-->
+            <div class="rd-navbar-panel">
+              <!-- RD Navbar Toggle-->
+              <button data-rd-navbar-toggle=".rd-navbar, .rd-navbar-nav-wrap" class="rd-navbar-toggle" aria-label="Home">
+                <span></span>
+              </button>
+              <!--Navbar Brand-->
+              <div class="rd-navbar-brand">
+                <a href="/">
+                  <img style='margin-top: 0px;margin-left: -15px;' width='165' height='35' src='/images/intense/elastest-logo-dark.png'
+                    alt='ElasTest' />
+                </a>
               </div>
-              <div class="rd-navbar-menu-wrap">
-                <div class="rd-navbar-nav-wrap">
-                  <div class="rd-navbar-mobile-scroll">
-                    <!--Navbar Brand Mobile-->
-                    <div class="rd-navbar-mobile-brand">
-                      <a href="/index.html"><img style='margin-top: 0px;margin-left: -15px;' width='184' height='40' src='/images/intense/elastest-logo-dark.png'
-                          alt='ElasTest' /></a>
-                    </div>
-                    <div class="form-search-wrap">
-                      <!-- RD Search Form-->
-                      <form action="search-results.html" method="GET" class="form-search rd-search">
-                        <div class="form-group">
-                          <label for="rd-navbar-form-search-widget" class="form-label form-search-label form-label-sm">Search</label>
-                          <input id="rd-navbar-form-search-widget" type="text" name="s" autocomplete="off" class="form-search-input input-sm form-control form-control-gray-lightest input-sm"
-                          />
-                        </div>
-                        <button type="submit" class="form-search-submit"><span class="mdi mdi-magnify"></span></button>
-                      </form>
-                    </div>
-                    <!-- RD Navbar Nav-->
-                    <ul class="rd-navbar-nav">
-                      <li {% if page.active=="home" or layout.active=="home" %} class="active" {% endif %}>
-                        <a href="/"><span class="nav-button">Home</span></a>
-                      </li>
-                      <li {% if page.active=="project" or layout.active=="project" %} class="active" {% endif %}>
-                        <a href="/project.html"><span class="nav-button">Project</span></a>
-                      </li>
-                      <li {% if page.active=="community" or layout.active=="community" %} class="active" {% endif %}>
-                        <a href="/community.html"><span class="nav-button">Community</span></a>
-                      </li>
-                      <li {% if page.active=="blog" or layout.active=="blog" %} class="active" {% endif %}>
-                        <a href="/blog/index.html"><span class="nav-button">Blog</span></a>
-                      </li>
-                      <li {% if page.active=="news" or layout.active=="news" %} class="active" {% endif %}>
-                        <a href="/news.html"><span class="nav-button">News</span></a>
-                      </li>
-                      <li {% if page.active=="documentation" or layout.active=="documentation" %} class="active" {% endif %}>
-                        <a href="/docs"><span class="nav-button">Documentation</span></a>
-                      </li>
-                      <!--<li>
+            </div>
+            <div class="rd-navbar-menu-wrap">
+              <div class="rd-navbar-nav-wrap">
+                <div class="rd-navbar-mobile-scroll">
+                  <!--Navbar Brand Mobile-->
+                  <div class="rd-navbar-mobile-brand">
+                    <a href="/index.html">
+                      <img style='margin-top: 0px;margin-left: -15px;' width='184' height='40' src='/images/intense/elastest-logo-dark.png'
+                        alt='ElasTest' />
+                    </a>
+                  </div>
+                  <div class="form-search-wrap">
+                    <!-- RD Search Form-->
+                    <form action="search-results.html" method="GET" class="form-search rd-search">
+                      <div class="form-group">
+                        <label for="rd-navbar-form-search-widget" class="form-label form-search-label form-label-sm">Search</label>
+                        <input id="rd-navbar-form-search-widget" type="text" name="s" autocomplete="off" class="form-search-input input-sm form-control form-control-gray-lightest input-sm"
+                        />
+                      </div>
+                      <button type="submit" class="form-search-submit">
+                        <span class="mdi mdi-magnify"></span>
+                      </button>
+                    </form>
+                  </div>
+                  <!-- RD Navbar Nav-->
+                  <ul class="rd-navbar-nav">
+                    <li {% if page.active=="home" or layout.active=="home" %} class="active" {% endif %}>
+                      <a href="/">
+                        <span class="nav-button">Home</span>
+                      </a>
+                    </li>
+                    <li {% if page.active=="project" or layout.active=="project" %} class="active" {% endif %}>
+                      <a href="/project.html">
+                        <span class="nav-button">Project</span>
+                      </a>
+                    </li>
+                    <li {% if page.active=="community" or layout.active=="community" %} class="active" {% endif %}>
+                      <a href="/community.html">
+                        <span class="nav-button">Community</span>
+                      </a>
+                    </li>
+                    <li {% if page.active=="blog" or layout.active=="blog" %} class="active" {% endif %}>
+                      <a href="/blog/index.html">
+                        <span class="nav-button">Blog</span>
+                      </a>
+                    </li>
+                    <li {% if page.active=="news" or layout.active=="news" %} class="active" {% endif %}>
+                      <a href="/news.html">
+                        <span class="nav-button">News</span>
+                      </a>
+                    </li>
+                    <li {% if page.active=="documentation" or layout.active=="documentation" %} class="active" {% endif %}>
+                      <a href="/docs">
+                        <span class="nav-button">Documentation</span>
+                      </a>
+                    </li>
+                    <!--<li>
                         <a href="#newsletter"><span>Newsletter</span></a>
                       </li>-->
-                    </ul>
+                  </ul>
 
-                  </div>
                 </div>
               </div>
             </div>
-          </nav>
+          </div>
+        </nav>
       </div>
 
 
     </header>
 
-    {% if page.page-type<>"home" %}{% if page.active<>"documentation" %}
+    {% if page.page-type
+    <>"home" %}{% if page.active
+      <>"documentation" %}
 
-      <!-- Classic Breadcrumbs-->
-      <section class="breadcrumb-classic">
-        <div id="title-header" class="shell section-34 section-sm-50">
-          <div class="range range-lg-middle">
-            <div class="cell-lg-2 veil reveal-lg-block cell-lg-push-2"><span class="icon {% if page.section-icon %} {{page.section-icon}} {% else %} {{layout.section-icon}} {% endif %}"></span></div>
-            <div id="page-title" class="cell-lg-5 reveal-lg-block cell-lg-push-1 text-lg-left">
-              <h1 class="h2"><span class="big">{% if page.section-title %} {{page.section-title}} {% else %} {{layout.section-title}} {% endif %}</span></h1>
+        <!-- Classic Breadcrumbs-->
+        <section class="breadcrumb-classic">
+          <div id="title-header" class="shell section-34 section-sm-50">
+            <div class="range range-lg-middle">
+              <div class="cell-lg-2 veil reveal-lg-block cell-lg-push-2">
+                <span class="icon {% if page.section-icon %} {{page.section-icon}} {% else %} {{layout.section-icon}} {% endif %}"></span>
+              </div>
+              <div id="page-title" class="cell-lg-5 reveal-lg-block cell-lg-push-1 text-lg-left">
+                <h1 class="h2">
+                  <span class="big">{% if page.section-title %} {{page.section-title}} {% else %} {{layout.section-title}} {% endif %}</span>
+                </h1>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {% endif %}{% endif %}
+        {% endif %}{% endif %}
 
-      <!-- Page Content-->
-      {% if page.active<>"documentation" %}
-      <main class="page-content">
-        {{ content }}
-      </main>
-      {% else %}
-      <main class="page-content main-documentation">
-        {{ content }}
-      </main>
-      {% endif %}
+        <!-- Page Content-->
+        {% if page.active
+        <>"documentation" %}
+          <main class="page-content">
+            {{ content }}
+          </main>
+          {% else %}
+          <main class="page-content main-documentation">
+            {{ content }}
+          </main>
+          {% endif %}
 
-      <!-- Page Footers-->
-      <!-- Default footer-->
-      <footer class="section-relative section-top-66 section-bottom-34 page-footer bg-gray-base context-dark">
-        <div class="shell">
-          <div class="range range-sm-center text-lg-left">
-            <div class="cell-sm-8 cell-md-12">
-              <div class="range range-xs-center">
+          <!-- Page Footers-->
+          <!-- Default footer-->
+          <footer class="section-relative section-top-66 section-bottom-34 page-footer bg-gray-base context-dark">
+            <div class="shell">
+              <div class="range range-sm-center text-lg-left">
+                <div class="cell-sm-8 cell-md-12">
+                  <div class="range range-xs-center">
+                    <div class="cell-xs-12 offset-top-41 cell-md-5 offset-md-top-0 text-md-left cell-lg-4 cell-lg-push-2">
+                      <h2 class="h6 text-uppercase text-spacing-60" style="text-align: center">Newsletter</h2>
+                      <p>Keep up with the project news. Enter your e-mail and subscribe to our newsletter.</p>
+                      <form action="//github.us15.list-manage.com/subscribe/post?u=df7490aeb0b751da2913c2f2f&amp;id=1638a5f111" method="post" id="mc-embedded-subscribe-form"
+                        name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                        <div class="form-group">
+                          <div class="input-group input-group-sm">
+                            <span class="input-group-addon">
+                              <span class="input-group-icon mdi mdi-email"></span>
+                            </span>
+                            <label for="mce-EMAIL" class="hidden">Email</label>
+                            <input placeholder="Type your E-Mail" id="mce-EMAIL" type="email" name="EMAIL" data-constraints="@Required @Email" value=""
+                              class="form-control email">
+                            <span class="input-group-btn">
+                              <input type="hidden" name="u" value="df7490aeb0b751da2913c2f2f">
+                              <input type="hidden" name="id" value="1638a5f111">
+                              <input type="hidden" name="orig-lang" value="1">
+                              <input type="submit" id="mc-embedded-subscribe" class="btn btn-sm btn-primary" name="subscribe" value="Subscribe">
+                          </div>
+                        </div>
+                        <div id="form-subscribe-footer" class="form-output"></div>
+                      </form>
+                    </div>
+                    <div class="cell-xs-12 offset-top-41 cell-md-5 offset-md-top-0 text-md-center cell-lg-4 cell-lg-push-2">
+                      <!-- Footer brand-->
+                      <div class="footer-brand">
+                        <a href="/index.html">
+                          <img style='margin-top: -5px;margin-left: 0px; max-width: 200px;' src='/images/intense/elastest-logo-dark.png' alt='ElasTest'
+                          />
+                        </a>
+                      </div>
+                      <p class="text-darker offset-top-4"></p>
+                      <ul class="list-inline">
+                        <li>
+                          <a href="https://github.com/elastest" class="icon fa fa-github icon-xxs icon-circle icon-darker-filled" aria-label="ElasTest GitHub">
+                            <span class="hidden">GitHub</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="https://twitter.com/elastestio" class="icon fa fa-twitter icon-xxs icon-circle icon-darker-filled" aria-label="ElasTest Twitter">
+                            <span class="hidden">Twitter</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="https://groups.google.com/forum/#!forum/elastest-users" class="icon mdi mdi-email icon-xxs icon-circle icon-darker-filled"
+                            aria-label="ElasTest Email">
+                            <span class="hidden">Email</span>
+                          </a>
+                        </li>
+                        <br>
+                        <li>
+                          <a href="http://elastest.io/blog" class="icon mdi mdi-blogger icon-xxs icon-circle icon-darker-filled" aria-label="ElasTest Blog">
+                            <span class="hidden">Blog</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="https://www.youtube.com/channel/UCT89tiZVQhnRQMkfDCPm_1g" class="icon mdi mdi-youtube-play icon-xxs icon-circle icon-darker-filled"
+                            aria-label="ElasTest YouTube">
+                            <span class="hidden">YouTube</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="https://www.slideshare.net/elastest" class="icon fa fa-slideshare icon-xxs icon-circle icon-darker-filled" aria-label="ElasTest SlideShare">
+                            <span class="hidden">SlideShare</span>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="cell-xs-12 offset-top-41 cell-md-5 offset-md-top-0 text-md-left cell-lg-4 cell-lg-push-2">
+                      <h2 class="h6 text-uppercase text-spacing-60" style="text-align: center">European Commission Project</h2>
+                      <div style="text-align: center;">
 
-                <div class="cell-xs-12 offset-top-41 cell-md-5 offset-md-top-0 text-md-left cell-lg-4 cell-lg-push-2">
-                  <h2 class="h6 text-uppercase text-spacing-60">Newsletter</h2>
-                  <p>Keep up with the project news. Enter your e-mail and subscribe to our newsletter.
-                  </p>
-                </div>
-                <div id="newsletter" class="cell-xs-12 offset-top-41 cell-md-5 offset-md-top-0 text-md-left cell-lg-4 cell-lg-push-2">
-                  <div class="offset-top-30">
-                    <form action="//github.us15.list-manage.com/subscribe/post?u=df7490aeb0b751da2913c2f2f&amp;id=1638a5f111" method="post" id="mc-embedded-subscribe-form"
-                      name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-                      <div class="form-group">
-                        <div class="input-group input-group-sm"><span class="input-group-addon"><span class="input-group-icon mdi mdi-email"></span></span>
-                          <label for="mce-EMAIL" class="hidden">Email</label>
-                          <input placeholder="Type your E-Mail" id="mce-EMAIL" type="email" name="EMAIL" data-constraints="@Required @Email" value=""
-                            class="form-control email"><span class="input-group-btn">                            
-                          <input type="hidden" name="u" value="df7490aeb0b751da2913c2f2f">
-                          <input type="hidden" name="id" value="1638a5f111">
-                          <input type="hidden" name="orig-lang" value="1">
-                          <input type="submit" id="mc-embedded-subscribe" class="btn btn-sm btn-primary" name="subscribe" value="Subscribe">
+                        <img id="page-loader-logo" style="max-width: 100px;  margin: 10px 0px" src="/images/logos_elastest/ue_logo.png" alt="" />
+                        <span style="display: block">
+                          Project ID: 731535
+                        </span>
                       </div>
                     </div>
-                    <div id="form-subscribe-footer" class="form-output"></div>
-                  </form>
-                </div>
-              </div>
-              <div class="cell-xs-12 offset-top-66 cell-lg-3 cell-lg-push-1 offset-lg-top-0">
-                <!-- Footer brand-->
-                <div class="footer-brand">
-                  <a href="/index.html"><img style='margin-top: -5px;margin-left: 0px;' width='138' height='31' src='/images/intense/elastest-logo-dark.png' alt='ElasTest' /></a>
-                </div>
-                <p class="text-darker offset-top-4"></p>
-                <ul class="list-inline">
-                          <li>
-                            <a href="https://github.com/elastest" class="icon fa fa-github icon-xxs icon-circle icon-darker-filled" aria-label="ElasTest GitHub"><span class="hidden">GitHub</span></a>
-                          </li>
-                          <li>
-                            <a href="https://twitter.com/elastestio" class="icon fa fa-twitter icon-xxs icon-circle icon-darker-filled" aria-label="ElasTest Twitter"><span class="hidden">Twitter</span></a>
-                          </li>
-                          <li>
-                            <a href="https://groups.google.com/forum/#!forum/elastest-users" class="icon mdi mdi-email icon-xxs icon-circle icon-darker-filled"
-                              aria-label="ElasTest Email"><span class="hidden">Email</span></a>
-                          </li><br>
-                          <li>
-                            <a href="http://elastest.io/blog" class="icon mdi mdi-blogger icon-xxs icon-circle icon-darker-filled" aria-label="ElasTest Blog"><span class="hidden">Blog</span></a>
-                          </li>
-                          <li>
-                            <a href="https://www.youtube.com/channel/UCT89tiZVQhnRQMkfDCPm_1g" class="icon mdi mdi-youtube-play icon-xxs icon-circle icon-darker-filled"
-                              aria-label="ElasTest YouTube"><span class="hidden">YouTube</span></a>
-                          </li>
-                          <li>
-                            <a href="https://www.slideshare.net/elastest" class="icon fa fa-slideshare icon-xxs icon-circle icon-darker-filled" aria-label="ElasTest SlideShare"><span class="hidden">SlideShare</span></a>
-                          </li>
-                          </ul>
-                        </div>
-                      </div>
                   </div>
                 </div>
               </div>
-              <div class="shell offset-top-50">
-                <p class="small text-darker">ElasTest &copy; <span id="copyright-year"></span>
+            </div>
+            <div class="shell offset-top-50">
+              <p class="small text-darker">ElasTest &copy;
+                <span id="copyright-year"></span>
 
-                </p>
-              </div>
-      </footer>
+              </p>
+            </div>
+          </footer>
+  </div>
+  <!-- Global Mailform Output-->
+  <div id="form-output-global" class="snackbars"></div>
+  <!-- PhotoSwipe Gallery-->
+  <div tabindex="-1" role="dialog" aria-hidden="true" class="pswp">
+    <div class="pswp__bg"></div>
+    <div class="pswp__scroll-wrap">
+      <div class="pswp__container">
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
       </div>
-      <!-- Global Mailform Output-->
-      <div id="form-output-global" class="snackbars"></div>
-      <!-- PhotoSwipe Gallery-->
-      <div tabindex="-1" role="dialog" aria-hidden="true" class="pswp">
-        <div class="pswp__bg"></div>
-        <div class="pswp__scroll-wrap">
-          <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-          </div>
-          <div class="pswp__ui pswp__ui--hidden">
-            <div class="pswp__top-bar">
-              <div class="pswp__counter"></div>
-              <button title="Close (Esc)" class="pswp__button pswp__button--close"></button>
-              <button title="Share" class="pswp__button pswp__button--share"></button>
-              <button title="Toggle fullscreen" class="pswp__button pswp__button--fs"></button>
-              <button title="Zoom in/out" class="pswp__button pswp__button--zoom"></button>
-              <div class="pswp__preloader">
-                <div class="pswp__preloader__icn">
-                  <div class="pswp__preloader__cut">
-                    <div class="pswp__preloader__donut"></div>
-                  </div>
-                </div>
+      <div class="pswp__ui pswp__ui--hidden">
+        <div class="pswp__top-bar">
+          <div class="pswp__counter"></div>
+          <button title="Close (Esc)" class="pswp__button pswp__button--close"></button>
+          <button title="Share" class="pswp__button pswp__button--share"></button>
+          <button title="Toggle fullscreen" class="pswp__button pswp__button--fs"></button>
+          <button title="Zoom in/out" class="pswp__button pswp__button--zoom"></button>
+          <div class="pswp__preloader">
+            <div class="pswp__preloader__icn">
+              <div class="pswp__preloader__cut">
+                <div class="pswp__preloader__donut"></div>
               </div>
-            </div>
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-              <div class="pswp__share-tooltip"></div>
-            </div>
-            <button title="Previous (arrow left)" class="pswp__button pswp__button--arrow--left"></button>
-            <button title="Next (arrow right)" class="pswp__button pswp__button--arrow--right"></button>
-            <div class="pswp__caption">
-              <div class="pswp__caption__center"></div>
             </div>
           </div>
         </div>
+        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+          <div class="pswp__share-tooltip"></div>
+        </div>
+        <button title="Previous (arrow left)" class="pswp__button pswp__button--arrow--left"></button>
+        <button title="Next (arrow right)" class="pswp__button pswp__button--arrow--right"></button>
+        <div class="pswp__caption">
+          <div class="pswp__caption__center"></div>
+        </div>
       </div>
-      <!-- Java script-->
-      <script src="/js/core.min.js"></script>
-      <script src="/js/script.js"></script>
-      <!--Start Cookie Script-->
-      <script type="text/javascript" charset="UTF-8" src="http://chs03.cookie-script.com/s/fd9916129a46d1f7cb585685ce80d177.js"></script>
-      <!--End Cookie Script-->
+    </div>
+  </div>
+  <!-- Java script-->
+  <script src="/js/core.min.js"></script>
+  <script src="/js/script.js"></script>
+  <!--Start Cookie Script-->
+  <script type="text/javascript" charset="UTF-8" src="http://chs03.cookie-script.com/s/fd9916129a46d1f7cb585685ce80d177.js"></script>
+  <!--End Cookie Script-->
 </body>
 
 </html>
