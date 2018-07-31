@@ -35719,6 +35719,60 @@ ul {
 }
 
 
+/* Media styles */
+
+.media-content {
+  max-width: 90%;
+  margin: auto;
+}
+
+.row {
+  margin: 8px -16px;
+}
+
+.row,
+.row > .column {
+  padding: 8px;
+}
+
+.column-25 {
+  float: left;
+  width: 25%;
+}
+.column-50{
+  float: left;
+  width: 50%;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.media-content .content {
+  background-color: white;
+  padding: 10px;
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 900px) {
+  .column-25 {
+      width: 50%;
+  }
+  .column-50 {
+    width: 100%;
+  }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column-25 {
+      width: 100%;
+  }
+}
+
+
 /**/
 #cookiescript_accept{
   background-color: #ffac2f !important;
