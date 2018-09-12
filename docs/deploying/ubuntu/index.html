@@ -369,7 +369,7 @@ section-icon: mdi mdi-content-copy
 					
 					  <div class="range range-xs-left">
 <div class="cell-xs-10 cell-lg-6 text-md-left inset-md-right-80 cell-lg-push-1 offset-top-50 offset-lg-top-0">
-<h2 id="content" class="h1">Deploying ElasTest on Ubuntu server</h2>
+<h2 id="content" class="h1">Deploying ElasTest on a Linux server</h2>
 <div class="offset-top-30 offset-md-top-50">
 </div>
 </div>
@@ -378,10 +378,20 @@ section-icon: mdi mdi-content-copy
 <h4 class="holder-subtitle link-top">Introduction</h4>
 
 <p>Through the following lines you will find a guide to deploy Elastest on a single machine (physical or virtual). So the same steps can be applied to a server on your data center or an instance on AWS, OpenStack, Azure or Google Cloud.</p>
-<p>You only need remote or physical access to an <strong>Ubuntu 16.04</strong> interactive shell to run commands as a privilegiated user.</p>
+<p>We've tried to deploy Elastest on <strong>Ubuntu 16.04</strong> and <strong>CentOS 7</strong> and the steps are basically the same.</p>
+<p>You only need remote or physical access to a <strong>Linux</strong> interactive shell to run commands as a privilegiated user.</p>
 <h4 class="holder-subtitle link-top">Accesing the instance</h4>
 
 <p>Depends on your infraestructure the access will be different. Please, refer to your system administrator to know how to grant access to the console.</p>
+<h4 class="holder-subtitle link-top">Installing Docker</h4>
+
+<p>First of all, you'll need to install Docker, please, refer to the official documentation to install onto your platform:</p>
+<p><a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/">Ubuntu</a></p>
+<p><a href="https://docs.docker.com/install/linux/docker-ce/centos/">Centos</a></p>
+<p>If you want to use docker with a regular user add the user to <em>docker</em> group:</p>
+<pre><code class="bash">sudo usermod -aG docker YOUR_USER
+</code></pre>
+
 <h4 class="holder-subtitle link-top">Swap space</h4>
 
 <p>Elastest needs some swap space. If your server is physical, it probably has some space already. You can check by running:</p>
@@ -403,10 +413,15 @@ Swap:             0           0           0
 <p>If you're working on the cloud, you'll probably need to add some swap space. To do that follow this steps:</p>
 <h6 class="small-subtitle">1) Creating a swap file</h6>
 
+<p>With Ubuntu:</p>
 <pre><code class="bash">sudo fallocate -l 4G /swapfile
 </code></pre>
 
-<p>This command will create a 4G file in / called swapfile. You can check it by doing:</p>
+<p>With Centos:</p>
+<pre><code class="bash">sudo dd if=/dev/zero of=/swapfile count=4096 bs=1MiB
+</code></pre>
+
+<p>Both commands will create a 4G file in / called swapfile. You can check it by doing:</p>
 <pre><code class="bash">ls -lh /swapfile
 </code></pre>
 
@@ -433,7 +448,7 @@ Swap:             0           0           0
 <h6 class="small-subtitle">5) Making changes permanent</h6>
 
 <p>To make those changes permanent, add the following line to your <em>/etc/fstab</em> file:</p>
-<pre><code class="text">/swapfile  none wap sw 0 0
+<pre><code class="bash">sudo echo &quot;/swapfile none swap sw 0 0&quot; &gt;&gt; /etc/fstab
 </code></pre>
 
 <h4 class="holder-subtitle link-top">The <i>vm.max_map_count</i> issue</h4>
@@ -447,27 +462,46 @@ Swap:             0           0           0
 <pre><code class="bash">sudo echo vm.max_map_count=262144 &gt;&gt; /etc/sysctl.conf
 </code></pre>
 
+<h4 class="holder-subtitle link-top">Launching Elastest</h4>
+
+<p>In order to launch Elastest platform just type</p>
+<pre><code class="bash">docker run -ti \
+  --rm \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  elastest/platform start \
+  --mode normal \
+  --server-address=X.Y.Z.W \
+  -tl \
+  --user=elastest \
+  --password=elastest
+</code></pre>
+
+<p>Elastest needs to use Docker to launch other containers, so we bind the socket as a volume inside the platform.</p>
+<p>We can choose the execution mode <em>normal</em>, <em>experimental</em>, <em>experimental_lite</em></p>
+<p>The <strong>server-address</strong> is web address you will reach the platform. If you're deploying on a cloud provider (like AWS, GCE o Azure) this address should be your public IP, if you're deploying on your private LAN this is the address you're using to connect the server. Finally, if you're deploying on your laptop then you can omit the parameter.</p>
+<p>Alternatively, you can use a domain name like <strong>elastest.my_company.com</strong> for the <em>server_address</em> parameter.</p>
+<p><em>-tl</em> stands for TestLink.</p>
+<p>Finally, set user and password to grant access to the platform. You can omit this parameters if you're working on a safe evironment.</p>
+<p>Type </p>
+<pre><code class="bash">docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --help
+</code></pre>
+
+<p>to get more information.</p>
+<p>You'll see the following lines on the terminal when the platform is up and ready</p>
+<pre><code class="text">Starting ElasTest Platform (normal mode)...
+
+Please wait a few seconds while we start the ElasTest services, the ElasTest URL will be shown when ready.
+
+ElasTest Platform is available at http://X.Y.Z.W:37000
+</code></pre>
+
+<p>It'll show the domain name instead the IP address in the case you're using a DNS service.</p>
 <h4 class="holder-subtitle link-top">Running Elastest on system boot</h4>
 
-<p>There isn't an easy way to run Elastest with the system, but there's a few tips you can considerate.</p>
-<h6 class="small-subtitle">Removing all volumes</h6>
-
-<p>We recommend to remove all the volumes except MySQL, TestLink and Elasticsearch, because they are the ones that maintain the test data.</p>
-<p>To do this, you can use the following bash code (CAUTION: All volumes will be removed except <code>elastest_edm-mysql</code>, <code>elastest_elasticsearch-data</code> and <code>elastest_etm-testlink</code>):</p>
-<pre><code class="bash">for volume in $(sudo docker volume ls | grep -v mysql | grep -v elastest_elasticsearch-data | grep -v elastest_etm-testlink | tail -n +2 | awk '{print $2}'); do sudo docker volume rm $volume; done
-</code></pre>
-
-<h6 class="small-subtitle">Removing all containers</h6>
-
-<p>To remove all the containers:</p>
-<pre><code class="bash">docker rm -f $(docker ps -a -q)
-</code></pre>
-
-<h6 class="small-subtitle">Putting all the pieces together</h6>
-
-<p>We provide a set of scripts to achive this:</p>
+<p>Elastest needs two script and a Systemd unit to work on system boot. </p>
 <h6 class="smaller-subtitle">1) Clean all containers and volumes (<code>/usr/local/bin/docker-evacuate</code>)</h6>
 
+<p>The first script is <code>docker-evacuate</code> and will clean the platform from the system. Basically, it'll remove unnecessary Docker' volumes and containers.</p>
 <pre><code class="bash">#!/bin/bash
 
 # Delete all containers
@@ -475,27 +509,30 @@ docker rm -f $(docker ps -a -q)
 
 for volume in $(sudo docker volume ls | grep -v elastest_edm-mysql | grep -v elastest_elasticsearch-data | grep -v elastest_etm-testlink | tail -n +2 | awk '{print $2}')
 do
- sudo docker volume rm $volume 
+  sudo docker volume rm $volume 
 done
 </code></pre>
 
+<p>The volumes listed are kept because they contain user data like the metrics, tests, etc.</p>
 <p>Set execution permissions:</p>
-<pre><code class="bash">chmod 0755 /usr/local/bin/docker-evacuate
+<pre><code class="bash">sudo chmod 0755 /usr/local/bin/docker-evacuate
 </code></pre>
 
 <h6 class="smaller-subtitle">2) Start Elastest (<code>/usr/local/bin/docker-elastest-up</code>)</h6>
 
+<p>This script will launch elastest and contains the following lines:</p>
 <pre><code class="bash">#!/bin/bash
-docker run -d -v /var/run/docker.sock:/var/run/docker.sock elastest/platform:latest start --server-address=YOU_IP_HERE --mode=MODE --pullcore
+PUBLIC_IP=$(curl ifconfig.co)
+nohup docker run -d -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --server-address=${PUBLIC_IP} --mode=normal --pullcore &amp;&gt;/dev/null &amp;
+disown
+
+exit 0
 </code></pre>
 
-<p>Remember to complete the <em>server-address</em> and <em>mode</em> parameters. You can run this command:</p>
-<pre><code class="bash">docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --help
-</code></pre>
-
-<p>to get information.</p>
+<p>As you can see, we set less parameters here as the initial configuration was made on the first launch.</p>
+<p>We use an external service like <a href="http://ifconfig.co">ifconfig.co</a> to get the external IP on every lunch. This works fine on a cloud provider who give the instance a diferent IP on every boot, nevertheless, if you're using a static IP or a DNS name feel free to change the parameter.</p>
 <p>Set execution permissions:</p>
-<pre><code class="bash">chmod 0755 /usr/local/bin/docker-elastest-up
+<pre><code class="bash">sudo chmod 0755 /usr/local/bin/docker-elastest-up
 </code></pre>
 
 <h6 class="smaller-subtitle">3) Systemd start script (<code>/etc/systemd/system/docker-elastest.service</code>)</h6>
@@ -506,10 +543,11 @@ After=docker.service
 Requires=docker.service
 
 [Service]
-TimeoutStartSec=0
+TimeoutStartSec=60
 Restart=always
 ExecStop=/usr/local/bin/docker-evacuate
 ExecStart=/usr/local/bin/docker-elastest-up
+RemainAfterExit=yes
 
 [Install]
 WantedBy=multi-user.target
@@ -521,6 +559,16 @@ WantedBy=multi-user.target
 
 <p>Enable the service to start with the system</p>
 <pre><code class="bash">sudo systemctl enable docker-elastest
+</code></pre>
+
+<h6 class="smaller-subtitle">Start and Stop Elastest</h6>
+
+<p>From now on, everytime you want to launch Elastest:</p>
+<pre><code class="bash">sudo systemctl start docker-elastest
+</code></pre>
+
+<p>or stop</p>
+<pre><code class="bash">sudo systemctl stop docker-elastest
 </code></pre>
 					
 				      </div>
