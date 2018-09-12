@@ -397,7 +397,7 @@ ElasTest Platform is available at http://localhost:37000
 </code></pre>
 
 <p>You can then open in your web browser the shown URL to access to ElasTest dashboard.</p>
-<p>To stop ElasTest, press <code>Ctrl+C</code> in the shell used to start it. You can now try the <a href="../your-first-test">Hello world</a> project available by default when launching ElasTest.</p>
+<p>To stop ElasTest, press <code>Ctrl+C</code> in the shell used to start it. You can now try the <a href="../your-first-test">Hello world</a> project available by default when launching ElasTest. ElasTest also includes other more advanced learning projects.</p>
 <h4 class="holder-subtitle link-top">For Mac</h4>
 
 <div class="range range-xs-center warning-range">
@@ -426,16 +426,24 @@ ElasTest Platform is available at http://localhost:37000
 
 <h4 class="holder-subtitle link-top">Options</h4>
 
-<p>You can include the option <strong><code>--server-address=(docker-machine ip)</code></strong> to set up the machine ip address.</p>
-<pre><code class="text">docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --server-address=&quot;localhost&quot;
+<p>You can include the option <strong><code>--server-address=(docker-machine ip)</code></strong> to set up the machine ip address. This option is mandatory when you start elastest on another machine, such as a server.</p>
+<pre><code class="text">docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --server-address=&quot;myip&quot;
+</code></pre>
+
+<p>You can set an access username and password using the options <strong><code>--user</code></strong> and <strong><code>--pass</code></strong> (or <strong><code>-u</code></strong> and <strong><code>-p</code></strong>)</p>
+<pre><code>docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start -l
 </code></pre>
 
 <p>The <strong><code>-l</code></strong> option allows you to show all the containers logs.</p>
 <pre><code>docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start -l
 </code></pre>
 
-<p>You can add <strong><code>-tl</code></strong> if you want to start the TestLink integrated in ElasTest and enable access to it.</p>
+<p>You can add <strong><code>-tl</code></strong> if you want to start the TestLink integrated in ElasTest and enable access to it. If you do not add this option, you can start it later manually from the Elastest GUI.</p>
 <pre><code class="text">docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start -tl
+</code></pre>
+
+<p>The <strong><code>-jk</code></strong> option can be added if you want to start the Jenkins integrated in ElasTest and enable access to it. If you do not add this option, you can start it later manually from the Elastest GUI.</p>
+<pre><code class="text">docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start -jk
 </code></pre>
 
 <p>If you add <strong><code>--dev</code></strong> you will enable developer options. For now, it only implements the binding of service ports to allow access to them from external tools.</p>
@@ -446,12 +454,15 @@ ElasTest Platform is available at http://localhost:37000
 <pre><code>docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform -h
 </code></pre>
 
+<h4 class="holder-subtitle link-top">ElasTest on a server</h4>
+
+<p>To use ElasTest from a remote machine, it is necessary to use the option <strong><code>--server-address</code></strong> and also open all ports from <strong><code>32768 to 61000</code></strong> both included. It is highly recommended to also set user and password using the <strong><code>--user</code></strong> and <strong><code>--pass</code></strong> options.</p>
 <h4 class="holder-subtitle link-top">ElasTest on Amazon Web Services</h4>
 
 <p>ElasTest has been designed from the outset to offer an extremely simple deployment in Amazon Web Services. Check <a href="../deploying/aws/">Amazon Web Services</a> section to learn how to do it in a couple of minutes.</p>
 <h4 class="holder-subtitle link-top">Updating ElasTest</h4>
 
-<p>To update ElasTest to the latest version available, just need to change <code>start</code> to <code>update</code> and add <code>-it</code> in the launching command:</p>
+<p>To update ElasTest to the latest version available, just need to change <strong><code>start</code></strong> to <strong><code>update</code></strong> and <strong>add <code>-it</code></strong> in the launching command:</p>
 <pre><code class="text">docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform update
 </code></pre>
 

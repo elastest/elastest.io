@@ -377,46 +377,54 @@ section-icon: mdi mdi-content-copy
 
 <h4 class="holder-subtitle link-top">Pipeline Job Examples</h4>
 
-<p>Bellow, you will find two examples of pipeline where using the ElasTest plugin and implements severals configurations, a SUT is started and a test battery is executed on it.
-To configure this option, ElasTest provides the connection info using <a href="../../testing/environment-variables">environment variables</a></p>
-<p>The installation of ElasTest, Jenkins and the collaboration between them, allows several configurations. In this case, ElasTest and Jenkins are installed on the same machine.</p>
-<h5>Web App</h5>
+<p>The installation of ElasTest, Jenkins and the collaboration between them, allows several configurations.</p>
+<p>Bellow, you will find an example of pipeline where using the ElasTest plugin and implements severals configurations, a SUT is started and a test battery is executed on it.
+To configure this option, ElasTest provides the connection info using <a href="../../testing/environment-variables">environment variables</a>. This example is included in the Jenkins instance provided by ElasTest. If you use your own Jenkins, you will have to configure it manually in the following way:</p>
+<h5>WebApp</h5>
 
-<p>This pipeline configures the ElasTes plugin, clones the repository with the test, starts the SUT, starts a beat service to send metrics to ElasTest and configures the log output of the SUT container to send the logs to ElasTest as well.</p>
+<p>This pipeline configures the ElasTes plugin, starts the SUT and clones the repository with the test to execute it.</p>
 <pre><code>node{
-    elastest(tss: ['EUS']) {
+    elastest(tss: ['EUS'], surefireReportsPattern: '**/target/surefire-reports/TEST-*.xml', monitoring: true) {
         stage ('Executing Test') {
             echo 'Print env variables'
             sh 'env'
-
             def sutImage = docker.image('elastest/demo-web-java-test-sut')
-            def beatImage = docker.image('elastest/etm-dockbeat:latest')
-            echo 'Start beat'
-            beatImage.withRun(&quot;-e LOGSTASHHOST=${env.ET_MON_LSBEATS_HOST} -e LOGSTASHPORT=${env.ET_MON_INTERNAL_LSBEATS_PORT} -v /var/run/docker.sock:/var/run/docker.sock --network=elastest_elastest&quot;) { c1 -&gt;
-                sh 'sleep 5'
-                echo 'Start SUT'
-                sutImage.withRun(&quot;--name ${env.ET_SUT_CONTAINER_NAME} --log-driver=syslog --log-opt syslog-address=tcp://${env.ET_MON_LSTCP_HOST}:${env.ET_MON_LSTCP_PORT} --log-opt tag=${env.ET_SUT_LOG_TAG} --network=elastest_elastest&quot;) { c -&gt;
-                    echo &quot;${c.id}&quot;
-                    sh 'sleep 5'
-                    def sutIp = containerIp(&quot;${env.ET_SUT_CONTAINER_NAME}&quot;)
-                    withEnv(['ET_SUT_HOST=' + sutIp]) {
-                        echo 'Set up test environment'
-                        mvnHome = tool 'M3.3.9'
-                        echo 'Cloning repository'
-                        git 'https://github.com/elastest/demo-projects'
-                        echo 'Run test'
-                        sh &quot;cd ./web-java-test/;'${mvnHome}/bin/mvn' -Dtest=WebAppTest test&quot;
-                    }
+            echo 'Start SUT'
+            sutImage.withRun(&quot;--name ${env.ET_SUT_CONTAINER_NAME}&quot;) { c -&gt;
+                echo &quot;${c.id}&quot;
+                def sutContainerName = env.ET_SUT_CONTAINER_NAME;
+                def sutNetwork = getFirstNetwork(sutContainerName)
+                def sutIp = containerIp(sutContainerName,network)
+                sh 'docker run -e IP=' + sutIp + ' -e PORT=8080 --network=' + sutNetwork + ' elastest/etm-check-service-up'
+                withEnv(['ET_SUT_HOST=' + sutIp]) {
+                    echo 'Set up test environment'
+                    mvnHome = tool 'M3.3.9'
+                    echo 'Cloning repository'
+                    git 'https://github.com/elastest/demo-projects'
+                    echo 'Run test'
+                    sh &quot;cd ./web-java-test/;'${mvnHome}/bin/mvn' -Dtest=WebAppTest test&quot;
                 }
             }
+
         }        
     }
 }
 
-def containerIp(containerName) {
+def getFirstNetwork(containerName) {
+    echo &quot;Inside getFirstNetwork function&quot;
+    network = sh (
+        script: &quot;docker inspect &quot; + containerName + &quot; -f \&quot;{{json .NetworkSettings.Networks}}\&quot; | awk \&quot;{sub(/:.*/,\\\&quot;\\\&quot;)}1\&quot; | awk \&quot;{sub(/\\\&quot;/,\\\&quot;\\\&quot;)}1\&quot; | awk \&quot;{sub(/\\\&quot;/,\\\&quot;\\\&quot;)}1\&quot; | awk \&quot;{sub(/{/,\\\&quot;\\\&quot;)}1\&quot;&quot;,
+        returnStdout: true
+    ).trim()
+
+    echo containerName+&quot; Network = &quot; + network;
+    return network;
+}
+
+def containerIp(containerName, network) {
     echo &quot;Inside containerIp function&quot;
     containerIp = sh (
-        script: &quot;docker inspect --format=\&quot;{{.NetworkSettings.Networks.elastest_elastest.IPAddress}}\&quot; &quot;+ containerName,
+        script: &quot;docker inspect --format=\&quot;{{.NetworkSettings.Networks.&quot; + network + &quot;.IPAddress}}\&quot; &quot;+ containerName,
         returnStdout: true
     ).trim()
 
@@ -440,51 +448,42 @@ def containerIp(containerName) {
 <p></p>
 
 <ul>
-<li><strong>Docker beat configuration</strong> : To send the SUT’s metrics to ElasTest it is necessary to start a dockbeat service</li>
-</ul>
-<p></p>
-
-<pre><code>.......
-
-def beatImage = docker.image('elastest/etm-dockbeat:latest')
-echo 'Start beat'
-beatImage.withRun(&quot;-e LOGSTASHHOST=${env.ET_MON_LSBEATS_HOST} -e LOGSTASHPORT=${env.ET_MON_INTERNAL_LSBEATS_PORT} -v /var/run/docker.sock:/var/run/docker.sock --network=elastest_elastest&quot;) { c1 -&gt;
-  .......
-}
-</code></pre>
-
-<p></p>
-
-<ul>
-<li><strong>Sut configuration</strong> : Once the dockbeat has already been started, the SUT must be started
+<li><strong>Sut configuration</strong> : The SUT must be started, passing the <code>${env.ET_SUT_CONTAINER_NAME}</code> env variable (provided by ElasTest) as name of the container. This will allow ElasTest to receive logs and metrics from the Sut.
 <p></p></li>
 </ul>
 <pre><code>def sutImage = docker.image('elastest/demo-web-java-test-sut')
-....
-echo 'Start SUT'
-sutImage.withRun(&quot;--name ${env.ET_SUT_CONTAINER_NAME} --log-driver=syslog --log-opt syslog-address=tcp://${env.ET_MON_LSTCP_HOST}:${env.ET_MON_LSTCP_PORT} --log-opt tag=${env.ET_SUT_LOG_TAG} --network=elastest_elastest&quot;) { c -&gt;
-    ....
-}
+            echo 'Start SUT'
+            sutImage.withRun(&quot;--name ${env.ET_SUT_CONTAINER_NAME}&quot;) { c -&gt;
 </code></pre>
 
 <p></p>
 
 <ul>
-<li><strong>Test Execution</strong> : Finally, the tests should be executed to verify that the SUT is working correctly. Remember that you have to obtain the SUT ip and configure it as a environment variable or pass it as a maven property due to the browsers we have used need to know where is the SUT located.</li>
+<li><strong>Wait for Sut</strong> : You have to obtain the Sut network and ip and run check image (elastest/etm-check-service-up) provided by ElasTest to wait for the Sut to be ready to be used.
+<p></p></li>
+</ul>
+<pre><code>def sutContainerName = env.ET_SUT_CONTAINER_NAME;
+            def sutNetwork = getFirstNetwork(sutContainerName)
+            def sutIp = containerIp(sutContainerName,network)
+            sh 'docker run -e IP=' + sutIp + ' -e PORT=8080 --network=' + sutNetwork + ' elastest/etm-check-service-up'
+</code></pre>
+
+<p></p>
+
+<ul>
+<li><strong>Test Execution</strong> : Finally, the tests should be executed to verify that the SUT is working correctly. Remember that you have to configure the Sut ip as a environment variable or pass it as a maven property due to the browsers we have used need to know where is the SUT located.</li>
 </ul>
 <p></p>
 
 <pre><code>....
-
-def sutIp = containerIp(&quot;${env.ET_SUT_CONTAINER_NAME}&quot;)
 withEnv(['ET_SUT_HOST=' + sutIp]) {
-    echo 'Set up test environment'
-    mvnHome = tool 'M3.3.9'
-    echo 'Cloning repository'
-    git 'https://github.com/elastest/demo-projects'
-    echo 'Run test'
-    sh &quot;cd ./web-java-test/;'${mvnHome}/bin/mvn' -Dtest=WebAppTest test&quot;
-}
+            echo 'Set up test environment'
+            mvnHome = tool 'M3.3.9'
+            echo 'Cloning repository'
+            git 'https://github.com/elastest/demo-projects'
+            echo 'Run test'
+            sh &quot;cd ./web-java-test/;'${mvnHome}/bin/mvn' -Dtest=WebAppTest test&quot;
+        }
 ....
 </code></pre>
 

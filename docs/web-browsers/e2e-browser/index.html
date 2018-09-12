@@ -377,7 +377,7 @@ section-icon: mdi mdi-content-copy
 
 <p>If you want to use a web browser in your test, you can “install” a web browser in your <a href="../../fundamentals/core-concepts/">SuT</a> Docker container. The problem with this approach is that you can not see what happens in the browser. You can not see the browser console. Also, it is a bit of a challenge to execute the same tests with different browser versions.</p>
 <p>One of the main features provided by ElasTest is allowing tests to use web browsers. That browsers will be fully monitored, showing its windows in real time in ElasTest web interface and also recording it to later inspection. Also, the browser console will be shown alongside test and SuT logs.</p>
-<p>Let's see how to launch a TJob that makes use of a web browser inside Elastest. As an example we will use our <a href="https://github.com/elastest/demo-projects/tree/master/simpleweb-java-test" target="_blank">Simple Web Java Test</a> (you can check the code for this test and similar ones in other languages in section <a href="#sample-test-code">Sample test code</a>):</p>
+<p>Let's see how to launch a TJob that makes use of a web browser inside Elastest. As an example we will use our <code>Chrome Test</code> tjob which is part of the <code>Webapp</code> project, loaded as an example when you first start ElasTest. If you have deleted this project, you can add it manually as indicated below. This project is called <a href="https://github.com/elastest/demo-projects/tree/master/simpleweb-java-test" target="_blank">Simple Web Java Test</a> (you can check the code for this test and similar ones in other languages in section <a href="#sample-test-code">Sample test code</a>):</p>
 <h4 class="holder-subtitle link-top">1. Get into the desired project</h4>
 
 <div class="docs-gallery inline-block">
@@ -401,6 +401,7 @@ Complete the form fields:
     <li><strong>With Commands Container</strong> / <strong>With Docker Image</strong> / <strong>With Docker Compose</strong>: whether to deploy the SuT on ElasTest as some <i>commands</i> Container,  as a Docker <i>image</i> or a <i>docker-compose</i> (<code>With Docker Image</code>)</li>
     <li><strong>Docker Image</strong>: image of the SuT (<code>elastest/demo-web-java-test-sut</code>)</li>
     <li><strong>Wait for http port</strong>: which port of the SuT should ElasTest wait to be available before starting the TJob (<code>8080</code>)</li>
+    <li><strong>Protocol</strong>: protocol of the SuT url. Only Http and Https are available. (<code>http</code>)</li>
 </ul>
 
 <p><br></p>
@@ -488,7 +489,6 @@ mvn test</code></pre>
 
 <div class="row" style="margin-top: 40px">
 
-
 <div class="col-md-6">
 <h4><i>BeforeAll</i> method</h4>
 <pre>
@@ -508,8 +508,10 @@ public static void setupAllTests() {
     if (eusURL == null) {
         ChromeDriverManager.getInstance().setup();
     }
+
 }
 </code>
+
 </pre>
 <blockquote>This method runs just once before all tests defined in the class.<br><code>ET_SUT_HOST</code> variable will be the IP of our SuT. ElasTest will automatically inject the right value (<code>localhost</code> if not defined)<br><code>ET_EUS_API</code> variable tells us where to connect to use Elastest browsers (standard Selenium Hub). If the variable has no value, we can consider that this service is no available and then local browsers have to be used (here we are using <a href="https://github.com/bonigarcia/webdrivermanager" target="_blank">WebDriver Manager</a> Java library. This library is responsible to download and configure any additional software needed to use installed browsers from tests)
 </blockquote>
@@ -528,14 +530,16 @@ public void setupTest() throws MalformedURLException {
 
     if (eusURL == null) {
         driver = new ChromeDriver(options);
-    } else {            
+    } else {
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setBrowserName("chrome");
-        caps.setCapability(ChromeOptions.CAPABILITY, options);                  
+        caps.setCapability(ChromeOptions.CAPABILITY, options);
         driver = new RemoteWebDriver(new URL(eusURL), caps);
     }
+
 }
 </code>
+
 </pre>
 <blockquote>This method is called before every test in this class.<br> It creates a browser with its window maximized: if Elastest Web Browser service is available, then the browser is a remote web browser. If not, it is a local browser. Selenium API is slightly differente in each case</blockquote>
 </div>
@@ -588,8 +592,10 @@ public void test() throws InterruptedException {
     assertThat(body, equalTo(newBody));
 
     Thread.sleep(3000);
+
 }
 </code>
+
 </pre>
 <blockquote>This test is the only one defined in this class. Its logic just simulates the navigation of a real user in our webpage, sending some data within a form and checking the received data.<br>Sentences "Thread.sleep()" just give us some more time to see the browser in action. They are not necessary in a real project</blockquote>
 </div>
@@ -633,8 +639,10 @@ before(() => {
     console.log("App url: " + sutURL);
 
     eusURL = process.env.ET_EUS_API;
+
 });
 </code>
+
 </pre>
 <blockquote>This method runs just once before all tests defined in the class.<br><code>ET_SUT_HOST</code> variable will be the IP of our SuT. ElasTest will automatically inject the right value (<code>localhost</code> if not defined)<br><code>ET_EUS_API</code> variable tells us where to connect to use Elastest browsers (standard Selenium Hub)</blockquote>
 </div>
@@ -654,13 +662,15 @@ beforeEach(() => {
         console.log("Using ElasTest browser ("+eusURL+")");
         browserBuilder.usingServer(eusURL);
     } else {
-        console.log("Using local browser");  
+        console.log("Using local browser");
     }
     driver = browserBuilder.build();
 
     console.log("Chrome browser created");
+
 });
 </code>
+
 </pre>
 <blockquote>This method is called before every test in this class.<br> It creates a browser with its window maximized: if Elastest Web Browser service is available, then the browser is a remote web browser. If not, it is a local browser. Selenium API is slightly differente in each case</blockquote>
 </div>
@@ -694,8 +704,10 @@ describe("Web page", () => {
 
         driver.quit();
     })
+
 })
 </code>
+
 </pre>
 <blockquote>This test is the only one defined in this class. Its logic just simulates the navigation of a real user in our webpage, sending some data within a form and checking the received data</blockquote>
 </div>

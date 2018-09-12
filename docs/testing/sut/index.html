@@ -390,7 +390,8 @@ section-icon: mdi mdi-content-copy
 <ul>
 <li><strong>Commands container images</strong>: name of the container image</li>
 <li><strong>Commands</strong>: commands to execute</li>
-<li><strong>Wait for http port</strong>: port that ElasTest should wait for to be available before running your TJobs</li>
+<li><strong>Port</strong>: port that ElasTest should wait for to be available before running your TJobs</li>
+<li><strong>Protocol</strong>: protocol of the SuT url. Only Http and Https are available.</li>
 </ul>
 <p></p>
 
@@ -434,7 +435,8 @@ section-icon: mdi mdi-content-copy
 <p>Fields to declare:</p>
 <ul>
 <li><strong>Docker image</strong>: name of the image (tagged or untagged)</li>
-<li><strong>Wait for http port</strong>: port that ElasTest should wait for to be available before running your TJobs</li>
+<li><strong>Port</strong>: port that ElasTest should wait for to be available before running your TJobs</li>
+<li><strong>Protocol</strong>: protocol of the SuT url. Only Http and Https are available.</li>
 </ul>
 <p></p>
 
@@ -448,8 +450,9 @@ section-icon: mdi mdi-content-copy
 <p>Fields to declare:</p>
 <ul>
 <li><strong>Docker Compose</strong>: your <code>docker-compose.yml</code> file. Simply copy-paste its content here</li>
-<li><strong>Main Service Name</strong>: the name of the service that ElasTest should wait for to be up before running your TJobs (the specific port is declared in the next field <em>Wait for http port</em>)</li>
-<li><strong>Wait for http port</strong>: port that ElasTest should wait for to be available before running your TJobs (applied to the service declared in the previous field <em>Main Service Name</em>)</li>
+<li><strong>Main Service Name</strong>: the name of the service that ElasTest should wait for to be up before running your TJobs (the specific port is declared in the next field <em>Port</em>)</li>
+<li><strong>Port</strong>: port that ElasTest should wait for to be available before running your TJobs (applied to the service declared in the previous field <em>Main Service Name</em>)</li>
+<li><strong>Protocol</strong>: protocol of the SuT url. Only Http and Https are available.</li>
 </ul>
 <p></p>
 
