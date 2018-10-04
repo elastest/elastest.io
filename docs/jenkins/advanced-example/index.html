@@ -307,7 +307,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../../deploying/aws/">Amazon Web Services</a>
+        <a class="" href="../../deploying/ubuntu/">Linux Server</a>
         
     </li>
 
@@ -316,7 +316,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../../deploying/ubuntu/">Linux Server</a>
+        <a class="" href="../../deploying/aws/">Amazon Web Services</a>
         
     </li>
 
@@ -370,17 +370,22 @@ section-icon: mdi mdi-content-copy
 					  <div class="range range-xs-left">
 <div class="cell-xs-10 cell-lg-6 text-md-left inset-md-right-80 cell-lg-push-1 offset-top-50 offset-lg-top-0">
 <h2 id="content" class="h1">Advanced example</h2>
-<div class="offset-top-30 offset-md-top-50">
-</div>
 </div>
 </div>
 
-<h4 class="holder-subtitle link-top">Pipeline Job Examples</h4>
+<h3 class="holder-subtitle link-top">Pipeline Job Examples</h3>
 
-<p>The installation of ElasTest, Jenkins and the collaboration between them, allows several configurations.</p>
+<p>The installation of ElasTest, Jenkins and the collaboration between them, allows several configurations and offers the following options:</p>
+<ul>
+<li><strong><code>tss: ['EUS']</code></strong>: is used to indicate to ElasTest that the job needs to use the EUS service to use a web browser.</li>
+<li><strong><code>sut</code></strong>: allows to select an external Sut against which to execute the job.</li>
+<li><strong><code>project</code></strong>: allows you to select the ElasTest Project where to create the new TJob from Jenkins.</li>
+<li><strong><code>surefireReportsPattern</code></strong>: used to tell ElasTest the path where the test results will be located.</li>
+<li><strong><code>monitoring</code></strong>: used to send or not the Sut monitoring traces to Elastest.</li>
+</ul>
 <p>Bellow, you will find an example of pipeline where using the ElasTest plugin and implements severals configurations, a SUT is started and a test battery is executed on it.
 To configure this option, ElasTest provides the connection info using <a href="../../testing/environment-variables">environment variables</a>. This example is included in the Jenkins instance provided by ElasTest. If you use your own Jenkins, you will have to configure it manually in the following way:</p>
-<h5>WebApp</h5>
+<h4 class="small-subtitle">WebApp</h4>
 
 <p>This pipeline configures the ElasTes plugin, starts the SUT and clones the repository with the test to execute it.</p>
 <pre><code>node{
@@ -394,7 +399,7 @@ To configure this option, ElasTest provides the connection info using <a href=".
                 echo &quot;${c.id}&quot;
                 def sutContainerName = env.ET_SUT_CONTAINER_NAME;
                 def sutNetwork = getFirstNetwork(sutContainerName)
-                def sutIp = containerIp(sutContainerName,network)
+                def sutIp = containerIp(sutContainerName, sutNetwork)
                 sh 'docker run -e IP=' + sutIp + ' -e PORT=8080 --network=' + sutNetwork + ' elastest/etm-check-service-up'
                 withEnv(['ET_SUT_HOST=' + sutIp]) {
                     echo 'Set up test environment'
@@ -522,7 +527,7 @@ for (var i = 1; i <= galleries.length; i++) {
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../../deploying/aws/" class="btn btn-xs btn-primary float-right" title="Amazon Web Services">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../../deploying/ubuntu/" class="btn btn-xs btn-primary float-right" title="Linux Server">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../try-jenkins/" class="btn btn-xs btn-primary" title="Try jenkins"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>

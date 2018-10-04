@@ -307,7 +307,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../../deploying/aws/">Amazon Web Services</a>
+        <a class="" href="../../deploying/ubuntu/">Linux Server</a>
         
     </li>
 
@@ -316,7 +316,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../../deploying/ubuntu/">Linux Server</a>
+        <a class="" href="../../deploying/aws/">Amazon Web Services</a>
         
     </li>
 
@@ -422,18 +422,18 @@ section-icon: mdi mdi-content-copy
 
   <p>Monitor custom log in my server thanks to <a href="https://www.elastic.co/products/beats/filebeat">Filebeat</a></p>
 
-  <h6 style="color: #666666">1. Create a new SuT</h6>
+  <h5 class="small-subtitle" style="color: #666666">1. Create a new SuT</h5>
 
   <p>First of all, create a new SuT inside any Project in your ElasTest dashboard. Do it with <strong>Deployed SuT</strong> and <strong>Instrumented by SuT Admin</strong> options, just as shown in the images above.</p>
 
-  <h6 style="color: #666666">2. Install Filebeat on your SuT machine</h6>
+  <h5 class="small-subtitle" style="color: #666666">2. Install Filebeat on your SuT machine</h5>
 
   <p>Let's suppose we have an Ubuntu machine hosting our app. We connect to it through <i>ssh</i> and run the command that <a href="https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-installation.html">Step 1 of Filebeat documentation</a> tells us. In this case, by using Debian packages:</p>
 
   <pre><code class="bash hljs">curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-6.1.0-amd64.deb
 sudo dpkg -i filebeat-6.1.0-amd64.deb</code></pre>
 
-  <h6 style="color: #666666">3. Configure Filebeat agent to suit your needs</h6>
+  <h5 class="small-subtitle" style="color: #666666">3. Configure Filebeat agent to suit your needs</h5>
 
   <p>Take a look to <a href="https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-configuration.html">Step 2 of Filebeat documentation</a>. In our machine the Filebeat configuration file is <code>/etc/filebeat/filebeat.yml</code>. The predefined default value for Filebeat is to gather all logs inside "/var/log/" folder:</p>
 
@@ -443,7 +443,7 @@ sudo dpkg -i filebeat-6.1.0-amd64.deb</code></pre>
   paths:
     - /var/log/*.log</code></pre>
 
-  <h6 style="color: #666666">4. Configure Filebeat agent to connect to ElasTest</h6>
+  <h5 class="small-subtitle" style="color: #666666">4. Configure Filebeat agent to connect to ElasTest</h5>
 
   <p>Again, just need to take a quick look to <a href="https://www.elastic.co/guide/en/beats/filebeat/current/config-filebeat-logstash.html">Step 3 of Filebeat documentation</a>.</p>
 
@@ -511,18 +511,18 @@ fields:
 
   <p>Monitor a custom metric in my server thanks to <a href="https://www.elastic.co/products/beats/metricbeat">Metricbeat</a></p>
 
-  <h6 style="color: #666666">1. Create a new SuT</h6>
+  <h5 class="small-subtitle" style="color: #666666">1. Create a new SuT</h5>
 
   <p>First of all, create a new SuT inside any Project in your ElasTest dashboard. Do it with <strong>Deployed SuT</strong> and <strong>Instrumented by SuT Admin</strong> options, just as shown in the images above.</p>
 
-  <h6 style="color: #666666">2. Install Metricbeat on your SuT machine</h6>
+  <h5 class="small-subtitle" style="color: #666666">2. Install Metricbeat on your SuT machine</h5>
 
   <p>Let's suppose we have an Ubuntu machine hosting our app. We connect to it through <i>ssh</i> and run the command that <a href="https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-installation.html">Step 1 of Metricbeat documentation</a> tells us. In this case, by using Debian packages:</p>
 
   <pre><code class="bash hljs">curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-6.1.0-amd64.deb
 sudo dpkg -i metricbeat-6.1.0-amd64.deb</code></pre>
 
-  <h6 style="color: #666666">3. Configure Metricbeat agent to suit your needs</h6>
+  <h5 class="small-subtitle" style="color: #666666">3. Configure Metricbeat agent to suit your needs</h5>
 
   <p>Take a look to <a href="https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-configuration.html">Step 2 of Metricbeat documentation</a>. In our machine the Metricbeat configuration file is <code>/etc/metricbeat/metricbeat.yml</code>. According to Metricbeat docs, we could configure it like this:</p>
 
@@ -537,7 +537,7 @@ sudo dpkg -i metricbeat-6.1.0-amd64.deb</code></pre>
 
   <p>Take a look to the <a href="https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-modules.html">full list of metrics</a> you can send with Metricbeat. Just add all the "metricsets" fields you want inside the proper "module" filed (for example, in <i>module: system</i> you could send <i>- memory</i> or <i>- network</i> appart from <i>- cpu</i></p>
 
-  <h6 style="color: #666666">4. Configure Metricbeat agent to connect to ElasTest</h6>
+  <h5 class="small-subtitle" style="color: #666666">4. Configure Metricbeat agent to connect to ElasTest</h5>
 
   <p>Again, just need to take a quick look to <a href="https://www.elastic.co/guide/en/beats/metricbeat/current/config-metricbeat-logstash.html">Step 3 of Metricbeat documentation</a>.</p>
 

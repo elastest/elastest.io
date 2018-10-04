@@ -304,8 +304,10 @@ section-icon: mdi mdi-content-copy
         
              
 
-    <li class="toctree-l1 ">
-        <a class="" href="../aws/">Amazon Web Services</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Linux Server</a>
+        
+         
         
     </li>
 
@@ -313,10 +315,8 @@ section-icon: mdi mdi-content-copy
         
              
 
-    <li class="toctree-l1 current">
-        <a class="current" href="./">Linux Server</a>
-        
-         
+    <li class="toctree-l1 ">
+        <a class="" href="../aws/">Amazon Web Services</a>
         
     </li>
 
@@ -370,16 +370,15 @@ section-icon: mdi mdi-content-copy
 					  <div class="range range-xs-left">
 <div class="cell-xs-10 cell-lg-6 text-md-left inset-md-right-80 cell-lg-push-1 offset-top-50 offset-lg-top-0">
 <h2 id="content" class="h1">Deploying ElasTest on a Linux server</h2>
-<div class="offset-top-30 offset-md-top-50">
-</div>
 </div>
 </div>
 
 <h4 class="holder-subtitle link-top">Introduction</h4>
 
-<p>Through the following lines you will find a guide to deploy Elastest on a single machine (physical or virtual). So the same steps can be applied to a server on your data center or an instance on AWS, OpenStack, Azure or Google Cloud.</p>
-<p>We've tried to deploy Elastest on <strong>Ubuntu 16.04</strong> and <strong>CentOS 7</strong> and the steps are basically the same.</p>
+<p>Through the following lines you will find a guide to deploy ElasTest on a single machine (physical or virtual). So the same steps can be applied to a server on your data center or an instance on AWS, OpenStack, Azure or Google Cloud.</p>
+<p>We've tried to deploy ElasTest on <strong>Ubuntu 16.04</strong>, <strong>Ubuntu 18.04</strong> and <strong>CentOS 7</strong> and the steps are basically the same.</p>
 <p>You only need remote or physical access to a <strong>Linux</strong> interactive shell to run commands as a privilegiated user.</p>
+<p>You can also deploy ElasTest on <a href="/docs/deploying/aws/">Amazon Web Services</a></p>
 <h4 class="holder-subtitle link-top">Accesing the instance</h4>
 
 <p>Depends on your infraestructure the access will be different. Please, refer to your system administrator to know how to grant access to the console.</p>
@@ -392,9 +391,144 @@ section-icon: mdi mdi-content-copy
 <pre><code class="bash">sudo usermod -aG docker YOUR_USER
 </code></pre>
 
+<h4 class="holder-subtitle link-top">Launching ElasTest</h4>
+
+<p>In order to launch ElasTest platform just type</p>
+<pre><code class="bash">docker run -ti \
+  --rm \
+  -v ~/.elastest:/data \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  elastest/platform start \
+  --server-address=X.Y.Z.W \
+  --testlink \
+  --jenkins \
+  --user=xxxxxx \
+  --password=yyyyyy
+</code></pre>
+
+<p>ElasTest needs to use Docker to launch other containers, so we bind the socket as a volume inside the platform.</p>
+<p>The <strong>server-address</strong> is web address you will reach the platform. If you're deploying on a cloud provider (like AWS, GCE o Azure) this address should be your public IP, if you're deploying on your private LAN this is the address you're using to connect the server.It's necessary to use the <strong><code>--server-address</code></strong> option and also open all ports from <strong><code>32768 to 61000</code></strong> both included. It is highly recommended to also set user and password using the <strong><code>--user</code></strong> and <strong><code>--pass</code></strong> options.</p>
+<p>Alternatively, you can use a domain name like <strong>elastest.my_company.com</strong> for the <em>server_address</em> parameter.</p>
+<p><strong><code>--testlink</code></strong> stands for TestLink and <strong><code>--jenkins</code></strong> stands for Jenkins. These fields are not obligatory but its use is <strong>recommended</strong>. </p>
+<p>You can also use your own Jenkins and install the <a href="/docs/jenkins/">ElasTest plugin for Jenkins</a></p>
+<p>Finally, set user and password to grant access to the platform. You can omit this parameters if you're working on a safe evironment.</p>
+<p>You'll see the following lines on the terminal when the platform is up and ready</p>
+<pre><code class="text">Pulling some necessary images...
+
+Preload images finished.
+
+Starting ElasTest Platform (normal mode)...
+
+ElasTest services are starting. This will likely take some time. The ElasTest URL will be shown when ready.
+
+ElasTest Platform is available at http://X.Y.Z.W:37000
+
+Press Ctrl+C to stop.
+</code></pre>
+
+<p>It'll show the domain name instead the IP address in the case you're using a DNS service.</p>
+<p>Type the following command to get more information about start command:</p>
+<pre><code class="bash">docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --help
+</code></pre>
+
+<!-- OPTIONS -->
+
+<h5 class="small-subtitle">Options</h5>
+
+<p>You can include the option <strong><code>--server-address=(docker-machine ip)</code></strong> to set up the machine ip address.</p>
+<pre><code class="text">docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --server-address=&quot;myip&quot;
+</code></pre>
+
+<p>You can set an access username and password using the options <strong><code>--user</code></strong> and <strong><code>--pass</code></strong> (or <strong><code>-u</code></strong> and <strong><code>-p</code></strong>)</p>
+<pre><code>docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --user=elastest --password=elastest
+</code></pre>
+
+<p>The <strong><code>--logs</code></strong> option allows you to show all the containers logs.</p>
+<pre><code>docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --logs
+</code></pre>
+
+<p>You can add <strong><code>--testlink</code></strong> if you want to start the TestLink integrated in ElasTest and enable access to it. If you do not add this option, you can start it later manually from the ElasTest GUI.</p>
+<pre><code class="text">docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --testlink
+</code></pre>
+
+<p>The <strong><code>--jenkins</code></strong> option can be added if you want to start the Jenkins integrated in ElasTest and enable access to it. If you do not add this option, you can start it later manually from the ElasTest GUI.</p>
+<pre><code class="text">docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --jenkins
+</code></pre>
+
+<p>You can execute <strong><code>--help</code></strong> if you need more information about the options.</p>
+<pre><code>docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform --help
+</code></pre>
+
+<h4 class="holder-subtitle link-top">Running ElasTest on system boot</h4>
+
+<p>To start ElasTest automatically on a system with Systemd, two scripts are needed:</p>
+<h5 class="small-subtitle">1) Start ElasTest (<code>/usr/local/bin/elastest-start</code>)</h5>
+
+<p>This script will launch elastest and contains the following lines:</p>
+<pre><code class="bash">#!/bin/bash
+PUBLIC_IP=$(curl ifconfig.co)
+nohup docker run -d -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --server-address=${PUBLIC_IP} &amp;&gt;/dev/null &amp;
+disown
+
+exit 0
+</code></pre>
+
+<p>As you can see, we set less parameters here as the initial configuration was made on the first launch.</p>
+<p>For --server-address, we use an external service like <a href="http://ifconfig.co">ifconfig.co</a> to get the external IP on every launch using <code>curl</code>. This works fine on a cloud provider who give the instance a diferent IP on every boot, nevertheless, if you're using a static IP or a DNS name feel free to change the parameter.</p>
+<p>Set execution permissions:</p>
+<pre><code class="bash">sudo chmod 0755 /usr/local/bin/elastest-start
+</code></pre>
+
+<h5 class="small-subtitle">2) Stop ElasTest (<code>/usr/local/bin/elastest-stop</code>)</h5>
+
+<p>The second script is <code>elastest-stop</code> to stop ElasTest.</p>
+<pre><code class="bash">#!/bin/bash
+docker run -d -v /var/run/docker.sock:/var/run/docker.sock elastest/platform stop
+</code></pre>
+
+<p>Set execution permissions:</p>
+<pre><code class="bash">sudo chmod 0755 /usr/local/bin/elastest-stop
+</code></pre>
+
+<h5 class="small-subtitle">3) Systemd start script (<code>/etc/systemd/system/elastest.service</code>)</h5>
+
+<pre><code class="text">[Unit]
+Description=ElasTest Platform
+After=docker.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=60
+Restart=always
+ExecStop=/usr/local/bin/elastest-stop
+ExecStart=/usr/local/bin/elastest-start
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+
+<p>Reload systemd daemon:</p>
+<pre><code class="bash">sudo systemctl daemon-reload
+</code></pre>
+
+<p>Enable the service to start with the system</p>
+<pre><code class="bash">sudo systemctl enable elastest
+</code></pre>
+
+<h5 class="small-subtitle">Start and Stop ElasTest</h5>
+
+<p>From now on, everytime you want to launch ElasTest:</p>
+<pre><code class="bash">sudo systemctl start elastest
+</code></pre>
+
+<p>or stop</p>
+<pre><code class="bash">sudo systemctl stop elastest
+</code></pre>
+
 <h4 class="holder-subtitle link-top">Swap space</h4>
 
-<p>Elastest needs some swap space. If your server is physical, it probably has some space already. You can check by running:</p>
+<p>It is possible that elastest needs some swap space. If your server is physical, it probably has some space already. You can check by running:</p>
 <pre><code class="bash">free -m
 </code></pre>
 
@@ -411,7 +545,7 @@ Swap:             0           0           0
 </code></pre>
 
 <p>If you're working on the cloud, you'll probably need to add some swap space. To do that follow this steps:</p>
-<h6 class="small-subtitle">1) Creating a swap file</h6>
+<h5 class="small-subtitle">1) Creating a swap file</h5>
 
 <p>With Ubuntu:</p>
 <pre><code class="bash">sudo fallocate -l 4G /swapfile
@@ -429,147 +563,56 @@ Swap:             0           0           0
 <pre><code class="bash">sudo chmod 0600 /swapfile
 </code></pre>
 
-<h6 class="small-subtitle">2) Mark the file as swap space</h6>
+<h5 class="small-subtitle">2) Mark the file as swap space</h5>
 
 <pre><code class="bash">sudo mkswap /swapfile
 </code></pre>
 
-<h6 class="small-subtitle">3) Activate the swap</h6>
+<h5 class="small-subtitle">3) Activate the swap</h5>
 
 <pre><code class="bash">sudo swapon /swapfile
 </code></pre>
 
-<h6 class="small-subtitle">4) Checking</h6>
+<h5 class="small-subtitle">4) Checking</h5>
 
 <p>If you run the <em>free</em> command again you'll see the swap space available.</p>
 <pre><code class="bash">free -m
 </code></pre>
 
-<h6 class="small-subtitle">5) Making changes permanent</h6>
+<h5 class="small-subtitle">5) Making changes permanent</h5>
 
 <p>To make those changes permanent, add the following line to your <em>/etc/fstab</em> file:</p>
 <pre><code class="bash">sudo echo &quot;/swapfile none swap sw 0 0&quot; &gt;&gt; /etc/fstab
 </code></pre>
 
-<h4 class="holder-subtitle link-top">The <i>vm.max_map_count</i> issue</h4>
+<h4 id="elastestData" class="holder-subtitle link-top">ElasTest data</h4>
 
-<p>According to Elasticsearch docs, you need to set up <em>vm.max_map_count</em> to an upper value in production environments. Check <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html">here</a> if you need more information.</p>
-<p>So, to increase that kernel parameter just do:</p>
-<pre><code class="bash">sudo sysctl -w vm.max_map_count=262144
-</code></pre>
+<p>ElasTest makes use of a folder and two volumes to store the data:</p>
+<h5 class="small-subtitle">/data folder</h5>
 
-<p>To make changes permanent,</p>
-<pre><code class="bash">sudo echo vm.max_map_count=262144 &gt;&gt; /etc/sysctl.conf
-</code></pre>
+<p>As you may have seen above in the ElasTest start command, two volumes are binded. The first one is the <strong><code>/data</code></strong> folder that, in the example commands, we have bind to the host's <strong><code>~/.elastest</code></strong> folder, but you can choose the host folder you want.</p>
+<p>In this folder some data like the videos of the tests or configurations of Elastest are saved.</p>
+<h5 class="small-subtitle">elastest_edm-mysql volume</h5>
 
-<h4 class="holder-subtitle link-top">Launching Elastest</h4>
+<p>The <strong><code>elastest_edm-mysql</code></strong> volume contains the ElasTest database, which contains all the data information of the tests, such as projects, suts, monitoring traces, test results, etc.</p>
+<h5 class="small-subtitle">elastest_etm-testlink volume</h5>
 
-<p>In order to launch Elastest platform just type</p>
-<pre><code class="bash">docker run -ti \
-  --rm \
-  -v /var/run/docker.sock:/var/run/docker.sock \
-  elastest/platform start \
-  --mode normal \
-  --server-address=X.Y.Z.W \
-  -tl \
-  --user=elastest \
-  --password=elastest
-</code></pre>
+<p>The <strong><code>elastest_etm-testlink</code></strong> volume contains TestLink configuration information, such as the name of the MySql schema created in the database of <strong><code>elastest_edm-mysql</code></strong> volume.</p>
+<!---
+ Script for open external links in a new tab
+-->
 
-<p>Elastest needs to use Docker to launch other containers, so we bind the socket as a volume inside the platform.</p>
-<p>We can choose the execution mode <em>normal</em>, <em>experimental</em>, <em>experimental_lite</em></p>
-<p>The <strong>server-address</strong> is web address you will reach the platform. If you're deploying on a cloud provider (like AWS, GCE o Azure) this address should be your public IP, if you're deploying on your private LAN this is the address you're using to connect the server. Finally, if you're deploying on your laptop then you can omit the parameter.</p>
-<p>Alternatively, you can use a domain name like <strong>elastest.my_company.com</strong> for the <em>server_address</em> parameter.</p>
-<p><em>-tl</em> stands for TestLink.</p>
-<p>Finally, set user and password to grant access to the platform. You can omit this parameters if you're working on a safe evironment.</p>
-<p>Type </p>
-<pre><code class="bash">docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --help
-</code></pre>
-
-<p>to get more information.</p>
-<p>You'll see the following lines on the terminal when the platform is up and ready</p>
-<pre><code class="text">Starting ElasTest Platform (normal mode)...
-
-Please wait a few seconds while we start the ElasTest services, the ElasTest URL will be shown when ready.
-
-ElasTest Platform is available at http://X.Y.Z.W:37000
-</code></pre>
-
-<p>It'll show the domain name instead the IP address in the case you're using a DNS service.</p>
-<h4 class="holder-subtitle link-top">Running Elastest on system boot</h4>
-
-<p>Elastest needs two script and a Systemd unit to work on system boot. </p>
-<h6 class="smaller-subtitle">1) Clean all containers and volumes (<code>/usr/local/bin/docker-evacuate</code>)</h6>
-
-<p>The first script is <code>docker-evacuate</code> and will clean the platform from the system. Basically, it'll remove unnecessary Docker' volumes and containers.</p>
-<pre><code class="bash">#!/bin/bash
-
-# Delete all containers
-docker rm -f $(docker ps -a -q)
-
-for volume in $(sudo docker volume ls | grep -v elastest_edm-mysql | grep -v elastest_elasticsearch-data | grep -v elastest_etm-testlink | tail -n +2 | awk '{print $2}')
-do
-  sudo docker volume rm $volume 
-done
-</code></pre>
-
-<p>The volumes listed are kept because they contain user data like the metrics, tests, etc.</p>
-<p>Set execution permissions:</p>
-<pre><code class="bash">sudo chmod 0755 /usr/local/bin/docker-evacuate
-</code></pre>
-
-<h6 class="smaller-subtitle">2) Start Elastest (<code>/usr/local/bin/docker-elastest-up</code>)</h6>
-
-<p>This script will launch elastest and contains the following lines:</p>
-<pre><code class="bash">#!/bin/bash
-PUBLIC_IP=$(curl ifconfig.co)
-nohup docker run -d -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --server-address=${PUBLIC_IP} --mode=normal --pullcore &amp;&gt;/dev/null &amp;
-disown
-
-exit 0
-</code></pre>
-
-<p>As you can see, we set less parameters here as the initial configuration was made on the first launch.</p>
-<p>We use an external service like <a href="http://ifconfig.co">ifconfig.co</a> to get the external IP on every lunch. This works fine on a cloud provider who give the instance a diferent IP on every boot, nevertheless, if you're using a static IP or a DNS name feel free to change the parameter.</p>
-<p>Set execution permissions:</p>
-<pre><code class="bash">sudo chmod 0755 /usr/local/bin/docker-elastest-up
-</code></pre>
-
-<h6 class="smaller-subtitle">3) Systemd start script (<code>/etc/systemd/system/docker-elastest.service</code>)</h6>
-
-<pre><code class="text">[Unit]
-Description=Elastest Platform
-After=docker.service
-Requires=docker.service
-
-[Service]
-TimeoutStartSec=60
-Restart=always
-ExecStop=/usr/local/bin/docker-evacuate
-ExecStart=/usr/local/bin/docker-elastest-up
-RemainAfterExit=yes
-
-[Install]
-WantedBy=multi-user.target
-</code></pre>
-
-<p>Reload systemd daemon:</p>
-<pre><code class="bash">sudo systemctl daemon-reload
-</code></pre>
-
-<p>Enable the service to start with the system</p>
-<pre><code class="bash">sudo systemctl enable docker-elastest
-</code></pre>
-
-<h6 class="smaller-subtitle">Start and Stop Elastest</h6>
-
-<p>From now on, everytime you want to launch Elastest:</p>
-<pre><code class="bash">sudo systemctl start docker-elastest
-</code></pre>
-
-<p>or stop</p>
-<pre><code class="bash">sudo systemctl stop docker-elastest
-</code></pre>
+<script type="text/javascript" charset="utf-8">
+      // Creating custom :external selector
+      $.expr[':'].external = function(obj){
+          return !obj.href.match(/^mailto\:/)
+                  && (obj.hostname != location.hostname);
+      };
+      $(function(){
+        $('a:external').addClass('external');
+        $(".external").attr('target','_blank');
+      })
+</script>
 					
 				      </div>
 				    </div>
@@ -578,10 +621,10 @@ WantedBy=multi-user.target
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../../releases/" class="btn btn-xs btn-primary float-right" title="Releases">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../aws/" class="btn btn-xs btn-primary float-right" title="Amazon Web Services">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../aws/" class="btn btn-xs btn-primary" title="Amazon Web Services"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
+        <a href="../../jenkins/advanced-example/" class="btn btn-xs btn-primary" title="Advanced example"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
       
     </div>
   

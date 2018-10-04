@@ -307,7 +307,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../../deploying/aws/">Amazon Web Services</a>
+        <a class="" href="../../deploying/ubuntu/">Linux Server</a>
         
     </li>
 
@@ -316,7 +316,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../../deploying/ubuntu/">Linux Server</a>
+        <a class="" href="../../deploying/aws/">Amazon Web Services</a>
         
     </li>
 
@@ -389,7 +389,7 @@ section-icon: mdi mdi-content-copy
     <a data-fancybox="gallery-1" href="/docs/jenkins/images/job.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/job.png"/></a>
 </div>
 <br></p>
-<h5>Job result</h5>
+<h5 class="small-subtitle">Job result</h5>
 
 <p>After we run the Freestyle Job, we can check the results in both platforms, <strong>Jenkins</strong> and <strong>ElasTest</strong>. 
 <div class="docs-gallery inline-block">
@@ -409,9 +409,9 @@ section-icon: mdi mdi-content-copy
 <p>Run a SUT using docker or docker-compose</p>
 </li>
 </ul>
-<h5>Basics examples</h5>
+<h5 class="small-subtitle">Basics examples</h5>
 
-<h6>Example 1</h6>
+<h6 class="small-subtitle">Example 1</h6>
 
 <p>This code will be us useful, due to, adding it in the Pipeline script and executing the Pipeline, it will download the <a href="https://github.com/elastest/demo-projects"> demo-projects </a> repository and it will run the test.</p>
 <pre><code>node{ 
@@ -435,7 +435,7 @@ section-icon: mdi mdi-content-copy
     <a data-fancybox="gallery-2" href="/docs/jenkins/images/pipeline.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/pipeline.png"/></a>
 </div>
 
-<h6>Example 1 result</h6>
+<h6 class="small-subtitle">Example 1 result</h6>
 
 <p>In the same way as in Freestyle Job, result can be checked in Jenkins and ElasTest.</p>
 <p></p>
@@ -448,7 +448,7 @@ section-icon: mdi mdi-content-copy
     <a data-fancybox="gallery-2" href="/docs/jenkins/images/pipeline_result_2.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/pipeline_result_2.png"/></a>
 </div>
 
-<h6>Example 2</h6>
+<h6 class="small-subtitle">Example 2</h6>
 
 <p>We can execute this code in another Pipeline. The difference with the previous example is that in this case, we are using the EUS service adding <code>tss: ['EUS']</code>. This example will use a web browser to do a little test on it.</p>
 <pre><code>node{

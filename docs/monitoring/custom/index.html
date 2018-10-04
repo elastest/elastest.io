@@ -307,7 +307,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../../deploying/aws/">Amazon Web Services</a>
+        <a class="" href="../../deploying/ubuntu/">Linux Server</a>
         
     </li>
 
@@ -316,7 +316,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../../deploying/ubuntu/">Linux Server</a>
+        <a class="" href="../../deploying/aws/">Amazon Web Services</a>
         
     </li>
 
@@ -384,10 +384,10 @@ section-icon: mdi mdi-content-copy
 <h4 id="send-metrics-with-http" class="holder-subtitle link-top">Send metrics with HTTP</h4>
 
 <p>You can send to ElasTest metric information with http requests from any TJob or any SuT.</p>
-<h6 class="small-subtitle">IP of http request in a TJob or a SuT deployed by ElasTest</h6>
+<h5 class="small-subtitle">IP of http request in a TJob or a SuT deployed by ElasTest</h5>
 
 <p>Value of environment variable <em><code>ET_MON_LSHTTP_API</code></em>.</p>
-<h6 class="small-subtitle">IP of http request in a SuT deployed outside ElasTest</h6>
+<h5 class="small-subtitle">IP of http request in a SuT deployed outside ElasTest</h5>
 
 <p>The URL can be built with <strong>HTTP Api Url</strong> param, available from the SuT information page:</p>
 <div class="docs-gallery more-margin-top inline-block">
@@ -400,7 +400,7 @@ section-icon: mdi mdi-content-copy
 
 <p><br></p>
 <p>The request has to use the POST method. There are different formats to send different types of information:</p>
-<h6 class="small-subtitle">Send one log entry in one request</h6>
+<h5 class="small-subtitle">Send one log entry in one request</h5>
 
 <pre><code class="json">{
    &quot;@timestamp&quot;: 9999999999,
@@ -420,7 +420,7 @@ section-icon: mdi mdi-content-copy
 <li><strong>stream</strong>: Used to distinguish several logs from the same component. In this case only one log exists for the component, its value is usually "default_log".</li>
 <li><strong>message</strong>: Complete log message entry.</li>
 </ul>
-<h6 class="small-subtitle">Send several log entries in one request</h6>
+<h5 class="small-subtitle">Send several log entries in one request</h5>
 
 <pre><code class="json">{
    &quot;@timestamp&quot;: 9999999999,
@@ -436,7 +436,7 @@ section-icon: mdi mdi-content-copy
 }
 </code></pre>
 
-<h6 class="small-subtitle">Send one atomic metric in one request</h6>
+<h5 class="small-subtitle">Send one atomic metric in one request</h5>
 
 <pre><code class="json">{
    &quot;@timestamp&quot;: 9999999999,
@@ -454,7 +454,7 @@ section-icon: mdi mdi-content-copy
 <ul>
 <li><strong>stream</strong> field can be whatever you want (it has to be used below when setting the numeric value)</li>
 </ul>
-<h6 class="small-subtitle">Send one composed metric in one request</h6>
+<h5 class="small-subtitle">Send one composed metric in one request</h5>
 
 <pre><code class="json">{
    &quot;@timestamp&quot;: 9999999999,

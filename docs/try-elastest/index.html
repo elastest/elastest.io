@@ -307,7 +307,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../deploying/aws/">Amazon Web Services</a>
+        <a class="" href="../deploying/ubuntu/">Linux Server</a>
         
     </li>
 
@@ -316,7 +316,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../deploying/ubuntu/">Linux Server</a>
+        <a class="" href="../deploying/aws/">Amazon Web Services</a>
         
     </li>
 
@@ -369,120 +369,54 @@ section-icon: mdi mdi-content-copy
 					
 					  <div class="range range-xs-left">
 <div class="cell-xs-10 cell-lg-6 text-md-left inset-md-right-80 cell-lg-push-1 offset-top-50 offset-lg-top-0">
-<h2 id="content" class="h1">Try Elastest</h2>
-<div class="offset-top-30 offset-md-top-50">
-</div>
+<h2 id="content" class="h1">Try ElasTest</h2>
 </div>
 </div>
 
-<p>ElasTest is based on <strong>Docker</strong> technology. To execute ElasTest you need Docker CE installed on your machine following the official instructions for <a href="https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/" target="_blank">Ubuntu</a>, <a href="https://docs.docker.com/docker-for-mac/install/" target="_blank">Mac</a> or <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">Windows</a>.
-</p>
-
-<div class="range range-xs-center warning-range">
-  <div class="cell-xs-4 cell-lg-1 cell-lg-push-1" style="text-align: center;"><span class="icon mdi mdi-information-outline warning-span"></span></div>
-  <div class="cell-xs-8 cell-lg-11 cell-lg-push-11 warning-text"><p><i>ElasTest is intended to be deployed on a dedicated server due to the considerable amount of modules and technologies that are part of it. If you really want ElasTest to show its true potential, it is strongly recommended to launch it in a powerful environment (see <a href="#system-specs">Recommended system specifications</a>). To deploy ElasTest in a dedicated server or in Amazon Web Services, please check section <a href="/docs/deploying/aws">Deploying ElasTest</a>.</i></p></div>
-</div>
+<!-- FOR LINUX -->
 
 <h4 class="holder-subtitle link-top">For Linux</h4>
 
-<pre><code class="text">docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start
+<p>ElasTest is based on <strong>Docker</strong> technology. To execute ElasTest you need Docker CE installed on your machine following the official instructions for <a href="https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/" target="_blank">Ubuntu</a>.</p>
+<p>Once you have docker installed, execute the following command to start ElasTest:</p>
+<pre><code class="text">docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start
 </code></pre>
 
 <p>Whatever platform you are using, you will see this output when ElasTest is ready:</p>
-<pre><code class="text">Starting ElasTest Platform (normal mode)...
+<pre><code class="text">Pulling some necessary images...
 
-Please wait a few seconds while we start the ElasTest services, the ElasTest URL will be shown when ready.
+Preload images finished.
+
+Starting ElasTest Platform (normal mode)...
+
+ElasTest services are starting. This will likely take some time. The ElasTest URL will be shown when ready.
 
 ElasTest Platform is available at http://localhost:37000
+
+Press Ctrl+C to stop.
 </code></pre>
 
 <p>You can then open in your web browser the shown URL to access to ElasTest dashboard.</p>
 <p>To stop ElasTest, press <code>Ctrl+C</code> in the shell used to start it. You can now try the <a href="../your-first-test">Hello world</a> project available by default when launching ElasTest. ElasTest also includes other more advanced learning projects.</p>
-<h4 class="holder-subtitle link-top">For Mac</h4>
+<h5 class="small-subtitle">Options</h5>
 
-<div class="range range-xs-center warning-range">
-  <div class="cell-xs-4 cell-lg-1 cell-lg-push-1" style="text-align: center;"><span class="icon mdi mdi-information-outline warning-span"></span></div>
-  <div class="cell-xs-8 cell-lg-11 cell-lg-push-11 warning-text"><p><i>ElasTest has not been fully tested on Mac OS. There could be unexpected bugs. If you find any issue, please report it <a href="/docs/support/">here</a>.</i></p></div>
-</div>
-
-<p><br></p>
-<pre><code class="text">docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start
+<p>The <strong><code>--logs</code></strong> option allows you to show all the containers logs.</p>
+<pre><code>docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --logs
 </code></pre>
 
-<h4 class="holder-subtitle link-top">For Windows</h4>
-
-<div class="range range-xs-center warning-range">
-  <div class="cell-xs-4 cell-lg-1 cell-lg-push-1" style="text-align: center;"><span class="icon mdi mdi-information-outline warning-span"></span></div>
-  <div class="cell-xs-8 cell-lg-11 cell-lg-push-11 warning-text"><p><i>ElasTest has not been fully tested on Windows. There could be unexpected bugs. If you find any issue, please report it <a href="/docs/support/">here</a>.</i></p></div>
-</div>
-
-<p><strong><em>Docker for Windows</em></strong></p>
-<pre><code class="text">docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --server-address=localhost
+<p>You can add <strong><code>--testlink</code></strong> if you want to start the TestLink integrated in ElasTest and enable access to it. If you do not add this option, you can start it later manually from the ElasTest GUI.</p>
+<pre><code class="text">docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --testlink
 </code></pre>
 
-<p><strong><em>Docker Toolbox</em></strong> (<em>run it from your Docker Toolbox terminal</em>)</p>
-<pre><code class="text">docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --server-address=$(docker-machine ip)
+<p>The <strong><code>--jenkins</code></strong> option can be added if you want to start the Jenkins integrated in ElasTest and enable access to it. If you do not add this option, you can start it later manually from the ElasTest GUI.</p>
+<pre><code class="text">docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --jenkins
 </code></pre>
 
-<h4 class="holder-subtitle link-top">Options</h4>
-
-<p>You can include the option <strong><code>--server-address=(docker-machine ip)</code></strong> to set up the machine ip address. This option is mandatory when you start elastest on another machine, such as a server.</p>
-<pre><code class="text">docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --server-address=&quot;myip&quot;
+<p>You can execute <strong><code>--help</code></strong> if you need more information about the options.</p>
+<pre><code>docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform --help
 </code></pre>
 
-<p>You can set an access username and password using the options <strong><code>--user</code></strong> and <strong><code>--pass</code></strong> (or <strong><code>-u</code></strong> and <strong><code>-p</code></strong>)</p>
-<pre><code>docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start -l
-</code></pre>
-
-<p>The <strong><code>-l</code></strong> option allows you to show all the containers logs.</p>
-<pre><code>docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start -l
-</code></pre>
-
-<p>You can add <strong><code>-tl</code></strong> if you want to start the TestLink integrated in ElasTest and enable access to it. If you do not add this option, you can start it later manually from the Elastest GUI.</p>
-<pre><code class="text">docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start -tl
-</code></pre>
-
-<p>The <strong><code>-jk</code></strong> option can be added if you want to start the Jenkins integrated in ElasTest and enable access to it. If you do not add this option, you can start it later manually from the Elastest GUI.</p>
-<pre><code class="text">docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start -jk
-</code></pre>
-
-<p>If you add <strong><code>--dev</code></strong> you will enable developer options. For now, it only implements the binding of service ports to allow access to them from external tools.</p>
-<pre><code class="text">docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --dev
-</code></pre>
-
-<p>You can execute <strong><code>-h</code></strong> if you need more information about the options.</p>
-<pre><code>docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform -h
-</code></pre>
-
-<h4 class="holder-subtitle link-top">ElasTest on a server</h4>
-
-<p>To use ElasTest from a remote machine, it is necessary to use the option <strong><code>--server-address</code></strong> and also open all ports from <strong><code>32768 to 61000</code></strong> both included. It is highly recommended to also set user and password using the <strong><code>--user</code></strong> and <strong><code>--pass</code></strong> options.</p>
-<h4 class="holder-subtitle link-top">ElasTest on Amazon Web Services</h4>
-
-<p>ElasTest has been designed from the outset to offer an extremely simple deployment in Amazon Web Services. Check <a href="../deploying/aws/">Amazon Web Services</a> section to learn how to do it in a couple of minutes.</p>
-<h4 class="holder-subtitle link-top">Updating ElasTest</h4>
-
-<p>To update ElasTest to the latest version available, just need to change <strong><code>start</code></strong> to <strong><code>update</code></strong> and <strong>add <code>-it</code></strong> in the launching command:</p>
-<pre><code class="text">docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform update
-</code></pre>
-
-<p>The <code>update</code> command will detect if you are currently running ElasTest with the same version you want to update to and, if so, warn you that if you continue that instance will be stoppped.</p>
-<pre><code class="text">docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform update
-Updating ElasTest Platform version ...
-You are going to update the ElasTest version unspecified. Continue? [Y/n]
-The version of ElasTest that you want to update is already running and it is  necessary to stop it. Continue? [Y/n]
-</code></pre>
-
-<p>If your answer is 'Y', then the following message will appear while ElasTest is being Updating.</p>
-<pre><code class="text">Preparing the environment...
-</code></pre>
-
-<p>When all containers have been pulled you will see an output similiar to:</p>
-<pre><code class="text">Update finished successfully.
-</code></pre>
-
-<p>In order to clean the ElasTest installation, the old images associated with the previous version will be removed from the system after the update process has finished.</p>
-<h4 class="holder-subtitle link-top" id="system-specs">Recommended system specifications</h4>
+<h5 class="small-subtitle">Recommended system specifications</h5>
 
 <p>ElasTest needs some minimun system specifications in order to run smoothly:</p>
 <table>
@@ -504,7 +438,193 @@ The version of ElasTest that you want to update is already running and it is  ne
   </tr>
 </table>
 
-<p><br></p>
+<!-- FOR MAC -->
+
+<h4 class="holder-subtitle link-top">For Mac</h4>
+
+<p>ElasTest is based on <strong>Docker</strong> technology. To execute ElasTest you need Docker CE installed on your machine following the official instructions for <a href="https://docs.docker.com/docker-for-mac/install/" target="_blank">Mac</a>.
+Once you have docker installed, execute the following command to start ElasTest:</p>
+<pre><code class="text">docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --server-address=localhost
+</code></pre>
+
+<p>Whatever platform you are using, you will see this output when ElasTest is ready:</p>
+<pre><code class="text">Pulling some necessary images...
+
+Preload images finished.
+
+Starting ElasTest Platform (normal mode)...
+
+ElasTest services are starting. This will likely take some time. The ElasTest URL will be shown when ready.
+
+ElasTest Platform is available at http://localhost:37000
+
+Press Ctrl+C to stop.
+</code></pre>
+
+<p>You can then open in your web browser the shown URL to access to ElasTest dashboard.</p>
+<p>To stop ElasTest, press <code>Ctrl+C</code> in the shell used to start it. You can now try the <a href="../your-first-test">Hello world</a> project available by default when launching ElasTest. ElasTest also includes other more advanced learning projects.</p>
+<h5 class="small-subtitle">Options</h5>
+
+<p>The <strong><code>--logs</code></strong> option allows you to show all the containers logs.</p>
+<pre><code>docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --logs
+</code></pre>
+
+<p>You can add <strong><code>--testlink</code></strong> if you want to start the TestLink integrated in ElasTest and enable access to it. If you do not add this option, you can start it later manually from the ElasTest GUI.</p>
+<pre><code class="text">docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --testlink
+</code></pre>
+
+<p>The <strong><code>--jenkins</code></strong> option can be added if you want to start the Jenkins integrated in ElasTest and enable access to it. If you do not add this option, you can start it later manually from the ElasTest GUI.</p>
+<pre><code class="text">docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --jenkins
+</code></pre>
+
+<p>You can execute <strong><code>--help</code></strong> if you need more information about the options.</p>
+<pre><code>docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform --help
+</code></pre>
+
+<div class="range range-xs-center warning-range">
+  <div class="cell-xs-4 cell-lg-1 cell-lg-push-1" style="text-align: center;"><span class="icon mdi mdi-information-outline warning-span"></span></div>
+  <div class="cell-xs-8 cell-lg-11 cell-lg-push-11 warning-text"><p><i>ElasTest can be used in Mac OS, but it's recommended to use Linux. There could be unexpected bugs. If you find any issue, please report it <a href="/docs/support/">here</a>.</i></p></div>
+</div>
+
+<h5 class="small-subtitle">Recommended system specifications</h5>
+
+<p>ElasTest needs some minimun system specifications in order to run smoothly:</p>
+<table>
+  <tr>
+    <td>Processor</td>
+    <td>1GHz or faster</td>
+  </tr>
+  <tr>
+    <td>RAM</td>
+    <td>16GB</td>
+  </tr>
+  <tr>
+    <td>SWAP</td>
+    <td>4GB (if RAM < 16GB)</td>
+  </tr>
+  <tr>
+    <td>Hard Disk</td>
+    <td>30GB</td>
+  </tr>
+</table>
+
+<!-- FOR WINDOWS -->
+
+<h4 class="holder-subtitle link-top">For Windows</h4>
+
+<p>ElasTest is based on <strong>Docker</strong> technology. To execute ElasTest you need Docker CE installed on your machine following the official instructions for <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">Docker for Windows</a> or for <a href="https://docs.docker.com/toolbox/toolbox_install_windows/" target="_blank">Docker Toolbox for Windows</a>.</p>
+<p>Once you have docker installed, execute the following command to start ElasTest:</p>
+<div class="range range-xs-center warning-range">
+  <div class="cell-xs-2 cell-lg-1" style="text-align: center;"><span class="icon mdi mdi-information-outline warning-span"></span></div>
+  <div class="cell-xs-10 cell-lg-11 warning-text"><p><i>IMPORTANT: for the following command, you need to create the "~/.elastest" folder manually before.</i></p></div>
+</div>
+
+<p><strong><em>Docker for Windows</em></strong></p>
+<pre><code class="text">docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --server-address=localhost
+</code></pre>
+
+<p><strong><em>Docker Toolbox</em></strong> (<em>run it from your Docker Toolbox terminal</em>)</p>
+<pre><code class="text">docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --server-address=$(docker-machine ip)
+</code></pre>
+
+<p>Whatever platform you are using, you will see this output when ElasTest is ready:</p>
+<pre><code class="text">Pulling some necessary images...
+
+Preload images finished.
+
+Starting ElasTest Platform (normal mode)...
+
+ElasTest services are starting. This will likely take some time. The ElasTest URL will be shown when ready.
+
+ElasTest Platform is available at http://localhost:37000
+
+Press Ctrl+C to stop.
+</code></pre>
+
+<p>You can then open in your web browser the shown URL to access to ElasTest dashboard.</p>
+<p>To stop ElasTest, press <code>Ctrl+C</code> in the shell used to start it. You can now try the <a href="../your-first-test">Hello world</a> project available by default when launching ElasTest. ElasTest also includes other more advanced learning projects.</p>
+<h5 class="small-subtitle">Options</h5>
+
+<p>The <strong><code>--logs</code></strong> option allows you to show all the containers logs.</p>
+<pre><code>docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --logs
+</code></pre>
+
+<p>You can add <strong><code>--testlink</code></strong> if you want to start the TestLink integrated in ElasTest and enable access to it. If you do not add this option, you can start it later manually from the ElasTest GUI.</p>
+<pre><code class="text">docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --testlink
+</code></pre>
+
+<p>The <strong><code>--jenkins</code></strong> option can be added if you want to start the Jenkins integrated in ElasTest and enable access to it. If you do not add this option, you can start it later manually from the ElasTest GUI.</p>
+<pre><code class="text">docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --jenkins
+</code></pre>
+
+<p>You can execute <strong><code>--help</code></strong> if you need more information about the options.</p>
+<pre><code>docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform --help
+</code></pre>
+
+<div class="range range-xs-center warning-range">
+  <div class="cell-xs-4 cell-lg-1 cell-lg-push-1" style="text-align: center;"><span class="icon mdi mdi-information-outline warning-span"></span></div>
+  <div class="cell-xs-8 cell-lg-11 cell-lg-push-11 warning-text"><p><i>ElasTest can be used in Windows, but it's recommended to use Linux. There could be unexpected bugs. If you find any issue, please report it <a href="/docs/support/">here</a>.</i></p></div>
+</div>
+
+<h5 class="small-subtitle">Recommended system specifications</h5>
+
+<p>ElasTest needs some minimun system specifications in order to run smoothly:</p>
+<table>
+  <tr>
+    <td>Processor</td>
+    <td>1GHz or faster</td>
+  </tr>
+  <tr>
+    <td>RAM</td>
+    <td>16GB</td>
+  </tr>
+  <tr>
+    <td>SWAP</td>
+    <td>4GB (if RAM < 16GB)</td>
+  </tr>
+  <tr>
+    <td>Hard Disk</td>
+    <td>30GB</td>
+  </tr>
+</table>
+
+<h4 class="holder-subtitle link-top">ElasTest on a server</h4>
+
+<p>To run ElasTest on a server follow the steps detailed in the <a href="/docs/deploying/ubuntu/">Linux Server </a>section.</p>
+<h4 class="holder-subtitle link-top">ElasTest on Amazon Web Services</h4>
+
+<p>ElasTest has been designed from the outset to offer an extremely simple deployment in Amazon Web Services. Check <a href="../deploying/aws/">Amazon Web Services</a> section to learn how to do it in a couple of minutes.</p>
+<h4 class="holder-subtitle link-top">Updating ElasTest</h4>
+
+<p>To update ElasTest to the latest <em>stable</em> version available, just need to change <strong><code>start</code></strong> to <strong><code>update</code></strong> and <strong>add <code>-it</code></strong> in the launching command:</p>
+<pre><code class="text">docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform update
+</code></pre>
+
+<p>The <code>update</code> command will detect if you are currently running ElasTest with the same version you want to update to and, if so, warn you that if you continue that instance will be stoppped.</p>
+<pre><code class="text">docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform update
+Updating ElasTest Platform version ...
+You are going to update the ElasTest version unspecified. Continue? [Y/n]
+The version of ElasTest that you want to update is already running and it is  necessary to stop it. Continue? [Y/n]
+</code></pre>
+
+<p>If your answer is 'Y', then the following message will appear while ElasTest is being Updating.</p>
+<pre><code class="text">Preparing the environment...
+</code></pre>
+
+<p>When all containers have been pulled you will see an output similiar to:</p>
+<pre><code class="text">Update finished successfully.
+</code></pre>
+
+<p>In order to clean the ElasTest installation, the old images associated with the previous version will be removed from the system after the update process has finished.</p>
+<h4 class="holder-subtitle link-top">Using a specific ElasTest version</h4>
+
+<p>To use a specific ElasTest version available, only need to set it as elastest/platform tag, that is, adding <strong><code>:version</code></strong>. For example, to use the <strong><code>1.0.0-beta2</code></strong> version you would have to execute the following command</p>
+<pre><code class="text">docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform:1.0.0-beta2 start
+</code></pre>
+
+<h4 class="holder-subtitle link-top">ElasTest data</h4>
+
+<p>You can see the Elastest data information <a href="/docs/deploying/ubuntu/#elastestData">here</a></p>
 <!---
  Script for open external links in a new tab
 -->

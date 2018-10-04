@@ -305,7 +305,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../deploying/aws/">Amazon Web Services</a>
+        <a class="" href="../deploying/ubuntu/">Linux Server</a>
         
     </li>
 
@@ -314,7 +314,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../deploying/ubuntu/">Linux Server</a>
+        <a class="" href="../deploying/aws/">Amazon Web Services</a>
         
     </li>
 
@@ -411,7 +411,7 @@ The experimental modes are described below.</p>
 </p>
 
 <p>To start ElasTest in Experimental-lite mode execute this command from the shell:</p>
-<pre><code class="text">docker run -v /var/run/docker.sock:/var/run/docker.sock --rm elastest/platform:dev start -m=experimental-lite
+<pre><code class="text">docker run --rm -v ~/.elastest:/data v /var/run/docker.sock:/var/run/docker.sock --rm elastest/platform:dev start -m=experimental-lite
 </code></pre>
 
 <h4 class="holder-subtitle link-top">2. Experimental</h4>
@@ -438,7 +438,7 @@ The experimental modes are described below.</p>
 <li><strong><a href="https://github.com/elastest/elastest-platform-manager/blob/master/docs/index.md">ElasTest Platform Manager (EPM).</a></strong> A very interesting component that makes the interface between the ElasTest testing components (e.g. ElasTest Test Manager, TSS, etc.) and the cloud infrastructure where ElasTest is deployed. Hence, this Platform Manager must abstract the cloud services so that ElasTest becomes fully agnostic to them and provide this abstraction via Software Development Toolkits (SDK) or REST APIs to the northbound consumers (i.e. ElasTest Test Manager).</li>
 </ul>
 <p>To start ElasTest in Experimental mode execute this command from the shell:</p>
-<pre><code class="text">docker run -v /var/run/docker.sock:/var/run/docker.sock --rm elastest/platform:dev start -m=experimental
+<pre><code class="text">docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock --rm elastest/platform:dev start -m=experimental
 </code></pre>
 					
 				      </div>
