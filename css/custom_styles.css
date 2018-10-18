@@ -565,3 +565,28 @@ h1:before, h2:before, h3:before, h4:before, h5:before, h6:before {
     height: 90px;
     visibility: hidden;
 }
+
+.events-gallery {
+    width: 90%;
+    margin: auto;
+}
+.events-gallery div{
+    padding: 25px 0px;
+}
+.events-gallery div > a > img{
+    max-height: 100%; 
+    max-width: 70%;
+}
+
+.prev, .next{
+    position: absolute;
+    top: 30%;
+    z-index: 999999;
+    cursor: pointer;
+}
+.prev{
+    left: 35px;
+}
+.next{
+    right: 35px;
+}
