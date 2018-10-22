@@ -1,0 +1,69 @@
+---
+layout: default
+title: ElasTest Blog
+active: blog
+section-title: Blog
+section-icon: mdi mdi-earth
+---
+
+<section class="section-41 section-sm-66" style="padding-top: 0px;">  
+    <div class="shell">
+        <div class="range range-xs-center">
+            <div class="cell-xs-12 cell-lg-10 text-md-left offset-top-50 offset-lg-top-0">
+                <div class="offset-top-30 offset-md-top-50">
+                    <div class="blog-gallery"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+
+<script>
+    fetch('https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@elastest')
+        .then((res) => res.json())
+        .then((data) => {
+            
+            const res = data.items //This is an array with the content. No feed, no info about author etc..
+            const posts = res.filter(item => item.categories.length > 0) // That's the main trick* !
+
+            function toText(node) {
+                let tag = document.createElement('div')
+                tag.innerHTML = node
+                node = tag.innerText
+                return node
+            }
+
+            function shortenText(text, startingPoint, maxLength) {
+                return text.length > maxLength ?
+                    text.slice(startingPoint, maxLength) :
+                    text
+            }
+
+            let output = '';
+            posts.forEach((item) => {
+                output += `
+                    <hr>
+                    <div class="post-content">
+                        <a href="${item.link}" target='_blank'>
+                            <span class="post-title">${item.title}</span>
+                        </a>
+                        <div>
+                            <a href="${item.link}" target='_blank'>
+                                <img src="${item.thumbnail}" class="post-img"></img>
+                                <div class="post-info">
+                                    <p class="blog__intro">${shortenText(toText(item.content), 0, 300) + '...'}</p>
+                                </div> 
+                            <a/>
+                        </div>
+                    </div>
+                `
+            })
+            $('.blog-gallery').append(output);
+        });
+</script>
+
+
+
+
