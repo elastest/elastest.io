@@ -6,4 +6,5 @@ if (document.location.hostname == "elastest.io"){
 
   ga('create', 'UA-93577517-2', 'auto');
   ga('send', 'pageview');
+  ga('set', 'anonymizeIp', true);
 }
