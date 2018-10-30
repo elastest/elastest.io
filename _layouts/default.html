@@ -299,7 +299,33 @@
   <script src="/js/core.min.js"></script>
   <script src="/js/script.js"></script>
   <!--Start Cookie Script-->
-  <script type="text/javascript" charset="UTF-8" src="http://chs03.cookie-script.com/s/96616d74b11bc2b39e886873a1a55693.js"></script>   <!--End Cookie Script-->
+  <script type="text/javascript" src="/js/cookies.js"></script>
+    <script type="text/javascript">
+    var options = {
+        title: '&#x1F36A; Accept Cookies & Privacy Policy?',
+        message: 'This website uses cookies to improve user experience. By using our website you consent to all cookies in accordance with our Cookie Policy... ',
+        delay: 600,
+        expires: 1,
+        link: '/cookie-privacy-policy.html',
+        onAccept: function(){
+            var myPreferences = $.fn.ihavecookies.cookie();
+            console.log('Yay! The following preferences were saved...');
+            console.log(myPreferences);
+        },
+        uncheckBoxes: true,
+        acceptBtnLabel: 'Accept Cookies',
+        moreInfoLabel: 'More information',
+    }
+
+    $(document).ready(function() {
+        $('body').ihavecookies(options);
+
+        $('#ihavecookiesBtn').on('click', function(){
+            $('body').ihavecookies(options, 'reinit');
+        });
+    });
+
+    </script>
 </body>
 
 </html>
