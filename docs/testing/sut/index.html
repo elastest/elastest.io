@@ -132,6 +132,15 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
+        <a class="" href="../multi-configuration-tjobs/">Multi-Configuration TJobs</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
         <a class="" href="../environment-variables/">Environment variables</a>
         
     </li>
@@ -381,7 +390,7 @@ section-icon: mdi mdi-content-copy
 					  <div class="range range-xs-left">
 <div class="cell-xs-10 cell-lg-6 text-md-left inset-md-right-80 cell-lg-push-1 offset-top-50 offset-lg-top-0">
 <h2 id="content" class="h1">Software under Test</h2>
-<div class="offset-top-30 offset-md-top-50">
+<div class="offset-top-30 offset-md-top-30">
 </div>
 </div>
 </div>
@@ -397,7 +406,7 @@ section-icon: mdi mdi-content-copy
 <h5 class="small-subtitle">With Commands Container</h5>
 
 <p>Your SuT is packaged as a Docker image. You must write the <em>Commands Container Image</em> and the commands below. These commands will run like the docker image CMD.</p>
-<p>Fields to declare:</p>
+<p><strong>Fields to declare:</strong></p>
 <ul>
 <li><strong>Commands container images</strong>: name of the container image</li>
 <li><strong>Commands</strong>: commands to execute</li>
@@ -443,7 +452,7 @@ section-icon: mdi mdi-content-copy
 <h5 class="small-subtitle">With Docker image</h5>
 
 <p>Your SuT is packaged as a Docker image. ElasTest will pull it from DockerHub and run it as the <code>Dockerfile</code> states.</p>
-<p>Fields to declare:</p>
+<p><strong>Fields to declare:</strong></p>
 <ul>
 <li><strong>Docker image</strong>: name of the image (tagged or untagged)</li>
 <li><strong>Port</strong>: port that ElasTest should wait for to be available before running your TJobs</li>
@@ -458,7 +467,7 @@ section-icon: mdi mdi-content-copy
 <h5 class="small-subtitle">With docker-compose</h5>
 
 <p>Your SuT is declared as a docker-compose. ElasTest will pull all the necessary images from DockerHub and run them as the field <em>Docker Compose</em> states</p>
-<p>Fields to declare:</p>
+<p><strong>Fields to declare:</strong></p>
 <ul>
 <li><strong>Docker Compose</strong>: your <code>docker-compose.yml</code> file. Simply copy-paste its content here</li>
 <li><strong>Main Service Name</strong>: the name of the service that ElasTest should wait for to be up before running your TJobs (the specific port is declared in the next field <em>Port</em>)</li>
@@ -476,34 +485,87 @@ section-icon: mdi mdi-content-copy
 <h5 class="small-subtitle">No instrumentation</h5>
 
 <p>Your SuT is already deployed on an external server and you don't want to send any logs or metrics to ElasTest.</p>
-<p>Fields to declare:</p>
+<p><strong>Fields to declare:</strong></p>
 <ul>
 <li><strong>SuT IP</strong>: IP or DNS of your SuT. Thanks to this field your TJobs may know how to reach your SuT through environment variable <code>ET_SUT_HOST</code>. Check <a href="../../testing/environment-variables">Environment variables</a> to learn more.</li>
+<li><strong>SuT Protocol</strong>: Protocol of your SuT. <strong><code>http</code></strong> is selected by default.</li>
+</ul>
+<p><strong>Optional Fields:</strong></p>
+<ul>
+<li><strong>SuT Port</strong>: Port of your SuT.</li>
 </ul>
 <p></p>
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/testing/images/no_instrumentation.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/no_instrumentation.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/testing/images/sut_outside_no_instrumentation.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/sut_outside_no_instrumentation.png"/></a>
 </div>
 
 <h5 class="small-subtitle">Manual instrumentation</h5>
 
 <p>Your SuT is already deployed on an external server and you want to manually send its logs and metrics to ElasTest.</p>
-<p>Fields to declare:</p>
+<p><strong>Fields to declare:</strong></p>
 <ul>
 <li><strong>SuT IP</strong>: IP or DNS of your SuT. Thanks to this field your TJobs may know how to reach your SuT through environment variable <code>ET_SUT_HOST</code>. Check <a href="../../testing/environment-variables">Environment variables</a> to learn more.</li>
+<li><strong>SuT Protocol</strong>: Protocol of your SuT. <strong><code>http</code></strong> is selected by default.</li>
+</ul>
+<p><strong>Optional Fields:</strong></p>
+<ul>
+<li><strong>SuT Port</strong>: Port of your SuT.</li>
 </ul>
 <p></p>
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/testing/images/manual_instrumentation.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/manual_instrumentation.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/testing/images/sut_outside_manual_instrumentation.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/sut_outside_manual_instrumentation.png"/></a>
 </div>
 
 <p>After filling SuT name and description fields, click on <em>Save and get monitoring details</em> button to get all the necessary fields to manually instrument your server following <a href="">these instructions</a>.</p>
-<h5 class="small-subtitle">Automatic instrumentation</h5>
+<h5 class="small-subtitle">Instrumented by ElasTest</h5>
 
-<p>Your SuT is already deployed on an external server and you want to automatically send its logs and metrics to ElasTest.</p>
-<p><strong><em>(Coming soon)</em></strong></p>
+<p>Your SuT is already deployed on an external server and you want to automatically send its logs and metrics to ElasTest. Elastest will be responsible for accessing your Sut to send monitoring traces.</p>
+<p><strong>Fields to declare:</strong></p>
+<ul>
+<li><strong>SuT IP</strong>: IP or DNS of your SuT. Thanks to this field your TJobs may know how to reach your SuT through environment variable <code>ET_SUT_HOST</code>. Check <a href="../../testing/environment-variables">Environment variables</a> to learn more.</li>
+<li><strong>SuT Protocol</strong>: Protocol of your SuT. <strong><code>http</code></strong> is selected by default.</li>
+<li><strong>User</strong>: The user for access to your SuT.</li>
+<li><strong>Private Key</strong>: The Private Key for access to your SuT.</li>
+<li><strong>Instrumentalize</strong>: If is checked, the Sut will be instrumented once the configuration is saved and it will start sending monitoring traces to ElasTest.</li>
+<li><strong>Sut Logs Path</strong>: Full path where the logs that you want to monitor are located. One or more routes can be indicated.</li>
+</ul>
+<p><strong>Optional Fields:</strong></p>
+<ul>
+<li><strong>SuT Port</strong>: Port of your SuT.</li>
+<li><strong>Password</strong>: Password of your SuT.</li>
+</ul>
+<p></p>
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/testing/images/sut_outside_eim.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/sut_outside_eim.png"/></a>
+</div>
+
+<h5 id="outsideExternalES" class="small-subtitle">Use external Elasticsearch</h5>
+
+<p>Your SuT is already deployed on an external server and you store your monitoring traces in your own Elasticsearch. Elastest will be responsible for accessing your Elasticsearch to get monitoring traces.</p>
+<p><strong>Fields to declare:</strong></p>
+<ul>
+<li><strong>SuT IP</strong>: IP or DNS of your SuT. Thanks to this field your TJobs may know how to reach your SuT through environment variable <code>ET_SUT_HOST</code>. Check <a href="../../testing/environment-variables">Environment variables</a> to learn more.</li>
+<li><strong>SuT Protocol</strong>: Protocol of your SuT. <strong><code>http</code></strong> is selected by default.</li>
+<li><strong>Elasticsearch IP</strong>: IP or DNS of your Elasticsearch.</li>
+<li><strong>Elasticsearch Port</strong>: Port of your Elasticsearch.</li>
+<li><strong>ES Indices</strong>: Elasticsearch indices where the Sut monitoring traces be stored. If there are more than one index, type them separated by commas.</li>
+</ul>
+<p><strong>Optional Fields:</strong></p>
+<ul>
+<li><strong>SuT Port</strong>: Port of your SuT.</li>
+<li><strong>Elasticsearch User</strong>: The User of your Elasticsearch.</li>
+<li><strong>Elasticsearch Pass</strong>: The Password of your Elasticsearch.</li>
+<li><strong>Use Indices by Execution</strong>: If checked, a parameter with the indices will be added. For each TJob Execution, you can to indicate the inidices.</li>
+</ul>
+<p></p>
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/testing/images/sut_outside_external_elasticsearch.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/sut_outside_external_elasticsearch.png"/></a>
+</div>
+
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 
 <p><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" />

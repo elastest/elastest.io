@@ -1,6 +1,6 @@
 --- 
 layout: default 
-title: Elastest Documentation - Environment variables 
+title: Elastest Documentation - Multi-Configuration TJobs 
 active: documentation 
 section-title: Documentation 
 section-icon: mdi mdi-content-copy 
@@ -16,7 +16,7 @@ section-icon: mdi mdi-content-copy
 	$( document).ready(function(){
 		$('#menu-list').show();
 	    $('li.subnav_drop').find('ul.subnav').hide();
-	       $( ".subnav" ).find( "li:contains('Environment variables')" ).each(function(i,e){
+	       $( ".subnav" ).find( "li:contains('Multi-Configuration TJobs')" ).each(function(i,e){
 		  var currentElement = $(e);
 		  currentElement.parent().css({"display":"block","visibility":"visible"}); //css("background-color","blue");
 		  currentElement.css({"display":"block","visibility":"visible"});
@@ -30,7 +30,7 @@ section-icon: mdi mdi-content-copy
 						$('#doc-container').css('min-height', minHeight+'px');
 	});
 	   
-	$( ".wy-nav-content" ).find( "li:contains('Environment variables')" ).css('color','red');
+	$( ".wy-nav-content" ).find( "li:contains('Multi-Configuration TJobs')" ).css('color','red');
  </script>
 
 <div id="doc-container" class="container text-justify">
@@ -131,8 +131,10 @@ section-icon: mdi mdi-content-copy
         
              
 
-    <li class="toctree-l1 ">
-        <a class="" href="../multi-configuration-tjobs/">Multi-Configuration TJobs</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Multi-Configuration TJobs</a>
+        
+         
         
     </li>
 
@@ -140,10 +142,8 @@ section-icon: mdi mdi-content-copy
         
              
 
-    <li class="toctree-l1 current">
-        <a class="current" href="./">Environment variables</a>
-        
-         
+    <li class="toctree-l1 ">
+        <a class="" href="../environment-variables/">Environment variables</a>
         
     </li>
 
@@ -389,83 +389,81 @@ section-icon: mdi mdi-content-copy
 					
 					  <div class="range range-xs-left">
 <div class="cell-xs-10 cell-lg-6 text-md-left inset-md-right-80 cell-lg-push-1 offset-top-50 offset-lg-top-0">
-<h2 id="content" class="h1">Environment variables</h2>
+<h2 id="content" class="h1">Multi-Configuration TJobs</h2>
 <div class="offset-top-30 offset-md-top-30">
 </div>
 </div>
 </div>
 
-<table>
-<thead>
-<tr>
-<th>Variable name</th>
-<th>Description</th>
-<th>Sample value</th>
-<th>Available when</th>
-<th>Accesible from</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>ET_SUT_HOST</strong></td>
-<td>IP of th SuT. Can be used inside the TJobs to connect to the SuT</td>
-<td>"172.18.0.16"</td>
-<td>There's a SuT configured for the TJob</td>
-<td>TJob</td>
-</tr>
-<tr>
-<td><strong>ET_EUS_API</strong></td>
-<td>HTTP endpoint to launch remote web drivers from the TJobs</td>
-<td>"http://172.18.0.14:8040/eus/v1/"</td>
-<td>Web Browser Service is enabled for the TJob</td>
-<td>TJob</td>
-</tr>
-<tr>
-<td><strong>ET_MON_LSHTTP_API</strong></td>
-<td>Logstash API URL to send http requests with custom monitoring information to ElasTest</td>
-<td>"http://172.18.0.12:80/logstash/"</td>
-<td>Always available</td>
-<td>TJob, SuT, TSS</td>
-</tr>
-<tr>
-<td><strong>ET_MON_LSHTTPS_API</strong></td>
-<td>Logstash Secure API URL to send http requests with custom monitoring information to ElasTest</td>
-<td>"http://172.18.0.12:443/logstash/"</td>
-<td>Always available</td>
-<td>TJob, SuT, TSS</td>
-</tr>
-<tr>
-<td><strong>ET_MON_EXEC</strong></td>
-<td>The execution identifier to set the value of <em>exec</em> field when sending http requests with custom monitoring information to ElasTest</td>
-<td>"s1_e1"</td>
-<td>Always available</td>
-<td>TJob, SuT, TSS</td>
-</tr>
-<tr>
-<td><strong>ET_SUT_CONTAINER_NAME</strong></td>
-<td>SuT container name</td>
-<td>"sut_37"</td>
-<td>Always available</td>
-<td>TJob, SuT, TSS</td>
-</tr>
-<tr>
-<td><strong>ET_MON_INTERNAL_LSBEATS_PORT</strong></td>
-<td>Port through which traces are sent to logstash</td>
-<td>"5037"</td>
-<td>Always available</td>
-<td>TJob, SuT, TSS</td>
-</tr>
-<tr>
-<td><strong>ET_SUT_LOG_TAG</strong></td>
-<td>It allows us to assign a label in the log driver output of the SuT container. This tag contains information that ElasTest uses internally to identify logs</td>
-<td>"sut_37_exec"</td>
-<td>Is an external TJob</td>
-<td>TJob</td>
-</tr>
-</tbody>
-</table>
-<p><br>
-* <strong>TSS</strong>: Test Support Services</p>
+<p>ElasTest provides a simple way of execute same TJob with different configurations, compare several executions and improve visualization with matrices and graphs (Basic Orchestration).</p>
+<p>For this it is necessary to activate the "multi" option in the TJob creation page:</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/testing/images/multiconfig_1.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/multiconfig_1.png"/></a>
+</div>
+
+<p>A Multi-Configuration field is formed by a name and one or more values. Each name-value pair represents an environment variable with its name and its value.</p>
+<p>Add new Multi-Configurations to a TJob when creating/editing it, typing the name of the configuration and adding as many values as you want to test:</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/testing/images/multiconfig_2.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/multiconfig_2.png"/></a>
+</div>
+
+<p>Save the TJob and you can run it.</p>
+<p>ElasTest provides an example TJob Multi-Configuration within the WebApp project, called <strong><code>Multi WebApp</code></strong>. This TJob has a single configuration named <strong><code>BROWSER</code></strong> with two values: <strong><code>chrome</code></strong> and <strong><code>firefox</code></strong>.</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/testing/images/multiconfig_3.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/multiconfig_3.png"/></a>
+</div>
+
+<p>Therefore there will be two executions, one for each value, in which the corresponding browser will be used. During the execution of the Multi-Configuration tJob the following screen will be displayed, in which you can see information on the execution of each configuration (in this case two):</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/testing/images/multiconfig_4.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/multiconfig_4.png"/></a>
+</div>
+
+<p>By clicking on each of them you can see the execution page of that configuration:</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/testing/images/multiconfig_5.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/multiconfig_5.png"/></a>
+</div>
+
+<p>Once the executions are finished, the results screen will be displayed, in which you can view general information of all the executions presented in multiple ways: You can see it as a list or table of configurations executions and as a test table.</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/testing/images/multiconfig_6.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/multiconfig_6.png"/></a>
+</div>
+
+<p>The charts will show a line for each configuration, to be able to compare quickly:</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/testing/images/multiconfig_7.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/multiconfig_7.png"/></a>
+</div>
+
+<h3 class="holder-subtitle link-top">Advanced Configuration</h3>
+
+<p>You can configure your tests to send marks to ElasTest, so you can make better comparisons in the charts later.
+To send a mark to ElasTest, you must print a log line for each mark in your test with the following exact structure: <strong><code>##elastest-monitor-mark: id=MARKID, value=MARKVALUE</code></strong> replacing MARKID with the common id of the mark and MARKVALUE for the value of the mark at that time. There will be a different chart display for each mark id.</p>
+<p>In the TJob "Multi WebApp" test several marks are sent with <code>id=action</code>, therefore, in the test results page we will have the option to visualize the charts as <strong>"action" Mark View</strong> or as <strong>Time View</strong> (default). By clicking on <strong>"action" Mark View</strong> button we will have the following view, in which each point of the chart corresponds to each mark sent:</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/testing/images/multiconfig_8.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/multiconfig_8.png"/></a>
+</div>
+
+<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+
+<p><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script></p>
+<script>
+var galleries = $('div.docs-gallery');
+for (var i = 1; i <= galleries.length; i++) {
+    $().fancybox({
+    selector : '[data-fancybox="gallery-' + i + '"]',
+    infobar : true,
+    arrows : false,
+    loop: false,
+    protect: true,
+    transitionEffect: 'slide',
+    buttons : [
+        'close'
+    ],
+    clickOutside : 'close',
+    clickSlide   : 'close',
+  });
+}
+</script>
 					
 				      </div>
 				    </div>
@@ -474,10 +472,10 @@ section-icon: mdi mdi-content-copy
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../sut/" class="btn btn-xs btn-primary float-right" title="Software under Test">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../environment-variables/" class="btn btn-xs btn-primary float-right" title="Environment variables">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../multi-configuration-tjobs/" class="btn btn-xs btn-primary" title="Multi-Configuration TJobs"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
+        <a href="../parameterized-tests/" class="btn btn-xs btn-primary" title="Parameterized tests"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
       
     </div>
   
@@ -485,7 +483,7 @@ section-icon: mdi mdi-content-copy
 
   
   
-	  <a href="https://github.com/elastest/elastest.io-docs/blob/master/docs/testing/environment-variables.md" class="fa fa-github offset-xxs-top-30"> Edit Documentation on GitHub</a>
+	  <a href="https://github.com/elastest/elastest.io-docs/blob/master/docs/testing/multi-configuration-tjobs.md" class="fa fa-github offset-xxs-top-30"> Edit Documentation on GitHub</a>
   
 </footer>
 			  	  
