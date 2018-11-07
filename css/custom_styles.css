@@ -571,11 +571,14 @@ h1:before, h2:before, h3:before, h4:before, h5:before, h6:before {
     margin: auto;
 }
 .events-gallery div{
-    padding: 25px 0px;
+    padding: 14px 10px 5px 10px;
 }
 .events-gallery div > a > img{
     max-height: 100%; 
     max-width: 70%;
+}
+#event-text{
+    font-size: 16px;
 }
 
 .prev, .next{

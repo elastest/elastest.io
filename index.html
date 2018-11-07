@@ -15,7 +15,7 @@ page-type: home
         </a>
         <div style="text-align: center">
             <h2 class="h3 text-bold">9th FOKUS FUSECO Forum</h2>
-            <h2 class="h5" style="font-size: 18px;">
+            <h2 class="h5" id="event-text">
                 Preparing Industry Verticals for Edge Computing, Network Slicing & 5G</h2>
             <p class="inset-sm-left-15 inset-sm-right-15" style="text-align: center;">
                 <strong>
@@ -31,9 +31,9 @@ page-type: home
         </a>
         <div style="text-align: center">
             <h2 class="h3 text-bold">QA3C 2018</h2>
-            <h2 class="h5" style="font-size: 18px;">
+            <h2 class="h5" id="event-text">
                 <strong>QA3C 2018:</strong> 1st Workshop on Quality Assurance in the Context of Cloud Computing.</h2>
-            <h2 class="h5" style="font-size: 18px;">
+            <h2 class="h5" id="event-text">
                 <strong>UCC 2018:</strong> 11th IEEE/ACM International Conference on Utility and Cloud Computing</h2>
 
             <p class="inset-sm-left-15 inset-sm-right-15" style="text-align: center;">
@@ -64,7 +64,7 @@ page-type: home
         </a>
         <div style="text-align: center">
             <h2 class="h3 text-bold">MWC 2019</h2>
-            <h2 class="h5" style="font-size: 18px;">
+            <h2 class="h5" id="event-text">
                 Demo of ElasTest 5G Vertical</h2>
 
             <p class="inset-sm-left-15 inset-sm-right-15" style="text-align: center;">
@@ -306,25 +306,32 @@ $('.events-gallery').slick({
   arrows: true,
   nextArrow:$('.next'),
   prevArrow:$('.prev'),
-  slidesToShow: 3,
-  slidesToScroll: 2,
+  slidesToShow: 5,
+  slidesToScroll: 3,
   responsive: [
     {
-      breakpoint: 1024,
+      breakpoint: 1550,
+        settings: {
+        slidesToShow: 4,
+        slidesToScroll: 3
+      }
+    },
+    {
+      breakpoint: 1320,
       settings: {
         slidesToShow: 3,
         slidesToScroll: 2
       }
     },
     {
-      breakpoint: 950,
+      breakpoint: 1024,
       settings: {
         slidesToShow: 2,
         slidesToScroll: 1
       }
     },
     {
-      breakpoint: 700,
+      breakpoint: 850,
       settings: {
         slidesToShow: 1,
         slidesToScroll: 1
