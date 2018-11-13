@@ -431,7 +431,7 @@ The experimental modes are described below.</p>
 </p>
 
 <p>To start ElasTest in Experimental-lite mode execute this command from the shell:</p>
-<pre><code class="text">docker run --rm -v ~/.elastest:/data v /var/run/docker.sock:/var/run/docker.sock --rm elastest/platform:dev start -m=experimental-lite
+<pre><code class="text">docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock --rm elastest/platform:dev start -m=experimental-lite
 </code></pre>
 
 <h4 class="holder-subtitle link-top">2. Experimental</h4>
