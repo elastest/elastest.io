@@ -6305,9 +6305,20 @@ html.lt-ie-10 * + .range,
 
 html.lt-ie-10 * + [class*='cell-'],
 * + [class*='cell-'],
+
+html.lt-ie-10 * + .range-xs,
+* + .range-xs {
+  margin-top: 15px; }
+  
+  
 html.lt-ie-10 * + .range-sm,
 * + .range-sm {
   margin-top: 30px; }
+  
+    
+html.lt-ie-10 * + .range-md,
+* + .range-md {
+  margin-top: 40px; }
 
 html.lt-ie-10 * + .range-lg,
 * + .range-lg {
