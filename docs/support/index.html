@@ -125,6 +125,15 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
+        <a class="" href="../testing/sut/">Software under Test</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
         <a class="" href="../testing/parameterized-tests/">Parameterized tests</a>
         
     </li>
@@ -135,24 +144,6 @@ section-icon: mdi mdi-content-copy
 
     <li class="toctree-l1 ">
         <a class="" href="../testing/multi-configuration-tjobs/">Multi-Configuration TJobs</a>
-        
-    </li>
-
-
-        
-             
-
-    <li class="toctree-l1 ">
-        <a class="" href="../testing/environment-variables/">Environment variables</a>
-        
-    </li>
-
-
-        
-             
-
-    <li class="toctree-l1 ">
-        <a class="" href="../testing/sut/">Software under Test</a>
         
     </li>
 
@@ -285,7 +276,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../jenkins/try-jenkins/">Try jenkins</a>
+        <a class="" href="../jenkins/try-jenkins/">Try Jenkins plugin</a>
         
     </li>
 
@@ -294,7 +285,16 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../jenkins/advanced-example/">Advanced example</a>
+        <a class="" href="../jenkins/pipeline/">Pipeline Jobs</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../jenkins/freestyle/">Freestyle Jobs</a>
         
     </li>
 
@@ -334,6 +334,17 @@ section-icon: mdi mdi-content-copy
 </li>
 </ul>
     
+</ul></li>
+				
+			
+				
+					<li><ul> 
+
+    <li class="toctree-l1 ">
+        <a class="" href="../testing/environment-variables/">Environment variables</a>
+        
+    </li>
+
 </ul></li>
 				
 			
@@ -410,7 +421,7 @@ section-icon: mdi mdi-content-copy
     </div>
 </div>
 
-<h4 class="holder-subtitle link-top">Best practices for issue reporting</h4>
+<h3 class="holder-subtitle link-top">Best practices for issue reporting</h3>
 
 <p>ElasTest team is happy to help any user, either because of a simple doubt about the use of the platform or because of an unexpected bug. But to make it easier for us to answer your questions, please consider following this scheme when reporting an issue (whatever channel you use):</p>
 <ol>
@@ -418,7 +429,7 @@ section-icon: mdi mdi-content-copy
 <li><strong>ElasTest version</strong>: Version of ElasTest (see <a href="#elastest-version">below</a> how to get it)</li>
 <li><strong>How to reproduce</strong>: A step-by-step guide on how to reproduce the problem. Elaborate as much as possible</li>
 </ol>
-<h4 class="holder-subtitle link-top" id="elastest-version">Getting ElasTest version</h4>
+<h3 class="holder-subtitle link-top" id="elastest-version">Getting ElasTest version</h3>
 
 <p>You can always check the version of ElasTest you are running just by clicking on the "Help" icon.</p>
 <div class="docs-gallery inline-block">
@@ -429,29 +440,6 @@ section-icon: mdi mdi-content-copy
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-1" href="/docs/images/elastest_version.png"><img class="img-responsive img-wellcome" src="/docs/images/elastest_version.png"/></a>
 </div>
-
-<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
-
-<p><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script></p>
-<script>
-var galleries = $('div.docs-gallery');
-for (var i = 1; i <= galleries.length; i++) {
-    $().fancybox({
-    selector : '[data-fancybox="gallery-' + i + '"]',
-    infobar : true,
-    arrows : false,
-    loop: true,
-    protect: true,
-    transitionEffect: 'slide',
-    buttons : [
-        'close'
-    ],
-    clickOutside : 'close',
-    clickSlide   : 'close',
-  });
-}
-</script>
 					
 				      </div>
 				    </div>
@@ -484,3 +472,27 @@ for (var i = 1; i <= galleries.length; i++) {
 
   </div>
 </div>
+
+<!-- Gallery -->
+<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
+
+<script>
+var galleries = $('div.docs-gallery');
+for (var i = 1; i <= galleries.length; i++) {
+    $().fancybox({
+    selector : '[data-fancybox="gallery-' + i + '"]',
+    infobar : true,
+    arrows : false,
+    loop: false,
+    protect: true,
+    transitionEffect: 'slide',
+    buttons : [
+        'close'
+    ],
+    clickOutside : 'close',
+    clickSlide   : 'close',
+  });
+}
+</script>

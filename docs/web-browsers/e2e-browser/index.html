@@ -123,6 +123,15 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
+        <a class="" href="../../testing/sut/">Software under Test</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
         <a class="" href="../../testing/parameterized-tests/">Parameterized tests</a>
         
     </li>
@@ -133,24 +142,6 @@ section-icon: mdi mdi-content-copy
 
     <li class="toctree-l1 ">
         <a class="" href="../../testing/multi-configuration-tjobs/">Multi-Configuration TJobs</a>
-        
-    </li>
-
-
-        
-             
-
-    <li class="toctree-l1 ">
-        <a class="" href="../../testing/environment-variables/">Environment variables</a>
-        
-    </li>
-
-
-        
-             
-
-    <li class="toctree-l1 ">
-        <a class="" href="../../testing/sut/">Software under Test</a>
         
     </li>
 
@@ -285,7 +276,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../../jenkins/try-jenkins/">Try jenkins</a>
+        <a class="" href="../../jenkins/try-jenkins/">Try Jenkins plugin</a>
         
     </li>
 
@@ -294,7 +285,16 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../../jenkins/advanced-example/">Advanced example</a>
+        <a class="" href="../../jenkins/pipeline/">Pipeline Jobs</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../jenkins/freestyle/">Freestyle Jobs</a>
         
     </li>
 
@@ -334,6 +334,17 @@ section-icon: mdi mdi-content-copy
 </li>
 </ul>
     
+</ul></li>
+				
+			
+				
+					<li><ul> 
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testing/environment-variables/">Environment variables</a>
+        
+    </li>
+
 </ul></li>
 				
 			
@@ -395,394 +406,2968 @@ section-icon: mdi mdi-content-copy
 </div>
 </div>
 
-<p>If you want to use a web browser in your test, you can “install” a web browser in your <a href="../../fundamentals/core-concepts/">SuT</a> Docker container. The problem with this approach is that you can not see what happens in the browser. You can not see the browser console. Also, it is a bit of a challenge to execute the same tests with different browser versions.</p>
+<p>If you want to use a web browser in your test, you can “install” a web browser in your <a href="../../#tjob">TJob</a> Docker container. The problem with this approach is that you can not see what happens in the browser. You can not see the browser console. Also, it is a bit of a challenge to execute the same tests with different browser versions.</p>
 <p>One of the main features provided by ElasTest is allowing tests to use web browsers. That browsers will be fully monitored, showing its windows in real time in ElasTest web interface and also recording it to later inspection. Also, the browser console will be shown alongside test and SuT logs.</p>
-<p>Let's see how to launch a TJob that makes use of a web browser inside Elastest. As an example we will use our <code>Chrome Test</code> tjob which is part of the <code>Webapp</code> project, loaded as an example when you first start ElasTest. If you have deleted this project, you can add it manually as indicated below. This project is called <a href="https://github.com/elastest/demo-projects/tree/master/simpleweb-java-test" target="_blank">Simple Web Java Test</a> (you can check the code for this test and similar ones in other languages in section <a href="#sample-test-code">Sample test code</a>):</p>
-<h4 class="holder-subtitle link-top">1. Get into the desired project</h4>
+<p>Let's see how to launch a TJob that makes use of a web browser inside Elastest.
+Here we will run our <a href="https://github.com/elastest/demo-projects/tree/master/webapp/junit5-web-multiple-browsers-test">JUnit5 Multi Browser Test</a> provided by default in ElasTest, which makes use of a Spring Boot Application as a SuT that has two input fields (title and body) and a button to add them as a table row. Also has three test that are responsible for add rows to that Sut and verify that the added row has the expected content.
+This test has been developed in Java using <a href="https://junit.org/junit5/">JUnit5</a>:</p>
+<h5 id="webapptest-class"><strong>WebAppTest class</strong></h5>
+<pre><code class="java">public class WebAppTest extends ElastestBaseTest {
+
+    @Test
+    public void addMsgAndClear(TestInfo info)
+            throws InterruptedException, MalformedURLException {
+        Thread.sleep(2000);
+
+        String newTitle = &quot;MessageTitle&quot;;
+        String newBody = &quot;MessageBody&quot;;
+
+        this.addRow(newTitle, newBody);
+
+        Thread.sleep(2000);
+
+        String title = driver.findElement(By.id(&quot;title&quot;)).getText();
+        String body = driver.findElement(By.id(&quot;body&quot;)).getText();
+
+        // Added
+        logger.info(&quot;Checking Message...&quot;);
+        assertEquals(newTitle, title);
+        assertEquals(newBody, body);
+
+        Thread.sleep(1000);
+
+        int titleExist = driver.findElements(By.id(&quot;title&quot;)).size();
+        int bodyExist = driver.findElements(By.id(&quot;body&quot;)).size();
+
+        try {
+            assertNotEquals(0, titleExist);
+            assertNotEquals(0, bodyExist);
+        } finally {
+            Thread.sleep(2000);
+            clearRows();
+        }
+    }
+
+    @Test
+    public void findTitleAndBody(TestInfo info)
+            throws InterruptedException, MalformedURLException {
+
+        Thread.sleep(2000);
+
+        String newTitle = &quot;MessageTitle&quot;;
+        String newBody = &quot;MessageBody&quot;;
+
+        this.addRow(newTitle, newBody);
+
+        Thread.sleep(2000);
+
+        String title = driver.findElement(By.id(&quot;title&quot;)).getText();
+        String body = driver.findElement(By.id(&quot;body&quot;)).getText();
+
+        logger.info(&quot;Checking Message...&quot;);
+
+        try {
+            assertEquals(newTitle, title);
+            assertEquals(newBody, body);
+        } finally {
+            Thread.sleep(2000);
+            clearRows();
+        }
+    }
+
+    @Test
+    public void checkTitleAndBodyNoEmpty(TestInfo info)
+            throws InterruptedException, MalformedURLException {
+
+        Thread.sleep(2000);
+
+        String newTitle = &quot;&quot;;
+        String newBody = &quot;&quot;;
+
+        this.addRow(newTitle, newBody);
+
+        Thread.sleep(2000);
+
+        String title = driver.findElement(By.id(&quot;title&quot;)).getText();
+        String body = driver.findElement(By.id(&quot;body&quot;)).getText();
+
+        logger.info(&quot;Checking Message...&quot;);
+
+        try {
+            assertNotEquals(newTitle, title);
+            assertNotEquals(newBody, body);
+        } finally {
+            Thread.sleep(2000);
+            clearRows();
+        }
+
+    }
+
+    /* ********************* */
+    /* *** Other methods *** */
+    /* ********************* */
+
+    public void addRow(String newTitle, String newBody)
+            throws InterruptedException {
+        driver.findElement(By.id(&quot;title-input&quot;)).sendKeys(newTitle);
+        driver.findElement(By.id(&quot;body-input&quot;)).sendKeys(newBody);
+
+        Thread.sleep(2000);
+
+        logger.info(&quot;Adding Message...&quot;);
+
+        driver.findElement(By.id(&quot;submit&quot;)).click();
+    }
+
+    public void clearRows() throws InterruptedException {
+        logger.info(&quot;Clearing Messages...&quot;);
+        driver.findElement(By.id(&quot;clearSubmit&quot;)).click();
+        Thread.sleep(1000);
+    }
+}
+</code></pre>
+
+<blockquote>
+<ul>
+<li>In the code <strong><code>Thread.sleep()</code></strong> is used for a better visualization of the video that ElasTest records from the test, but it is not necessary to use it.</li>
+<li>The <strong><code>checkTitleAndBodyNoEmpty</code></strong> test simulates a test that fails.   </li>
+</ul>
+</blockquote>
+<p>In addition, as can be seen in the example, this test class extends a class called ElasTestBase which is responsible for printing logs and start/stop browsers at the beginning and end of each test. These two logs have a specific structure and are used by ElasTest to filter the logs corresponding to each test. We explain this in more detail <a href="/docs/testing/unit#xmlAndtestResultsPath">here</a>.</p>
+
+<h5 id="elastestbasetest-class"><strong>ElastestBaseTest class</strong></h5>
+<pre><code class="java">public class ElastestBaseTest {
+    protected static final Logger logger = LoggerFactory
+            .getLogger(ElastestBaseTest.class);
+
+    protected static final String CHROME = &quot;chrome&quot;;
+    protected static final String FIREFOX = &quot;firefox&quot;;
+
+    protected static String browserType;
+    protected static String browserVersion;
+    protected static String eusURL;
+    protected static String sutUrl;
+
+    protected WebDriver driver;
+
+    @BeforeAll
+    public static void setupClass() {
+        String sutHost = System.getenv(&quot;ET_SUT_HOST&quot;);
+        String sutPort = System.getenv(&quot;ET_SUT_PORT&quot;);
+        String sutProtocol = System.getenv(&quot;ET_SUT_PROTOCOL&quot;);
+
+        if (sutHost == null) {
+            sutUrl = &quot;http://localhost:8080/&quot;;
+        } else {
+            sutPort = sutPort != null ? sutPort : &quot;8080&quot;;
+            sutProtocol = sutProtocol != null ? sutProtocol : &quot;http&quot;;
+
+            sutUrl = sutProtocol + &quot;://&quot; + sutHost + &quot;:&quot; + sutPort;
+        }
+        logger.info(&quot;Webapp URL: &quot; + sutUrl);
+
+        browserType = System.getProperty(&quot;browser&quot;);
+        logger.info(&quot;Browser Type: {}&quot;, browserType);
+        eusURL = System.getenv(&quot;ET_EUS_API&quot;);
+
+        if (eusURL == null) {
+            if (browserType == null || browserType.equals(CHROME)) {
+                WebDriverManager.chromedriver().setup();
+            } else {
+                WebDriverManager.firefoxdriver().setup();
+            }
+        }
+    }
+
+    @BeforeEach
+    public void setupTest(TestInfo info) throws MalformedURLException {
+        String testName = info.getTestMethod().get().getName();
+        logger.info(&quot;##### Start test: {}&quot;, testName);
+
+        if (eusURL == null) {
+            if (browserType == null || browserType.equals(CHROME)) {
+                driver = new ChromeDriver();
+            } else {
+                driver = new FirefoxDriver();
+            }
+        } else {
+            DesiredCapabilities caps;
+            if (browserType == null || browserType.equals(CHROME)) {
+                caps = DesiredCapabilities.chrome();
+            } else {
+                caps = DesiredCapabilities.firefox();
+            }
+
+            browserVersion = System.getProperty(&quot;browserVersion&quot;);
+            if (browserVersion != null) {
+                logger.info(&quot;Browser Version: {}&quot;, browserVersion);
+                caps.setVersion(browserVersion);
+            }
+
+            caps.setCapability(&quot;testName&quot;, testName);
+            driver = new RemoteWebDriver(new URL(eusURL), caps);
+        }
+
+        driver.get(sutUrl);
+    }
+
+    @AfterEach
+    public void teardown(TestInfo info) {
+        if (driver != null) {
+            driver.quit();
+        }
+
+        String testName = info.getTestMethod().get().getName();
+        logger.info(&quot;##### Finish test: {}&quot;, testName);
+    }
+
+}
+</code></pre>
+
+<blockquote>
+<ul>
+<li>
+<p><strong><code>ET_SUT_HOST</code></strong>, <strong><code>ET_SUT_PORT</code></strong> and <strong><code>ET_SUT_PROTOCOL</code></strong>  variables will be the IP, port and protocol of our SuT respectively. ElasTest will automatically inject the right value (Know more about <a href="/docs/testing/environment-variables/">Environment Variables</a>)</p>
+</li>
+<li>
+<p><strong><code>ET_EUS_API</code></strong> variable tells us where to connect to use Elastest browsers (standard Selenium Hub). If the variable has no value, we can consider that this service is no available and then local browsers have to be used (here we are using <a href="https://github.com/bonigarcia/webdrivermanager" target="_blank">WebDriver Manager</a> Java library. This library is responsible to download and configure any additional software needed to use installed browsers from tests)</p>
+</li>
+<li>
+<p>The values of the variables <strong>browserType</strong> and <strong>browserVersion</strong> are taken from the <strong>properties</strong> browser and browserVersion respectively, which you can pass in the test run command with <strong><code>-Dbrowser=chrome</code></strong>.</p>
+</li>
+</ul>
+</blockquote>
+<p>If you prefer, ElasTest also provides the same example but making use of a single browser for all tests, whose name in this case is <a href="https://github.com/elastest/demo-projects/tree/master/webapp/junit5-web-single-browser-test">JUnit5 Single Browser Test</a>.
+The WebAppTest class is exactly the same, the change is in the ElastestBaseTest class:</p>
+<h5 id="elastestbasetest-class_1"><strong>ElastestBaseTest class</strong></h5>
+<pre><code class="java">public class ElastestBaseTest {
+    protected static final Logger logger = LoggerFactory
+            .getLogger(ElastestBaseTest.class);
+
+    protected static final String CHROME = &quot;chrome&quot;;
+    protected static final String FIREFOX = &quot;firefox&quot;;
+
+    protected static String browserType;
+    protected static String browserVersion;
+    protected static String eusURL;
+    protected static String sutUrl;
+
+    protected static WebDriver driver;
+
+    @BeforeAll
+    public static void setupClass() throws MalformedURLException {
+        // If first time, init
+        if (driver == null) {
+            String sutHost = System.getenv(&quot;ET_SUT_HOST&quot;);
+            String sutPort = System.getenv(&quot;ET_SUT_PORT&quot;);
+            String sutProtocol = System.getenv(&quot;ET_SUT_PROTOCOL&quot;);
+
+            if (sutHost == null) {
+                sutUrl = &quot;http://localhost:8080/&quot;;
+            } else {
+                sutPort = sutPort != null ? sutPort : &quot;8080&quot;;
+                sutProtocol = sutProtocol != null ? sutProtocol : &quot;http&quot;;
+
+                sutUrl = sutProtocol + &quot;://&quot; + sutHost + &quot;:&quot; + sutPort;
+            }
+            logger.info(&quot;Webapp URL: &quot; + sutUrl);
+
+            browserType = System.getProperty(&quot;browser&quot;);
+            logger.info(&quot;Browser Type: {}&quot;, browserType);
+            eusURL = System.getenv(&quot;ET_EUS_API&quot;);
+
+            if (eusURL == null) {
+                if (browserType == null || browserType.equals(CHROME)) {
+                    WebDriverManager.chromedriver().setup();
+                    driver = new ChromeDriver();
+                } else {
+                    WebDriverManager.firefoxdriver().setup();
+                    driver = new FirefoxDriver();
+                }
+            } else {
+                DesiredCapabilities caps;
+                if (browserType == null || browserType.equals(CHROME)) {
+                    caps = DesiredCapabilities.chrome();
+                } else {
+                    caps = DesiredCapabilities.firefox();
+                }
+
+                browserVersion = System.getProperty(&quot;browserVersion&quot;);
+                if (browserVersion != null) {
+                    logger.info(&quot;Browser Version: {}&quot;, browserVersion);
+                    caps.setVersion(browserVersion);
+                }
+                driver = new RemoteWebDriver(new URL(eusURL), caps);
+            }
+
+            // driver quit when all tests end
+            Runtime.getRuntime().addShutdownHook(new Thread() {
+                public void run() {
+                    logger.info(&quot;Shutting down browser...&quot;);
+                    driver.quit();
+                }
+            });
+        }
+    }
+
+    @BeforeEach
+    public void setupTest(TestInfo info) throws MalformedURLException {
+        String testName = info.getTestMethod().get().getName();
+        ((JavascriptExecutor) driver).executeScript(
+            &quot;'{\&quot;elastestCommand\&quot;: \&quot;startTest\&quot;, \&quot;args\&quot;: {\&quot;testName\&quot;: \&quot;&quot; + testName + &quot;\&quot;} }'&quot;);
+
+        logger.info(&quot;##### Start test: {}&quot;, testName);
+
+        driver.get(sutUrl);
+    }
+
+    @AfterEach
+    public void teardown(TestInfo info) {
+        String testName = info.getTestMethod().get().getName();
+        logger.info(&quot;##### Finish test: {}&quot;, testName);
+    }
+}
+</code></pre>
+
+<blockquote>
+<p>Java shutdown hook (<strong><code>Runtime.getRuntime().addShutdownHook</code></strong>) is used to make sure to close the browser once all the tests have been executed.</p>
+</blockquote>
+<p>The start/end log traces are still printed in the <strong>@BeforeEach</strong> but the browser starts now inside the <strong>@BeforeAll</strong>. Also, for Elastest to know when each test starts, it is possible to send a <strong><code>command by invoking a script</code></strong> in <strong>@BeforeEach</strong>.</p>
+<pre><code>        ((JavascriptExecutor) driver).executeScript(
+            "'{\"elastestCommand\": \"startTest\", \"args\": {\"testName\": \"" + testName + "\"} }'");
+</code></pre>
+<p>The content of the script consists of a JSON object inside single quotes <em>(<strong>'</strong>)</em> which must contain the following keys:</p>
+<ul>
+<li><strong><code>elastestCommand</code></strong>: the command that ElasTest must execute, in this case the value would be <strong><code>startTest</code></strong>.</li>
+<li><strong><code>args</code></strong>: a JSON object with the arguments needed to execute the command. In this case the object will only contain one key-value pair: <strong><code>testName</code></strong></li>
+</ul>
+<p>The keys must be sorted as stated above, as ElasTest will intercept the script when reading <em>elastestCommand</em>.</p>
+<!-- ******************* -->
+
+<!-- ******* RUN ******* -->
+
+<!-- ******************* -->
+
+<h4 class="holder-subtitle link-top">Running the "JUnit5 Multi Browser Test" TJob</h4>
+
+<p>To Run "JUnit5 Multi Browser Test" TJob you only need follow these steps:</p>
+<h5 class="small-subtitle">1. Access your ElasTest dashboard</h5>
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/testing/images/unit_test_1.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/unit_test_1.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/images/your-first-test/dashboard.png"><img class="img-responsive img-wellcome" src="/docs/images/your-first-test/dashboard.png"/></a>
 </div>
 
-<h4 class="holder-subtitle link-top">2. Create a SuT</h4>
+<h5 class="small-subtitle">2. Get into "WebApp" project</h5>
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/testing/images/e2e_test_2.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/e2e_test_2.png"/></a>
-    <a data-fancybox="gallery-1" href="/docs/testing/images/e2e_test_3.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/e2e_test_3.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/web-browsers/images/e2e/project_selection.png"><img class="img-responsive img-wellcome" src="/docs/web-browsers/images/e2e/project_selection.png"/></a>
 </div>
+
+<h5 class="small-subtitle">3. Run the 'JUnit5 Multi Browser Test' TJob</h5>
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/web-browsers/images/e2e/run_tjob.png"><img class="img-responsive img-wellcome" src="/docs/web-browsers/images/e2e/run_tjob.png"/></a>
+</div>
+
+<h5 class="small-subtitle">4. Execution screen is open automatically</h5>
+
+<p>Our TJob will start running: you will see the test information and log.</p>
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/web-browsers/images/e2e/execution_running.png"><img class="img-responsive img-wellcome" src="/docs/web-browsers/images/e2e/execution_running.png"/></a>
+</div>
+
+<p>Once the test is finished you will see the test results and log. The execution must end with two satisfactory tests and one failed test.</p>
 
 <p>
-Complete the form fields:
+    <div class="range range-xs range-xs-center warning-range">
+        <div class="cell-xs-2 cell-lg-1" style="text-align: center;"><span class="icon mdi mdi-information-outline warning-span"></span></div>
+        <div class="cell-xs-10 cell-lg-11 warning-text"><p><i>IMPORTANT: ElasTest make use of  <a href="/docs/testing/unit#xmlAndtestResultsPath" title="View XML Report explanation">xml results file</a> to get all the test results information.</i></p></div>
+    </div>
 </p>
 
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/web-browsers/images/e2e/execution_finished_1.png"><img class="img-responsive img-wellcome" src="/docs/web-browsers/images/e2e/execution_finished_1.png"/></a>
+</div>
+
+<p>And at the bottom you can see the recordings:</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/web-browsers/images/e2e/execution_finished_2.png"><img class="img-responsive img-wellcome" src="/docs/web-browsers/images/e2e/execution_finished_2.png"/></a>
+        <a data-fancybox="gallery-1" href="/docs/web-browsers/images/e2e/execution_finished_recording.png"><img class="img-responsive img-wellcome" src="/docs/web-browsers/images/e2e/execution_finished_recording.png"/></a>
+</div>
+
+<p>You can click on the Test Suite to display it and see each of the Test Cases. You can also click on one of them to navigate to the information section of this Test Case, where you can see their logs filtered thanks to the two traces of logs that the class ElasTestBase prints at the beginning and end of each test and that we have commented above. We are going to click on checkTitleAndBodyNoEmpty:</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/web-browsers/images/e2e/test_case_result.png"><img class="img-responsive img-wellcome" src="/docs/web-browsers/images/e2e/test_case_result.png"/></a>
+</div>
+
+<p>You can click too on the <strong><code>View In LogAnalyzer</code></strong> button for navigate to <a href="/docs/log-analyzer/">Log Analyzer</a> Tool and view the execution logs:</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/web-browsers/images/e2e/view_in_loganalyzer.png"><img class="img-responsive img-wellcome" src="/docs/web-browsers/images/e2e/view_in_loganalyzer.png"/></a>
+</div>
+
+<p>Or you can click on the <strong><code>View Case In LogAnalyzer</code></strong> button view the specific test execution logs:</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/web-browsers/images/e2e/view_case_in_loganalyzer.png"><img class="img-responsive img-wellcome" src="/docs/web-browsers/images/e2e/view_case_in_loganalyzer.png"/></a>
+</div>
+
+<!-- ****************************** -->
+
+<!-- *** CREATING TJOB YOURSELF *** -->
+
+<!-- ****************************** -->
+
+<h4 class="holder-subtitle link-top">Creating a "JUnit5 Multi Browser Test" TJob yourself</h4>
+
+<p>If you want to create the TJob yourself, you only need follow these steps:</p>
+<h5 class="small-subtitle">1. Access your ElasTest dashboard</h5>
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/images/your-first-test/dashboard.png"><img class="img-responsive img-wellcome" src="/docs/images/your-first-test/dashboard.png"/></a>
+</div>
+
+<h5 class="small-subtitle">2. Create a New Project</h5>
+
+<p>The Projects serve to organize the TJobs related to each other. You can create a new Project by clicking on the button with the same name. You only need to indicate the name of the project and then click on SAVE button:
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/images/your-first-test/new_project.png"><img class="img-responsive img-wellcome" src="/docs/images/your-first-test/new_project.png"/></a>
+</div></p>
+<p>Immediately you will be redirected to the project page:</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/images/your-first-test/project_page.png"><img class="img-responsive img-wellcome" src="/docs/images/your-first-test/project_page.png"/></a>
+</div>
+
+<h5 class="small-subtitle">3. Create a SuT</h5>
+
+<p>There are several ways to deploy a Sut in ElasTest, but they can be grouped in two ways:</p>
 <ul>
-    <li><strong>SuT Name</strong>: name of the Sut (<code>Webapp</code>)</li>
-    <li><strong>SuT Description</strong>: description of the SuT (<code>Webapp description</code>)</li>
-    <li><strong>With Commands Container</strong> / <strong>With Docker Image</strong> / <strong>With Docker Compose</strong>: whether to deploy the SuT on ElasTest as some <i>commands</i> Container,  as a Docker <i>image</i> or a <i>docker-compose</i> (<code>With Docker Image</code>)</li>
-    <li><strong>Docker Image</strong>: image of the SuT (<code>elastest/demo-web-java-test-sut</code>)</li>
-    <li><strong>Wait for http port</strong>: which port of the SuT should ElasTest wait to be available before starting the TJob (<code>8080</code>)</li>
-    <li><strong>Protocol</strong>: protocol of the SuT url. Only Http and Https are available. (<code>http</code>)</li>
+<li><strong><code>Deployed by Elastest</code></strong>: your software is packaged as Docker container/s. It can be a single Docker image or a docker-compose.<ul>
+<li><strong>With Commands Container</strong>: Your SuT is packaged as a Docker image. You must write the <em>Commands Container Image</em> and the commands that will run like the docker image CMD.</li>
+<li><strong>With Docker Image</strong>: Your SuT is packaged as a Docker image. ElasTest will pull it from DockerHub and run it as the <code>Dockerfile</code> states.</li>
+<li><strong>With Docker Compose</strong>: Your SuT is declared as a docker-compose. ElasTest will pull all the necessary images from DockerHub and run them as the field <code>Docker Compose</code>.</li>
 </ul>
-
-<p><br></p>
+</li>
+<li><strong><code>Deployed outside ElasTest</code></strong>:  your software is already deployed somewhere.<ul>
+<li><strong>No instrumentation</strong>: No monitoring traces sent to ElasTest.</li>
+<li><strong>Instrumented by ElasTest</strong>:  Elastest will be responsible for accessing your Sut to send monitoring traces.</li>
+<li><strong>Manual Instrumentation</strong>: If you want to manually send its logs and metrics to ElasTest.</li>
+<li><strong>Use External Elasticsearch</strong>: if you use your own <a href="https://www.elastic.co/guide/index.html">Elasticsearch</a> to save the monitoring traces and you want ElasTest to access it to retrieve them.</li>
+</ul>
+</li>
+</ul>
+<p>You can read <a href="../../testing/sut">Software under Test</a> for more detailed information about Sut.</p>
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/testing/images/browser_test_4.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/browser_test_4.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/testing/images/rest/new_sut_btn.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/rest/new_sut_btn.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/testing/images/rest/new_sut_page.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/rest/new_sut_page.png"/></a>
 </div>
 
-<h4 id="3-create-a-new-tjob" class="holder-subtitle link-top">3. Create a new TJob</h4>
+<p>In our case, we will need to insert the following data for create the SuT of "JUnit5 Rest Test" TJob:</p>
+<ul>
+<li><strong>SuT Name</strong>: can be called as you want, but we will call it <strong><code>WebApp</code></strong></li>
+<li><strong>With Commands Container</strong> / <strong>With Docker Image</strong> / <strong>With Docker Compose</strong>: <strong><code>With Docker Image</code></strong></li>
+<li><strong>Docker Image</strong>: image of the SuT (<strong><code>elastest/demo-web-java-test-sut</code></strong>)</li>
+<li><strong>Wait for http port</strong>: which port of the SuT should ElasTest wait to be available before starting the TJob (<strong><code>8080</code></strong>)</li>
+</ul>
+<p><br>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/web-browsers/images/e2e/sut_creation.png"><img class="img-responsive img-wellcome" src="/docs/web-browsers/images/e2e/sut_creation.png"/></a>
+</div></p>
+<h5 class="small-subtitle">4. Create a new TJob</h5>
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/testing/images/browser_test_5.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/browser_test_5.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/web-browsers/images/e2e/new_tjob_btn.png"><img class="img-responsive img-wellcome" src="/docs/web-browsers/images/e2e/new_tjob_btn.png"/></a>
 </div>
 
-<p>Complete the form fields:</p>
+<p>When a TJob is created, the minimum information that you have to provide is the following:</p>
 <ul>
 <li><strong>TJob Name</strong>: name of the TJob</li>
-<li><strong>Select a SuT</strong>: already created SuT to be tested through to the TJob (<code>Webapp</code>)</li>
-<li><strong>Environment docker image</strong>: the docker image that will host your test. This docker images should contain a client to download your code from your repository hosting service. For example, if your tests are hosted in GitHub and implemented in a Maven project with Java, you need to include a git client, Maven and the Java Development Kit (JDK) in the image. Indeed, this image contains Git, Maven and Java (<code>elastest/test-etm-alpinegitjava</code>)</li>
-<!-- Modify when all images are available for testing with different hostsing services and technologies: Java, Maven, Pyhton, Ruby, Node... -->
-<li><strong>Commands</strong>: these are the bash commands to be executed to download the code from a repository and to execute the tests. The specific commands depends on the source code repository type and the technology. For example, the following commands will clone a Maven/Java repository from GitHub and execute the tests:
-<pre style="margin-bottom: 20px !important"><code>git clone https://github.com/elastest/demo-projects
-cd demo-projects/simpleweb-java-test
-mvn test</code></pre>
-</li>
-<li><strong>Test Support Services (EUS)</strong>: if your test is gonna require a browser or not (<code>Checked</code>)</li>
+<li><strong>Select a SuT</strong>: If your TJob make use of a Software under Test. In this case, none.</li>
+<li><strong>Environment docker image</strong>: the docker image that will host your test. This docker images should contain a client to download your code from your repository hosting service. For example, if your tests are hosted in GitHub and implemented in a Maven project with Java, you need to include a git client, Maven and the Java Development Kit (JDK) in the image.
+    <!-- Modify when all images are available for testing with different hostsing services and technologies: Java, Maven, Pyhton, Ruby, Node... --></li>
+<li><strong>Commands</strong>: these are the bash commands to be executed to download the code from a repository and to execute the tests. The specific commands depends on the source code repository type and the technology.</li>
 </ul>
-
-<p><br></p>
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/testing/images/browser_test_6.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/browser_test_6.png"/></a>
+<p>In our case, we will need to insert the following data for the TJob "JUnit5 Multi Browser Test":</p>
+<ul>
+<li><strong>TJob Name</strong>: can be called as you want, but we will call it <strong><code>JUnit5 Multi Browser Test</code></strong></li>
+<li>
+<p><strong>Test Results Path</strong>: <strong><code>/demo-projects/webapp/junit5-web-multiple-browsers-test/target/surefire-reports</code></strong>. This is the complete path where the xml reports of the execution in the container will be saved. We explain this in more detail <a href="/docs/testing/unit#xmlAndtestResultsPath">here</a>.</p>
+</li>
+<li>
+<p><strong>Select a SuT</strong>: already created SuT to be tested through to the TJob (<strong><code>WebApp</code></strong>)</p>
+</li>
+<li>
+<p><strong>Environment docker image</strong>:  <a href="https://github.com/elastest/elastest-torm/blob/master/docker/services/examples/test-etm-alpinegitjava/Dockerfile"><strong><code>elastest/test-etm-alpinegitjava</code></strong></a> (image that contains Git, Maven and Java).</p>
+</li>
+<li>
+<p><strong>Commands</strong>:</p>
+<pre><code>git clone https://github.com/elastest/demo-projects;
+cd /demo-projects/webapp/junit5-web-multiple-browsers-test;
+mvn -B -Dbrowser=chrome test;
+</code></pre>
+</li>
+<li>
+<p><strong>Test Support Services</strong>: Check <strong><code>EUS</code></strong></p>
+</li>
+</ul>
+<div class="docs-gallery inline-block" style="margin-top: 20px">
+    <a data-fancybox="gallery-1" href="/docs/web-browsers/images/e2e/new_tjob_creation.png"><img class="img-responsive img-wellcome" src="/docs/web-browsers/images/e2e/new_tjob_creation.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/web-browsers/images/e2e/new_tjob_creation_2.png"><img class="img-responsive img-wellcome" src="/docs/web-browsers/images/e2e/new_tjob_creation_2.png"/></a>
 </div>
 
-<h4 class="holder-subtitle link-top">4. Run the TJob from the Project's page</h4>
+<p>By clicking on SAVE the TJob will be saved and you will be redirected to the project page again, where you will be able to execute the TJob.</p>
+<h5 class="small-subtitle">5. Run the TJob from the Project's page</h5>
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/testing/images/browser_test_7.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/browser_test_7.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/web-browsers/images/e2e/project_page_with_tjob.png"><img class="img-responsive img-wellcome" src="/docs/web-browsers/images/e2e/project_page_with_tjob.png"/></a>
 </div>
 
+<!-- ********************************** -->
+
+<!-- ********* Other Examples ********* -->
+
+<!-- ********************************** -->
+
+<h4 class="holder-subtitle link-top" id="moreExamples">More examples</h4>
+
+<p>The following examples, also offered by default in ElasTest, are implemented with different technologies:</p>
+<div class="badges-menu main-badge">
+    <span id="junit4-btn" class="badge badge-default my-badge selected">Java JUnit4</span>
+    <span id="python-btn" class="badge badge-default my-badge my-badge-disabled">Python</span>
+    <span id="cucumber-btn" class="badge badge-default my-badge my-badge-disabled">Java Cucumber</span>
+    <span id="gauge-btn" class="badge badge-default my-badge my-badge-disabled">Java Gauge</span>
+    <span id="protractor-btn" class="badge badge-default my-badge my-badge-disabled">JS Protractor</span>
+</div>
+
+<!-- JUNIT4 -->
+
+<div id="junit4" class="testExample badge-tutorial">
+
+<div class="badges-menu sub-badge">
+    <span id="junit4-multi-btn" class="badge badge-default my-badge selected">A Browser for Each</span>
+    <span id="junit4-single-btn" class="badge badge-default my-badge my-badge-disabled">A Browser for All</span>
+</div>
+
+<div id="junit4-multi" class="subTestExample">
 <p>
-When this TJob is executed, a web application is started (the Sut). When the web application is ready, the test container is executed with the specified commands. Whenever the test code requests a certain browser of a specific version using standard web driver protocol and libraries, Elastest provides it automatically. When browser is ready, test uses it to interact with the SuT and verify that web behaves as expected.
+You can view the <a target="_blank" href="https://github.com/elastest/demo-projects/tree/master/webapp/junit4-web-multiple-browsers-test">Source Code in GitHub</a>.
+This test has been developed in Java using <a target="_blank" href="https://junit.org/junit4">JUnit4</a>.
 </p>
 
-<p>You can see the browser in real time as test runs:</p>
-
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/testing/images/browser_test_8.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/browser_test_8.png"/></a>
-    <a data-fancybox="gallery-1" href="/docs/testing/images/browser_test_9.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/browser_test_9.png"/></a>
-</div>
-
-<p>When the test have been executed, the browser recording can be opened in a new tab or  opened as dialog:</p>
-
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/testing/images/browser_test_10.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/browser_test_10.png"/></a>
-    <a data-fancybox="gallery-1" href="/docs/testing/images/browser_test_11.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/browser_test_11.png"/></a>
-</div>
-
-<h4 id="sample-test-code" class="holder-subtitle link-top">Sample test code</h4>
-
-<div class="badges-menu noselectionable">
-    <span id="java-test-btn" class="badge badge-default my-badge selected">Java</span>
-    <span id="js-test-btn" class="badge badge-default my-badge">JS</span>
-    <span class="badge badge-default my-badge my-badge-disabled">PHP</span>
-    <span class="badge badge-default my-badge my-badge-disabled">. . .</span>
-</div>
-
-<div id="java-test" class="lang-section">
-
-<p>Let's take a look at the test code. It is implemented with <a href="http://junit.org/junit5/" target="_blank">JUnit 5</a> and Selenium webdriver libraries.</p>
-
-<hr>
-
-<h4>Field values when <a href="#3-create-a-new-tjob">creating the TJob</a></h4>
-
-<p><strong>Commands</strong> field:</p>
-
-<pre style="margin-bottom: 20px !important"><code>git clone https://github.com/elastest/demo-projects
-cd demo-projects/simpleweb-java-test
-mvn test</code></pre>
-
-<p><strong>Environment docker image</strong> field:</p>
-
-<code>elastest/test-etm-alpinegitjava</code>
-
-<hr>
-
-<div class="row" style="margin-top: 40px">
-
-<div class="col-md-6">
-<h4><i>BeforeAll</i> method</h4>
+<div class="row">
+<h5 class="small-subtitle">WebAppTest class</h5>
 <pre>
 <code class="java">
-@BeforeAll
-public static void setupAllTests() {
+// Uses a browser for each test
+public class WebAppTest extends ElastestBaseTest {
 
-    String sutHost = System.getenv("ET_SUT_HOST");
-    if (sutHost == null) {
-        sutURL = "http://localhost:8080/";
-    } else {
-        sutURL = "http://" + sutHost + ":8080/";
-    }
-    System.out.println("App url: " + sutURL);
+    @Test
+    public void addMsgAndClear()
+            throws InterruptedException, MalformedURLException {
+        Thread.sleep(2000);
 
-    eusURL = System.getenv("ET_EUS_API");
-    if (eusURL == null) {
-        ChromeDriverManager.getInstance().setup();
-    }
+        String newTitle = "MessageTitle";
+        String newBody = "MessageBody";
 
-}
-</code>
+        this.addRow(newTitle, newBody);
 
-</pre>
-<blockquote>This method runs just once before all tests defined in the class.<br><code>ET_SUT_HOST</code> variable will be the IP of our SuT. ElasTest will automatically inject the right value (<code>localhost</code> if not defined)<br><code>ET_EUS_API</code> variable tells us where to connect to use Elastest browsers (standard Selenium Hub). If the variable has no value, we can consider that this service is no available and then local browsers have to be used (here we are using <a href="https://github.com/bonigarcia/webdrivermanager" target="_blank">WebDriver Manager</a> Java library. This library is responsible to download and configure any additional software needed to use installed browsers from tests)
-</blockquote>
-</div>
+        Thread.sleep(2000);
 
-<div class="col-md-6">
-<h4><i>BeforeEach</i> method</h4>
-<pre>
-<code class="java">
-@BeforeEach
-public void setupTest() throws MalformedURLException {
+        String title = driver.findElement(By.id("title")).getText();
+        String body = driver.findElement(By.id("body")).getText();
 
-    ChromeOptions options = new ChromeOptions();
+        // Added
+        logger.info("Checking Message...");
+        assertEquals(newTitle, title);
+        assertEquals(newBody, body);
 
-    options.addArguments("start-maximized");
+        Thread.sleep(1000);
 
-    if (eusURL == null) {
-        driver = new ChromeDriver(options);
-    } else {
-        DesiredCapabilities caps = new DesiredCapabilities();
-        caps.setBrowserName("chrome");
-        caps.setCapability(ChromeOptions.CAPABILITY, options);
-        driver = new RemoteWebDriver(new URL(eusURL), caps);
+        int titleExist = driver.findElements(By.id("title")).size();
+        int bodyExist = driver.findElements(By.id("body")).size();
+
+        try {
+            assertNotEquals(0, titleExist);
+            assertNotEquals(0, bodyExist);
+        } finally {
+            Thread.sleep(2000);
+            clearRows();
+        }
     }
 
-}
-</code>
+    @Test
+    public void findTitleAndBody()
+            throws InterruptedException, MalformedURLException {
+        Thread.sleep(2000);
 
-</pre>
-<blockquote>This method is called before every test in this class.<br> It creates a browser with its window maximized: if Elastest Web Browser service is available, then the browser is a remote web browser. If not, it is a local browser. Selenium API is slightly differente in each case</blockquote>
-</div>
-</div>
+        String newTitle = "MessageTitle";
+        String newBody = "MessageBody";
 
-<div class="row" style="margin-top: 20px">
+        this.addRow(newTitle, newBody);
 
-<div class="col-md-6">
-<h4><i>AfterEach</i> method</h4>
-<pre>
-<code class="java">
-@AfterEach
-public void teardown() {
-    if (driver != null) {
-        driver.quit();
+        Thread.sleep(2000);
+
+        String title = driver.findElement(By.id("title")).getText();
+        String body = driver.findElement(By.id("body")).getText();
+
+        logger.info("Checking Message...");
+
+        try {
+            assertEquals(newTitle, title);
+            assertEquals(newBody, body);
+        } finally {
+            Thread.sleep(2000);
+            clearRows();
+        }
     }
-}
-</code>
-</pre>
-<blockquote>This method is called after every test execution in this class.<br>It is a very important method: it disposes the browser as soon as the test has finished</blockquote>
-</div>
 
-<div class="col-md-6">
-<h4><i>Test</i> method</h4>
-<pre>
-<code class="java">
-@Test
-public void test() throws InterruptedException {
+    @Test
+    public void checkTitleAndBodyNoEmpty()
+            throws InterruptedException, MalformedURLException {
+        Thread.sleep(2000);
 
-    driver.get(sutURL);
+        String newTitle = "";
+        String newBody = "";
 
-    Thread.sleep(3000);
+        this.addRow(newTitle, newBody);
 
-    String newTitle = "MessageTitle";
-    String newBody = "MessageBody";
+        Thread.sleep(2000);
 
-    driver.findElement(By.id("title-input")).sendKeys(newTitle);
-    driver.findElement(By.id("body-input")).sendKeys(newBody);
+        String title = driver.findElement(By.id("title")).getText();
+        String body = driver.findElement(By.id("body")).getText();
 
-    Thread.sleep(3000);
+        logger.info("Checking Message...");
 
-    driver.findElement(By.id("submit")).click();
-
-    Thread.sleep(3000);
-
-    String title = driver.findElement(By.id("title")).getText();
-    String body = driver.findElement(By.id("body")).getText();
-
-    assertThat(title, equalTo(newTitle));
-    assertThat(body, equalTo(newBody));
-
-    Thread.sleep(3000);
-
-}
-</code>
-
-</pre>
-<blockquote>This test is the only one defined in this class. Its logic just simulates the navigation of a real user in our webpage, sending some data within a form and checking the received data.<br>Sentences "Thread.sleep()" just give us some more time to see the browser in action. They are not necessary in a real project</blockquote>
-</div>
-</div>
-</div>
-
-<div id="js-test" class="lang-section" hidden>
-
-<p>Let's take a look at the test code. It is implemented in JavaScript with <a href="https://mochajs.org/" target="_blank">mocha</a>, <a href="http://chaijs.com/" target="_blank">chai</a> and Selenium webdriver libraries.</p>
-
-<hr>
-
-<h4>Field values when <a href="#3-create-a-new-tjob">creating the TJob</a></h4>
-
-<p><strong>Commands</strong> field:</p>
-
-<pre style="margin-bottom: 20px !important"><code>git clone https://github.com/elastest/demo-projects
-cd demo-projects/simpleweb-js-test
-npm install
-npm test</code></pre>
-
-<p><strong>Environment docker image</strong> field:</p>
-
-<code>elastest/demo-env-node</code>
-
-<hr>
-
-<div class="row" style="margin-top: 40px">
-
-<div class="col-md-6">
-<h4><i>before</i> method</h4>
-<pre>
-<code class="javascript">
-before(() => {
-    var sutHost = process.env.ET_SUT_HOST;
-    if (!sutHost) {
-        sutURL = "http://localhost:8080/";
-    } else {
-        sutURL = "http://" + sutHost + ":8080/";
+        try {
+            assertNotEquals(newTitle, title);
+            assertNotEquals(newBody, body);
+        } finally {
+            Thread.sleep(2000);
+            clearRows();
+        }
     }
-    console.log("App url: " + sutURL);
 
-    eusURL = process.env.ET_EUS_API;
+    /* ********************* */
+    /* *** Other methods *** */
+    /* ********************* */
 
-});
-</code>
-
-</pre>
-<blockquote>This method runs just once before all tests defined in the class.<br><code>ET_SUT_HOST</code> variable will be the IP of our SuT. ElasTest will automatically inject the right value (<code>localhost</code> if not defined)<br><code>ET_EUS_API</code> variable tells us where to connect to use Elastest browsers (standard Selenium Hub)</blockquote>
-</div>
-
-<div class="col-md-6">
-<h4><i>beforeEach</i> method</h4>
-<pre>
-<code class="javascript">
-beforeEach(() => {
-    var options = new chrome.Options();
-    options.addArguments("start-maximized");
-
-    var browserBuilder = new webdriver.Builder().forBrowser("chrome");
-    browserBuilder.setChromeOptions(options);
-
-    if (eusURL) {
-        console.log("Using ElasTest browser ("+eusURL+")");
-        browserBuilder.usingServer(eusURL);
-    } else {
-        console.log("Using local browser");
-    }
-    driver = browserBuilder.build();
-
-    console.log("Chrome browser created");
-
-});
-</code>
-
-</pre>
-<blockquote>This method is called before every test in this class.<br> It creates a browser with its window maximized: if Elastest Web Browser service is available, then the browser is a remote web browser. If not, it is a local browser. Selenium API is slightly differente in each case</blockquote>
-</div>
-
-</div>
-
-<div class="row" style="margin-top: 20px">
-<div class="col-md-6">
-<h4><i>Test</i> method</h4>
-<pre>
-<code class="javascript">
-describe("Web page", () => {
-    it("should add message", async function() {
-        this.timeout(30000);
-
-        driver.get(sutURL);
-
-        var newTitle = "MessageTitle";
-        var newBody = "MessageBody";
-
+    public void addRow(String newTitle, String newBody)
+            throws InterruptedException {
         driver.findElement(By.id("title-input")).sendKeys(newTitle);
         driver.findElement(By.id("body-input")).sendKeys(newBody);
 
+        Thread.sleep(2000);
+
+        logger.info("Adding Message...");
+
         driver.findElement(By.id("submit")).click();
+    }
 
-        var title = driver.findElement(By.id("title")).getText();
-        var body = driver.findElement(By.id("body")).getText();
+    public void clearRows() throws InterruptedException {
+        logger.info("Clearing Messages...");
+        driver.findElement(By.id("clearSubmit")).click();
+        Thread.sleep(1000);
+    }
 
-        assert.equal(await title, newTitle);
-        assert.equal(await body, newBody);
-
-        driver.quit();
-    })
-
-})
+}
 </code>
 
 </pre>
-<blockquote>This test is the only one defined in this class. Its logic just simulates the navigation of a real user in our webpage, sending some data within a form and checking the received data</blockquote>
-</div>
-</div>
 </div>
 
-<script>
-$('#java-test-btn').click(function(event) {
-  activateBadge('java-test');
+<div class="row">
+<h5 class="small-subtitle">ElastestBaseTest class</h5>
+<pre>
+<code class="java">
+public class ElastestBaseTest {
+    @Rule
+    public TestName name = new TestName();
+
+    protected static final Logger logger = LoggerFactory
+            .getLogger(ElastestBaseTest.class);
+
+    protected static final String CHROME = "chrome";
+    protected static final String FIREFOX = "firefox";
+
+    protected static String browserType;
+    protected static String browserVersion;
+    protected static String eusURL;
+    protected static String sutUrl;
+
+    protected WebDriver driver;
+
+    @BeforeClass
+    public static void setupClass() {
+        String sutHost = System.getenv("ET_SUT_HOST");
+        String sutPort = System.getenv("ET_SUT_PORT");
+        String sutProtocol = System.getenv("ET_SUT_PROTOCOL");
+
+        if (sutHost == null) {
+            sutUrl = "http://localhost:8080/";
+        } else {
+            sutPort = sutPort != null ? sutPort : "8080";
+            sutProtocol = sutProtocol != null ? sutProtocol : "http";
+
+            sutUrl = sutProtocol + "://" + sutHost + ":" + sutPort;
+        }
+        logger.info("Webapp URL: " + sutUrl);
+
+        browserType = System.getProperty("browser");
+        logger.info("Browser Type: {}", browserType);
+        eusURL = System.getenv("ET_EUS_API");
+
+        if (eusURL == null) {
+            if (browserType == null || browserType.equals(CHROME)) {
+                WebDriverManager.chromedriver().setup();
+            } else {
+                WebDriverManager.firefoxdriver().setup();
+            }
+        }
+    }
+
+    @Before
+    public void beforeEach() throws MalformedURLException {
+        String testName = name.getMethodName();
+        logger.info("##### Start test: {}", testName);
+
+        browserVersion = System.getProperty("browserVersion");
+
+        if (eusURL == null) {
+            if (browserType == null || browserType.equals(CHROME)) {
+                driver = new ChromeDriver();
+            } else {
+                driver = new FirefoxDriver();
+            }
+        } else {
+            DesiredCapabilities caps;
+            if (browserType == null || browserType.equals(CHROME)) {
+                caps = DesiredCapabilities.chrome();
+            } else {
+                caps = DesiredCapabilities.firefox();
+            }
+
+            if (browserVersion != null) {
+                logger.info("Browser Version: {}", browserVersion);
+                caps.setVersion(browserVersion);
+            }
+
+            caps.setCapability("testName", testName);
+
+            driver = new RemoteWebDriver(new URL(eusURL), caps);
+        }
+
+        driver.get(sutUrl);
+    }
+
+    @After
+    public void afterEach() {
+        if (driver != null) {
+            driver.quit();
+        }
+
+        String testName = name.getMethodName();
+        logger.info("##### Finish test: {}", testName);
+    }
+
+}
+</code>
+</pre>
+</div>
+
+<h5 class="small-subtitle">TJob Configuration</h5>
+
+<ul>
+<li><strong>TJob Name</strong>: can be called as you want, but we will call it <strong><code>Junit4 Multi Browser Test</code></strong></li>
+<li><strong>Test Results Path</strong>: <strong><code>/demo-projects/webapp/junit4-web-multiple-browsers-test/target/surefire-reports</code></strong></li>
+<li><strong>Select a SuT</strong>: <strong><code>WebApp</code></strong></li>
+<li><strong>Environment docker image</strong>:  <a href="https://github.com/elastest/elastest-torm/blob/master/docker/services/examples/test-etm-alpinegitjava/Dockerfile"><code>elastest/test-etm-alpinegitjava</code></a></li>
+<li><strong>Commands</strong>: 
+<pre>
+    <code>
+    git clone https://github.com/elastest/demo-projects;
+    cd /demo-projects/webapp/junit4-web-multiple-browsers-test;
+    mvn -B -Dbrowser=chrome test;
+    </code>
+</pre>
+</li>
+<li><strong>Test Support Services</strong>: <strong><code>EUS</code></strong></li>
+</ul>
+</div> <!-- end of junit4 multi -->
+
+
+<div id="junit4-single" class="subTestExample">
+<p>
+You can view the <a target="_blank" href="https://github.com/elastest/demo-projects/tree/master/webapp/junit4-web-single-browser-test">Source Code in GitHub</a>.
+This test has been developed in Java using <a target="_blank" href="https://junit.org/junit4">JUnit4</a>.
+</p>
+
+<div class="row">
+<h5 class="small-subtitle">WebAppTest class</h5>
+<pre>
+<code class="java">
+// Uses a browser for all test
+public class WebAppTest extends ElastestBaseTest {
+
+    @Test
+    public void addMsgAndClear()
+            throws InterruptedException, MalformedURLException {
+        Thread.sleep(2000);
+
+        String newTitle = "MessageTitle";
+        String newBody = "MessageBody";
+
+        this.addRow(newTitle, newBody);
+
+        Thread.sleep(2000);
+
+        String title = driver.findElement(By.id("title")).getText();
+        String body = driver.findElement(By.id("body")).getText();
+
+        // Added
+        logger.info("Checking Message...");
+        assertEquals(newTitle, title);
+        assertEquals(newBody, body);
+
+        Thread.sleep(1000);
+
+        int titleExist = driver.findElements(By.id("title")).size();
+        int bodyExist = driver.findElements(By.id("body")).size();
+
+        try {
+            assertNotEquals(0, titleExist);
+            assertNotEquals(0, bodyExist);
+        } finally {
+            Thread.sleep(2000);
+            clearRows();
+        }
+    }
+
+    @Test
+    public void findTitleAndBody()
+            throws InterruptedException, MalformedURLException {
+        Thread.sleep(2000);
+
+        String newTitle = "MessageTitle";
+        String newBody = "MessageBody";
+
+        this.addRow(newTitle, newBody);
+
+        Thread.sleep(2000);
+
+        String title = driver.findElement(By.id("title")).getText();
+        String body = driver.findElement(By.id("body")).getText();
+
+        logger.info("Checking Message...");
+
+        try {
+            assertEquals(newTitle, title);
+            assertEquals(newBody, body);
+
+        } finally {
+            Thread.sleep(2000);
+            clearRows();
+        }
+    }
+
+    @Test
+    public void checkTitleAndBodyNoEmpty()
+            throws InterruptedException, MalformedURLException {
+        Thread.sleep(2000);
+
+        String newTitle = "";
+        String newBody = "";
+
+        this.addRow(newTitle, newBody);
+
+        Thread.sleep(2000);
+
+        String title = driver.findElement(By.id("title")).getText();
+        String body = driver.findElement(By.id("body")).getText();
+
+        logger.info("Checking Message...");
+
+        try {
+            assertNotEquals(newTitle, title);
+            assertNotEquals(newBody, body);
+        } finally {
+            Thread.sleep(2000);
+            clearRows();
+        }
+    }
+
+    /* ********************* */
+    /* *** Other methods *** */
+    /* ********************* */
+
+    public void addRow(String newTitle, String newBody)
+            throws InterruptedException {
+        driver.findElement(By.id("title-input")).sendKeys(newTitle);
+        driver.findElement(By.id("body-input")).sendKeys(newBody);
+
+        Thread.sleep(2000);
+
+        logger.info("Adding Message...");
+
+        driver.findElement(By.id("submit")).click();
+    }
+
+    public void clearRows() throws InterruptedException {
+        logger.info("Clearing Messages...");
+        driver.findElement(By.id("clearSubmit")).click();
+        Thread.sleep(1000);
+    }
+}
+</code>
+
+</pre>
+</div>
+
+<div class="row">
+<h5 class="small-subtitle">ElastestBaseTest class</h5>
+<pre>
+<code class="java">
+public class ElastestBaseTest {
+    @Rule
+    public TestName name = new TestName();
+
+    protected static final Logger logger = LoggerFactory
+            .getLogger(ElastestBaseTest.class);
+
+    protected static final String CHROME = "chrome";
+    protected static final String FIREFOX = "firefox";
+
+    protected static String browserType;
+    protected static String browserVersion;
+    protected static String eusURL;
+    protected static String sutUrl;
+
+    protected static WebDriver driver;
+
+    @BeforeClass
+    public static void setupClass() throws MalformedURLException {
+        // If first time, init
+        if (driver == null) {
+            String sutHost = System.getenv("ET_SUT_HOST");
+            String sutPort = System.getenv("ET_SUT_PORT");
+            String sutProtocol = System.getenv("ET_SUT_PROTOCOL");
+
+            if (sutHost == null) {
+                sutUrl = "http://localhost:8080/";
+            } else {
+                sutPort = sutPort != null ? sutPort : "8080";
+                sutProtocol = sutProtocol != null ? sutProtocol : "http";
+
+                sutUrl = sutProtocol + "://" + sutHost + ":" + sutPort;
+            }
+            logger.info("Webapp URL: " + sutUrl);
+
+            browserType = System.getProperty("browser");
+            logger.info("Browser Type: {}", browserType);
+            eusURL = System.getenv("ET_EUS_API");
+
+            if (eusURL == null) {
+                if (browserType == null || browserType.equals(CHROME)) {
+                    WebDriverManager.chromedriver().setup();
+                    driver = new ChromeDriver();
+                } else {
+                    WebDriverManager.firefoxdriver().setup();
+                    driver = new FirefoxDriver();
+                }
+            } else {
+                DesiredCapabilities caps;
+                if (browserType == null || browserType.equals(CHROME)) {
+                    caps = DesiredCapabilities.chrome();
+                } else {
+                    caps = DesiredCapabilities.firefox();
+                }
+
+                browserVersion = System.getProperty("browserVersion");
+                if (browserVersion != null) {
+                    logger.info("Browser Version: {}", browserVersion);
+                    caps.setVersion(browserVersion);
+                }
+                driver = new RemoteWebDriver(new URL(eusURL), caps);
+            }
+        }
+
+        // driver quit when all tests end
+        Runtime.getRuntime().addShutdownHook(new Thread() {
+            public void run() {
+                logger.info("Shutting down browser...");
+                driver.quit();
+            }
+        });
+    }
+
+    @Before
+    public void beforeEach() throws MalformedURLException {
+        String testName = name.getMethodName();
+
+        ((JavascriptExecutor) driver).executeScript(
+                "'{\"elastestCommand\": \"startTest\", \"args\": {\"testName\": \""
+                        + testName + "\"} }'");
+
+        logger.info("##### Start test: {}", testName);
+
+        driver.get(sutUrl);
+    }
+
+    @After
+    public void afterEach() {
+        String testName = name.getMethodName();
+        logger.info("##### Finish test: {}", testName);
+    }
+}
+</code>
+</pre>
+</div>
+
+<h5 class="small-subtitle">TJob Configuration</h5>
+
+<ul>
+<li><strong>TJob Name</strong>: can be called as you want, but we will call it <strong><code>Junit4 Single Browser Test</code></strong></li>
+<li><strong>Test Results Path</strong>: <strong><code>/demo-projects/webapp/junit4-web-single-browser-test/target/surefire-reports</code></strong></li>
+<li><strong>Select a SuT</strong>: <strong><code>WebApp</code></strong></li>
+<li><strong>Environment docker image</strong>:  <a href="https://github.com/elastest/elastest-torm/blob/master/docker/services/examples/test-etm-alpinegitjava/Dockerfile"><code>elastest/test-etm-alpinegitjava</code></a></li>
+<li><strong>Commands</strong>: 
+<pre>
+    <code>
+    git clone https://github.com/elastest/demo-projects;
+    cd /demo-projects/webapp/junit4-web-single-browser-test;
+    mvn -B -Dbrowser=chrome test;
+    </code>
+</pre>
+</li>
+<li><strong>Test Support Services</strong>: <strong><code>EUS</code></strong></li>
+</ul>
+</div> <!-- end of junit4 single -->
+
+</div>
+
+<!-- PYTHON -->
+
+<div id="python" class="testExample badge-tutorial">
+
+<div class="badges-menu sub-badge">
+    <span id="python-multi-btn" class="badge badge-default my-badge selected">A Browser for Each</span>
+    <span id="python-single-btn" class="badge badge-default my-badge my-badge-disabled">A Browser for All</span>
+</div>
+
+<div id="python-multi" class="subTestExample">
+<p>You can view the <a target="_blank" href="https://github.com/elastest/demo-projects/tree/master/webapp/python-web-multiple-browsers-test">Source Code in GitHub</a>.
+This test has been developed in <a target="_blank" href="https://www.python.org/">Python</a>.
+</p>
+
+<div class="row">
+<h5 class="small-subtitle">TestWebApp class</h5>
+<pre>
+<code class="python">
+import unittest
+import os
+import sys
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+import time
+import xmlrunner
+import ElasTestBase
+
+
+class TestWebApp(ElasTestBase.ElasTestBase):
+    def test_check_title_and_body_not_empty(self):
+        driver = ElasTestBase.driver
+        try:
+            time.sleep(2)
+            addRow(driver, '', '')
+            time.sleep(2)
+
+            title = getElementById(driver, 'title').text
+            body = getElementById(driver, 'body').text
+            print 'Checking Message...'
+
+            self.assertNotEqual('', title)
+            self.assertNotEqual('', body)
+        except Exception as e:
+            clearData(driver)
+            sys.exit(1)
+        clearData(driver)
+
+    def test_find_title_and_body(self):
+        driver = ElasTestBase.driver
+        try:
+            time.sleep(2)
+            addRow(driver, 'MessageTitle', 'MessageBody')
+            time.sleep(2)
+
+            title = getElementById(driver, 'title').text
+            body = getElementById(driver, 'body').text
+            print 'Checking Message...'
+
+            self.assertEqual('MessageTitle', title)
+            self.assertEqual('MessageBody', body)
+        except Exception as e:
+            clearData(driver)
+            sys.exit(1)
+        clearData(driver)
+
+
+def getElementById(driver, id, timeout=10):
+    wait = WebDriverWait(driver, timeout)
+    return wait.until(EC.presence_of_element_located((By.ID, id)))
+
+
+def addRow(driver, title, body):
+    getElementById(driver, 'title-input').send_keys(title)
+    getElementById(driver, 'body-input').send_keys(body)
+    print 'Adding Message...'
+    getElementById(driver, 'submit').click()
+
+
+def clearData(driver):
+    print 'Clearing Messages...'
+    getElementById(driver, 'clearSubmit').click()
+
+
+if __name__ == '__main__':
+    file_path = './testresults'
+    if not os.path.exists(file_path):
+        os.makedirs(file_path)
+    file_name = file_path + '/results.xml'
+    with open(file_name, 'wb') as output:
+        unittest.main(
+            testRunner=xmlrunner.XMLTestRunner(output=output),
+            failfast=False, buffer=False, catchbreak=False)
+</code>
+</pre>
+</div>
+
+<div class="row">
+<h5 class="small-subtitle">ElasTestBase class</h5>
+<pre>
+<code class="python">
+import unittest
+import os
+from selenium import webdriver
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+
+
+driver = None
+sutUrl = None
+
+
+class ElasTestBase(unittest.TestCase):
+    def setUp(self):
+        global driver
+        global sutUrl
+        testName = self._testMethodName
+        print '##### Start test: ' + testName
+
+        # os.environ['ET_EUS_API'] = 'http://172.18.0.1:8091/eus/v1/'
+        if('ET_EUS_API' in os.environ):
+            capabilities = DesiredCapabilities.CHROME
+            if('BROWSER' in os.environ):
+                if(os.environ['BROWSER'] == 'firefox'):
+                    capabilities = DesiredCapabilities.FIREFOX
+
+            capabilities['testName'] = testName
+
+            driver = webdriver.Remote(
+                command_executor=os.environ['ET_EUS_API'],
+                desired_capabilities=capabilities)
+        else:
+            driver = webdriver.Chrome('/usr/lib/chromium-browser/chromedriver')
+
+        sutIp = '172.18.0.8'
+        if('ET_SUT_HOST' in os.environ):
+            sutIp = os.environ['ET_SUT_HOST']
+
+        sutUrl = 'http://' + sutIp + ':8080'
+        driver.get(sutUrl)
+
+    def tearDown(self):
+        global driver
+        testName = self._testMethodName
+        print '##### Finish test: ' + testName
+        driver.close()
+</code>
+
+</pre>
+</div>
+
+<h5 class="small-subtitle">TJob Configuration</h5>
+
+<ul>
+<li><strong>TJob Name</strong>: can be called as you want, but we will call it <strong><code>Python Multi Browser Test</code></strong></li>
+<li><strong>Test Results Path</strong>: <strong><code>/demo-projects/webapp/python-web-multiple-browsers-test/testresults</code></strong></li>
+<li><strong>Select a SuT</strong>: <strong><code>WebApp</code></strong></li>
+<li><strong>Environment docker image</strong>:  <a href="https://github.com/elastest/elastest-torm/blob/master/docker/services/examples/test-etm-alpinegitpython/Dockerfile"><code>elastest/test-etm-alpinegitpython</code></a></li>
+<li><strong>Commands</strong>: 
+<pre>
+    <code>
+    git clone https://github.com/elastest/demo-projects;
+    cd /demo-projects/webapp/python-web-multiple-browsers-test;
+    python WebappTest.py;
+    </code>
+</pre>
+</li>
+<li><strong>Test Support Services</strong>: <strong><code>EUS</code></strong></li>
+</ul>
+</div><!-- end of python multi -->
+
+<div id="python-single" class="subTestExample">
+<p>You can view the <a target="_blank" href="https://github.com/elastest/demo-projects/tree/master/webapp/python-web-single-browser-test">Source Code in GitHub</a>.
+This test has been developed in <a target="_blank" href="https://www.python.org/">Python</a>.
+</p>
+
+<div class="row">
+<h5 class="small-subtitle">TestWebApp class</h5>
+<pre>
+<code class="java">
+import unittest
+import os
+import sys
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+import time
+import xmlrunner
+import ElasTestBase
+
+
+class TestWebApp(ElasTestBase.ElasTestBase):
+    def test_check_title_and_body_not_empty(self):
+        driver = ElasTestBase.driver
+        try:
+            time.sleep(2)
+            addRow(driver, '', '')
+            time.sleep(2)
+
+            title = getElementById(driver, 'title').text
+            body = getElementById(driver, 'body').text
+            print 'Checking Message...'
+
+            self.assertNotEqual('', title)
+            self.assertNotEqual('', body)
+        except Exception as e:
+            clearData(driver)
+            sys.exit(1)
+        clearData(driver)
+
+    def test_find_title_and_body(self):
+        driver = ElasTestBase.driver
+        try:
+            time.sleep(2)
+            addRow(driver, 'MessageTitle', 'MessageBody')
+            time.sleep(2)
+
+            title = getElementById(driver, 'title').text
+            body = getElementById(driver, 'body').text
+            print 'Checking Message...'
+
+            self.assertEqual('MessageTitle', title)
+            self.assertEqual('MessageBody', body)
+        except Exception as e:
+            clearData(driver)
+            sys.exit(1)
+        clearData(driver)
+
+
+def getElementById(driver, id, timeout=10):
+    wait = WebDriverWait(driver, timeout)
+    return wait.until(EC.presence_of_element_located((By.ID, id)))
+
+
+def addRow(driver, title, body):
+    getElementById(driver, 'title-input').send_keys(title)
+    getElementById(driver, 'body-input').send_keys(body)
+    print 'Adding Message...'
+    getElementById(driver, 'submit').click()
+
+
+def clearData(driver):
+    print 'Clearing Messages...'
+    getElementById(driver, 'clearSubmit').click()
+
+
+if __name__ == '__main__':
+    file_path = './testresults'
+    if not os.path.exists(file_path):
+        os.makedirs(file_path)
+    file_name = file_path + '/results.xml'
+    with open(file_name, 'wb') as output:
+        unittest.main(
+            testRunner=xmlrunner.XMLTestRunner(output=output),
+            failfast=False, buffer=False, catchbreak=False)
+</code>
+</pre>
+</div>
+
+<div class="row">
+<h5 class="small-subtitle">ElasTestBase class</h5>
+<pre>
+<code class="java">
+import unittest
+import os
+from selenium import webdriver
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+
+
+driver = None
+sutUrl = None
+
+
+class ElasTestBase(unittest.TestCase):
+
+    @classmethod
+    def setUpClass(cls):
+        global driver
+        global sutUrl
+
+        if('ET_EUS_API' in os.environ):
+            capabilities = DesiredCapabilities.CHROME
+            if('BROWSER' in os.environ):
+                if(os.environ['BROWSER'] == 'firefox'):
+                    capabilities = DesiredCapabilities.FIREFOX
+
+            driver = webdriver.Remote(
+                command_executor=os.environ['ET_EUS_API'],
+                desired_capabilities=capabilities)
+        else:
+            driver = webdriver.Chrome('/usr/lib/chromium-browser/chromedriver')
+
+        sutIp = '172.18.0.8'
+        if('ET_SUT_HOST' in os.environ):
+            sutIp = os.environ['ET_SUT_HOST']
+
+        sutUrl = 'http://' + sutIp + ':8080'
+
+    @classmethod
+    def tearDownClass(cls):
+        driver.close()
+
+    def setUp(self):
+        global driver
+        global sutUrl
+        testName = self._testMethodName
+        etScript = '\'{"elastestCommand": "startTest", "args": {"testName": "' + testName + '"}}\''
+        driver.execute_script(etScript)
+        print '##### Start test: ' + testName
+
+        driver.get(sutUrl)
+
+    def tearDown(self):
+        global driver
+        testName = self._testMethodName
+        print '##### Finish test: ' + testName
+</code>
+</pre>
+</div>
+
+<h5 class="small-subtitle">TJob Configuration</h5>
+
+<ul>
+<li><strong>TJob Name</strong>: can be called as you want, but we will call it <strong><code>Python Single Browser Test</code></strong></li>
+<li><strong>Test Results Path</strong>: <strong><code>/demo-projects/webapp/python-web-single-browser-test/testresults</code></strong></li>
+<li><strong>Select a SuT</strong>: <strong><code>WebApp</code></strong></li>
+<li><strong>Environment docker image</strong>:  <a href="https://github.com/elastest/elastest-torm/blob/master/docker/services/examples/test-etm-alpinegitpython/Dockerfile"><code>elastest/test-etm-alpinegitpython</code></a></li>
+<li><strong>Commands</strong>: 
+<pre>
+    <code>
+    git clone https://github.com/elastest/demo-projects;
+    cd /demo-projects/webapp/python-web-single-browser-test;
+    python WebappTestBrowserForAll.py;
+    </code>
+</pre>
+</li>
+<li><strong>Test Support Services</strong>: <strong><code>EUS</code></strong></li>
+</ul>
+
+</div><!-- End of single python  -->
+
+</div>
+
+<!-- CUCUMBER -->
+
+<div id="cucumber" class="testExample badge-tutorial">
+<div class="badges-menu sub-badge">
+    <span id="cucumber-multi-btn" class="badge badge-default my-badge selected">A Browser for Each</span>
+    <span id="cucumber-single-btn" class="badge badge-default my-badge my-badge-disabled">A Browser for All</span>
+</div>
+
+<div id="cucumber-multi" class="subTestExample">
+<p>You can view the <a target="_blank" href="https://github.com/elastest/demo-projects/tree/master/webapp/cucumber-web-multiple-browsers-test">Source Code in GitHub</a>.
+This test has been developed in Java using <a target="_blank" href="https://docs.cucumber.io/">Cucumber</a>.
+</p>
+<div class="row">
+<h5 class="small-subtitle">webapp-test.feature</h5>
+<pre>
+<code class="java">
+Feature: Test WebApp Application
+Scenario: Check that the title and body are not empty
+    Given app url
+    When i add an empty title and body
+    Then row with empty title and body added
+
+
+Scenario: Find title and body
+    Given app url
+    When i add a row with title and body
+    Then row with the same title and body added
+</code>
+
+</pre>
+</div>
+
+<div class="row">
+<h5 class="small-subtitle">WebAppTestDefinition class</h5>
+<pre>
+<code class="java">
+// With a browser for each test
+public class WebAppTestDefinition extends ElastestBaseTest {
+    String newTitle;
+    String newBody;
+
+    @Before
+    public void beforeScenario(Scenario scenario) {
+        super.beforeScenario(scenario);
+    }
+
+    @After
+    public void afterScenario(Scenario scenario) {
+        super.afterScenario(scenario);
+    }
+
+    /* ************************ */
+    /* ******** Common ******** */
+    /* ************************ */
+
+    @Given("^app url$")
+    public void app_url() throws Throwable {
+        browserVersion = System.getProperty("browserVersion");
+
+        if (eusURL == null) {
+            if (browserType == null || browserType.equals(CHROME)) {
+                driver = new ChromeDriver();
+            } else {
+                driver = new FirefoxDriver();
+            }
+        } else {
+            DesiredCapabilities caps;
+            if (browserType == null || browserType.equals(CHROME)) {
+                caps = DesiredCapabilities.chrome();
+            } else {
+                caps = DesiredCapabilities.firefox();
+            }
+
+            if (browserVersion != null) {
+                logger.info("Browser Version: {}", browserVersion);
+                caps.setVersion(browserVersion);
+            }
+
+            caps.setCapability("testName", currentTestScenarioName);
+
+            driver = new RemoteWebDriver(new URL(eusURL), caps);
+        }
+
+        driver.get(sutUrl);
+    }
+
+    /* *************************************** */
+    /* **** Check title and body no empty **** */
+    /* *************************************** */
+
+    @When("^i add an empty title and body$")
+    public void i_add_an_empty_title_and_body() throws Throwable {
+        Thread.sleep(2000);
+
+        newTitle = "";
+        newBody = "";
+
+        this.addRow(newTitle, newBody);
+
+        Thread.sleep(2000);
+    }
+
+    @Then("^row with empty title and body added$")
+    public void row_with_empty_title_and_body_added() throws Throwable {
+        String title = driver.findElement(By.id("title")).getText();
+        String body = driver.findElement(By.id("body")).getText();
+
+        logger.info("Checking Message...");
+
+        try {
+            assertThat(title, not(equalTo(newTitle)));
+            assertThat(body, not(equalTo(newBody)));
+        } finally {
+            Thread.sleep(2000);
+            clearRows();
+        }
+    }
+
+    /* *************************************** */
+    /* ********* Find title and body ********* */
+    /* *************************************** */
+
+    @When("^i add a row with title and body$")
+    public void i_add_a_row_with_title_and_body() throws Throwable {
+        Thread.sleep(2000);
+
+        newTitle = "MessageTitle";
+        newBody = "MessageBody";
+
+        this.addRow(newTitle, newBody);
+        Thread.sleep(2000);
+    }
+
+    @Then("^row with the same title and body added$")
+    public void row_with_the_same_title_and_body_added() throws Throwable {
+        String title = driver.findElement(By.id("title")).getText();
+        String body = driver.findElement(By.id("body")).getText();
+
+        // Added
+        logger.info("Checking Message...");
+
+        try {
+            assertThat(title, equalTo(newTitle));
+            assertThat(body, equalTo(newBody));
+        } finally {
+            Thread.sleep(2000);
+            clearRows();
+        }
+    }
+
+    /* ********************** */
+    /* *** Common methods *** */
+    /* ********************** */
+
+    public void addRow(String newTitle, String newBody)
+            throws InterruptedException {
+        driver.findElement(By.id("title-input")).sendKeys(newTitle);
+        driver.findElement(By.id("body-input")).sendKeys(newBody);
+
+        Thread.sleep(2000);
+
+        logger.info("Adding Message...");
+
+        driver.findElement(By.id("submit")).click();
+    }
+
+    public void clearRows() throws InterruptedException {
+        logger.info("Clearing Messages...");
+        driver.findElement(By.id("clearSubmit")).click();
+        Thread.sleep(1000);
+    }
+}
+</code>
+
+</pre>
+</div>
+
+<div class="row">
+<h5 class="small-subtitle">ElastestBaseTest class</h5>
+<pre>
+<code class="java">
+public class ElastestBaseTest {
+    protected static final Logger logger = LoggerFactory
+            .getLogger(WebAppTestDefinition.class);
+
+    protected String currentTestScenarioName;
+    protected static String eusURL;
+    protected static String sutUrl;
+
+    protected WebDriver driver;
+
+    protected static final String CHROME = "chrome";
+    protected static final String FIREFOX = "firefox";
+
+    protected static String browserType;
+    protected static String browserVersion;
+
+
+    public void beforeScenario(Scenario scenario) {
+        currentTestScenarioName = scenario.getName();
+
+        String sutHost = System.getenv("ET_SUT_HOST");
+        String sutPort = System.getenv("ET_SUT_PORT");
+        String sutProtocol = System.getenv("ET_SUT_PROTOCOL");
+
+        if (sutHost == null) {
+            sutUrl = "http://localhost:8080/";
+        } else {
+            sutPort = sutPort != null ? sutPort : "8080";
+            sutProtocol = sutProtocol != null ? sutProtocol : "http";
+
+            sutUrl = sutProtocol + "://" + sutHost + ":" + sutPort;
+        }
+        logger.info("Webapp URL: {}", sutUrl);
+
+        browserType = System.getProperty("browser");
+        logger.info("Browser Type: {}", browserType);
+        eusURL = System.getenv("ET_EUS_API");
+
+        if (eusURL == null) {
+            if (browserType == null || browserType.equals(CHROME)) {
+                WebDriverManager.chromedriver().setup();
+            } else {
+                WebDriverManager.firefoxdriver().setup();
+            }
+        }
+        logger.info("##### Start test: {}", currentTestScenarioName);
+    }
+
+    public void afterScenario(Scenario scenario) {
+        if (driver != null) {
+            driver.quit();
+        }
+
+        currentTestScenarioName = scenario.getName();
+        logger.info("##### Finish test: {}", currentTestScenarioName);
+    }
+
+}
+</code>
+</pre>
+</div>
+
+<p>As you can see in the code, the @Before and @After hooks are declared in the test, but make use of the implementation of ElastestBaseTest. This is because Cucumber does not allow to extend classes that define hooks or step definition.</p>
+
+<div class="row">
+<h5 class="small-subtitle">WebAppTestsRunner class</h5>
+<pre>
+<code class="java">
+@RunWith(Cucumber.class)
+@CucumberOptions(features = "src/test/resources/webapp-test.feature", plugin = {
+        "html:target/surefire-reports/cucumber-html-report",
+        "json:target/surefire-reports/cucumber.json",
+        "pretty" }, glue = { "io.elastest.demo.web" })
+
+public class WebAppTestRunner {
+
+}
+</code>
+</pre>
+</div>
+<h5 class="small-subtitle">TJob Configuration</h5>
+
+<ul>
+<li><strong>TJob Name</strong>: can be called as you want, but we will call it <strong><code>Cucumber Multi Browser Test</code></strong></li>
+<li><strong>Test Results Path</strong>: <strong><code>/demo-projects/webapp/cucumber-web-multiple-browsers-test/target/surefire-reports</code></strong></li>
+<li><strong>Select a SuT</strong>: <strong><code>WebApp</code></strong></li>
+<li><strong>Environment docker image</strong>:  <a href="https://github.com/elastest/elastest-torm/blob/master/docker/services/examples/test-etm-alpinegitjava/Dockerfile"><code>elastest/test-etm-alpinegitjava</code></a></li>
+<li><strong>Commands</strong>: 
+<pre>
+    <code>
+    git clone https://github.com/elastest/demo-projects;
+    cd /demo-projects/webapp/cucumber-web-multiple-browsers-test;
+    mvn -B -Dtest=WebAppTestRunner -Dbrowser=chrome test;
+    </code>
+</pre>
+</li>
+<li><strong>Test Support Services</strong>: <strong><code>EUS</code></strong></li>
+</ul>
+</div><!-- end of cucumber multi -->
+
+<div id="cucumber-single" class="subTestExample">
+<p>You can view the <a target="_blank" href="https://github.com/elastest/demo-projects/tree/master/webapp/cucumber-web-single-browser-test">Source Code in GitHub</a>.
+This test has been developed in Java using <a target="_blank" href="https://docs.cucumber.io/">Cucumber</a>.
+</p>
+<div class="row">
+<h5 class="small-subtitle">webapp-test.feature</h5>
+<pre>
+<code class="java">
+Feature: Test WebApp Application 
+Scenario: Check that the title and body are not empty 
+    Given app url
+    When i add an empty title and body
+    Then row with empty title and body added
+
+Scenario: Find title and body 
+    Given app url
+    When i add a row with title and body
+    Then row with the same title and body added
+</code>
+
+</pre>
+</div>
+
+<div class="row">
+<h5 class="small-subtitle">WebAppTestDefinition class</h5>
+<pre>
+<code class="java">
+// With a browser for all test
+public class WebAppTestDefinition extends ElastestBaseTest {
+    String newTitle;
+    String newBody;
+
+    @Before()
+    public void beforeFeature() throws MalformedURLException {
+        super.beforeFeature();
+    }
+
+    @Before
+    public void beforeScenario(Scenario scenario) {
+        super.beforeScenario(scenario);
+    }
+
+    @After
+    public void afterScenario(Scenario scenario) {
+        super.afterScenario(scenario);
+    }
+
+    /* ************************ */
+    /* ******** Common ******** */
+    /* ************************ */
+
+    @Given("^app url$")
+    public void app_url() throws Throwable {
+        driver.get(sutUrl);
+    }
+
+    /* *************************************** */
+    /* **** Check title and body no empty **** */
+    /* *************************************** */
+
+    @When("^i add an empty title and body$")
+    public void i_add_an_empty_title_and_body() throws Throwable {
+        Thread.sleep(2000);
+
+        newTitle = "";
+        newBody = "";
+
+        this.addRow(currentTestScenarioName, newTitle, newBody);
+
+        Thread.sleep(2000);
+    }
+
+    @Then("^row with empty title and body added$")
+    public void row_with_empty_title_and_body_added() throws Throwable {
+
+        String title = driver.findElement(By.id("title")).getText();
+        String body = driver.findElement(By.id("body")).getText();
+
+        logger.info("Checking Message...");
+
+        try {
+            assertThat(title, not(equalTo(newTitle)));
+            assertThat(body, not(equalTo(newBody)));
+        } finally {
+            Thread.sleep(2000);
+            clearRows();
+        }
+    }
+
+    /* *************************************** */
+    /* ********* Find title and body ********* */
+    /* *************************************** */
+
+    @When("^i add a row with title and body$")
+    public void i_add_a_row_with_title_and_body() throws Throwable {
+        Thread.sleep(2000);
+
+        newTitle = "MessageTitle";
+        newBody = "MessageBody";
+
+        this.addRow(currentTestScenarioName, newTitle, newBody);
+        Thread.sleep(2000);
+    }
+
+    @Then("^row with the same title and body added$")
+    public void row_with_the_same_title_and_body_added() throws Throwable {
+
+        String title = driver.findElement(By.id("title")).getText();
+        String body = driver.findElement(By.id("body")).getText();
+
+        // Added
+        logger.info("Checking Message...");
+
+        try {
+            assertThat(title, equalTo(newTitle));
+            assertThat(body, equalTo(newBody));
+        } finally {
+            Thread.sleep(2000);
+            clearRows();
+        }
+    }
+
+    /* ********************* */
+    /* *** Other methods *** */
+    /* ********************* */
+
+    public void addRow(String testName, String newTitle, String newBody)
+            throws InterruptedException {
+        driver.findElement(By.id("title-input")).sendKeys(newTitle);
+        driver.findElement(By.id("body-input")).sendKeys(newBody);
+
+        Thread.sleep(2000);
+
+        logger.info("Adding Message...");
+
+        driver.findElement(By.id("submit")).click();
+    }
+
+    public void clearRows() throws InterruptedException {
+        logger.info("Clearing Messages...");
+        driver.findElement(By.id("clearSubmit")).click();
+        Thread.sleep(1000);
+    }
+
+}
+</code>
+</pre>
+</div>
+
+
+<div class="row">
+<h5 class="small-subtitle">ElastestBaseTest class</h5>
+<pre>
+<code class="java">
+public class ElastestBaseTest {
+    protected static final Logger logger = LoggerFactory
+            .getLogger(WebAppTestDefinition.class);
+    protected String currentTestScenarioName;
+
+    protected static final String CHROME = "chrome";
+    protected static final String FIREFOX = "firefox";
+
+    protected static String browserType;
+    protected static String browserVersion;
+    protected static String eusURL;
+    protected static String sutUrl;
+
+    protected static WebDriver driver;
+
+    public void beforeFeature() throws MalformedURLException {
+        // If first time, init
+        if (driver == null) {
+            String sutHost = System.getenv("ET_SUT_HOST");
+            String sutPort = System.getenv("ET_SUT_PORT");
+            String sutProtocol = System.getenv("ET_SUT_PROTOCOL");
+
+            if (sutHost == null) {
+                sutUrl = "http://localhost:8080/";
+            } else {
+                sutPort = sutPort != null ? sutPort : "8080";
+                sutProtocol = sutProtocol != null ? sutProtocol : "http";
+
+                sutUrl = sutProtocol + "://" + sutHost + ":" + sutPort;
+            }
+            logger.info("Webapp URL: {}", sutUrl);
+
+            browserType = System.getProperty("browser");
+            logger.info("Browser Type: {}", browserType);
+            eusURL = System.getenv("ET_EUS_API");
+
+            if (eusURL == null) {
+                if (browserType == null || browserType.equals(CHROME)) {
+                    WebDriverManager.chromedriver().setup();
+                    driver = new ChromeDriver();
+                } else {
+                    WebDriverManager.firefoxdriver().setup();
+                    driver = new FirefoxDriver();
+                }
+            } else {
+                DesiredCapabilities caps;
+                if (browserType == null || browserType.equals(CHROME)) {
+                    caps = DesiredCapabilities.chrome();
+                } else {
+                    caps = DesiredCapabilities.firefox();
+                }
+
+                browserVersion = System.getProperty("browserVersion");
+                if (browserVersion != null) {
+                    logger.info("Browser Version: {}", browserVersion);
+                    caps.setVersion(browserVersion);
+                }
+
+                caps.setCapability("testName", currentTestScenarioName);
+
+                driver = new RemoteWebDriver(new URL(eusURL), caps);
+            }
+
+            // driver quit when all tests end
+            Runtime.getRuntime().addShutdownHook(new Thread() {
+                public void run() {
+                    logger.info("Shutting down browser...");
+                    driver.quit();
+                }
+            });
+        }
+    }
+
+    public void beforeScenario(Scenario scenario) {
+        currentTestScenarioName = scenario.getName();
+        ((JavascriptExecutor) driver).executeScript(
+                "'{\"elastestCommand\": \"startTest\", \"args\": {\"testName\": \""
+                        + currentTestScenarioName + "\"} }'");
+
+        logger.info("##### Start test: {}", currentTestScenarioName);
+    }
+
+    public void afterScenario(Scenario scenario) {
+        currentTestScenarioName = scenario.getName();
+        logger.info("##### Finish test: {}", currentTestScenarioName);
+    }
+}
+</code>
+</pre>
+</div>
+
+<p>As you can see in the code, the @Before and @After hooks are declared in the test, but make use of the implementation of ElastestBaseTest. This is because Cucumber does not allow to extend classes that define hooks or step definition.</p>
+
+<div class="row">
+<h5 class="small-subtitle">WebAppTestRunner class</h5>
+<pre>
+<code class="java">
+@RunWith(Cucumber.class)
+@CucumberOptions(features = "src/test/resources/webapp-test.feature", plugin = {
+        "html:target/surefire-reports/cucumber-html-report",
+        "json:target/surefire-reports/cucumber.json",
+        "pretty" }, glue = { "io.elastest.demo.web" })
+
+public class WebAppTestRunner {
+}
+</code>
+</pre>
+</div>
+
+<h5 class="small-subtitle">TJob Configuration</h5>
+
+<ul>
+<li><strong>TJob Name</strong>: can be called as you want, but we will call it <strong><code>Cucumber Single Browser Test</code></strong></li>
+<li><strong>Test Results Path</strong>: <strong><code>/demo-projects/webapp/cucumber-web-single-browser-test/target/surefire-reports</code></strong></li>
+<li><strong>Select a SuT</strong>: <strong><code>WebApp</code></strong></li>
+<li><strong>Environment docker image</strong>:  <a href="https://github.com/elastest/elastest-torm/blob/master/docker/services/examples/test-etm-alpinegitjava/Dockerfile"><code>elastest/test-etm-alpinegitjava</code></a></li>
+<li><strong>Commands</strong>: 
+<pre>
+    <code>
+    git clone https://github.com/elastest/demo-projects;
+    cd /demo-projects/webapp/cucumber-web-single-browser-test;
+    mvn -B -Dtest=WebAppTestRunner -Dbrowser=chrome test;
+    </code>
+</pre>
+</li>
+<li><strong>Test Support Services</strong>: <strong><code>EUS</code></strong></li>
+</ul>
+
+</div><!-- End of single cucumber  -->
+
+</div>
+
+<!-- GAUGE -->
+
+<div id="gauge" class="testExample badge-tutorial">
+<div class="badges-menu sub-badge">
+    <span id="gauge-multi-btn" class="badge badge-default my-badge selected">A Browser for Each</span>
+    <span id="gauge-single-btn" class="badge badge-default my-badge my-badge-disabled">A Browser for All</span>
+</div>
+
+<div id="gauge-multi" class="subTestExample">
+<p>You can view the <a target="_blank" href="https://github.com/elastest/demo-projects/tree/master/webapp/gauge-web-multiple-browsers-test">Source Code in GitHub</a>.
+This test has been developed in Java using <a target="_blank" href="https://www.gauge.org/">Gauge</a>.
+</p>
+<div class="row">
+<h5 class="small-subtitle">webapp-test.spec</h5>
+<pre>
+<code class="java">
+Test WebApp Application
+======================= 
+Test an application
+
+
+Check that the title and body are not empty
+------------------------------------------- 
+    * Navigate to app url
+    * Add an empty title and body
+    * Check that row with empty title and body has been added
+
+Find title and body
+------------------- 
+    * Navigate to app url
+    * Add a row with title and body
+    * Check that row with the same title and body has been added
+</code>
+
+</pre>
+</div>
+
+<div class="row">
+<h5 class="small-subtitle">MultipleWebAppTests class</h5>
+<pre>
+<code class="java">
+public class WebAppTest extends ElastestBaseTest {
+    String newTitle;
+    String newBody;
+
+    @BeforeScenario()
+    public void beforeScenario(ExecutionContext context) {
+        super.beforeScenario(context);
+    }
+
+    @AfterScenario()
+    public void afterScenario(ExecutionContext context) {
+        super.afterScenario(context);
+    }
+
+    /* ************************ */
+    /* ******** Common ******** */
+    /* ************************ */
+    @Step("Navigate to app url")
+    public void navigateToAppUrl() throws MalformedURLException {
+        browserVersion = System.getProperty("browserVersion");
+
+        if (eusURL == null) {
+            if (browserType == null || browserType.equals(CHROME)) {
+                driver = new ChromeDriver();
+            } else {
+                driver = new FirefoxDriver();
+            }
+        } else {
+            DesiredCapabilities caps;
+            if (browserType == null || browserType.equals(CHROME)) {
+                caps = DesiredCapabilities.chrome();
+            } else {
+                caps = DesiredCapabilities.firefox();
+            }
+
+            if (browserVersion != null) {
+                logger.info("Browser Version: {}", browserVersion);
+                caps.setVersion(browserVersion);
+            }
+
+            caps.setCapability("testName", currentTestScenarioName);
+
+            driver = new RemoteWebDriver(new URL(eusURL), caps);
+        }
+
+        driver.get(sutUrl);
+    }
+
+    /* *************************************** */
+    /* **** Check title and body no empty **** */
+    /* *************************************** */
+
+    @Step("Add an empty title and body")
+    public void addAnEmptyTitleAndBody() throws InterruptedException {
+        Thread.sleep(2000);
+
+        newTitle = "";
+        newBody = "";
+
+        this.addRow(newTitle, newBody);
+
+        Thread.sleep(2000);
+    }
+
+    @Step("Check that row with empty title and body has been added")
+    public void checkThatRowWithEmptyTitleAndBodyHasBeenAdded()
+            throws InterruptedException {
+
+        String title = driver.findElement(By.id("title")).getText();
+        String body = driver.findElement(By.id("body")).getText();
+
+        logger.info("Checking Message...");
+
+        try {
+            assertThat(title, not(equalTo(newTitle)));
+            assertThat(body, not(equalTo(newBody)));
+        } finally {
+            Thread.sleep(2000);
+            clearRows();
+        }
+    }
+
+    /* *************************************** */
+    /* ********* Find title and body ********* */
+    /* *************************************** */
+
+    @Step("Add a row with title and body")
+    public void addARowWithTitleAndBody() throws InterruptedException {
+        Thread.sleep(2000);
+
+        newTitle = "MessageTitle";
+        newBody = "MessageBody";
+
+        this.addRow(newTitle, newBody);
+        Thread.sleep(2000);
+    }
+
+    @Step("Check that row with the same title and body has been added")
+    public void CheckThatRowWithTheSameTitleAndBodyHasBeenAdded()
+            throws InterruptedException {
+
+        String title = driver.findElement(By.id("title")).getText();
+        String body = driver.findElement(By.id("body")).getText();
+
+        // Added
+        logger.info("Checking Message...");
+
+        try {
+            assertThat(title, equalTo(newTitle));
+            assertThat(body, equalTo(newBody));
+        } finally {
+            Thread.sleep(2000);
+            clearRows();
+        }
+    }
+
+    /* ********************** */
+    /* *** Common methods *** */
+    /* ********************** */
+
+    public void addRow(String newTitle, String newBody)
+            throws InterruptedException {
+        driver.findElement(By.id("title-input")).sendKeys(newTitle);
+        driver.findElement(By.id("body-input")).sendKeys(newBody);
+
+        Thread.sleep(2000);
+
+        logger.info("Adding Message...");
+
+        driver.findElement(By.id("submit")).click();
+    }
+
+    public void clearRows() throws InterruptedException {
+        logger.info("Clearing Messages...");
+        driver.findElement(By.id("clearSubmit")).click();
+        Thread.sleep(1000);
+    }
+}
+</code>
+</pre>
+</div>
+
+<div class="row">
+<h5 class="small-subtitle">ElastestBaseTest class</h5>
+<pre>
+<code class="java">
+public class ElastestBaseTest {
+    protected static final Logger logger = LoggerFactory
+            .getLogger(WebAppTest.class);
+
+    protected static final String CHROME = "chrome";
+    protected static final String FIREFOX = "firefox";
+
+    protected static String browserType;
+    protected static String browserVersion;
+    protected static String eusURL;
+    protected static String sutUrl;
+
+    protected WebDriver driver;
+    protected String currentTestScenarioName;
+
+
+    public void beforeScenario(ExecutionContext context) {
+        currentTestScenarioName = context.getCurrentScenario().getName();
+
+        String sutHost = System.getenv("ET_SUT_HOST");
+        String sutPort = System.getenv("ET_SUT_PORT");
+        String sutProtocol = System.getenv("ET_SUT_PROTOCOL");
+
+        if (sutHost == null) {
+            sutUrl = "http://localhost:8080/";
+        } else {
+            sutPort = sutPort != null ? sutPort : "8080";
+            sutProtocol = sutProtocol != null ? sutProtocol : "http";
+
+            sutUrl = sutProtocol + "://" + sutHost + ":" + sutPort;
+        }
+        logger.info("Webapp URL: {}", sutUrl);
+
+        browserType = System.getProperty("browser");
+        logger.info("Browser Type: {}", browserType);
+        eusURL = System.getenv("ET_EUS_API");
+
+        if (eusURL == null) {
+            if (browserType == null || browserType.equals(CHROME)) {
+                WebDriverManager.chromedriver().setup();
+            } else {
+                WebDriverManager.firefoxdriver().setup();
+            }
+        }
+
+        logger.info("##### Start test: {}", currentTestScenarioName);
+    }
+
+    public void afterScenario(ExecutionContext context) {
+        if (driver != null) {
+            driver.quit();
+        }
+
+        currentTestScenarioName = context.getCurrentScenario().getName();
+        logger.info("##### Finish test: {}", currentTestScenarioName);
+    }
+}
+</code>
+</pre>
+</div>
+
+
+<p>As you can see in the code, the @Before and @After hooks are declared in the test, but make use of the implementation of ElastestBaseTest. This is because Gauge does not allow to extend classes that define hooks or step definition.</p>
+
+<h5 class="small-subtitle">TJob Configuration</h5>
+
+<ul>
+<li><strong>TJob Name</strong>: can be called as you want, but we will call it <strong><code>Gauge Multi Browser Test</code></strong></li>
+<li><strong>Test Results Path</strong>: <strong><code>/demo-projects/webapp/gauge-web-multiple-browsers-test/target/surefire-reports</code></strong></li>
+<li><strong>Select a SuT</strong>: <strong><code>WebApp</code></strong></li>
+<li><strong>Environment docker image</strong>:  <a href="https://github.com/elastest/elastest-torm/blob/master/docker/services/examples/test-etm-alpinegitjavagauge/Dockerfile"><code>elastest/test-etm-alpinegitjavagauge</code></a></li>
+<li><strong>Commands</strong>: 
+<pre>
+    <code>
+    git clone https://github.com/elastest/demo-projects;
+    cd /demo-projects/webapp/gauge-web-multiple-browsers-test;
+    mvn clean test;
+    </code>
+</pre>
+</li>
+<li><strong>Test Support Services</strong>: <strong><code>EUS</code></strong></li>
+</ul>
+</div><!-- end of gauge multi -->
+
+<div id="gauge-single" class="subTestExample">
+<p>You can view the <a target="_blank" href="https://github.com/elastest/demo-projects/tree/master/webapp/gauge-web-single-browser-test">Source Code in GitHub</a>.
+This test has been developed in Java using <a target="_blank" href="https://www.gauge.org/">Gauge</a>.
+</p>
+
+<div class="row">
+<h5 class="small-subtitle">webapp-test.spec</h5>
+<pre>
+<code class="java">
+Test WebApp Application
+======================= 
+Test an application
+
+
+Check that the title and body are not empty
+------------------------------------------- 
+    * Navigate to app url
+    * Add an empty title and body
+    * Check that row with empty title and body has been added
+
+Find title and body
+------------------- 
+    * Navigate to app url
+    * Add a row with title and body
+    * Check that row with the same title and body has been added
+</code>
+</pre>
+</div>
+
+<div class="row">
+<h5 class="small-subtitle">WebAppTest class</h5>
+<pre>
+<code class="java">
+public class WebAppTest extends ElastestBaseTest {
+    String newTitle;
+    String newBody;
+
+    @BeforeSpec()
+    public void beforeFeature() throws MalformedURLException {
+        super.beforeFeature();
+    }
+
+    @BeforeScenario()
+    public void beforeScenario(ExecutionContext context) {
+        super.beforeScenario(context);
+    }
+
+    @AfterScenario()
+    public void afterScenario(ExecutionContext context) {
+        super.afterScenario(context);
+    }
+
+    /* ************************ */
+    /* ******** Common ******** */
+    /* ************************ */
+
+    @Step("Navigate to app url")
+    public void navigateToAppUrl() throws MalformedURLException {
+        driver.get(sutUrl);
+    }
+
+    /* *************************************** */
+    /* **** Check title and body no empty **** */
+    /* *************************************** */
+
+    @Step("Add an empty title and body")
+    public void addAnEmptyTitleAndBody() throws InterruptedException {
+        Thread.sleep(2000);
+
+        newTitle = "";
+        newBody = "";
+
+        this.addRow(newTitle, newBody);
+
+        Thread.sleep(2000);
+    }
+
+    @Step("Check that row with empty title and body has been added")
+    public void checkThatRowWithEmptyTitleAndBodyHasBeenAdded()
+            throws InterruptedException {
+
+        String title = driver.findElement(By.id("title")).getText();
+        String body = driver.findElement(By.id("body")).getText();
+
+        logger.info("Checking Message...");
+
+        try {
+            assertThat(title, not(equalTo(newTitle)));
+            assertThat(body, not(equalTo(newBody)));
+        } finally {
+            Thread.sleep(2000);
+            clearRows();
+        }
+    }
+
+    /* *************************************** */
+    /* ********* Find title and body ********* */
+    /* *************************************** */
+
+    @Step("Add a row with title and body")
+    public void addARowWithTitleAndBody() throws InterruptedException {
+        Thread.sleep(2000);
+
+        newTitle = "MessageTitle";
+        newBody = "MessageBody";
+
+        this.addRow(newTitle, newBody);
+        Thread.sleep(2000);
+    }
+
+    @Step("Check that row with the same title and body has been added")
+    public void CheckThatRowWithTheSameTitleAndBodyHasBeenAdded()
+            throws InterruptedException {
+
+        String title = driver.findElement(By.id("title")).getText();
+        String body = driver.findElement(By.id("body")).getText();
+
+        // Added
+        logger.info("Checking Message...");
+
+        try {
+            assertThat(title, equalTo(newTitle));
+            assertThat(body, equalTo(newBody));
+        } finally {
+            Thread.sleep(2000);
+            clearRows();
+        }
+    }
+
+    /* ********************* */
+    /* *** Other methods *** */
+    /* ********************* */
+
+    public void addRow(String newTitle, String newBody)
+            throws InterruptedException {
+        driver.findElement(By.id("title-input")).sendKeys(newTitle);
+        driver.findElement(By.id("body-input")).sendKeys(newBody);
+
+        Thread.sleep(2000);
+
+        logger.info("Adding Message...");
+
+        driver.findElement(By.id("submit")).click();
+    }
+
+    public void clearRows() throws InterruptedException {
+        logger.info("Clearing Messages...");
+        driver.findElement(By.id("clearSubmit")).click();
+        Thread.sleep(1000);
+    }
+}
+</code>
+</pre>
+</div>
+
+<div class="row">
+<h5 class="small-subtitle">ElastestBaseTest class</h5>
+<pre>
+<code class="java">
+public class ElastestBaseTest {
+    protected static final Logger logger = LoggerFactory
+            .getLogger(WebAppTest.class);
+
+    protected static final String CHROME = "chrome";
+    protected static final String FIREFOX = "firefox";
+
+    protected static String browserType;
+    protected static String browserVersion;
+    protected static String eusURL;
+    protected static String sutUrl;
+
+    protected static WebDriver driver;
+    String currentTestScenarioName;
+
+    public void beforeFeature() throws MalformedURLException {
+        // If first time, init
+        if (driver == null) {
+            String sutHost = System.getenv("ET_SUT_HOST");
+            String sutPort = System.getenv("ET_SUT_PORT");
+            String sutProtocol = System.getenv("ET_SUT_PROTOCOL");
+
+            if (sutHost == null) {
+                sutUrl = "http://localhost:8080/";
+            } else {
+                sutPort = sutPort != null ? sutPort : "8080";
+                sutProtocol = sutProtocol != null ? sutProtocol : "http";
+
+                sutUrl = sutProtocol + "://" + sutHost + ":" + sutPort;
+            }
+            logger.info("Webapp URL: {}", sutUrl);
+
+            browserType = System.getProperty("browser");
+            logger.info("Browser Type: {}", browserType);
+            eusURL = System.getenv("ET_EUS_API");
+
+            if (eusURL == null) {
+                if (browserType == null || browserType.equals(CHROME)) {
+                    WebDriverManager.chromedriver().setup();
+                    driver = new ChromeDriver();
+                } else {
+                    WebDriverManager.firefoxdriver().setup();
+                    driver = new FirefoxDriver();
+                }
+            } else {
+                DesiredCapabilities caps;
+                if (browserType == null || browserType.equals(CHROME)) {
+                    caps = DesiredCapabilities.chrome();
+                } else {
+                    caps = DesiredCapabilities.firefox();
+                }
+
+                browserVersion = System.getProperty("browserVersion");
+                if (browserVersion != null) {
+                    logger.info("Browser Version: {}", browserVersion);
+                    caps.setVersion(browserVersion);
+                }
+
+                caps.setCapability("testName", currentTestScenarioName);
+
+                driver = new RemoteWebDriver(new URL(eusURL), caps);
+            }
+
+            // driver quit when all tests end
+            Runtime.getRuntime().addShutdownHook(new Thread() {
+                public void run() {
+                    logger.info("Shutting down browser...");
+                    driver.quit();
+                }
+            });
+        }
+    }
+
+    public void beforeScenario(ExecutionContext context) {
+        currentTestScenarioName = context.getCurrentScenario().getName();
+        ((JavascriptExecutor) driver).executeScript(
+                "'{\"elastestCommand\": \"startTest\", \"args\": {\"testName\": \""
+                        + currentTestScenarioName + "\"} }'");
+
+        logger.info("##### Start test: {}", currentTestScenarioName);
+    }
+
+    public void afterScenario(ExecutionContext context) {
+        currentTestScenarioName = context.getCurrentScenario().getName();
+        logger.info("##### Finish test: {}", currentTestScenarioName);
+    }
+}
+</code>
+</pre>
+</div>
+
+<p>As you can see in the code, the @Before and @After hooks are declared in the test, but make use of the implementation of ElastestBaseTest. This is because Gauge does not allow to extend classes that define hooks or step definition.</p>
+
+<h5 class="small-subtitle">TJob Configuration</h5>
+
+<ul>
+<li><strong>TJob Name</strong>: can be called as you want, but we will call it <strong><code>Gauge Single Browser Test</code></strong></li>
+<li><strong>Test Results Path</strong>: <strong><code>/demo-projects/webapp/gauge-web-single-browser-test/target/surefire-reports</code></strong></li>
+<li><strong>Select a SuT</strong>: <strong><code>WebApp</code></strong></li>
+<li><strong>Environment docker image</strong>:  <a href="https://github.com/elastest/elastest-torm/blob/master/docker/services/examples/test-etm-alpinegitjavagauge/Dockerfile"><code>elastest/test-etm-alpinegitjavagauge</code></a></li>
+<li><strong>Commands</strong>: 
+<pre>
+    <code>
+    git clone https://github.com/elastest/demo-projects;
+    cd /demo-projects/webapp/gauge-web-single-browser-test;
+    mvn clean test;
+    </code>
+</pre>
+</li>
+<li><strong>Test Support Services</strong>: <strong><code>EUS</code></strong></li>
+</ul>
+
+</div><!-- End of single gauge  -->
+
+</div>
+
+<!-- PROTRACTOR -->
+
+<div id="protractor" class="testExample badge-tutorial">
+<div class="badges-menu sub-badge">
+    <span id="protractor-multi-btn" class="badge badge-default my-badge selected">A Browser for Each</span>
+    <span id="protractor-single-btn" class="badge badge-default my-badge my-badge-disabled">A Browser for All</span>
+</div>
+
+<div id="protractor-multi" class="subTestExample">
+<p>You can view the <a target="_blank" href="https://github.com/elastest/demo-projects/tree/master/webapp/protractor-web-multiple-browsers-test">Source Code in GitHub</a>.
+This test has been developed in JavaScript using <a target="_blank" href="http://protractortest.org/">Protractor</a>.
+</p>
+
+<div class="row">
+<h5 class="small-subtitle">test-webapp-spec.js</h5>
+<pre>
+<code class="javascript">
+describe('Test WebApp Application', function() {
+    it('Check that the title and body are not empty', async () => {
+        // Add row
+        await addRow('', '');
+        await sleep(2000);
+
+        // Check row
+        var title = element(by.id('title')).getText();
+        var body = element(by.id('body')).getText();
+
+        console.log('Checking Message...');
+        expect(title).not.toEqual('');
+        expect(body).not.toEqual('');
+
+        clearMessages();
+    });
+
+    it('Find title and body', async () => {
+        // Add row
+        await addRow('MessageTitle', 'MessageBody');
+        await sleep(2000);
+
+        // Check row
+        var title = element(by.id('title')).getText();
+        var body = element(by.id('body')).getText();
+
+        console.log('Checking Message...');
+
+        expect(title).toEqual('MessageTitle');
+        expect(body).toEqual('MessageBody');
+
+        clearMessages();
+    });
 });
-$('#js-test-btn').click(function(event) {
-  activateBadge('js-test');
+
+async function addRow(title, body) {
+    console.log('Inserting data...');
+    element(by.id('title-input')).sendKeys(title);
+    element(by.id('body-input')).sendKeys(body);
+    await sleep(2000);
+    console.log('Adding Message...');
+    element(by.id('submit')).click();
+}
+
+function clearMessages() {
+    console.log('Clearing Messages...');
+    element(by.id('clearSubmit')).click();
+}
+
+function sleep(millis) {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(true);
+        }, millis);
+    });
+}
+</code>
+</pre>
+</div>
+
+<div class="row">
+<h5 class="small-subtitle">conf.js</h5>
+<pre>
+<code class="javascript">
+var envs = {
+    // The address of a running selenium server.
+    seleniumAddress: process.env.ET_EUS_API || 'http://localhost:4444/wd/hub',
+    sutUrl: process.env.ET_SUT_HOST ? 'http://' + process.env.ET_SUT_HOST + ':8080' : 'http://172.18.0.8:8080',
+
+    // Capabilities to be passed to the webdriver instance.
+    capabilities: {
+        browserName: process.env.BROWSER || 'chrome',
+        version: process.env.ET_EUS_API ? (process.env.BROWSER_VERSION ? process.env.BROWSER_VERSION : '') : 'ANY',
+    },
+};
+
+
+class ElasTestBrowserManager {
+
+    constructor() {
+        this.firstTime = true;
+        /* `_asyncFlow` is a promise.
+        * It is a "flow" that we create in `specStarted`.
+        * function will wait for the flow to finish before running the next spec.
+        * This is not needed since Jasmine 3.0.
+         * See https://github.com/jasmine/jasmine/issues/842#issuecomment-336077418
+         */
+        this._asyncFlow = null;
+    }
+
+    jasmineStarted() {
+        /* Wait for async tasks triggered by `specStarted`. */
+        beforeEach(async () => {
+            await this._asyncFlow;
+            this._asyncFlow = null;
+        });
+    }
+
+    specStarted(result) {
+        /* Convert async method to promise */
+        this._asyncFlow = this.asyncSpecStarted(result);
+    }
+
+    async asyncSpecStarted(result) {
+        if (!this.firstTime) {
+            await browser.restart();
+        }
+        this.firstTime = false;
+        browser.waitForAngularEnabled(false);
+        await browser.executeScript('\'{"elastestCommand": "startTest", "args": {"testName": "' + result.description + '"} }\'');
+        console.log('##### Start test: ' + result.description);
+        browser.get(envs.sutUrl);
+    }
+
+    specDone(result) {
+        console.log('##### Finish test: ' + result.description);
+    }
+
+    jasmineDone(result) {
+        browser.close();
+    }
+}
+
+exports.config = {
+    seleniumAddress: envs.seleniumAddress,
+    specs: ['test-webapp-spec.js'],
+    sutUrl: envs.sutUrl,
+    capabilities: envs.capabilities,
+    onPrepare: function() {
+        var jasmineReporters = require('jasmine-reporters');
+        jasmine.getEnv().addReporter(
+            new jasmineReporters.JUnitXmlReporter({
+                consolidateAll: true,
+                savePath: 'testresults',
+                // this will produce distinct xml files for each capability
+                filePrefix: 'xml-report',
+            }),
+        );
+        jasmine.getEnv().addReporter(new ElasTestBrowserManager());
+
+        browser.waitForAngularEnabled(false);
+    },
+};
+</code>
+</pre>
+</div>
+
+<h5 class="small-subtitle">TJob Configuration</h5>
+
+<ul>
+<li><strong>TJob Name</strong>: can be called as you want, but we will call it <strong><code>Protractor Multi Browser Test</code></strong></li>
+<li><strong>Test Results Path</strong>: <strong><code>/demo-projects/webapp/protractor-web-multiple-browsers-test/testresults</code></strong></li>
+<li><strong>Select a SuT</strong>: <strong><code>WebApp</code></strong></li>
+<li><strong>Environment docker image</strong>: <a href="https://github.com/elastest/elastest-torm/blob/master/docker/services/examples/test-etm-alpinegitnode/Dockerfile"><code>elastest/test-etm-alpinegitnode</code></a></li>
+<li><strong>Commands</strong>: 
+<pre>
+    <code>
+    git clone https://github.com/elastest/demo-projects;
+    cd /demo-projects/webapp/protractor-web-multiple-browsers-test;
+    protractor conf.js;
+    </code>
+</pre>
+</li>
+<li><strong>Test Support Services</strong>: <strong><code>EUS</code></strong></li>
+</ul>
+
+</div><!-- end of multi protractor -->
+
+<div id="protractor-single" class="subTestExample">
+<p>You can view the <a target="_blank" href="https://github.com/elastest/demo-projects/tree/master/webapp/protractor-web-single-browser-test">Source Code in GitHub</a>.
+This test has been developed in JavaScript using <a target="_blank" href="http://protractortest.org/">Protractor</a>.
+</p>
+
+<div class="row">
+<h5 class="small-subtitle">test-webapp-spec.js</h5>
+<pre>
+<code class="javascript">
+describe('Test WebApp Application', function() {
+    it('Check that the title and body are not empty', async () => {
+        // Add row
+        await addRow('', '');
+        await sleep(2000);
+
+        // Check row
+        var title = element(by.id('title')).getText();
+        var body = element(by.id('body')).getText();
+
+        console.log('Checking Message...');
+        expect(title).not.toEqual('');
+        expect(body).not.toEqual('');
+
+        clearMessages();
+    });
+
+    it('Find title and body', async () => {
+        // Add row
+        await addRow('MessageTitle', 'MessageBody');
+        await sleep(2000);
+
+        // Check row
+        var title = element(by.id('title')).getText();
+        var body = element(by.id('body')).getText();
+
+        console.log('Checking Message...');
+
+        expect(title).toEqual('MessageTitle');
+        expect(body).toEqual('MessageBody');
+
+        clearMessages();
+    });
+});
+
+async function addRow(title, body) {
+    console.log('Inserting data...');
+    element(by.id('title-input')).sendKeys(title);
+    element(by.id('body-input')).sendKeys(body);
+    await sleep(2000);
+    console.log('Adding Message...');
+    element(by.id('submit')).click();
+}
+
+function clearMessages() {
+    console.log('Clearing Messages...');
+    element(by.id('clearSubmit')).click();
+}
+
+function sleep(millis) {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(true);
+        }, millis);
+    });
+}
+</code>
+</pre>
+</div>
+
+<div class="row">
+<h5 class="small-subtitle">conf.js</h5>
+<pre>
+<code class="javascript">
+var envs = {
+    // The address of a running selenium server.
+    seleniumAddress: process.env.ET_EUS_API || 'http://localhost:4444/wd/hub',
+    sutUrl: process.env.ET_SUT_HOST ? 'http://' + process.env.ET_SUT_HOST + ':8080' : 'http://172.17.0.3:8080',
+
+    // Capabilities to be passed to the webdriver instance.
+    capabilities: {
+        browserName: process.env.BROWSER || 'chrome',
+        version: process.env.ET_EUS_API ? (process.env.BROWSER_VERSION ? process.env.BROWSER_VERSION : '') : 'ANY',
+    },
+};
+
+
+class ElasTestBrowserManager {
+
+    constructor() {
+        /* `_asyncFlow` is a promise.
+         * It is a "flow" that we create in `specStarted`.
+         * function will wait for the flow to finish before running the next spec. 
+         * This is not needed since Jasmine 3.0.
+         * See https://github.com/jasmine/jasmine/issues/842#issuecomment-336077418
+        */
+        this._asyncFlow = null;
+    }
+
+    jasmineStarted() {
+        /* Wait for async tasks triggered by `specStarted`. */
+        beforeEach(async () => {
+            await this._asyncFlow;
+            this._asyncFlow = null;
+        });
+    }
+
+    specStarted(result) {
+        /* Convert async method to promise */
+        this._asyncFlow = this.asyncSpecStarted(result);
+    }
+
+    async asyncSpecStarted(result) {
+        browser.waitForAngularEnabled(false);
+        await browser.executeScript('\'{"elastestCommand": "startTest", "args": {"testName": "' + result.description + '"} }\'');
+        console.log('##### Start test: ' + result.description);
+        browser.get(envs.sutUrl);
+    }
+
+    specDone(result) {
+        console.log('##### Finish test: ' + result.description);
+    }
+
+    jasmineDone(result) {
+        browser.close();
+    }
+}
+
+exports.config = {
+    seleniumAddress: envs.seleniumAddress,
+    specs: ['test-webapp-spec.js'],
+    sutUrl: envs.sutUrl,
+    capabilities: envs.capabilities,
+    onPrepare: function() {
+        var jasmineReporters = require('jasmine-reporters');
+        jasmine.getEnv().addReporter(
+            new jasmineReporters.JUnitXmlReporter({
+                consolidateAll: true,
+                savePath: 'testresults',
+                // this will produce distinct xml files for each capability
+                filePrefix: 'xml-report',
+            }),
+        );
+        jasmine.getEnv().addReporter(new ElasTestBrowserManager());
+
+        browser.waitForAngularEnabled(false);
+    },
+};
+</code>
+</pre>
+</div>
+
+<h5 class="small-subtitle">TJob Configuration</h5>
+
+<ul>
+<li><strong>TJob Name</strong>: can be called as you want, but we will call it <strong><code>Protractor Single Browser Test</code></strong></li>
+<li><strong>Test Results Path</strong>: <strong><code>/demo-projects/webapp/protractor-web-single-browser-test/testresults</code></strong></li>
+<li><strong>Select a SuT</strong>: <strong><code>WebApp</code></strong></li>
+<li><strong>Environment docker image</strong>: <a href="https://github.com/elastest/elastest-torm/blob/master/docker/services/examples/test-etm-alpinegitnode/Dockerfile"><code>elastest/test-etm-alpinegitnode</code></a></li>
+<li><strong>Commands</strong>: 
+<pre>
+    <code>
+    git clone https://github.com/elastest/demo-projects;
+    cd /demo-projects/webapp/protractor-web-single-browser-test;
+    protractor conf.js;
+    </code>
+</pre>
+</li>
+<li><strong>Test Support Services</strong>: <strong><code>EUS</code></strong></li>
+</ul>
+
+</div> <!-- end of single protractor -->
+
+</div>
+
+<!-- ********************* -->
+
+<!-- ****** Scripts ****** -->
+
+<!-- ********************* -->
+
+<script>
+$('#junit4-btn').click(function(event) {
+  activateBadge('junit4');
+  activateSubBadge('junit4-multi');
+});
+$('#python-btn').click(function(event) {
+  activateBadge('python');
+  activateSubBadge('python-multi');
+});
+$('#cucumber-btn').click(function(event) {
+  activateBadge('cucumber');
+  activateSubBadge('cucumber-multi');
+});
+$('#gauge-btn').click(function(event) {
+  activateBadge('gauge');
+  activateSubBadge('gauge-multi');
+});
+$('#protractor-btn').click(function(event) {
+  activateBadge('protractor');
+  activateSubBadge('protractor-multi');
 });
 
 function activateBadge(sectionName) {
-  $('.lang-section').hide();
+  var disabledClass = 'my-badge-disabled';
+  var selectedClass = 'selected';
+
+  $('.testExample').hide();
   $('#' + sectionName).show();
-  $('.selected').removeClass('selected');
-  $('#' + sectionName + '-btn').addClass('selected');
-  window.location.hash = sectionName.replace('-test', '');
+
+  // Disable current selected
+  $('.main-badge .selected').addClass(disabledClass);
+  $('.main-badge .selected').removeClass(selectedClass);
+
+  // Select clicked
+  $('#' + sectionName + '-btn').addClass(selectedClass);
+  $('#' + sectionName + '-btn').removeClass(disabledClass);
 }
 
-var langSections = [
-  'java',
-  'js'
-];
+
+
+
+<!-- SubExamples -->
+
+$('#junit4-multi-btn').click(function(event) {
+  activateSubBadge('junit4-multi');
+});
+
+$('#junit4-single-btn').click(function(event) {
+  activateSubBadge('junit4-single');
+});
+
+
+
+$('#cucumber-multi-btn').click(function(event) {
+  activateSubBadge('cucumber-multi');
+});
+
+$('#cucumber-single-btn').click(function(event) {
+  activateSubBadge('cucumber-single');
+});
+
+
+$('#gauge-multi-btn').click(function(event) {
+  activateSubBadge('gauge-multi');
+});
+
+$('#gauge-single-btn').click(function(event) {
+  activateSubBadge('gauge-single');
+});
+
+$('#python-multi-btn').click(function(event) {
+  activateSubBadge('python-multi');
+});
+
+$('#python-single-btn').click(function(event) {
+  activateSubBadge('python-single');
+});
+
+$('#protractor-multi-btn').click(function(event) {
+  activateSubBadge('protractor-multi');
+});
+
+$('#protractor-single-btn').click(function(event) {
+  activateSubBadge('protractor-single');
+});
+
+function activateSubBadge(sectionName) {
+  var disabledClass = 'my-badge-disabled';
+  var selectedClass = 'selected';
+
+  $('.subTestExample').hide();
+  $('#' + sectionName).show();
+
+  // Disable current selected
+  $('.sub-badge .selected').addClass(disabledClass);
+  $('.sub-badge .selected').removeClass(selectedClass);
+
+  // Select clicked
+  $('#' + sectionName + '-btn').addClass(selectedClass);
+  $('#' + sectionName + '-btn').removeClass(disabledClass);
+}
 
 window.onload = function() {
-  var hash = window.location.hash.replace('#', '');
-  if (langSections.indexOf(hash) > -1) {
-    activateBadge(hash + '-test');
-  }
-}
-</script>
-
-<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
-
-<p><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script></p>
-<script>
-var galleries = $('div.docs-gallery');
-for (var i = 1; i <= galleries.length; i++) {
-    $().fancybox({
-    selector : '[data-fancybox="gallery-' + i + '"]',
-    infobar : true,
-    arrows : false,
-    loop: false,
-    protect: true,
-    transitionEffect: 'slide',
-    buttons : [
-        'close'
-    ],
-    clickOutside : 'close',
-    clickSlide   : 'close',
-  });
+    activateBadge('junit4');
+    activateSubBadge('junit4-multi');
 }
 </script>
 					
@@ -817,3 +3402,27 @@ for (var i = 1; i <= galleries.length; i++) {
 
   </div>
 </div>
+
+<!-- Gallery -->
+<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
+
+<script>
+var galleries = $('div.docs-gallery');
+for (var i = 1; i <= galleries.length; i++) {
+    $().fancybox({
+    selector : '[data-fancybox="gallery-' + i + '"]',
+    infobar : true,
+    arrows : false,
+    loop: false,
+    protect: true,
+    transitionEffect: 'slide',
+    buttons : [
+        'close'
+    ],
+    clickOutside : 'close',
+    clickSlide   : 'close',
+  });
+}
+</script>

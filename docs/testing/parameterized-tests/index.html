@@ -122,6 +122,15 @@ section-icon: mdi mdi-content-copy
         
              
 
+    <li class="toctree-l1 ">
+        <a class="" href="../sut/">Software under Test</a>
+        
+    </li>
+
+
+        
+             
+
     <li class="toctree-l1 current">
         <a class="current" href="./">Parameterized tests</a>
         
@@ -135,24 +144,6 @@ section-icon: mdi mdi-content-copy
 
     <li class="toctree-l1 ">
         <a class="" href="../multi-configuration-tjobs/">Multi-Configuration TJobs</a>
-        
-    </li>
-
-
-        
-             
-
-    <li class="toctree-l1 ">
-        <a class="" href="../environment-variables/">Environment variables</a>
-        
-    </li>
-
-
-        
-             
-
-    <li class="toctree-l1 ">
-        <a class="" href="../sut/">Software under Test</a>
         
     </li>
 
@@ -285,7 +276,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../../jenkins/try-jenkins/">Try jenkins</a>
+        <a class="" href="../../jenkins/try-jenkins/">Try Jenkins plugin</a>
         
     </li>
 
@@ -294,7 +285,16 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../../jenkins/advanced-example/">Advanced example</a>
+        <a class="" href="../../jenkins/pipeline/">Pipeline Jobs</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../jenkins/freestyle/">Freestyle Jobs</a>
         
     </li>
 
@@ -334,6 +334,17 @@ section-icon: mdi mdi-content-copy
 </li>
 </ul>
     
+</ul></li>
+				
+			
+				
+					<li><ul> 
+
+    <li class="toctree-l1 ">
+        <a class="" href="../environment-variables/">Environment variables</a>
+        
+    </li>
+
 </ul></li>
 				
 			
@@ -398,28 +409,26 @@ section-icon: mdi mdi-content-copy
 <p>ElasTest provides a simple way of defining parameters that will be available on both your SuTs and TJobs as environment variables.</p>
 <p>Add parameters to a SuT when creating/editing it:</p>
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/testing/images/sut_parameters.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/sut_parameters.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/testing/images/parameterized/sut_parameters.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/parameterized/sut_parameters.png"/></a>
 </div>
 
 <p>Add parameters to a TJob when creating/editing it:</p>
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/testing/images/tjob_parameters.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/tjob_parameters.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/testing/images/parameterized/tjob_parameters.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/parameterized/tjob_parameters.png"/></a>
 </div>
 
 <p>Just before running a TJob, a dialog will show the parameters and their current values for both the SuT and the TJob. You can check them, edit them and add new ones before running the TJob.</p>
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/testing/images/configure_params.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/configure_params.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/testing/images/parameterized/configure_params.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/parameterized/configure_params.png"/></a>
 </div>
 
 <p>Parameterizing SuTs and TJobs can give you great advantages. If you are testing an application that makes use of any environment variable, you can easily change its value before running a TJob. And if you actively configure your test code to use environment variables as control mechanisms, it will only take you a couple of clicks in ElasTest to run the same test with different configurations. Let's see how this is reflected in real code in our tests:</p>
 <div class="badges-menu noselectionable">
     <span id="java-test-btn" class="badge badge-default my-badge selected">Java</span>
-    <span id="js-test-btn" class="badge badge-default my-badge">JS</span>
-    <span class="badge badge-default my-badge my-badge-disabled">PHP</span>
-    <span class="badge badge-default my-badge my-badge-disabled">. . .</span>
+    <span id="js-test-btn" class="badge badge-default my-badge my-badge-disabled">JS</span>
 </div>
 
-<div id="java-test" class="lang-section">
+<div id="java-test" class="testExample lang-section">
 
 <div class="row" style="margin-top: 40px">
 
@@ -457,7 +466,7 @@ public class MyTest {
 </div>
 </div>
 
-<div id="js-test" class="lang-section" hidden>
+<div id="js-test" class="testExample lang-section" hidden>
 <div class="row" style="margin-top: 40px">
 
 <div class="col-md-6">
@@ -492,6 +501,12 @@ describe("My application", () => {
 </div>
 </div>
 
+<!-- ********************* -->
+
+<!-- ****** Scripts ****** -->
+
+<!-- ********************* -->
+
 <script>
 $('#java-test-btn').click(function(event) {
   activateBadge('java-test');
@@ -501,38 +516,23 @@ $('#js-test-btn').click(function(event) {
 });
 
 function activateBadge(sectionName) {
-  $('.lang-section').hide();
+  var disabledClass = 'my-badge-disabled';
+  var selectedClass = 'selected';
+
+  $('.testExample').hide();
   $('#' + sectionName).show();
-  $('.selected').removeClass('selected');
-  $('#' + sectionName + '-btn').addClass('selected');
+
+  // Disable current selected
+  $('.selected').addClass(disabledClass);
+  $('.selected').removeClass(selectedClass);
+
+  // Select clicked
+  $('#' + sectionName + '-btn').addClass(selectedClass);
+  $('#' + sectionName + '-btn').removeClass(disabledClass);
 }
 
-var langSections = [
-  'java',
-  'js'
-];
-</script>
-
-<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
-
-<p><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script></p>
-<script>
-var galleries = $('div.docs-gallery');
-for (var i = 1; i <= galleries.length; i++) {
-    $().fancybox({
-    selector : '[data-fancybox="gallery-' + i + '"]',
-    infobar : true,
-    arrows : false,
-    loop: false,
-    protect: true,
-    transitionEffect: 'slide',
-    buttons : [
-        'close'
-    ],
-    clickOutside : 'close',
-    clickSlide   : 'close',
-  });
+window.onload = function() {
+      activateBadge('java-test');
 }
 </script>
 					
@@ -546,7 +546,7 @@ for (var i = 1; i <= galleries.length; i++) {
         <a href="../multi-configuration-tjobs/" class="btn btn-xs btn-primary float-right" title="Multi-Configuration TJobs">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../e2e-rest/" class="btn btn-xs btn-primary" title="Run end2end tests"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
+        <a href="../sut/" class="btn btn-xs btn-primary" title="Software under Test"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
       
     </div>
   
@@ -567,3 +567,27 @@ for (var i = 1; i <= galleries.length; i++) {
 
   </div>
 </div>
+
+<!-- Gallery -->
+<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
+
+<script>
+var galleries = $('div.docs-gallery');
+for (var i = 1; i <= galleries.length; i++) {
+    $().fancybox({
+    selector : '[data-fancybox="gallery-' + i + '"]',
+    infobar : true,
+    arrows : false,
+    loop: false,
+    protect: true,
+    transitionEffect: 'slide',
+    buttons : [
+        'close'
+    ],
+    clickOutside : 'close',
+    clickSlide   : 'close',
+  });
+}
+</script>

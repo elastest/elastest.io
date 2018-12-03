@@ -123,6 +123,15 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
+        <a class="" href="../../testing/sut/">Software under Test</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
         <a class="" href="../../testing/parameterized-tests/">Parameterized tests</a>
         
     </li>
@@ -133,24 +142,6 @@ section-icon: mdi mdi-content-copy
 
     <li class="toctree-l1 ">
         <a class="" href="../../testing/multi-configuration-tjobs/">Multi-Configuration TJobs</a>
-        
-    </li>
-
-
-        
-             
-
-    <li class="toctree-l1 ">
-        <a class="" href="../../testing/environment-variables/">Environment variables</a>
-        
-    </li>
-
-
-        
-             
-
-    <li class="toctree-l1 ">
-        <a class="" href="../../testing/sut/">Software under Test</a>
         
     </li>
 
@@ -283,7 +274,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../../jenkins/try-jenkins/">Try jenkins</a>
+        <a class="" href="../../jenkins/try-jenkins/">Try Jenkins plugin</a>
         
     </li>
 
@@ -292,7 +283,16 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../../jenkins/advanced-example/">Advanced example</a>
+        <a class="" href="../../jenkins/pipeline/">Pipeline Jobs</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../jenkins/freestyle/">Freestyle Jobs</a>
         
     </li>
 
@@ -334,6 +334,17 @@ section-icon: mdi mdi-content-copy
 </li>
 </ul>
     
+</ul></li>
+				
+			
+				
+					<li><ul> 
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testing/environment-variables/">Environment variables</a>
+        
+    </li>
+
 </ul></li>
 				
 			
@@ -393,16 +404,16 @@ section-icon: mdi mdi-content-copy
 </div>
 </div>
 
-<h4 class="holder-subtitle link-top">Introduction</h4>
+<h3 class="holder-subtitle link-top">Introduction</h3>
 
 <p>Through the following lines you will find a guide to deploy ElasTest on a single machine (physical or virtual). So the same steps can be applied to a server on your data center or an instance on AWS, OpenStack, Azure or Google Cloud.</p>
 <p>We've tried to deploy ElasTest on <strong>Ubuntu 16.04</strong>, <strong>Ubuntu 18.04</strong> and <strong>CentOS 7</strong> and the steps are basically the same.</p>
 <p>You only need remote or physical access to a <strong>Linux</strong> interactive shell to run commands as a privilegiated user.</p>
 <p>You can also deploy ElasTest on <a href="/docs/deploying/aws/">Amazon Web Services</a></p>
-<h4 class="holder-subtitle link-top">Accesing the instance</h4>
+<h3 class="holder-subtitle link-top">Accesing the instance</h3>
 
 <p>Depends on your infraestructure the access will be different. Please, refer to your system administrator to know how to grant access to the console.</p>
-<h4 class="holder-subtitle link-top">Installing Docker</h4>
+<h3 class="holder-subtitle link-top">Installing Docker</h3>
 
 <p>First of all, you'll need to install Docker, please, refer to the official documentation to install onto your platform:</p>
 <p><a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/">Ubuntu</a></p>
@@ -411,7 +422,7 @@ section-icon: mdi mdi-content-copy
 <pre><code class="bash">sudo usermod -aG docker YOUR_USER
 </code></pre>
 
-<h4 class="holder-subtitle link-top">Launching ElasTest</h4>
+<h3 class="holder-subtitle link-top">Launching ElasTest</h3>
 
 <p>In order to launch ElasTest platform just type</p>
 <pre><code class="bash">docker run -ti \
@@ -453,7 +464,7 @@ Press Ctrl+C to stop.
 
 <!-- OPTIONS -->
 
-<h5 class="small-subtitle">Options</h5>
+<h4 class="small-subtitle">Options</h4>
 
 <p>You can include the option <strong><code>--server-address=(docker-machine ip)</code></strong> to set up the machine ip address.</p>
 <pre><code class="text">docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --server-address=&quot;myip&quot;
@@ -479,10 +490,10 @@ Press Ctrl+C to stop.
 <pre><code>docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform --help
 </code></pre>
 
-<h4 class="holder-subtitle link-top">Running ElasTest on system boot</h4>
+<h3 class="holder-subtitle link-top">Running ElasTest on system boot</h3>
 
 <p>To start ElasTest automatically on a system with Systemd, two scripts are needed:</p>
-<h5 class="small-subtitle">1) Start ElasTest (<code>/usr/local/bin/elastest-start</code>)</h5>
+<h4 class="small-subtitle">1) Start ElasTest (<code>/usr/local/bin/elastest-start</code>)</h4>
 
 <p>This script will launch elastest and contains the following lines:</p>
 <pre><code class="bash">#!/bin/bash
@@ -499,7 +510,7 @@ exit 0
 <pre><code class="bash">sudo chmod 0755 /usr/local/bin/elastest-start
 </code></pre>
 
-<h5 class="small-subtitle">2) Stop ElasTest (<code>/usr/local/bin/elastest-stop</code>)</h5>
+<h4 class="small-subtitle">2) Stop ElasTest (<code>/usr/local/bin/elastest-stop</code>)</h4>
 
 <p>The second script is <code>elastest-stop</code> to stop ElasTest.</p>
 <pre><code class="bash">#!/bin/bash
@@ -510,7 +521,7 @@ docker run -d -v /var/run/docker.sock:/var/run/docker.sock elastest/platform sto
 <pre><code class="bash">sudo chmod 0755 /usr/local/bin/elastest-stop
 </code></pre>
 
-<h5 class="small-subtitle">3) Systemd start script (<code>/etc/systemd/system/elastest.service</code>)</h5>
+<h4 class="small-subtitle">3) Systemd start script (<code>/etc/systemd/system/elastest.service</code>)</h4>
 
 <pre><code class="text">[Unit]
 Description=ElasTest Platform
@@ -536,7 +547,7 @@ WantedBy=multi-user.target
 <pre><code class="bash">sudo systemctl enable elastest
 </code></pre>
 
-<h5 class="small-subtitle">Start and Stop ElasTest</h5>
+<h4 class="small-subtitle">Start and Stop ElasTest</h4>
 
 <p>From now on, everytime you want to launch ElasTest:</p>
 <pre><code class="bash">sudo systemctl start elastest
@@ -546,7 +557,7 @@ WantedBy=multi-user.target
 <pre><code class="bash">sudo systemctl stop elastest
 </code></pre>
 
-<h4 class="holder-subtitle link-top">Swap space</h4>
+<h3 class="holder-subtitle link-top">Swap space</h3>
 
 <p>It is possible that elastest needs some swap space. If your server is physical, it probably has some space already. You can check by running:</p>
 <pre><code class="bash">free -m
@@ -565,7 +576,7 @@ Swap:             0           0           0
 </code></pre>
 
 <p>If you're working on the cloud, you'll probably need to add some swap space. To do that follow this steps:</p>
-<h5 class="small-subtitle">1) Creating a swap file</h5>
+<h4 class="small-subtitle">1) Creating a swap file</h4>
 
 <p>With Ubuntu:</p>
 <pre><code class="bash">sudo fallocate -l 4G /swapfile
@@ -583,39 +594,39 @@ Swap:             0           0           0
 <pre><code class="bash">sudo chmod 0600 /swapfile
 </code></pre>
 
-<h5 class="small-subtitle">2) Mark the file as swap space</h5>
+<h4 class="small-subtitle">2) Mark the file as swap space</h4>
 
 <pre><code class="bash">sudo mkswap /swapfile
 </code></pre>
 
-<h5 class="small-subtitle">3) Activate the swap</h5>
+<h4 class="small-subtitle">3) Activate the swap</h4>
 
 <pre><code class="bash">sudo swapon /swapfile
 </code></pre>
 
-<h5 class="small-subtitle">4) Checking</h5>
+<h4 class="small-subtitle">4) Checking</h4>
 
 <p>If you run the <em>free</em> command again you'll see the swap space available.</p>
 <pre><code class="bash">free -m
 </code></pre>
 
-<h5 class="small-subtitle">5) Making changes permanent</h5>
+<h4 class="small-subtitle">5) Making changes permanent</h4>
 
 <p>To make those changes permanent, add the following line to your <em>/etc/fstab</em> file:</p>
 <pre><code class="bash">sudo echo &quot;/swapfile none swap sw 0 0&quot; &gt;&gt; /etc/fstab
 </code></pre>
 
-<h4 id="elastestData" class="holder-subtitle link-top">ElasTest data</h4>
+<h3 id="elastestData" class="holder-subtitle link-top">ElasTest data</h3>
 
 <p>ElasTest makes use of a folder and two volumes to store the data:</p>
-<h5 class="small-subtitle">/data folder</h5>
+<h4 class="small-subtitle">/data folder</h4>
 
 <p>As you may have seen above in the ElasTest start command, two volumes are binded. The first one is the <strong><code>/data</code></strong> folder that, in the example commands, we have bind to the host's <strong><code>~/.elastest</code></strong> folder, but you can choose the host folder you want.</p>
 <p>In this folder some data like the videos of the tests or configurations of Elastest are saved.</p>
-<h5 class="small-subtitle">elastest_edm-mysql volume</h5>
+<h4 class="small-subtitle">elastest_edm-mysql volume</h4>
 
 <p>The <strong><code>elastest_edm-mysql</code></strong> volume contains the ElasTest database, which contains all the data information of the tests, such as projects, suts, monitoring traces, test results, etc.</p>
-<h5 class="small-subtitle">elastest_etm-testlink volume</h5>
+<h4 class="small-subtitle">elastest_etm-testlink volume</h4>
 
 <p>The <strong><code>elastest_etm-testlink</code></strong> volume contains TestLink configuration information, such as the name of the MySql schema created in the database of <strong><code>elastest_edm-mysql</code></strong> volume.</p>
 <!---
@@ -644,7 +655,7 @@ Swap:             0           0           0
         <a href="../aws/" class="btn btn-xs btn-primary float-right" title="Amazon Web Services">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../../jenkins/advanced-example/" class="btn btn-xs btn-primary" title="Advanced example"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
+        <a href="../../jenkins/freestyle/" class="btn btn-xs btn-primary" title="Freestyle Jobs"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
       
     </div>
   
@@ -665,3 +676,27 @@ Swap:             0           0           0
 
   </div>
 </div>
+
+<!-- Gallery -->
+<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
+
+<script>
+var galleries = $('div.docs-gallery');
+for (var i = 1; i <= galleries.length; i++) {
+    $().fancybox({
+    selector : '[data-fancybox="gallery-' + i + '"]',
+    infobar : true,
+    arrows : false,
+    loop: false,
+    protect: true,
+    transitionEffect: 'slide',
+    buttons : [
+        'close'
+    ],
+    clickOutside : 'close',
+    clickSlide   : 'close',
+  });
+}
+</script>

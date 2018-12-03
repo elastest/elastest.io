@@ -123,6 +123,15 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
+        <a class="" href="../../testing/sut/">Software under Test</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
         <a class="" href="../../testing/parameterized-tests/">Parameterized tests</a>
         
     </li>
@@ -133,24 +142,6 @@ section-icon: mdi mdi-content-copy
 
     <li class="toctree-l1 ">
         <a class="" href="../../testing/multi-configuration-tjobs/">Multi-Configuration TJobs</a>
-        
-    </li>
-
-
-        
-             
-
-    <li class="toctree-l1 ">
-        <a class="" href="../../testing/environment-variables/">Environment variables</a>
-        
-    </li>
-
-
-        
-             
-
-    <li class="toctree-l1 ">
-        <a class="" href="../../testing/sut/">Software under Test</a>
         
     </li>
 
@@ -285,7 +276,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../../jenkins/try-jenkins/">Try jenkins</a>
+        <a class="" href="../../jenkins/try-jenkins/">Try Jenkins plugin</a>
         
     </li>
 
@@ -294,7 +285,16 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../../jenkins/advanced-example/">Advanced example</a>
+        <a class="" href="../../jenkins/pipeline/">Pipeline Jobs</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../jenkins/freestyle/">Freestyle Jobs</a>
         
     </li>
 
@@ -334,6 +334,17 @@ section-icon: mdi mdi-content-copy
 </li>
 </ul>
     
+</ul></li>
+				
+			
+				
+					<li><ul> 
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testing/environment-variables/">Environment variables</a>
+        
+    </li>
+
 </ul></li>
 				
 			
@@ -434,47 +445,24 @@ To launch a browser from ElasTest dashboard (<i>Web Browsers</i> page), select t
 </p>
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/web-browsers/images/launch_chrome.png"><img class="img-responsive img-wellcome" src="/docs/web-browsers/images/launch_chrome.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/web-browsers/images/manual/launch_chrome.png"><img class="img-responsive img-wellcome" src="/docs/web-browsers/images/manual/launch_chrome.png"/></a>
 </div>
 
 <p>Now the selected browser will be launched (it will take some time only for the first time you run a non-latest version, as it needs to be downloaded).</p>
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-2" href="/docs/web-browsers/images/loading.png"><img class="img-responsive img-wellcome" src="/docs/web-browsers/images/loading.png"/></a>
-    <a data-fancybox="gallery-2" href="/docs/web-browsers/images/loaded.png"><img class="img-responsive img-wellcome" src="/docs/web-browsers/images/loaded.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/web-browsers/images/manual/loading.png"><img class="img-responsive img-wellcome" src="/docs/web-browsers/images/manual/loading.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/web-browsers/images/manual/loaded.png"><img class="img-responsive img-wellcome" src="/docs/web-browsers/images/manual/loaded.png"/></a>
 </div>
 
 <p>You can see the browser as any end user would on their own computer, and also interact directly with it: resize it, navigate to any URL ...</p>
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-3" href="/docs/web-browsers/images/wikipedia.png"><img class="img-responsive img-wellcome" src="/docs/web-browsers/images/elastest.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/web-browsers/images/manual/elastest.png"><img class="img-responsive img-wellcome" src="/docs/web-browsers/images/manual/elastest.png"/></a>
 </div>
 
 <p>Finally, whenever you close the browser (bottom-left "Close" button), after a few seconds (depending on how long the live session lasts) you will have available on "Recordings" card an <em>.mp4</em> file ready to be downloaded with your recorded browser session.</p>
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-4" href="/docs/web-browsers/images/recordings.png"><img class="img-responsive img-wellcome" src="/docs/web-browsers/images/recordings.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/web-browsers/images/manual/recordings.png"><img class="img-responsive img-wellcome" src="/docs/web-browsers/images/manual/recordings.png"/></a>
 </div>
-
-<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
-
-<p><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script></p>
-<script>
-var galleries = $('div.docs-gallery');
-for (var i = 1; i <= galleries.length; i++) {
-    $().fancybox({
-    selector : '[data-fancybox="gallery-' + i + '"]',
-    infobar : true,
-    arrows : false,
-    loop: false,
-    protect: true,
-    transitionEffect: 'slide',
-    buttons : [
-        'close'
-    ],
-    clickOutside : 'close',
-    clickSlide   : 'close',
-  });
-}
-</script>
 					
 				      </div>
 				    </div>
@@ -486,7 +474,7 @@ for (var i = 1; i <= galleries.length; i++) {
         <a href="../e2e-browser/" class="btn btn-xs btn-primary float-right" title="Run en2end tests with Web Browsers">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../../testing/sut/" class="btn btn-xs btn-primary" title="Software under Test"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
+        <a href="../../testing/multi-configuration-tjobs/" class="btn btn-xs btn-primary" title="Multi-Configuration TJobs"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
       
     </div>
   
@@ -507,3 +495,27 @@ for (var i = 1; i <= galleries.length; i++) {
 
   </div>
 </div>
+
+<!-- Gallery -->
+<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
+
+<script>
+var galleries = $('div.docs-gallery');
+for (var i = 1; i <= galleries.length; i++) {
+    $().fancybox({
+    selector : '[data-fancybox="gallery-' + i + '"]',
+    infobar : true,
+    arrows : false,
+    loop: false,
+    protect: true,
+    transitionEffect: 'slide',
+    buttons : [
+        'close'
+    ],
+    clickOutside : 'close',
+    clickSlide   : 'close',
+  });
+}
+</script>

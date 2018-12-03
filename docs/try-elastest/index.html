@@ -125,6 +125,15 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
+        <a class="" href="../testing/sut/">Software under Test</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
         <a class="" href="../testing/parameterized-tests/">Parameterized tests</a>
         
     </li>
@@ -135,24 +144,6 @@ section-icon: mdi mdi-content-copy
 
     <li class="toctree-l1 ">
         <a class="" href="../testing/multi-configuration-tjobs/">Multi-Configuration TJobs</a>
-        
-    </li>
-
-
-        
-             
-
-    <li class="toctree-l1 ">
-        <a class="" href="../testing/environment-variables/">Environment variables</a>
-        
-    </li>
-
-
-        
-             
-
-    <li class="toctree-l1 ">
-        <a class="" href="../testing/sut/">Software under Test</a>
         
     </li>
 
@@ -285,7 +276,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../jenkins/try-jenkins/">Try jenkins</a>
+        <a class="" href="../jenkins/try-jenkins/">Try Jenkins plugin</a>
         
     </li>
 
@@ -294,7 +285,16 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../jenkins/advanced-example/">Advanced example</a>
+        <a class="" href="../jenkins/pipeline/">Pipeline Jobs</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../jenkins/freestyle/">Freestyle Jobs</a>
         
     </li>
 
@@ -334,6 +334,17 @@ section-icon: mdi mdi-content-copy
 </li>
 </ul>
     
+</ul></li>
+				
+			
+				
+					<li><ul> 
+
+    <li class="toctree-l1 ">
+        <a class="" href="../testing/environment-variables/">Environment variables</a>
+        
+    </li>
+
 </ul></li>
 				
 			
@@ -395,7 +406,7 @@ section-icon: mdi mdi-content-copy
 
 <!-- FOR LINUX -->
 
-<h4 class="holder-subtitle link-top">For Linux</h4>
+<h3 class="holder-subtitle link-top" id="forLinux">For Linux</h3>
 
 <p>ElasTest is based on <strong>Docker</strong> technology. To execute ElasTest you need Docker CE installed on your machine following the official instructions for <a href="https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/" target="_blank">Ubuntu</a>.</p>
 <p>Once you have docker installed, execute the following command to start ElasTest:</p>
@@ -417,8 +428,8 @@ Press Ctrl+C to stop.
 </code></pre>
 
 <p>You can then open in your web browser the shown URL to access to ElasTest dashboard.</p>
-<p>To stop ElasTest, press <code>Ctrl+C</code> in the shell used to start it. You can now try the <a href="../your-first-test">Hello world</a> project available by default when launching ElasTest. ElasTest also includes other more advanced learning projects.</p>
-<h5 class="small-subtitle">Options</h5>
+<p>To stop ElasTest, press <strong><code>Ctrl+C</code></strong> in the shell used to start it. Now you can try any of the test projects available by default when you start ElasTest. You can start with <a href="../your-first-test">Unit Tests</a> project.</p>
+<h4 class="small-subtitle">Options</h4>
 
 <p>The <strong><code>--logs</code></strong> option allows you to show all the containers logs.</p>
 <pre><code>docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --logs
@@ -436,7 +447,7 @@ Press Ctrl+C to stop.
 <pre><code>docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform --help
 </code></pre>
 
-<h5 class="small-subtitle">Recommended system specifications</h5>
+<h4 class="small-subtitle">Recommended system specifications</h4>
 
 <p>ElasTest needs some minimun system specifications in order to run smoothly:</p>
 <table>
@@ -460,11 +471,11 @@ Press Ctrl+C to stop.
 
 <!-- FOR MAC -->
 
-<h4 class="holder-subtitle link-top">For Mac</h4>
+<h3 class="holder-subtitle link-top" id="forMac">For Mac</h3>
 
 <p>ElasTest is based on <strong>Docker</strong> technology. To execute ElasTest you need Docker CE installed on your machine following the official instructions for <a href="https://docs.docker.com/docker-for-mac/install/" target="_blank">Mac</a>.
 Once you have docker installed, execute the following command to start ElasTest:</p>
-<pre><code class="text">docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --server-address=localhost
+<pre><code class="text">docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start
 </code></pre>
 
 <p>Whatever platform you are using, you will see this output when ElasTest is ready:</p>
@@ -482,8 +493,8 @@ Press Ctrl+C to stop.
 </code></pre>
 
 <p>You can then open in your web browser the shown URL to access to ElasTest dashboard.</p>
-<p>To stop ElasTest, press <code>Ctrl+C</code> in the shell used to start it. You can now try the <a href="../your-first-test">Hello world</a> project available by default when launching ElasTest. ElasTest also includes other more advanced learning projects.</p>
-<h5 class="small-subtitle">Options</h5>
+<p>To stop ElasTest, press <strong><code>Ctrl+C</code></strong> in the shell used to start it. Now you can try any of the test projects available by default when you start ElasTest. You can start with <a href="../your-first-test">Unit Tests</a> project.</p>
+<h4 class="small-subtitle">Options</h4>
 
 <p>The <strong><code>--logs</code></strong> option allows you to show all the containers logs.</p>
 <pre><code>docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --logs
@@ -506,7 +517,7 @@ Press Ctrl+C to stop.
   <div class="cell-xs-8 cell-lg-11 cell-lg-push-11 warning-text"><p><i>ElasTest can be used in Mac OS, but it's recommended to use Linux. There could be unexpected bugs. If you find any issue, please report it <a href="/docs/support/">here</a>.</i></p></div>
 </div>
 
-<h5 class="small-subtitle">Recommended system specifications</h5>
+<h4 class="small-subtitle">Recommended system specifications</h4>
 
 <p>ElasTest needs some minimun system specifications in order to run smoothly:</p>
 <table>
@@ -530,7 +541,7 @@ Press Ctrl+C to stop.
 
 <!-- FOR WINDOWS -->
 
-<h4 class="holder-subtitle link-top">For Windows</h4>
+<h3 class="holder-subtitle link-top" id="forWindows">For Windows</h3>
 
 <p>ElasTest is based on <strong>Docker</strong> technology. To execute ElasTest you need Docker CE installed on your machine following the official instructions for <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">Docker for Windows</a> or for <a href="https://docs.docker.com/toolbox/toolbox_install_windows/" target="_blank">Docker Toolbox for Windows</a>.</p>
 <p>Once you have docker installed, execute the following command to start ElasTest:</p>
@@ -540,7 +551,7 @@ Press Ctrl+C to stop.
 </div>
 
 <p><strong><em>Docker for Windows</em></strong></p>
-<pre><code class="text">docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --server-address=localhost
+<pre><code class="text">docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start
 </code></pre>
 
 <p><strong><em>Docker Toolbox</em></strong> (<em>run it from your Docker Toolbox terminal</em>)</p>
@@ -562,8 +573,8 @@ Press Ctrl+C to stop.
 </code></pre>
 
 <p>You can then open in your web browser the shown URL to access to ElasTest dashboard.</p>
-<p>To stop ElasTest, press <code>Ctrl+C</code> in the shell used to start it. You can now try the <a href="../your-first-test">Hello world</a> project available by default when launching ElasTest. ElasTest also includes other more advanced learning projects.</p>
-<h5 class="small-subtitle">Options</h5>
+<p>To stop ElasTest, press <strong><code>Ctrl+C</code></strong> in the shell used to start it. Now you can try any of the test projects available by default when you start ElasTest. You can start with <a href="../your-first-test">Unit Tests</a> project.</p>
+<h4 class="small-subtitle">Options</h4>
 
 <p>The <strong><code>--logs</code></strong> option allows you to show all the containers logs.</p>
 <pre><code>docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --logs
@@ -586,7 +597,7 @@ Press Ctrl+C to stop.
   <div class="cell-xs-8 cell-lg-11 cell-lg-push-11 warning-text"><p><i>ElasTest can be used in Windows, but it's recommended to use Linux. There could be unexpected bugs. If you find any issue, please report it <a href="/docs/support/">here</a>.</i></p></div>
 </div>
 
-<h5 class="small-subtitle">Recommended system specifications</h5>
+<h4 class="small-subtitle">Recommended system specifications</h4>
 
 <p>ElasTest needs some minimun system specifications in order to run smoothly:</p>
 <table>
@@ -608,13 +619,13 @@ Press Ctrl+C to stop.
   </tr>
 </table>
 
-<h4 class="holder-subtitle link-top">ElasTest on a server</h4>
+<h3 class="holder-subtitle link-top">ElasTest on a server</h3>
 
 <p>To run ElasTest on a server follow the steps detailed in the <a href="/docs/deploying/ubuntu/">Linux Server </a>section.</p>
-<h4 class="holder-subtitle link-top">ElasTest on Amazon Web Services</h4>
+<h3 class="holder-subtitle link-top">ElasTest on Amazon Web Services</h3>
 
 <p>ElasTest has been designed from the outset to offer an extremely simple deployment in Amazon Web Services. Check <a href="../deploying/aws/">Amazon Web Services</a> section to learn how to do it in a couple of minutes.</p>
-<h4 class="holder-subtitle link-top">Updating ElasTest</h4>
+<h3 class="holder-subtitle link-top">Updating ElasTest</h3>
 
 <p>To update ElasTest to the latest <em>stable</em> version available, just need to change <strong><code>start</code></strong> to <strong><code>update</code></strong> and <strong>add <code>-it</code></strong> in the launching command:</p>
 <pre><code class="text">docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform update
@@ -636,13 +647,13 @@ The version of ElasTest that you want to update is already running and it is  ne
 </code></pre>
 
 <p>In order to clean the ElasTest installation, the old images associated with the previous version will be removed from the system after the update process has finished.</p>
-<h4 class="holder-subtitle link-top">Using a specific ElasTest version</h4>
+<h3 class="holder-subtitle link-top">Using a specific ElasTest version</h3>
 
 <p>To use a specific ElasTest version available, only need to set it as elastest/platform tag, that is, adding <strong><code>:version</code></strong>. For example, to use the <strong><code>1.0.0-beta2</code></strong> version you would have to execute the following command</p>
 <pre><code class="text">docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform:1.0.0-beta2 start
 </code></pre>
 
-<h4 class="holder-subtitle link-top">ElasTest data</h4>
+<h3 class="holder-subtitle link-top">ElasTest data</h3>
 
 <p>You can see the Elastest data information <a href="/docs/deploying/ubuntu/#elastestData">here</a></p>
 <!---
@@ -692,3 +703,27 @@ The version of ElasTest that you want to update is already running and it is  ne
 
   </div>
 </div>
+
+<!-- Gallery -->
+<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
+
+<script>
+var galleries = $('div.docs-gallery');
+for (var i = 1; i <= galleries.length; i++) {
+    $().fancybox({
+    selector : '[data-fancybox="gallery-' + i + '"]',
+    infobar : true,
+    arrows : false,
+    loop: false,
+    protect: true,
+    transitionEffect: 'slide',
+    buttons : [
+        'close'
+    ],
+    clickOutside : 'close',
+    clickSlide   : 'close',
+  });
+}
+</script>

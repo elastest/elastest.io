@@ -123,6 +123,15 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
+        <a class="" href="../testing/sut/">Software under Test</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
         <a class="" href="../testing/parameterized-tests/">Parameterized tests</a>
         
     </li>
@@ -133,24 +142,6 @@ section-icon: mdi mdi-content-copy
 
     <li class="toctree-l1 ">
         <a class="" href="../testing/multi-configuration-tjobs/">Multi-Configuration TJobs</a>
-        
-    </li>
-
-
-        
-             
-
-    <li class="toctree-l1 ">
-        <a class="" href="../testing/environment-variables/">Environment variables</a>
-        
-    </li>
-
-
-        
-             
-
-    <li class="toctree-l1 ">
-        <a class="" href="../testing/sut/">Software under Test</a>
         
     </li>
 
@@ -285,7 +276,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="try-jenkins/">Try jenkins</a>
+        <a class="" href="try-jenkins/">Try Jenkins plugin</a>
         
     </li>
 
@@ -294,7 +285,16 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="advanced-example/">Advanced example</a>
+        <a class="" href="pipeline/">Pipeline Jobs</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="freestyle/">Freestyle Jobs</a>
         
     </li>
 
@@ -334,6 +334,17 @@ section-icon: mdi mdi-content-copy
 </li>
 </ul>
     
+</ul></li>
+				
+			
+				
+					<li><ul> 
+
+    <li class="toctree-l1 ">
+        <a class="" href="../testing/environment-variables/">Environment variables</a>
+        
+    </li>
+
 </ul></li>
 				
 			
@@ -395,23 +406,38 @@ section-icon: mdi mdi-content-copy
 </div>
 </div>
 
-<p><img style="border: none; margin: auto" class="img-responsive img-wellcome" src="/docs/jenkins/images/elastest_jenkins.png"/></p>
+<p><img style="border: none; margin: auto" class="img-responsive img-wellcome" src="/docs/jenkins/images/integration/elastest_jenkins.png"/></p>
 <p>ElasTest provides a Jenkins plugin for you to use the platform in your CI environment. Thanks to this you can make use of some features provided by ElasTest, such as log analysis or the use of on-demand browsers. There are two operating modes:</p>
 <ul>
-<li><strong>Use the Jenkins instance of ElasTest</strong>: ElasTest provides an instance of Jenkins to be used. You don't need to install the ElasTest Jenkins plugin, it's already incorporated.</li>
+<li><strong>Use the Jenkins instance of ElasTest</strong>: ElasTest provides an instance of Jenkins to be used. You don't need to install the ElasTest Jenkins plugin, it's already incorporated.<ul>
+<li>This instance can be started by <a href="../try-elastest">starting ElasTest with the --jenkins</a> parameter or if you prefer it can be started from the ElasTest GUI once it has been started (this is explained on the <a href="../jenkins/try-jenkins">next page</a>).</li>
+</ul>
+</li>
 <li><strong>Use your own Jenkins</strong>: Before you can use ElasTest as Jenkins plugin you need to install the plugin and complete its onfiguration. After this you will be ready to use ElasTest in a Free Style Job or in a Pipeline Job.</li>
 </ul>
 <h4 class="holder-subtitle link-top">Plugin installation</h4>
 
+<p>Currently ElasTest Plugin is in beta so to install it is necessary to do it from the <a href="https://jenkins.io/doc/developer/publishing/releasing-experimental-updates/">experimental repository of Jenkins</a>.</p>
 <p>To install the ElasTest Plugin you should follow this steps:</p>
 <ul>
-<li>Go to your Jenkins installation and click in <strong>Manage Jenkins / Manage Plugins</strong>.</li>
-<li>The next step is to open the <strong>Available</strong> tab and search "elastest". The ElasTest plugin will appear and you will check the box and click the "Install plugin" button.</li>
+<li>Go to your Jenkins installation and navigate through <strong>Manage Jenkins / Manage Plugins / Advanced</strong>.</li>
+<li>In the <strong>Update site</strong> section set the value <strong><code>https://updates.jenkins.io/update-center.json</code></strong> in the URL field</li>
+<li>Click on the <strong>Submit</strong> button and then on <strong>Check now</strong>
+<p></p></li>
+</ul>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-3" href="/docs/jenkins/images/integration/experimental_repo.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/integration/experimental_repo.png"/></a>
+</div>
+
+<ul>
+<li>Navigate through <strong>Manage Jenkins / Manage Plugins</strong>.</li>
+<li>The next step is to open the <strong>Available</strong> tab and search <strong>elastest</strong>. The ElasTest plugin will appear and you will check the box and click the <strong>Install plugin</strong> button.</li>
+<li>Once installed, you can reset the update repository.</li>
 </ul>
 <p></p>
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-3" href="/docs/jenkins/images/plugin_install.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/plugin_install.png"/></a>
+    <a data-fancybox="gallery-3" href="/docs/jenkins/images/integration/plugin_install.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/integration/plugin_install.png"/></a>
 </div>
 
 <h4 class="holder-subtitle link-top">Plugin configuration</h4>
@@ -425,31 +451,8 @@ section-icon: mdi mdi-content-copy
 <p><br>
 Before you execute your first Job integrated with ElasTest, you can check if the connection between Jenkins and ElasTest is successfully established.</p>
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-3" href="/docs/jenkins/images/conf.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/conf.png"/></a>
+    <a data-fancybox="gallery-3" href="/docs/jenkins/images/integration/conf.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/integration/conf.png"/></a>
 </div>
-
-<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
-
-<p><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script></p>
-<script>
-var galleries = $('div.docs-gallery');
-for (var i = 1; i <= galleries.length; i++) {
-    $().fancybox({
-    selector : '[data-fancybox="gallery-' + i + '"]',
-    infobar : true,
-    arrows : false,
-    loop: false,
-    protect: true,
-    transitionEffect: 'slide',
-    buttons : [
-        'close'
-    ],
-    clickOutside : 'close',
-    clickSlide   : 'close',
-  });
-}
-</script>
 					
 				      </div>
 				    </div>
@@ -458,7 +461,7 @@ for (var i = 1; i <= galleries.length; i++) {
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="try-jenkins/" class="btn btn-xs btn-primary float-right" title="Try jenkins">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
+        <a href="try-jenkins/" class="btn btn-xs btn-primary float-right" title="Try Jenkins plugin">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../monitoring/custom/" class="btn btn-xs btn-primary" title="Custom monitoring"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
@@ -482,3 +485,27 @@ for (var i = 1; i <= galleries.length; i++) {
 
   </div>
 </div>
+
+<!-- Gallery -->
+<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
+
+<script>
+var galleries = $('div.docs-gallery');
+for (var i = 1; i <= galleries.length; i++) {
+    $().fancybox({
+    selector : '[data-fancybox="gallery-' + i + '"]',
+    infobar : true,
+    arrows : false,
+    loop: false,
+    protect: true,
+    transitionEffect: 'slide',
+    buttons : [
+        'close'
+    ],
+    clickOutside : 'close',
+    clickSlide   : 'close',
+  });
+}
+</script>

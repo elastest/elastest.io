@@ -1,6 +1,6 @@
 --- 
 layout: default 
-title: Elastest Documentation - Try jenkins 
+title: Elastest Documentation - Try Jenkins plugin 
 active: documentation 
 section-title: Documentation 
 section-icon: mdi mdi-content-copy 
@@ -16,7 +16,7 @@ section-icon: mdi mdi-content-copy
 	$( document).ready(function(){
 		$('#menu-list').show();
 	    $('li.subnav_drop').find('ul.subnav').hide();
-	       $( ".subnav" ).find( "li:contains('Try jenkins')" ).each(function(i,e){
+	       $( ".subnav" ).find( "li:contains('Try Jenkins plugin')" ).each(function(i,e){
 		  var currentElement = $(e);
 		  currentElement.parent().css({"display":"block","visibility":"visible"}); //css("background-color","blue");
 		  currentElement.css({"display":"block","visibility":"visible"});
@@ -30,7 +30,7 @@ section-icon: mdi mdi-content-copy
 						$('#doc-container').css('min-height', minHeight+'px');
 	});
 	   
-	$( ".wy-nav-content" ).find( "li:contains('Try jenkins')" ).css('color','red');
+	$( ".wy-nav-content" ).find( "li:contains('Try Jenkins plugin')" ).css('color','red');
  </script>
 
 <div id="doc-container" class="container text-justify">
@@ -123,6 +123,15 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
+        <a class="" href="../../testing/sut/">Software under Test</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
         <a class="" href="../../testing/parameterized-tests/">Parameterized tests</a>
         
     </li>
@@ -133,24 +142,6 @@ section-icon: mdi mdi-content-copy
 
     <li class="toctree-l1 ">
         <a class="" href="../../testing/multi-configuration-tjobs/">Multi-Configuration TJobs</a>
-        
-    </li>
-
-
-        
-             
-
-    <li class="toctree-l1 ">
-        <a class="" href="../../testing/environment-variables/">Environment variables</a>
-        
-    </li>
-
-
-        
-             
-
-    <li class="toctree-l1 ">
-        <a class="" href="../../testing/sut/">Software under Test</a>
         
     </li>
 
@@ -283,7 +274,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 current">
-        <a class="current" href="./">Try jenkins</a>
+        <a class="current" href="./">Try Jenkins plugin</a>
         
          
         
@@ -294,7 +285,16 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../advanced-example/">Advanced example</a>
+        <a class="" href="../pipeline/">Pipeline Jobs</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../freestyle/">Freestyle Jobs</a>
         
     </li>
 
@@ -334,6 +334,17 @@ section-icon: mdi mdi-content-copy
 </li>
 </ul>
     
+</ul></li>
+				
+			
+				
+					<li><ul> 
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testing/environment-variables/">Environment variables</a>
+        
+    </li>
+
 </ul></li>
 				
 			
@@ -389,126 +400,89 @@ section-icon: mdi mdi-content-copy
 					
 					  <div class="range range-xs-left">
 <div class="cell-xs-10 cell-lg-6 text-md-left inset-md-right-80 cell-lg-push-1 offset-top-50 offset-lg-top-0">
-<h2 id="content" class="h1">Try jenkins</h2>
+<h2 id="content" class="h1">Try Jenkins Plugin</h2>
 <div class="offset-top-30 offset-md-top-30">
 </div>
 </div>
 </div>
 
-<p>From a standard Jenkins Job, this plugin allows you:</p>
-<ul>
-<li>Send the logs generated during the build of a Job to ElasTest</li>
-<li>Request an EUS TSS that provides browsers on demand, which can be used during the build.</li>
-</ul>
-<h4 class="holder-subtitle link-top">Freestyle Job</h4>
-
-<p>To configure a Freestyle Job with ElasTest integrated, you will must select the <em>Integrate Jenkins with ElasTest</em> field. In this case, the  <em>EUS</em> field is not required that is why this example do not need a web browser. </p>
-<p>To complete this freestyle job, you must download the project inside of this <a href="https://github.com/elastest/demo-projects">repository</a> and introduce <code>cd unit-java-test;mvn test</code> in the <strong>Build command</strong>.</p>
-<p><br>
+<p>Once started ElasTest, you can make use of the Jenkins instance provided, which contains some example jobs loaded by default.</p>
+<p>If you did not start ElasTest with the <strong><code>--jenkins</code></strong> parameter (see how to <a href="../../try-elastest">start ElasTest</a> and its parameters), the Jenkins instance will not be available but you can start it manually from the ElasTest GUI navigating to the <strong><code>Jenkins</code></strong> section and clicking on the <strong><code>Start Jenkins</code></strong> button.</p>
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/jenkins/images/job.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/job.png"/></a>
-</div>
-<br></p>
-<h5 class="small-subtitle">Job result</h5>
-
-<p>After we run the Freestyle Job, we can check the results in both platforms, <strong>Jenkins</strong> and <strong>ElasTest</strong>. 
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-4" href="/docs/jenkins/images/jenkins_log.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/jenkins_log.png"/></a>
-    <a data-fancybox="gallery-4" href="/docs/jenkins/images/elastest_log.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/elastest_log.png"/></a>
-</div></p>
-<h4 class="holder-subtitle link-top">Pipeline</h4>
-
-<p>From a Pipeline this plugin allows:</p>
-<ul>
-<li>Send the Job’s logs to ElasTest.</li>
-<li>Use the browsers you need in the tests executed during a build. To do this, you must indicate that you want the provision of a EUS TSS, passing this requirement as a parameter in the plugin.</li>
-<li>
-<p>Send logs and metrics of a dockerized SUT from a Job's execution to ElasTest and the logs generated by the browsers used.</p>
-</li>
-<li>
-<p>Run a SUT using docker or docker-compose</p>
-</li>
-</ul>
-<h5 class="small-subtitle">Basics examples</h5>
-
-<h6 class="small-subtitle">Example 1</h6>
-
-<p>This code will be us useful, due to, adding it in the Pipeline script and executing the Pipeline, it will download the <a href="https://github.com/elastest/demo-projects"> demo-projects </a> repository and it will run the test.</p>
-<pre><code>node{ 
-    elastest() {
-        stage ('Executing Test') {
-            echo 'Print env variables'
-            sh 'env'
-            mvnHome = tool 'M3.3.9'
-            echo 'Cloning repository'
-            git 'https://github.com/elastest/demo-projects'
-            echo 'Run test'
-            sh &quot;cd ./unit-java-test/;'${mvnHome}/bin/mvn' test&quot;
-        }    
-    }
-}
-</code></pre>
-
-<p></p>
-
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-2" href="/docs/jenkins/images/pipeline.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/pipeline.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/jenkins/images/try/jenkins_section_not_started_marked.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/try/jenkins_section_not_started_marked.png"/></a>
 </div>
 
-<h6 class="small-subtitle">Example 1 result</h6>
+<p>Jenkins start progress will be shown:</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/jenkins/images/try/jenkins_section_starting.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/try/jenkins_section_starting.png"/></a>
+</div>
 
-<p>In the same way as in Freestyle Job, result can be checked in Jenkins and ElasTest.</p>
-<p></p>
+<p>Once started, a button to open Jenkins in a new browser tab and another button to show the access credentials will be shown (If you started Jenkins with ElasTest --jenkins parameter, these buttons will be displayed directly)</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/jenkins/images/try/jenkins_started_marked.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/try/jenkins_started_marked.png"/></a>
+</div>
+
+<h4 class="holder-subtitle link-top">Your first Job with Jenkins Plugin</h4>
+
+<h5 class="small-subtitle">1. Access Jenkins</h5>
+
+<p>Open Jenkins by clicking on the button and enter your login credentials, you will see some demo Jobs:</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/jenkins/images/try/jenkins_main_with_demos.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/try/jenkins_main_with_demos.png"/></a>
+</div>
+
+<h5 class="small-subtitle">2. Get into "jenkins-junit5-unit-test" Job</h5>
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-2" href="/docs/jenkins/images/pipeline_result.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/pipeline_result.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/jenkins/images/try/jenkins_junit_example_main.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/try/jenkins_junit_example_main.png"/></a>
+</div>
+
+<h5 class="small-subtitle">3. Click to "Build now" button</h5>
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/jenkins/images/try/jenkins_junit_example_main_build_btn.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/try/jenkins_junit_example_main_build_btn.png"/></a>
+</div>
+
+<h5 class="small-subtitle">4. Running view</h5>
+
+<p>After pressing the button, you will see the job running on Jenkins:</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/jenkins/images/try/jenkins_junit_example_running.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/try/jenkins_junit_example_running.png"/></a>
+</div>
+
+<p>Entering the build page, you will see the Open in ElasTest button, where you can see the execution page in ElasTest (If the button does not appear refresh the page, it may take a while).</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/jenkins/images/try/junit5_unit_test_build_et_icon.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/try/junit5_unit_test_build_et_icon.png"/></a>
+        <a data-fancybox="gallery-1" href="/docs/jenkins/images/try/elastest_junit_example_running.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/try/elastest_junit_example_running.png"/></a>
+</div>
+
+<p>ElasTest will have created a project called <strong><code>Jenkins Examples</code></strong> in <strong>Projects section</strong>, that will contain a <a href="../../#tjob">TJob</a> with the same name as Jenkins Job (jenkins-junit5-unit-test).</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/jenkins/images/try/elastest_jenkins_project.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/try/elastest_jenkins_project.png"/></a>
+</div>
+
+<p>Navigating to this TJob you can see the current execution:</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/jenkins/images/try/elastest_junit_example_running.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/try/elastest_junit_example_running.png"/></a>
+</div>
+
+<h5 class="small-subtitle">5. Results view</h5>
+
+<p>Once the execution is complete, you can view it in both Jenkins and ElasTest</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/jenkins/images/try/jenkins_junit_example_end.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/try/jenkins_junit_example_end.png"/></a>
 </div>
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-2" href="/docs/jenkins/images/pipeline_result_2.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/pipeline_result_2.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/jenkins/images/try/elastest_junit_example_end.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/try/elastest_junit_example_end.png"/></a>
 </div>
 
-<h6 class="small-subtitle">Example 2</h6>
-
-<p>We can execute this code in another Pipeline. The difference with the previous example is that in this case, we are using the EUS service adding <code>tss: ['EUS']</code>. This example will use a web browser to do a little test on it.</p>
-<pre><code>node{
-    elastest(tss: ['EUS']) {
-        stage ('Executing Test') {
-            echo 'Print env variables'
-            sh 'env'
-            echo 'Set up test environment'
-            mvnHome = tool 'M3.3.9'
-            echo 'Cloning repository'
-            git 'https://github.com/elastest/demo-projects'
-            echo 'Run test'
-            sh &quot;cd ./simple-web-java-test/;'${mvnHome}/bin/mvn' test&quot;
-        }        
-    }
-}
-</code></pre>
-
-<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
-
-<p><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script></p>
-<script>
-var galleries = $('div.docs-gallery');
-for (var i = 1; i <= galleries.length; i++) {
-    $().fancybox({
-    selector : '[data-fancybox="gallery-' + i + '"]',
-    infobar : true,
-    arrows : false,
-    loop: false,
-    protect: true,
-    transitionEffect: 'slide',
-    buttons : [
-        'close'
-    ],
-    clickOutside : 'close',
-    clickSlide   : 'close',
-  });
-}
-</script>
+<p>As can be seen in the last image, ElasTest shows different information, such as <strong>test results</strong> or <strong>logs</strong>. You can also see a card of metrics (All Metrics), but in this particular test is not sent any so it will appear empty.</p>
+<p>You can also see the logs of both the entire execution and each of the test cases in <a href="../../log-analyzer">LogAnalyzer</a> by clicking on the corresponding buttons:</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/jenkins/images/try/elastest_junit_example_loganalyzer.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/try/elastest_junit_example_loganalyzer.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/jenkins/images/try/elastest_junit_example_testcase_loganalyzer.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/try/elastest_junit_example_testcase_loganalyzer.png"/></a>
+</div>
 					
 				      </div>
 				    </div>
@@ -517,7 +491,7 @@ for (var i = 1; i <= galleries.length; i++) {
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../advanced-example/" class="btn btn-xs btn-primary float-right" title="Advanced example">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../pipeline/" class="btn btn-xs btn-primary float-right" title="Pipeline Jobs">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../" class="btn btn-xs btn-primary" title="Jenkins integration"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
@@ -541,3 +515,27 @@ for (var i = 1; i <= galleries.length; i++) {
 
   </div>
 </div>
+
+<!-- Gallery -->
+<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
+
+<script>
+var galleries = $('div.docs-gallery');
+for (var i = 1; i <= galleries.length; i++) {
+    $().fancybox({
+    selector : '[data-fancybox="gallery-' + i + '"]',
+    infobar : true,
+    arrows : false,
+    loop: false,
+    protect: true,
+    transitionEffect: 'slide',
+    buttons : [
+        'close'
+    ],
+    clickOutside : 'close',
+    clickSlide   : 'close',
+  });
+}
+</script>

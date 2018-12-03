@@ -123,6 +123,15 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
+        <a class="" href="../sut/">Software under Test</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
         <a class="" href="../parameterized-tests/">Parameterized tests</a>
         
     </li>
@@ -133,26 +142,6 @@ section-icon: mdi mdi-content-copy
 
     <li class="toctree-l1 ">
         <a class="" href="../multi-configuration-tjobs/">Multi-Configuration TJobs</a>
-        
-    </li>
-
-
-        
-             
-
-    <li class="toctree-l1 current">
-        <a class="current" href="./">Environment variables</a>
-        
-         
-        
-    </li>
-
-
-        
-             
-
-    <li class="toctree-l1 ">
-        <a class="" href="../sut/">Software under Test</a>
         
     </li>
 
@@ -285,7 +274,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../../jenkins/try-jenkins/">Try jenkins</a>
+        <a class="" href="../../jenkins/try-jenkins/">Try Jenkins plugin</a>
         
     </li>
 
@@ -294,7 +283,16 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../../jenkins/advanced-example/">Advanced example</a>
+        <a class="" href="../../jenkins/pipeline/">Pipeline Jobs</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../jenkins/freestyle/">Freestyle Jobs</a>
         
     </li>
 
@@ -334,6 +332,19 @@ section-icon: mdi mdi-content-copy
 </li>
 </ul>
     
+</ul></li>
+				
+			
+				
+					<li><ul> 
+
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Environment variables</a>
+        
+         
+        
+    </li>
+
 </ul></li>
 				
 			
@@ -414,6 +425,20 @@ section-icon: mdi mdi-content-copy
 <td>TJob</td>
 </tr>
 <tr>
+<td><strong>ET_SUT_PORT</strong></td>
+<td>Port of th SuT. Can be used inside the TJobs to connect to the SuT</td>
+<td>"8080"</td>
+<td>There's a SuT configured for the TJob</td>
+<td>TJob</td>
+</tr>
+<tr>
+<td><strong>ET_SUT_PROTOCOL</strong></td>
+<td>Protocol of th SuT. Can be used inside the TJobs to connect to the SuT</td>
+<td>"http"</td>
+<td>There's a SuT configured for the TJob</td>
+<td>TJob</td>
+</tr>
+<tr>
 <td><strong>ET_EUS_API</strong></td>
 <td>HTTP endpoint to launch remote web drivers from the TJobs</td>
 <td>"http://172.18.0.14:8040/eus/v1/"</td>
@@ -474,10 +499,10 @@ section-icon: mdi mdi-content-copy
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../sut/" class="btn btn-xs btn-primary float-right" title="Software under Test">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../../releases/" class="btn btn-xs btn-primary float-right" title="Releases">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../multi-configuration-tjobs/" class="btn btn-xs btn-primary" title="Multi-Configuration TJobs"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
+        <a href="../../deploying/aws/" class="btn btn-xs btn-primary" title="Amazon Web Services"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
       
     </div>
   
@@ -498,3 +523,27 @@ section-icon: mdi mdi-content-copy
 
   </div>
 </div>
+
+<!-- Gallery -->
+<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
+
+<script>
+var galleries = $('div.docs-gallery');
+for (var i = 1; i <= galleries.length; i++) {
+    $().fancybox({
+    selector : '[data-fancybox="gallery-' + i + '"]',
+    infobar : true,
+    arrows : false,
+    loop: false,
+    protect: true,
+    transitionEffect: 'slide',
+    buttons : [
+        'close'
+    ],
+    clickOutside : 'close',
+    clickSlide   : 'close',
+  });
+}
+</script>

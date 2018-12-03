@@ -123,6 +123,15 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
+        <a class="" href="../../testing/sut/">Software under Test</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
         <a class="" href="../../testing/parameterized-tests/">Parameterized tests</a>
         
     </li>
@@ -133,24 +142,6 @@ section-icon: mdi mdi-content-copy
 
     <li class="toctree-l1 ">
         <a class="" href="../../testing/multi-configuration-tjobs/">Multi-Configuration TJobs</a>
-        
-    </li>
-
-
-        
-             
-
-    <li class="toctree-l1 ">
-        <a class="" href="../../testing/environment-variables/">Environment variables</a>
-        
-    </li>
-
-
-        
-             
-
-    <li class="toctree-l1 ">
-        <a class="" href="../../testing/sut/">Software under Test</a>
         
     </li>
 
@@ -283,7 +274,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../../jenkins/try-jenkins/">Try jenkins</a>
+        <a class="" href="../../jenkins/try-jenkins/">Try Jenkins plugin</a>
         
     </li>
 
@@ -292,7 +283,16 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../../jenkins/advanced-example/">Advanced example</a>
+        <a class="" href="../../jenkins/pipeline/">Pipeline Jobs</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../jenkins/freestyle/">Freestyle Jobs</a>
         
     </li>
 
@@ -334,6 +334,17 @@ section-icon: mdi mdi-content-copy
 </li>
 </ul>
     
+</ul></li>
+				
+			
+				
+					<li><ul> 
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testing/environment-variables/">Environment variables</a>
+        
+    </li>
+
 </ul></li>
 				
 			
@@ -396,19 +407,19 @@ section-icon: mdi mdi-content-copy
 </div>
 
 <p>The easiest way to deploy ElasTest is by using our Amazon CloudFormation template. In a few steps by clicking a couple of buttons and filling a form you will have your ElasTest ready to go. If you don't have an AWS account you will need one (follow those <a href="http://docs.aws.amazon.com/AmazonSimpleDB/latest/DeveloperGuide/AboutAWSAccounts.html">steps</a> to get it).</p>
-<h5 class="small-subtitle">1) Go to <a href="https://eu-west-1.console.aws.amazon.com/cloudformation/">AWS CloudFormation dashboard</a> and create a new stack</h5>
+<h4 class="small-subtitle">1) Go to <a href="https://eu-west-1.console.aws.amazon.com/cloudformation/">AWS CloudFormation dashboard</a> and create a new stack</h4>
 
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-1" href="/docs/deploying/images/new_stack.png"><img class="img-responsive img-wellcome" src="/docs/deploying/images/new_stack.png"/></a>
 </div>
 
-<h5 class="small-subtitle">2) Select option "Choose a template" and use <a href="https://raw.githubusercontent.com/elastest/elastest-toolbox/master/AWS/cloud-formation-latest.json">this JSON file</a></h5>
+<h4 class="small-subtitle">2) Select option "Choose a template" and use <a href="https://raw.githubusercontent.com/elastest/elastest-toolbox/master/AWS/cloud-formation-latest.json">this JSON file</a></h4>
 
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-1" href="/docs/deploying/images/template.png"><img class="img-responsive img-wellcome" src="/docs/deploying/images/template.png"/></a>
 </div>
 
-<h5 id="step-3" class="small-subtitle">3) Complete the form shown on the next step with the following information</h5>
+<h4 id="step-3" class="small-subtitle">3) Complete the form shown on the next step with the following information</h4>
 
 <table>
 <thead>
@@ -466,7 +477,7 @@ section-icon: mdi mdi-content-copy
   <div class="cell-xs-10 cell-lg-11 warning-text"><p><i>If you need to use a specific DNS, you will have to start ElasTest manually</i></p></div>
 </div>
 
-<h5 class="small-subtitle">4) Deploy your stack</h5>
+<h4 class="small-subtitle">4) Deploy your stack</h4>
 
 <p>No more configuration is needed. Click on <strong>Next</strong> -&gt; <strong>Next</strong> -&gt; <strong>Create</strong></p>
 <p>Your stack status will show <em>CREATE_IN_PROGRESS</em>. Wait a few minutes until it shows <em>CREATE_COMPLETE</em>. Then you can check <em>Output</em> tab to see the URL where you can access your ElasTest dashboard.</p>
@@ -475,31 +486,9 @@ section-icon: mdi mdi-content-copy
 </div>
 
 <p>That's all. When you connect to your ElasTest URL, enter the username and password you declared in the <a href="#step-3">third step</a>. <em>Happy testing!</em></p>
-<h4 class="holder-subtitle link-top">ElasTest data</h4>
+<h3 class="holder-subtitle link-top">ElasTest data</h3>
 
 <p>You can see the Elastest data information <a href="/docs/deploying/ubuntu/#elastestData">here</a></p>
-<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
-
-<p><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script></p>
-<script>
-var galleries = $('div.docs-gallery');
-for (var i = 1; i <= galleries.length; i++) {
-    $().fancybox({
-    selector : '[data-fancybox="gallery-' + i + '"]',
-    infobar : true,
-    arrows : false,
-    loop: true,
-    protect: true,
-    transitionEffect: 'slide',
-    buttons : [
-        'close'
-    ],
-    clickOutside : 'close',
-    clickSlide   : 'close',
-  });
-}
-</script>
 					
 				      </div>
 				    </div>
@@ -508,7 +497,7 @@ for (var i = 1; i <= galleries.length; i++) {
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../../releases/" class="btn btn-xs btn-primary float-right" title="Releases">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../../testing/environment-variables/" class="btn btn-xs btn-primary float-right" title="Environment variables">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../ubuntu/" class="btn btn-xs btn-primary" title="Linux Server"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
@@ -532,3 +521,27 @@ for (var i = 1; i <= galleries.length; i++) {
 
   </div>
 </div>
+
+<!-- Gallery -->
+<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
+
+<script>
+var galleries = $('div.docs-gallery');
+for (var i = 1; i <= galleries.length; i++) {
+    $().fancybox({
+    selector : '[data-fancybox="gallery-' + i + '"]',
+    infobar : true,
+    arrows : false,
+    loop: false,
+    protect: true,
+    transitionEffect: 'slide',
+    buttons : [
+        'close'
+    ],
+    clickOutside : 'close',
+    clickSlide   : 'close',
+  });
+}
+</script>
