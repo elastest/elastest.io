@@ -406,6 +406,30 @@ section-icon: mdi mdi-content-copy
 
 <!-- ************************* -->
 
+<!-- ****** 1.0.0-beta5 ****** -->
+
+<!-- ************************* -->
+
+<h3 id="1.0.0-beta5" class="small-subtitle">1.0.0-beta5</h3>
+
+<h4 class="smaller-subtitle"20/12/2018</h4>
+
+<h5 class="smaller-subtitle">Features & Improvements</h5>
+
+<ul>
+<li>Now you can configure a Sut with parameters in <a target="_blank" href="/docs/jenkins">ElasTest Jenkins Plugin</a>.</li>
+<li>Now when you specify the use of a <a target="_blank" href="/docs/testing/sut/#outsideExternalES">Sut with external Elasticsearch</a>, you can also set the <em><code>path</code></em> in which the service is located, if necessary.</li>
+<li>A new <a target="_blank" href="/docs/testing/environment-variables/">environment variable</a> has been added to the TJob execution containers: <strong><code>ET_NETWORK</code></strong>.</li>
+<li><strong>Containers</strong> now contain <strong><code>labels</code></strong> with information to be used by ElasTest.</li>
+</ul>
+<h5 class="smaller-subtitle">Bug Fixes</h5>
+
+<ul>
+<li>Fixed the bug that appeared randomly when running a TJob with EUS</li>
+<li><strong>ET_SUT_CONTAINER_NAME</strong> <a target="_blank" href="/docs/testing/environment-variables/">environment variable</a> was not being sent to <a target="_blank" href="/docs/testing/sut/#sutInNewContainer">Sut in new container</a>.</li>
+</ul>
+<!-- ************************* -->
+
 <!-- ****** 1.0.0-beta4 ****** -->
 
 <!-- ************************* -->
@@ -419,7 +443,7 @@ section-icon: mdi mdi-content-copy
 <ul>
 <li>We've made improvements to the <a target="_blank" href="/docs/">Documentation</a>.</li>
 <li>We have improved <a target="_blank" href="/docs/testing/unit/">example projects</a> and added new ones. The technologies used are <a target="_blank" href="https://junit.org/junit5/">Java JUnit5</a>, <a target="_blank" href="https://junit.org/junit4/">Java JUnit4</a>, <a target="_blank" href="https://www.python.org/">Python</a>, <a target="_blank" href="https://jasmine.github.io/">JS Jasmine</a>, <a target="_blank" href="http://www.protractortest.org/#/">JS Protractor</a>, <a target="_blank" href="">Java Karate</a>, <a target="_blank" href="https://docs.cucumber.io/">Java Cucumber</a> and <a target="_blank" href="https://gauge.org/">Java Gauge</a>.</li>
-<li>It is no longer necessary to specify the  <strong><code>--server-address=localhost</code></strong> when running on <a target="_blank" href="/docs/try-elastest/#forMac">MAC</a> or <a target="_blank" href="/docs/try-elastest/#forWindows">Windows</a> (In docker for Windows, in Docker toolbox <strong><code>--server-address=$(docker-machine ip)</code></strong> is still necessary).</li>
+<li>It is no longer necessary to specify the <strong><code>--server-address=localhost</code></strong> when running on <a target="_blank" href="/docs/try-elastest/#forMac">MAC</a> or <a target="_blank" href="/docs/try-elastest/#forWindows">Windows</a> (In docker for Windows, in Docker toolbox <strong><code>--server-address=$(docker-machine ip)</code></strong> is still necessary).</li>
 <li>All active live sessions are now shown in <a target="_blank" href="/docs/web-browsers/manual-browsers">Web Browsers section</a>.</li>
 <li>A <strong class="italicEtColor">button to restore the demo projects</strong> has been added on the project card.</li>
 <li><a target="_blank" href="/docs/jenkins">ElasTest Jenkins Plugin</a> has been updated to <strong class="italicEtColor">Java 8</strong>.</li>
