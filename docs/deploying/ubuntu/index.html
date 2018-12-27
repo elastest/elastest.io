@@ -413,6 +413,70 @@ section-icon: mdi mdi-content-copy
 <h3 class="holder-subtitle link-top">Accesing the instance</h3>
 
 <p>Depends on your infraestructure the access will be different. Please, refer to your system administrator to know how to grant access to the console.</p>
+<p>In order to Elastest to work properly, some ports must be open:</p>
+<table>
+<thead>
+<tr>
+<th>Port/s</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>37000</td>
+<td></td>
+</tr>
+<tr>
+<td>37443</td>
+<td></td>
+</tr>
+<tr>
+<td>5044</td>
+<td>Logstash</td>
+</tr>
+<tr>
+<td>22</td>
+<td>SSH</td>
+</tr>
+<tr>
+<td>32768 - 61000</td>
+<td>ElastestRange</td>
+</tr>
+<tr>
+<td>8180</td>
+<td></td>
+</tr>
+<tr>
+<td>5001</td>
+<td></td>
+</tr>
+<tr>
+<td>2376</td>
+<td></td>
+</tr>
+<tr>
+<td>8001</td>
+<td></td>
+</tr>
+<tr>
+<td>37006</td>
+<td></td>
+</tr>
+<tr>
+<td>8082</td>
+<td></td>
+</tr>
+<tr>
+<td>3000</td>
+<td></td>
+</tr>
+<tr>
+<td>8080</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note</strong>: All ports are TCP.</p>
 <h3 class="holder-subtitle link-top">Installing Docker</h3>
 
 <p>First of all, you'll need to install Docker, please, refer to the official documentation to install onto your platform:</p>
