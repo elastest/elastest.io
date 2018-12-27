@@ -413,7 +413,7 @@ section-icon: mdi mdi-content-copy
     <a data-fancybox="gallery-1" href="/docs/deploying/images/new_stack.png"><img class="img-responsive img-wellcome" src="/docs/deploying/images/new_stack.png"/></a>
 </div>
 
-<h4 class="small-subtitle">2) Select option "Choose a template" and use <a href="https://raw.githubusercontent.com/elastest/elastest-toolbox/master/AWS/cloud-formation-latest.json">this JSON file</a></h4>
+<h4 class="small-subtitle">2) Select option "Choose a template" and use <a href="https://raw.githubusercontent.com/elastest/elastest-toolbox/master/AWS/cloud-formation-latest.yaml">this YAML file</a></h4>
 
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-1" href="/docs/deploying/images/template.png"><img class="img-responsive img-wellcome" src="/docs/deploying/images/template.png"/></a>
@@ -465,6 +465,16 @@ section-icon: mdi mdi-content-copy
 <td>Recommended at least <em>4</em></td>
 <td>The amount of swap memory in GB</td>
 </tr>
+<tr>
+<td>WantJenkins</td>
+<td>true</td>
+<td>Choose wether you want to deploy Jenkins CI with Elastest</td>
+</tr>
+<tr>
+<td>WantTestLink</td>
+<td>true</td>
+<td>Choose wether you want to deploy TestLink Project Manager with Elastest</td>
+</tr>
 </tbody>
 </table>
 <p><br></p>
@@ -480,7 +490,7 @@ section-icon: mdi mdi-content-copy
 <h4 class="small-subtitle">4) Deploy your stack</h4>
 
 <p>No more configuration is needed. Click on <strong>Next</strong> -&gt; <strong>Next</strong> -&gt; <strong>Create</strong></p>
-<p>Your stack status will show <em>CREATE_IN_PROGRESS</em>. Wait a few minutes until it shows <em>CREATE_COMPLETE</em>. Then you can check <em>Output</em> tab to see the URL where you can access your ElasTest dashboard.</p>
+<p>Your stack status will show <em>CREATE_IN_PROGRESS</em>. Wait a few minutes (between 20 ~ 30) until it shows <em>CREATE_COMPLETE</em>. Then you can check <em>Output</em> tab to see the URL where you can access your ElasTest dashboard.</p>
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-1" href="/docs/deploying/images/output_tab.png"><img class="img-responsive img-wellcome" src="/docs/deploying/images/output_tab.png"/></a>
 </div>
