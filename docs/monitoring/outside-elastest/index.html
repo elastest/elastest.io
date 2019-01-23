@@ -427,7 +427,7 @@ section-icon: mdi mdi-content-copy
     <a data-fancybox="gallery-1" href="/docs/monitoring/images/new_SuT_manual_instrumentation_1.png"><img class="img-responsive img-wellcome" src="/docs/monitoring/images/new_SuT_manual_instrumentation_1.png"/></a>
 </div>
 
-<p>Once you click on <em>Save and get monitoring details</em>  button, the following configuration parameters will be shown:</p>
+<p>Once you click on <em>Save and get monitoring details</em> button, the following configuration parameters will be shown:</p>
 <ul>
 <li><strong>Logstash Container IP</strong>: The Logstash Container IP.</li>
 <li><strong>Logstash Beats Host</strong>: The public host (IP or FQDN) in which Logstash is located for send Beats traces (along with the Beats Port).</li>
@@ -468,7 +468,15 @@ sudo dpkg -i filebeat-6.1.0-amd64.deb</code></pre>
 
   <p>Take a look to <a href="https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-configuration.html">Step 2 of Filebeat documentation</a>. In our machine the Filebeat configuration file is <code>/etc/filebeat/filebeat.yml</code>. The predefined default value for Filebeat is to gather all logs inside "/var/log/" folder:</p>
 
+  <h6 class="small-subtitle">Filebeat 6.2 version or lower</h6>
   <pre><code class="yml hljs">filebeat.prospectors:
+- type: log
+  enabled: true
+  paths:
+    - /var/log/*.log</code></pre>
+
+  <h6 class="small-subtitle">Filebeat 6.3 version or higher</h6>
+  <pre><code class="yml hljs">filebeat.inputs:
 - type: log
   enabled: true
   paths:
@@ -501,8 +509,9 @@ fields:
   </ul>
 
   <p>So the final look of <code>filebeat.yml</code> in its simplest form is:
-    <pre><code class="yml hljs">#====== "filebeat.yml" to send to ElasTest the logs generated on "/path/to/MY_CUSTOM_LOG.log" ======
 
+<h6 class="small-subtitle">Filebeat 6.2 version or lower</h6>
+<pre><code class="yml hljs">#====== "filebeat.yml" to send to ElasTest the logs generated on "/path/to/MY_CUSTOM_LOG.log" ======
 filebeat.prospectors:
 - type: log
   enabled: true
@@ -510,14 +519,33 @@ filebeat.prospectors:
     - /path/to/MY_CUSTOM_LOG.log
 
 output.logstash:
-  hosts: ["LOGSTASH_IP:LOGSTASH_BEATS_PORT"]
+hosts: ["LOGSTASH_IP:LOGSTASH_BEATS_PORT"]
 
 fields_under_root: true
 fields:
-  exec: XX
-  component: sut
-  stream: YY
+exec: XX
+component: sut
+stream: YY
 </code></pre>
+
+<h6 class="small-subtitle">Filebeat 6.3 version or higher</h6>
+
+<pre><code class="yml hljs">#====== "filebeat.yml" to send to ElasTest the logs generated on "/path/to/MY_CUSTOM_LOG.log" ======
+filebeat.inputs:
+- type: log
+  enabled: true
+  paths:
+    - /path/to/MY_CUSTOM_LOG.log
+  fields_under_root: true
+  fields:
+    exec: XX
+    component: sut
+    stream: YY
+
+output.logstash:
+  hosts: ["LOGSTASH_IP:LOGSTASH_BEATS_PORT"]
+</code></pre>
+
   </p>
 
   <p>Whenever you are happy with your Filebeat configuration, run the service:
@@ -600,24 +628,26 @@ fields:
     <pre><code class="yml hljs">#====== "metricbeat.yml" to send to ElasTest the cpu usage of our server ======
 
 metricbeat.modules:
-- module: system
-  metricsets:
-    - cpu
-  enabled: true
-  period: 1s
-  processes: ['.*']
-  cpu_ticks: false
+
+-   module: system
+    metricsets:
+    -   cpu
+        enabled: true
+        period: 1s
+        processes: ['.*']
+        cpu_ticks: false
 
 output.logstash:
-  hosts: ["YOUR_SUT_IP:5044"]
+hosts: ["YOUR_SUT_IP:5044"]
 
 fields_under_root: true
 fields:
-  exec: XX
-  component: sut
-  stream: YY
-  stream_type: composed_metrics
+exec: XX
+component: sut
+stream: YY
+stream_type: composed_metrics
 </code></pre>
+
   </p>
 
   <p>Whenever you are happy with your Filebeat configuration, run the service:

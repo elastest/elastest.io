@@ -468,7 +468,11 @@ The experimental modes are described below.</p>
 <ul>
 <li><strong><a href="https://github.com/elastest/elastest-platform-manager/blob/master/docs/index.md">ElasTest Platform Manager (EPM).</a></strong> A very interesting component that makes the interface between the ElasTest testing components (e.g. ElasTest Test Manager, TSS, etc.) and the cloud infrastructure where ElasTest is deployed. Hence, this Platform Manager must abstract the cloud services so that ElasTest becomes fully agnostic to them and provide this abstraction via Software Development Toolkits (SDK) or REST APIs to the northbound consumers (i.e. ElasTest Test Manager).</li>
 </ul>
-<p>To start ElasTest in Experimental mode execute this command from the shell:</p>
+<p>To start ElasTest in Experimental mode it is necessary to first execute the following command to increase the <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/vm-max-map-count.html">virtual memory limit for Elasticsearch</a>:</p>
+<pre><code class="text">sysctl -w vm.max_map_count=262144
+</code></pre>
+
+<p>Once this is done, you can start ElasTest with the following command from the shell:</p>
 <pre><code class="text">docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock --rm elastest/platform:dev start -m=experimental
 </code></pre>
 					

@@ -418,9 +418,17 @@ section-icon: mdi mdi-content-copy
 
 Preload images finished.
 
-Starting ElasTest Platform (normal mode)...
+Starting ElasTest Platform latest (normal Mode)...
+
+Creating volume &quot;elastest_platform-services&quot; with local driver
+Creating elastest_platform-services_1 ... done
+Creating elastest_edm-mysql_1         ... done
+Creating elastest_etm-filebeat_1      ... done
+Creating elastest_etm_1               ... done
+Creating elastest_etm-proxy_1         ... done
 
 ElasTest services are starting. This will likely take some time. The ElasTest URL will be shown when ready.
+
 
 ElasTest Platform is available at http://localhost:37000
 
@@ -430,10 +438,6 @@ Press Ctrl+C to stop.
 <p>You can then open in your web browser the shown URL to access to ElasTest dashboard.</p>
 <p>To stop ElasTest, press <strong><code>Ctrl+C</code></strong> in the shell used to start it. Now you can try any of the test projects available by default when you start ElasTest. You can start with <a href="../your-first-test">Unit Tests</a> project.</p>
 <h4 class="small-subtitle">Options</h4>
-
-<p>The <strong><code>--logs</code></strong> option allows you to show all the containers logs.</p>
-<pre><code>docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --logs
-</code></pre>
 
 <p>You can add <strong><code>--testlink</code></strong> if you want to start the TestLink integrated in ElasTest and enable access to it. If you do not add this option, you can start it later manually from the ElasTest GUI.</p>
 <pre><code class="text">docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --testlink
@@ -483,9 +487,17 @@ Once you have docker installed, execute the following command to start ElasTest:
 
 Preload images finished.
 
-Starting ElasTest Platform (normal mode)...
+Starting ElasTest Platform latest (normal Mode)...
+
+Creating volume &quot;elastest_platform-services&quot; with local driver
+Creating elastest_platform-services_1 ... done
+Creating elastest_edm-mysql_1         ... done
+Creating elastest_etm-filebeat_1      ... done
+Creating elastest_etm_1               ... done
+Creating elastest_etm-proxy_1         ... done
 
 ElasTest services are starting. This will likely take some time. The ElasTest URL will be shown when ready.
+
 
 ElasTest Platform is available at http://localhost:37000
 
@@ -495,10 +507,6 @@ Press Ctrl+C to stop.
 <p>You can then open in your web browser the shown URL to access to ElasTest dashboard.</p>
 <p>To stop ElasTest, press <strong><code>Ctrl+C</code></strong> in the shell used to start it. Now you can try any of the test projects available by default when you start ElasTest. You can start with <a href="../your-first-test">Unit Tests</a> project.</p>
 <h4 class="small-subtitle">Options</h4>
-
-<p>The <strong><code>--logs</code></strong> option allows you to show all the containers logs.</p>
-<pre><code>docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --logs
-</code></pre>
 
 <p>You can add <strong><code>--testlink</code></strong> if you want to start the TestLink integrated in ElasTest and enable access to it. If you do not add this option, you can start it later manually from the ElasTest GUI.</p>
 <pre><code class="text">docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --testlink
@@ -563,9 +571,17 @@ Press Ctrl+C to stop.
 
 Preload images finished.
 
-Starting ElasTest Platform (normal mode)...
+Starting ElasTest Platform latest (normal Mode)...
+
+Creating volume &quot;elastest_platform-services&quot; with local driver
+Creating elastest_platform-services_1 ... done
+Creating elastest_edm-mysql_1         ... done
+Creating elastest_etm-filebeat_1      ... done
+Creating elastest_etm_1               ... done
+Creating elastest_etm-proxy_1         ... done
 
 ElasTest services are starting. This will likely take some time. The ElasTest URL will be shown when ready.
+
 
 ElasTest Platform is available at http://localhost:37000
 
@@ -575,10 +591,6 @@ Press Ctrl+C to stop.
 <p>You can then open in your web browser the shown URL to access to ElasTest dashboard.</p>
 <p>To stop ElasTest, press <strong><code>Ctrl+C</code></strong> in the shell used to start it. Now you can try any of the test projects available by default when you start ElasTest. You can start with <a href="../your-first-test">Unit Tests</a> project.</p>
 <h4 class="small-subtitle">Options</h4>
-
-<p>The <strong><code>--logs</code></strong> option allows you to show all the containers logs.</p>
-<pre><code>docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --logs
-</code></pre>
 
 <p>You can add <strong><code>--testlink</code></strong> if you want to start the TestLink integrated in ElasTest and enable access to it. If you do not add this option, you can start it later manually from the ElasTest GUI.</p>
 <pre><code class="text">docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --testlink
@@ -652,8 +664,8 @@ The version of ElasTest that you want to update is already running and it is  ne
 <p>In order to clean the ElasTest installation, the old images associated with the previous version will be removed from the system after the update process has finished.</p>
 <h3 class="holder-subtitle link-top">Using a specific ElasTest version</h3>
 
-<p>To use a specific ElasTest version available, only need to set it as elastest/platform tag, that is, adding <strong><code>:version</code></strong>. For example, to use the <strong><code>1.0.0-beta2</code></strong> version you would have to execute the following command</p>
-<pre><code class="text">docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform:1.0.0-beta2 start
+<p>To use a specific ElasTest version available, only need to set it as elastest/platform tag, that is, adding <strong><code>:version</code></strong>. For example, to use the <strong><code>1.0.0-beta6</code></strong> version you would have to execute the following command</p>
+<pre><code class="text">docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform:1.0.0-beta6 start
 </code></pre>
 
 <h3 class="holder-subtitle link-top">ElasTest data</h3>

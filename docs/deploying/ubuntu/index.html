@@ -468,11 +468,21 @@ section-icon: mdi mdi-content-copy
 
 Preload images finished.
 
-Starting ElasTest Platform (normal mode)...
+Starting ElasTest Platform latest (normal Mode)...
+
+Creating volume &quot;elastest_platform-services&quot; with local driver
+Creating elastest_platform-services_1 ... done
+Creating elastest_edm-mysql_1         ... done
+Creating elastest_etm-filebeat_1      ... done
+Creating elastest_etm-jenkins_1       ... done
+Creating elastest_etm-testlink_1      ... done
+Creating elastest_etm_1               ... done
+Creating elastest_etm-proxy_1         ... done
 
 ElasTest services are starting. This will likely take some time. The ElasTest URL will be shown when ready.
 
-ElasTest Platform is available at http://X.Y.Z.W:37000
+
+ElasTest Platform is available at http://W.X.Y.Z:37000
 
 Press Ctrl+C to stop.
 </code></pre>
@@ -492,10 +502,6 @@ Press Ctrl+C to stop.
 
 <p>You can set an access username and password using the options <strong><code>--user</code></strong> and <strong><code>--pass</code></strong> (or <strong><code>-u</code></strong> and <strong><code>-p</code></strong>)</p>
 <pre><code>docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --user=elastest --password=elastest
-</code></pre>
-
-<p>The <strong><code>--logs</code></strong> option allows you to show all the containers logs.</p>
-<pre><code>docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --logs
 </code></pre>
 
 <p>You can add <strong><code>--testlink</code></strong> if you want to start the TestLink integrated in ElasTest and enable access to it. If you do not add this option, you can start it later manually from the ElasTest GUI.</p>
