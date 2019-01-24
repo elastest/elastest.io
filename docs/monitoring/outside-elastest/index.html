@@ -492,7 +492,7 @@ sudo dpkg -i filebeat-6.1.0-amd64.deb</code></pre>
 output.logstash:
   hosts: ["127.0.0.1:5044"]</code></pre>
 
-  <p>Where <strong>127.0.0.1</strong> has to be changed to the value of <strong>Logstash IP</strong> and <strong>5044</strong> to the value of <strong>Logstash Beats Port</strong>. To include the <strong>Exec ID</strong> value, it is necessary to add custom fields in config file. Those fields are:</p>
+  <p>Where <strong>127.0.0.1</strong> has to be changed to the value of <strong>Logstash Beats Host</strong> and <strong>5044</strong> to the value of <strong>Logstash Beats Port</strong>. To include the <strong>Exec ID</strong> value, it is necessary to add custom fields in config file. Those fields are:</p>
 
   <pre><code class="yml hljs">fields_under_root: true
 fields:
@@ -606,7 +606,7 @@ sudo dpkg -i metricbeat-6.1.0-amd64.deb</code></pre>
 output.logstash:
   hosts: ["127.0.0.1:5044"]</code></pre>
 
-  <p>Where <strong>127.0.0.1</strong> has to be changed to the value of <strong>Logstash IP</strong> and <strong>5044</strong> to the value of <strong>Logstash Beats Port</strong>. To include the <strong>Exec ID</strong> value, it is necessary to add custom fields in config file. Those fields are:</p>
+  <p>Where <strong>127.0.0.1</strong> has to be changed to the value of <strong>Logstash Beats Host</strong> and <strong>5044</strong> to the value of <strong>Logstash Beats Port</strong>. To include the <strong>Exec ID</strong> value, it is necessary to add custom fields in config file. Those fields are:</p>
 
   <pre><code class="yml hljs">fields_under_root: true
 fields:
