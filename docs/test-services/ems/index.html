@@ -1,0 +1,597 @@
+--- 
+layout: default 
+title: Elastest Documentation - Monitoring Service (EMS) 
+active: documentation 
+section-title: Documentation 
+section-icon: mdi mdi-content-copy 
+---
+<script src="/js/jquery-3.1.1.min.js"></script>
+<script src="/js/float-panel.js"></script>
+
+<script type="text/javascript">
+	/* Import docs theme css */
+	$('head').append('<link rel="stylesheet" type="text/css" href="/css/theme_extra.css">');
+	
+
+	$( document).ready(function(){
+		$('#menu-list').show();
+	    $('li.subnav_drop').find('ul.subnav').hide();
+	       $( ".subnav" ).find( "li:contains('Monitoring Service (EMS)')" ).each(function(i,e){
+		  var currentElement = $(e);
+		  currentElement.parent().css({"display":"block","visibility":"visible"}); //css("background-color","blue");
+		  currentElement.css({"display":"block","visibility":"visible"});
+	       });
+	    $('li.subnav_drop').click(function(i,e) {  
+	      $('li.subnav_drop').not(this).find('ul.subnav').hide();
+	      $(this).find('ul.subnav').toggle();
+	    }); 
+
+	    var minHeight = $('#float-panel').outerHeight() + 100;	
+						$('#doc-container').css('min-height', minHeight+'px');
+	});
+	   
+	$( ".wy-nav-content" ).find( "li:contains('Monitoring Service (EMS)')" ).css('color','red');
+ </script>
+
+<div id="doc-container" class="container text-justify">
+  <div class="holder range"> 
+        <div id="float-panel" class="wy-grid-for-nav cell-xs-3 cell-md-3 cell-lg-2 float-panel" data-top="56">
+
+          
+          <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+            <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="main navigation">
+		<div id="site-menu-title">
+			<h3 class="h5">Explore docs</h3>
+			<hr class="divider hr-lg-left-0 bg-orange">    
+		</div>
+		<ul id="menu-list" class="current" hidden>
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Getting started</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../..">What is ElasTest?</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../try-elastest/">Try ElasTest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../your-first-test/">Your first test with ElasTest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../support/">Get support from ElasTest team</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Testing with ElasTest</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testing/unit/">Run unit tests</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testing/e2e-rest/">Run end2end tests</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testing/sut/">Software under Test</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testing/parameterized-tests/">Parameterized tests</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testing/multi-configuration-tjobs/">Multi-Configuration TJobs</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Web Browsers</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../web-browsers/manual-browsers/">Launching Web Browsers on ElasTest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../web-browsers/e2e-browser/">Run en2end tests with Web Browsers</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../web-browsers/outside-testing/">Testing with Web Browsers from outside ElasTest</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../log-analyzer/">Log Analyzer</a>
+        
+    </li>
+
+</ul></li>
+				
+			
+				
+					<li><ul> 
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testlink/">TestLink with ElasTest</a>
+        
+    </li>
+
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Test Monitoring</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../monitoring/">Test Monitoring</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../monitoring/outside-elastest/">Monitoring outside Elastest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../monitoring/custom/">Custom monitoring</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Jenkins</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../jenkins/">Jenkins integration</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../jenkins/try-jenkins/">Try Jenkins plugin</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../jenkins/pipeline/">Pipeline Jobs</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../jenkins/freestyle/">Freestyle Jobs</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Test Services</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../introduction/">Introduction</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../ebs/">Big Data Service (EBS)</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../ece/">Cost Engine (ECE)</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../eds/">Device Emulator Service (EDS)</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Monitoring Service (EMS)</a>
+        
+         
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../ess/">Security Service (ESS)</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testing/environment-variables/">Environment variables</a>
+        
+    </li>
+
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Deploying ElasTest</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../deploying/ubuntu/">Linux Server</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../deploying/aws/">Amazon Web Services</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../elastest-monitoring/">ElasTest Monitoring</a>
+        
+    </li>
+
+</ul></li>
+				
+			
+				
+					<li><ul> 
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../releases/">Releases</a>
+        
+    </li>
+
+</ul></li>
+				
+			
+				
+					<li><ul> 
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../roadmap/">Roadmap</a>
+        
+    </li>
+
+</ul></li>
+				
+			
+		</ul>
+            </div>
+            &nbsp;
+          </nav>
+        </div>
+
+	<section class="section-sm-41">
+		<div class="shell">
+		    <div class="range range-xs-right">
+		        <div class="cell-xs-10 cell-sm-8 cell-md-9 cell-lg-10 cell-xl-12 text-md-left cell-lg-push-1 offset-lg-top-0">
+			  
+				<div class="wy-nav-content">
+				  <div class="rst-content">
+				   
+				    <div role="main">
+				      <div class="section">
+					
+					  <div class="range range-xs-left">
+<div class="cell-xs-10 cell-lg-6 text-md-left inset-md-right-80 cell-lg-push-1 offset-top-50 offset-lg-top-0">
+<h2 id="content" class="h1">ElasTest Monitoring Service (EMS)</h2>
+<div class="offset-top-30 offset-md-top-30">
+</div>
+</div>
+</div>
+
+<p>The ElasTest Monitoring Service (EMS) provides a monitoring infrastructure suitable for inspecting executions of a System Under Test (hereinafter "SuT") and the ElasTest platform itself online.
+This service allows the user and the platform to deploy machines able to process events in real time and generate complex, higher level events from them. 
+This can help to better understand what's happening, detect anomalies, correlate issues, and even stress the tests automatically; all of which aims to maximize the chances of uncover bugs and their causes. </p>
+<h3 class="holder-subtitle link-top" id="options">How to use the EMS to ease test development in Elastest</h3>
+
+<p>To achieve its goal, the Elastest Monitoring Service provides an OpenAPI endpoint whose specification can be found at http://elastest.io/docs/api/ems.</p>
+<p>To enable the use of the EMS in a TJob, make sure to tick the corresponding checkbox in the TJob configuration:
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/test-services/images/ems/emscheckboxlayered.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ems/emscheckboxlayered.png"/></a>
+</div></p>
+<p>The EMS will then receive metrics from the machine running the SuT and the lines written by both the TJob and the SuT to the standard output as events.</p>
+<p>The host of the EMS is loaded into the environment variable <strong><code>ET_EMS_LSBEATS_HOST</code></strong> of the TJob, so the OpenAPI endpoint of the EMS is accessible by the TJob at the address <strong><code>${ET_EMS_LSBEATS_HOST}:8888</code></strong>.</p>
+<p>The TJob can use the endpoint of the EMS to deploy <em>Monitoring Artifacts</em>, which are sets of rules to correlate events and check if one or many facets of the test are behaving properly.</p>
+<p>You will find the methods to deploy, modify and undeploy Monitoring Artifacts listed and specified at http://elastest.io/docs/api/ems.
+The functioning and syntax of the Monitoring Artifacts is explained in the next section.</p>
+<h3 class="holder-subtitle link-top" id="options">EMS internals</h3>
+
+<p>Events in the EMS consist of a timestamp, a payload or content, and a set of channels stamps indicating the channels to which they belong.
+The Monitoring Artifacts can be separated into two main groups: the <em>Stampers</em> and the <em>Machines</em>.
+Events received by the EMS go through three stages:
+1. First, incoming events are stamped with new channels following the rules of the Stampers.
+2. Then, new events are created according to the deployed Machines.
+3. Finally, outgoing events are stamped with further channels following the rules of the same Stampers.</p>
+<h4 class="small-subtitle">Stampers</h4>
+
+<p>Stampers are accessed through the endpoint <strong><code>${ET_EMS_LSBEATS_HOST}:8888/stamper</code></strong>.
+To deploy a new stamper, we need to execute a <strong><code>POST</code></strong> method to this endpoint, specifying the version of the language used. The only supported version as of today is <strong><code>tag0.1</code></strong>, which makes the URI <strong><code>${ET_EMS_LSBEATS_HOST}:8888/stamper</code></strong> the only valid endpoint to deploy stampers.</p>
+<h5 class="small-subtitle">Stampers specification</h5>
+
+<p>The body of the <strong><code>POST</code></strong> request contains the specification of the stamper to be deployed, which consists in a set of lines of the form</p>
+<pre><code>when EXPRESSION do CHANNEL
+</code></pre>
+
+<p>This construct indicates that, when expression <strong><code>EXPRESSION</code></strong> is true for an event, then such an event must be stamped with channel stamp <strong><code>CHANNEL</code></strong>.
+The EMS will compute the smallest set of channels that satisfies all the rules.
+A <strong><code>CHANNEL</code></strong> is a string that starts with character <strong><code>#</code></strong>.
+An <strong><code>EXPRESSION</code></strong> is one of the following constructions:</p>
+<pre><code>e.path(PATH)
+e.strcmp(PATH, &quot;STRING&quot;)
+e.tag(CHANNEL)
+</code></pre>
+
+<p>A <strong><code>PATH</code></strong> is a sequence of field ids separated by a dot.
+The expression <strong><code>e.PATH(p)</code></strong> is true for an event if its payload is a JSON object containing a field at path <strong><code>p</code></strong>.
+The expression <strong><code>e.strcmp(p,s)</code></strong> is true for an event if its payload is a JSON object containing a field at path <strong><code>p</code></strong> whose value is <strong><code>s</code></strong>.
+The expression <strong><code>e.tag(c)</code></strong> is true for an event if it is stamped with the channel stamp <strong><code>c</code></strong>.</p>
+<h5 class="small-subtitle">Example</h5>
+
+<p>For example, if a Stamper is deployed with the following definition:</p>
+<pre><code>when e.strcmp(type,&quot;net&quot;) do #NetData
+when e.path(message.info) do #TJobMsg
+when e.tag(#testresult) do #websocket 
+</code></pre>
+
+<p>Then, an event stamped with channel <strong><code>#testresult</code></strong> will also be stamped with channel stamp <strong><code>#websocket</code></strong>.
+An event whose payload is <strong><code>{message: {info: "Info"}}</code></strong> will be stamped with stamp <strong><code>#TJobMsg</code></strong> but not with channel stamp <strong><code>#NetData</code></strong>.
+An event whose payload is <strong><code>{type: "net", message: "Server"}</code></strong> will be stamped with channel stamp <strong><code>#NetData</code></strong> but not with channel stamp <strong><code>#TJobMsg</code></strong>.
+Finally, an event whose payload is <strong><code>{message: {info: "Info"}, type: "net"}</code></strong> will be stamped with both channel stamps <strong><code>#TJobMsg</code></strong> and <strong><code>#NetData</code></strong>.</p>
+<h5 class="small-subtitle">Default rules and output endpoint</h5>
+
+<p>If the payload of an event is a JSON object that contains a field <strong><code>channels</code></strong> whose value is a JSON array of strings, then the event is stamped with each of these strings as channel stamps.
+If none of the deployed Stampers contain a rule to stamp an event with channel <strong><code>#websocket</code></strong>, then every event is stamped with this channel stamp.
+Events stamped with channel <strong><code>#websocket</code></strong> are transmitted over the websocket endpoint at the address <strong><code>${ET_EMS_LSBEATS_HOST}:3232</code></strong>.
+The TJob can establish a websocket connection to this endpoint to receive the events processed and generated by the EMS stamped with the channel <strong><code>#websocket</code></strong>.</p>
+<!-- <h4 class="small-subtitle">Machines</h4>
+TODO -->
+					
+				      </div>
+				    </div>
+				    <footer>
+<hr class="divider divider-100 divider-xs hr-lg-center-0 offset-xs-top-20 offset-sm-top-20 offset-md-top-20 offset-lg-top-20">
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../ess/" class="btn btn-xs btn-primary float-right" title="Security Service (ESS)">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../eds/" class="btn btn-xs btn-primary" title="Device Emulator Service (EDS)"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
+      
+    </div>
+  
+
+
+  
+  
+	  <a href="https://github.com/elastest/elastest.io-docs/blob/master/docs/test-services/ems.md" class="fa fa-github offset-xxs-top-30"> Edit Documentation on GitHub</a>
+  
+</footer>
+			  	  
+				  </div>
+				</div>
+			</div>
+		    </div>
+		</div>
+	</section>
+
+  </div>
+</div>
+
+<!-- Gallery -->
+<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
+
+<script>
+var galleries = $('div.docs-gallery');
+for (var i = 1; i <= galleries.length; i++) {
+    $().fancybox({
+    selector : '[data-fancybox="gallery-' + i + '"]',
+    infobar : true,
+    arrows : false,
+    loop: false,
+    protect: true,
+    transitionEffect: 'slide',
+    buttons : [
+        'close'
+    ],
+    clickOutside : 'close',
+    clickSlide   : 'close',
+  });
+}
+</script>

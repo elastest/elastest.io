@@ -221,13 +221,13 @@ section-icon: mdi mdi-content-copy
 					<li><ul> 
     
    
-    <li class="subnav_drop"><span>Monitoring</span>
+    <li class="subnav_drop"><span>Test Monitoring</span>
 <ul class="subnav">
         
              
 
     <li class="toctree-l1 ">
-        <a class="" href="monitoring/">Monitoring</a>
+        <a class="" href="monitoring/">Test Monitoring</a>
         
     </li>
 
@@ -310,6 +310,84 @@ section-icon: mdi mdi-content-copy
 					<li><ul> 
     
    
+    <li class="subnav_drop"><span>Test Services</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="test-services/introduction/">Introduction</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="test-services/ebs/">Big Data Service (EBS)</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="test-services/ece/">Cost Engine (ECE)</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="test-services/eds/">Device Emulator Service (EDS)</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="test-services/ems/">Monitoring Service (EMS)</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="test-services/ess/">Security Service (ESS)</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+
+    <li class="toctree-l1 ">
+        <a class="" href="testing/environment-variables/">Environment variables</a>
+        
+    </li>
+
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
     <li class="subnav_drop"><span>Deploying ElasTest</span>
 <ul class="subnav">
         
@@ -341,7 +419,7 @@ section-icon: mdi mdi-content-copy
 					<li><ul> 
 
     <li class="toctree-l1 ">
-        <a class="" href="testing/environment-variables/">Environment variables</a>
+        <a class="" href="elastest-monitoring/">ElasTest Monitoring</a>
         
     </li>
 
@@ -353,17 +431,6 @@ section-icon: mdi mdi-content-copy
 
     <li class="toctree-l1 ">
         <a class="" href="releases/">Releases</a>
-        
-    </li>
-
-</ul></li>
-				
-			
-				
-					<li><ul> 
-
-    <li class="toctree-l1 ">
-        <a class="" href="experimental/">Experimental</a>
         
     </li>
 
@@ -484,6 +551,20 @@ In other words: <strong>SuT's, TJob's and TSS's are the modules that ElasTest ca
 <h3 class="holder-subtitle link-top">ElasTest technologies</h3>
 
 <p><img src="./images/elastest-tech.png" alt="ElasTest technologies" class="img-responsive reveal-inline-block offset-top-10" style="border: none"></p>
+<h3 id="modes" class="holder-subtitle link-top">ElasTest modes</h3>
+
+<p>ElasTest has different execution modes:</p>
+<ul>
+<li><strong>Mini</strong> (mini): This mode is intended for testing ElasTest on a <strong><code>laptop</code></strong> or <strong><code>small server</code></strong>.</li>
+<li><strong>Single-Node</strong> (singlenode): This mode is intended for testing on <strong><code>servers</code></strong> with with better technical characteristics. The main differences with <strong><code>mini</code></strong> are:<ul>
+<li>Logs and metrics are stored in ElasticSearch and processed with Logstash, while in mini they are saved in MySQL.</li>
+<li>Modular architecture based on containers (ESM)</li>
+<li>The ElasTest Platform Monitoring service is available</li>
+</ul>
+</li>
+<li><strong>Cluster</strong> (coming soon)</li>
+</ul>
+<p>In the following section (<a href="./try-elastest/">Try ElasTest</a>) you can find out more about how to start a specific mode and what its technical features are.</p>
 <!---
  Script for open external links in a new tab
 -->

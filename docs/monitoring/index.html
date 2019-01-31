@@ -1,6 +1,6 @@
 --- 
 layout: default 
-title: Elastest Documentation - Monitoring 
+title: Elastest Documentation - Test Monitoring 
 active: documentation 
 section-title: Documentation 
 section-icon: mdi mdi-content-copy 
@@ -16,7 +16,7 @@ section-icon: mdi mdi-content-copy
 	$( document).ready(function(){
 		$('#menu-list').show();
 	    $('li.subnav_drop').find('ul.subnav').hide();
-	       $( ".subnav" ).find( "li:contains('Monitoring')" ).each(function(i,e){
+	       $( ".subnav" ).find( "li:contains('Test Monitoring')" ).each(function(i,e){
 		  var currentElement = $(e);
 		  currentElement.parent().css({"display":"block","visibility":"visible"}); //css("background-color","blue");
 		  currentElement.css({"display":"block","visibility":"visible"});
@@ -30,7 +30,7 @@ section-icon: mdi mdi-content-copy
 						$('#doc-container').css('min-height', minHeight+'px');
 	});
 	   
-	$( ".wy-nav-content" ).find( "li:contains('Monitoring')" ).css('color','red');
+	$( ".wy-nav-content" ).find( "li:contains('Test Monitoring')" ).css('color','red');
  </script>
 
 <div id="doc-container" class="container text-justify">
@@ -219,13 +219,13 @@ section-icon: mdi mdi-content-copy
 					<li><ul> 
     
    
-    <li class="subnav_drop"><span>Monitoring</span>
+    <li class="subnav_drop"><span>Test Monitoring</span>
 <ul class="subnav">
         
              
 
     <li class="toctree-l1 current">
-        <a class="current" href="./">Monitoring</a>
+        <a class="current" href="./">Test Monitoring</a>
         
          
         
@@ -310,6 +310,84 @@ section-icon: mdi mdi-content-copy
 					<li><ul> 
     
    
+    <li class="subnav_drop"><span>Test Services</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../test-services/introduction/">Introduction</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../test-services/ebs/">Big Data Service (EBS)</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../test-services/ece/">Cost Engine (ECE)</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../test-services/eds/">Device Emulator Service (EDS)</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../test-services/ems/">Monitoring Service (EMS)</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../test-services/ess/">Security Service (ESS)</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+
+    <li class="toctree-l1 ">
+        <a class="" href="../testing/environment-variables/">Environment variables</a>
+        
+    </li>
+
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
     <li class="subnav_drop"><span>Deploying ElasTest</span>
 <ul class="subnav">
         
@@ -341,7 +419,7 @@ section-icon: mdi mdi-content-copy
 					<li><ul> 
 
     <li class="toctree-l1 ">
-        <a class="" href="../testing/environment-variables/">Environment variables</a>
+        <a class="" href="../elastest-monitoring/">ElasTest Monitoring</a>
         
     </li>
 
@@ -353,17 +431,6 @@ section-icon: mdi mdi-content-copy
 
     <li class="toctree-l1 ">
         <a class="" href="../releases/">Releases</a>
-        
-    </li>
-
-</ul></li>
-				
-			
-				
-					<li><ul> 
-
-    <li class="toctree-l1 ">
-        <a class="" href="../experimental/">Experimental</a>
         
     </li>
 

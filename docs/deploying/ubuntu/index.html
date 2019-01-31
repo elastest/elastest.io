@@ -219,13 +219,13 @@ section-icon: mdi mdi-content-copy
 					<li><ul> 
     
    
-    <li class="subnav_drop"><span>Monitoring</span>
+    <li class="subnav_drop"><span>Test Monitoring</span>
 <ul class="subnav">
         
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../../monitoring/">Monitoring</a>
+        <a class="" href="../../monitoring/">Test Monitoring</a>
         
     </li>
 
@@ -308,6 +308,84 @@ section-icon: mdi mdi-content-copy
 					<li><ul> 
     
    
+    <li class="subnav_drop"><span>Test Services</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../test-services/introduction/">Introduction</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../test-services/ebs/">Big Data Service (EBS)</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../test-services/ece/">Cost Engine (ECE)</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../test-services/eds/">Device Emulator Service (EDS)</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../test-services/ems/">Monitoring Service (EMS)</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../test-services/ess/">Security Service (ESS)</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testing/environment-variables/">Environment variables</a>
+        
+    </li>
+
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
     <li class="subnav_drop"><span>Deploying ElasTest</span>
 <ul class="subnav">
         
@@ -341,7 +419,7 @@ section-icon: mdi mdi-content-copy
 					<li><ul> 
 
     <li class="toctree-l1 ">
-        <a class="" href="../../testing/environment-variables/">Environment variables</a>
+        <a class="" href="../../elastest-monitoring/">ElasTest Monitoring</a>
         
     </li>
 
@@ -353,17 +431,6 @@ section-icon: mdi mdi-content-copy
 
     <li class="toctree-l1 ">
         <a class="" href="../../releases/">Releases</a>
-        
-    </li>
-
-</ul></li>
-				
-			
-				
-					<li><ul> 
-
-    <li class="toctree-l1 ">
-        <a class="" href="../../experimental/">Experimental</a>
         
     </li>
 
@@ -460,7 +527,7 @@ section-icon: mdi mdi-content-copy
 <p>ElasTest needs to use Docker to launch other containers, so we bind the socket as a volume inside the platform.</p>
 <p>The <strong>server-address</strong> is web address you will reach the platform. If you're deploying on a cloud provider (like AWS, GCE o Azure) this address should be your public IP, if you're deploying on your private LAN this is the address you're using to connect the server.It's necessary to use the <strong><code>--server-address</code></strong> option and also open all ports from <strong><code>32768 to 61000</code></strong> both included. It is highly recommended to also set user and password using the <strong><code>--user</code></strong> and <strong><code>--pass</code></strong> options.</p>
 <p>Alternatively, you can use a domain name like <strong>elastest.my_company.com</strong> for the <em>server_address</em> parameter.</p>
-<p><strong><code>--testlink</code></strong> stands for TestLink and <strong><code>--jenkins</code></strong> stands for Jenkins. These fields are not obligatory but its use is <strong>recommended</strong>. </p>
+<p><strong><code>--testlink</code></strong> stands for TestLink and <strong><code>--jenkins</code></strong> stands for Jenkins. These fields are not obligatory but its use is <strong>recommended</strong>.</p>
 <p>You can also use your own Jenkins and install the <a href="/docs/jenkins/">ElasTest plugin for Jenkins</a></p>
 <p>Finally, set user and password to grant access to the platform. You can omit this parameters if you're working on a safe evironment.</p>
 <p>You'll see the following lines on the terminal when the platform is up and ready</p>
@@ -468,7 +535,7 @@ section-icon: mdi mdi-content-copy
 
 Preload images finished.
 
-Starting ElasTest Platform latest (normal Mode)...
+Starting ElasTest Platform latest (mini Mode)...
 
 Creating volume &quot;elastest_platform-services&quot; with local driver
 Creating elastest_platform-services_1 ... done
@@ -496,26 +563,113 @@ Press Ctrl+C to stop.
 
 <h4 class="small-subtitle">Options</h4>
 
-<p>You can include the option <strong><code>--server-address=(docker-machine ip)</code></strong> to set up the machine ip address.</p>
+<ul>
+<li>You can include the option <strong><code>--server-address=(docker-machine ip)</code></strong> to set up the machine ip address.
+    <p></p></li>
+</ul>
 <pre><code class="text">docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --server-address=&quot;myip&quot;
 </code></pre>
 
-<p>You can set an access username and password using the options <strong><code>--user</code></strong> and <strong><code>--pass</code></strong> (or <strong><code>-u</code></strong> and <strong><code>-p</code></strong>)</p>
+<p></p>
+
+<ul>
+<li>You can add <strong><code>--mode</code></strong> to start ElasTest in a specific <a href="/docs/#modes">mode</a>: mini or singlenode. If not indicated, the default mode will be <strong>mini</strong>.<ul>
+<li><strong>IMPORTANT</strong>: To start ElasTest in <strong>singlenode</strong> mode it is necessary to first execute the following command to increase the <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/vm-max-map-count.html">virtual memory limit for Elasticsearch</a>: <strong><code>sysctl -w vm.max_map_count=262144</code></strong></li>
+</ul>
+</li>
+</ul>
+<p></p>
+
+<pre><code>docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --mode=mini
+</code></pre>
+
+<p></p>
+
+<ul>
+<li>You can set an access username and password using the options <strong><code>--user</code></strong> and <strong><code>--pass</code></strong> (or <strong><code>-u</code></strong> and <strong><code>-p</code></strong>)</li>
+</ul>
+<p></p>
+
 <pre><code>docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --user=elastest --password=elastest
 </code></pre>
 
-<p>You can add <strong><code>--testlink</code></strong> if you want to start the TestLink integrated in ElasTest and enable access to it. If you do not add this option, you can start it later manually from the ElasTest GUI.</p>
+<p></p>
+
+<ul>
+<li>You can add <strong><code>--testlink</code></strong> if you want to start the TestLink integrated in ElasTest and enable access to it. If you do not add this option, you can start it later manually from the ElasTest GUI.</li>
+</ul>
+<p></p>
+
 <pre><code class="text">docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --testlink
 </code></pre>
 
-<p>The <strong><code>--jenkins</code></strong> option can be added if you want to start the Jenkins integrated in ElasTest and enable access to it. If you do not add this option, you can start it later manually from the ElasTest GUI.</p>
+<p></p>
+
+<ul>
+<li>The <strong><code>--jenkins</code></strong> option can be added if you want to start the Jenkins integrated in ElasTest and enable access to it. If you do not add this option, you can start it later manually from the ElasTest GUI.</li>
+</ul>
+<p></p>
+
 <pre><code class="text">docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --jenkins
 </code></pre>
 
-<p>You can execute <strong><code>--help</code></strong> if you need more information about the options.</p>
+<p></p>
+
+<ul>
+<li>You can execute <strong><code>--help</code></strong> if you need more information about the options.</li>
+</ul>
+<p></p>
+
 <pre><code>docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform --help
 </code></pre>
 
+<h3 class="holder-subtitle link-top">Recommended system specifications</h3>
+
+<p><p>ElasTest needs some minimum system specifications in order to run smoothly:</p></p>
+<p><div class="range range-xs-center" style="margin-top: 0; text-align: center">
+      <div class="cell-xs-10 cell-sm-6 cell-md-6 offset-top-20">
+        <h5 class="small-subtitle" style="text-align: start !important;">Mini mode</h5>
+        <table>
+          <tr>
+            <td>Processor</td>
+            <td>1GHz or faster</td>
+          </tr>
+          <tr><!--  -->
+            <td>RAM</td>
+            <td>8GB (highly recommended 16GB)</td>
+          </tr>
+          <tr>
+            <td>SWAP</td>
+            <td>4GB (if RAM &lt; 16GB)</td>
+          </tr>
+          <tr>
+            <td>Hard Disk</td>
+            <td>30GB</td>
+          </tr>
+        </table>
+      </div>      <br />
+      <div class="cell-xs-10 cell-sm-6 cell-md-6 offset-top-20">
+        <h5 class="small-subtitle" style="text-align: start !important;">Single-node mode</h5>
+        <table>
+          <tr>
+            <td>Processor</td>
+            <td>1GHz or faster</td>
+          </tr>
+          <tr>
+            <td>RAM</td>
+            <td>32GB</td>
+          </tr>
+          <tr>
+            <td>SWAP</td>
+            <td>4GB</td>
+          </tr>
+          <tr>
+            <td>Hard Disk</td>
+            <td>100GB</td>
+          </tr>
+        </table>
+      </div>
+  </div></p>
 <h3 class="holder-subtitle link-top">Running ElasTest on system boot</h3>
 
 <p>To start ElasTest automatically on a system with Systemd, two scripts are needed:</p>
@@ -681,7 +835,7 @@ Swap:             0           0           0
         <a href="../aws/" class="btn btn-xs btn-primary float-right" title="Amazon Web Services">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../../jenkins/freestyle/" class="btn btn-xs btn-primary" title="Freestyle Jobs"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
+        <a href="../../testing/environment-variables/" class="btn btn-xs btn-primary" title="Environment variables"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
       
     </div>
   
