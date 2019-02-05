@@ -614,18 +614,59 @@ sum
 
 <p>Suppose we have a webserver and want to assess that when a client is downloading a file and then a second one starts a download too, then the bandwidth consumption roughly doubles.</p>
 <p>The ElasTest infrastructure provides us the means to extract data from the server automatically, and we can use the EMS to organize and process this data according to our desired property.</p>
-<h4 class="small-subtitle">The System Under Test</h4>
+<h4 class="small-subtitle">The Sut</h4>
 
 <p>For this example we will use a well-known webserver, nginx.
-The SuT configuration can be seen in the following image:
+The SuT configuration is the following:</p>
+<ul>
+<li><strong>SuT Name</strong>: <strong><code>nginx</code></strong></li>
+<li>Select <strong><code>Deployed By Elastest</code></strong></li>
+<li>Select <strong><code>With Docker Compose</code></strong></li>
+<li>
+<p><strong>Docker Compose</strong>:</p>
+<pre><code>version: '3'
+
+services:
+
+    nginx-service:
+        image: nginx
+        entrypoint:
+            - /bin/bash
+            - "-c"
+            - "dd if=/dev/random of=/usr/share/nginx/html/sparse bs=1024 count=1 seek=5242880000;nginx;sleep infinity"
+        expose:
+            - "80"
+</code></pre>
+</li>
+<li>
+<p><strong>Main Service</strong>: <strong><code>nginx-service</code></strong></p>
+</li>
+<li><strong>Wait for http port</strong>: <strong><code>80</code></strong></li>
+</ul>
+<p></p>
+
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-1" href="/docs/test-services/images/ems/sut.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ems/sut.png"/></a>
-</div></p>
-<p>The system under test is an ngninx application listening on port <code>80</code>, with a file called <code>sparse</code> of 500GB in its server root directory.</p>
+</div>
+
+<p>The sut is an ngninx application listening on port <code>80</code>, with a file called <code>sparse</code> of 500GB in its server root directory.</p>
 <h4 class="small-subtitle">The TJob</h4>
 
 <p>The TJob is a custom application whose source code can be found <a href="https://github.com/elastest/elastest-monitoring-service/tree/master/e2e-test/tjob">here</a>, and which has been deployed as a Docker image to Dockerhub at <a href="https://hub.docker.com/r/imdeasoftware/e2etjob">imdeasoftware/e2etjob</a>.</p>
 <p>The TJob configuration is the following:</p>
+<ul>
+<li><strong>TJob name</strong>: <strong><code>Double bandwidth</code></strong></li>
+<li><strong>Current SuT</strong>: Select <strong><code>nginx</code></strong></li>
+<li><strong>Environment Docker Image</strong>: <strong><code>imdeasoftware/e2etjob</code></strong></li>
+<li>
+<p><strong>Commands</strong>: </p>
+<pre><code>cd /go;./tjob
+</code></pre>
+</li>
+<li>
+<p><strong>Test Support Services</strong>: Check <strong><code>EMS</code></strong></p>
+</li>
+</ul>
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-1" href="/docs/test-services/images/ems/tjob1.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ems/tjob1.png"/></a>
 </div>
