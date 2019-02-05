@@ -543,42 +543,52 @@ Each machine can be either a <strong>predicate</strong> over an event, a <strong
 <li>A <strong>predicate</strong> is a named boolean expression over an event, whose evaluation does not depend on previous events.
    A <strong>predicate</strong> named <code>s</code> is declared in the following way:</li>
 </ol>
-<p><code>pred s := PREDICATE</code>
-   The syntax of the <code>PREDICATE</code> is the same as the stampers expression, because both constructs are stateless.</p>
+<pre><code>pred s := PREDICATE
+</code></pre>
+
+<p>The syntax of the <code>PREDICATE</code> is the same as the stampers expression, because both constructs are stateless.</p>
 <ol>
-<li>
-<p>A <strong>stream</strong> definition is a stream of values calculated as events are fed into the EMS. 
+<li>A <strong>stream</strong> definition is a stream of values calculated as events are fed into the EMS. 
    Streams can be stateful and their values can be <strong>boolean</strong> (<code>bool</code>), <strong>numeric</strong> (<code>num</code>) or <strong>string</strong>.
-   A stream named <code>s</code> of type <code>t</code> is defined in the following way:
-   <code>stream t s := STREAMEXPR</code>
-   The syntax of a stream expression is the following:
-   <code>PREDICATE
-   STREAMID
-   if STREAMEXPR then STREAMEXPR
-   Prev STREAMID
-   e.getstr(PATH)
-   NUMEXPR
-   NUMEXPR &lt; NUMEXPR
-   NUMEXPR &lt;= NUMEXPR
-   NUMEXPR = NUMEXPR
-   NUMEXPR &gt; NUMEXPR
-   NUMEXPR &gt;= NUMEXPR
-   NUMEXPR != NUMEXPR</code>
-   Where <code>NUMEXPR</code> is defined as:
-   <code>e.getnum(PATH)
-   NUMEXPR + NUMEXPR
-   NUMEXPR - NUMEXPR
-   NUMEXPR * NUMEXPR
-   NUMEXPR / NUMEXPR
-   AGGREGATION(STREAMID within STREAMID)</code>
-   And <code>AGGREGATION</code> is one of the following:
-   <code>avg
-   count
-   sum</code></p>
-</li>
-<li>
-<p>A <code>PREDICATE</code> is true or false for an event just like in the stampers definition.</p>
-</li>
+   A stream named <code>s</code> of type <code>t</code> is defined in the following way:</li>
+</ol>
+<pre><code>stream t s := STREAMEXPR
+</code></pre>
+
+<p>The syntax of a stream expression is the following:</p>
+<pre><code>PREDICATE
+STREAMID
+if STREAMEXPR then STREAMEXPR
+Prev STREAMID
+e.getstr(PATH)
+NUMEXPR
+NUMEXPR &lt; NUMEXPR
+NUMEXPR &lt;= NUMEXPR
+NUMEXPR = NUMEXPR
+NUMEXPR &gt; NUMEXPR
+NUMEXPR &gt;= NUMEXPR
+NUMEXPR != NUMEXPR
+</code></pre>
+
+<p>Where <code>NUMEXPR</code> is defined as:</p>
+<pre><code>e.getnum(PATH)
+NUMEXPR + NUMEXPR
+NUMEXPR - NUMEXPR
+NUMEXPR * NUMEXPR
+NUMEXPR / NUMEXPR
+AGGREGATION(STREAMID within STREAMID)
+</code></pre>
+
+<p>And <code>AGGREGATION</code> is one of the following:</p>
+<pre><code>avg
+count
+sum
+</code></pre>
+
+<p></p>
+
+<ul>
+<li>A <code>PREDICATE</code> is true or false for an event just like in the stampers definition.</li>
 <li>A <code>STREAMID</code> refers to a stream declared in this monitoring machine (not necessarily a different one).</li>
 <li>An <code>if e0 then e1</code> expression produces the value specified by the expression <code>e1</code> when the expression <code>e0</code> evaluates to true.</li>
 <li>The expression <code>Prev s</code> is true if at some point in the past the stream <code>s</code> evaluated to <code>true</code>.</li>
@@ -593,11 +603,13 @@ Each machine can be either a <strong>predicate</strong> over an event, a <strong
 </li>
 <li>
 <p>A <strong>trigger</strong> is a clause that specifies an action to be performed when a stream produces a true value.
-   A <strong>trigger</strong> is declared in the following way:
-   <code>trigger s1 do emit s2 on #ch</code>
-   In this case, whenever stream <code>s1</code> produces a value true, the value of <code>s2</code> will be emitted over the channel <code>#ch</code>.</p>
+   A <strong>trigger</strong> is declared in the following way:</p>
 </li>
-</ol>
+</ul>
+<pre><code>trigger s1 do emit s2 on #ch
+</code></pre>
+
+<p>In this case, whenever stream <code>s1</code> produces a value true, the value of <code>s2</code> will be emitted over the channel <code>#ch</code>.</p>
 <h3 class="holder-subtitle link-top">Example</h3>
 
 <p>Suppose we have a webserver and want to assess that when a client is downloading a file and then a second one starts a download too, then the bandwidth consumption roughly doubles.</p>
@@ -612,12 +624,13 @@ The SuT configuration can be seen in the following image:
 <p>The system under test is an ngninx application listening on port <code>80</code>, with a file called <code>sparse</code> of 500GB in its server root directory.</p>
 <h4 class="small-subtitle">The TJob</h4>
 
-<p>The TJob is a custom application whose source code can be found <a href="https://github.com/elastest/elastest-monitoring-service/tree/master/e2e-test/tjob">here</a>, and which has been deployed as a Docker image to Dockerhub at <a href="https://hub.docker.com/r/imdeasoftware/e2etjob">imdeasoftware/e2etjob</a>.
-The TJob configuration is the following:
+<p>The TJob is a custom application whose source code can be found <a href="https://github.com/elastest/elastest-monitoring-service/tree/master/e2e-test/tjob">here</a>, and which has been deployed as a Docker image to Dockerhub at <a href="https://hub.docker.com/r/imdeasoftware/e2etjob">imdeasoftware/e2etjob</a>.</p>
+<p>The TJob configuration is the following:</p>
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-1" href="/docs/test-services/images/ems/tjob1.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ems/tjob1.png"/></a>
 </div>
-And, of course, we have to make sure that the EMS checkbox is checked:
+
+<p>And, of course, we have to make sure that the EMS checkbox is checked:
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-1" href="/docs/test-services/images/ems/tjob2.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ems/tjob2.png"/></a>
 </div></p>
