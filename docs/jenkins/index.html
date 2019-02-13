@@ -474,32 +474,22 @@ section-icon: mdi mdi-content-copy
 </div>
 
 <p><img style="border: none; margin: auto" class="img-responsive img-wellcome" src="/docs/jenkins/images/integration/elastest_jenkins.png"/></p>
-<p>ElasTest provides a Jenkins plugin for you to use the platform in your CI environment. Thanks to this you can make use of some features provided by ElasTest, such as log analysis or the use of on-demand browsers. There are two operating modes:</p>
+<p>To ease the integration of ElasTest in Continuous Integration environments, a plugin has been created for the most widespread open source CI server, Jenkins. Thanks to this plugin you will be able to make use of the functionalities provided by ElasTest from any Freestyle or Pipeline project.</p>
+<p>To start trying ElasTest from Jenkins, you can choose one of these two options:</p>
 <ul>
-<li><strong>Use the Jenkins instance of ElasTest</strong>: ElasTest provides an instance of Jenkins to be used. You don't need to install the ElasTest Jenkins plugin, it's already incorporated.<ul>
-<li>This instance can be started by <a href="../try-elastest">starting ElasTest with the --jenkins</a> parameter or if you prefer it can be started from the ElasTest GUI once it has been started (this is explained on the <a href="../jenkins/try-jenkins">next page</a>).</li>
+<li><strong>Use the Jenkins integrated in ElasTest</strong>. ElasTest provides an already integrated Jenkins server ready to use. This means that it is not necessary to install the ElasTest plugin (it is already installed) or perform any other configuration.You can start the integrated Jenkis in two ways:<ul>
+<li>Start Jenkins with ElasTest: just add the option <a href="../try-elastest">[--jenkins|-jk]</a> to the start command of ElasTest.</li>
+<li>Start Jenkins from ElasTest GUI: can also be started from the ElasTest GUI once it has been started (this is explained on the <a href="../jenkins/try-jenkins">next page</a>).</li>
 </ul>
 </li>
-<li><strong>Use your own Jenkins</strong>: Before you can use ElasTest as Jenkins plugin you need to install the plugin and complete its onfiguration. After this you will be ready to use ElasTest in a Free Style Job or in a Pipeline Job.</li>
+<li><strong>Integrate your own Jenkins with ElasTest</strong>. If you alredy have a Jekins as a CI server, before you can use ElasTest as Jenkins plugin you need to install the plugin and complete its onfiguration. This proccess is described below.</li>
 </ul>
 <h4 class="holder-subtitle link-top">Plugin installation</h4>
 
-<p>Currently ElasTest Plugin is in beta so to install it is necessary to do it from the <a href="https://jenkins.io/doc/developer/publishing/releasing-experimental-updates/">experimental repository of Jenkins</a>.</p>
 <p>To install the ElasTest Plugin you should follow this steps:</p>
-<ul>
-<li>Go to your Jenkins installation and navigate through <strong>Manage Jenkins / Manage Plugins / Advanced</strong>.</li>
-<li>In the <strong>Update site</strong> section set the value <strong><code>https://updates.jenkins.io/update-center.json</code></strong> in the URL field</li>
-<li>Click on the <strong>Submit</strong> button and then on <strong>Check now</strong>
-<p></p></li>
-</ul>
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-3" href="/docs/jenkins/images/integration/experimental_repo.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/integration/experimental_repo.png"/></a>
-</div>
-
 <ul>
 <li>Navigate through <strong>Manage Jenkins / Manage Plugins</strong>.</li>
 <li>The next step is to open the <strong>Available</strong> tab and search <strong>elastest</strong>. The ElasTest plugin will appear and you will check the box and click the <strong>Install plugin</strong> button.</li>
-<li>Once installed, you can reset the update repository.</li>
 </ul>
 <p></p>
 
