@@ -489,10 +489,8 @@ section-icon: mdi mdi-content-copy
 - Replay attacks
 - etc.</p>
 <h2 id="using-ess-in-a-tjob">Using ESS in a TJob</h2>
-<p>A normal TJob simply contains the code for executing a test (e.g. executing a selenium test using a web browser provided by the EUS). Once the test has dinished executing, the program returns and the TJob execution is completed. For scan a TJob using ESS, the author of the TJob must add the following steps before exiting.</p>
-<ol>
-<li>read the value of the <em>ET_ESS_API</em> environmental variable to get the URL of the ESS API. The following is an example (in Python) of how this can be done.</li>
-</ol>
+<p>A normal TJob simply contains the code for executing a test (e.g. executing a selenium test using a web browser provided by the EUS). Once the test has dinished executing, the program returns and the TJob execution is completed. For scan a TJob using ESS, the author of the TJob must add the following steps before exiting.
+1. read the value of the <em>ET_ESS_API</em> environmental variable to get the URL of the ESS API. The following is an example (in Python) of how this can be done.</p>
 <pre><code>import os
 ess_api_url=os.environ['ET_ESS_API']
 </code></pre>
