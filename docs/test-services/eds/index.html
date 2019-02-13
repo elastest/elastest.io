@@ -473,7 +473,8 @@ section-icon: mdi mdi-content-copy
 </div>
 </div>
 
-<h3 id="introduction">Introduction</h3>
+<h3 class="holder-subtitle link-top">Introduction</h3>
+
 <p>The main goal of this service is to emulate behavior of sensors, actuators and smart devices  which is suitable for ElasTest platform. The service concentrates on providing emulated devices to realize and test <strong><code>Industrial Internet of Things (IIOT)</code></strong> applications in ElasTest. The motivation for  providing EDS in ElasTest are the following:  </p>
 <ul>
 <li><strong>Device Emulation</strong> : Provide emulated devices to the user on-demand and help in managing them.</li>
@@ -486,11 +487,13 @@ section-icon: mdi mdi-content-copy
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-1" href="/docs/test-services/images/eds/selecteds.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/eds/selecteds.png"/></a>
 </div></p>
-<h3 id="eds-basics">EDS Basics</h3>
+<h3 class="holder-subtitle link-top">EDS Basics</h3>
+
 <p>The user is advised to go through this section completely before proceeding further as this section would help user to understand the programming paradigm used in EDS.</p>
 <p>Communication between machines in industries is generally referred to as <strong>Machine to Machine (M2M)</strong> communication.
 M2M communication is accomplished based on industry standards and one of them being <a href="../www.onem2m.org">oneM2M</a>. EDS uses <a href="../www.openmtc.org">OpenMTC</a> as a middleware for communication. The external and internal smart devices or user applications communicate using the publish subscribe paradigm.</p>
-<h4 id="openmtc">OpenMTC</h4>
+<h4 class="small-subtitle">OpenMTC</h4>
+
 <p>It is an open source reference implementation of the oneM2M standard for industrial machine to machine communication. The user can find more information in the <a href="../www.openmtc.org">official website of OpenMTC</a> and the open source implementation can be downloaded from the <a href="https://github.com/OpenMTC/OpenMTC">GitHub repositor</a>. OpenMTC is a generic FIWARE enabler. In order to understand the key concepts of programming using OpenMTC, the user is advised to go through the online documentation of OpenMTC <a href="https://fiware-openmtc.readthedocs.io/en/latest/index.html">documentation page</a>.</p>
 <p>A key component which enables M2M communication mechanism is the Common Service Entity (CSE) or commonly addressed in the rest of the text as the <strong><code>oneM2M gateway</code></strong> or in short <strong><code>gateway</code></strong>. The gateway serves a common end point for all the entities requiring to communicate, provided they follow a certain guidelines:  </p>
 <ul>
@@ -510,14 +513,16 @@ M2M communication is accomplished based on industry standards and one of them be
 </code></pre>
 
 <p>However when working in oneM2M applications, it is enough to specify the path as <strong><code>onem2m/my_app/my_container</code></strong>.</p>
-<h4 id="the-programming-paradigm">The programming paradigm</h4>
+<h4 class="small-subtitle">The programming paradigm</h4>
+
 <p>The programming paradigm that can be followed to implement applications are:  </p>
 <ul>
 <li><strong><code>Create meaningful paths</code></strong> : Create paths that are meaningfully constructed as a result of combination of AEs and containers. These paths can be created by user applications.</li>
 <li><strong><code>Subscribe to containers</code></strong> : Applications can subscribe to specific containers for input, thanks to the unique and meaningful paths. Once data is pushed to the container, the application is notified and a corresponding handler is executed. This mechanism forms the input event for the application.</li>
 <li><strong><code>Push data to containers</code></strong> : Applications intending to communicate their output can push data to containers, so that other applications can be notified. This mechanism forms the output event for the application.</li>
 </ul>
-<h4 id="communication-mechanism">Communication mechanism</h4>
+<h4 class="small-subtitle">Communication mechanism</h4>
+
 <p>The oneM2M paths in OpenMTC support REST API. It is possible for the user to interact with the oneM2M paths using the following methods:  </p>
 <ul>
 <li><strong><code>CURL requests</code></strong> : It is possible for the user to post or retrieve content instances in a given path. The data is represented in JSON format and the content instance itself is available in the key <strong><code>con</code></strong>. For example:</li>
@@ -539,10 +544,12 @@ http://localhost:8000/onem2m/EDSOrch/edsorch/request
 <p><strong>OpenMTC Application SDK</strong>: It is possible with this method implemented applications which can sufficiently call method to create containers, push data to container at a given path, subscribe to a container at a given path and many more. More information can be found in the documentation page of <a href="https://fiware-openmtc.readthedocs.io/en/latest/sdk-client/index.html">using the application framework</a>.</p>
 </li>
 </ul>
-<h3 id="simple-iiot-application">Simple IIoT application</h3>
-<p><div class="docs-gallery inline-block">
+<h3 class="holder-subtitle link-top">Simple IIoT application</h3>
+
+<div class="docs-gallery inline-block">
     <a data-fancybox="gallery-1" href="/docs/test-services/images/eds/eds_app.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/eds/eds_app.png"/></a>
-</div></p>
+</div>
+
 <p>The figure above depicts a simple IIoT application composed of a temperature sensor, a logic and an actuator which are denoted by green boxes representing OpenMTC applications. The red boxes denote OpenMTC containers. The functionality of the application be understood as follows:  </p>
 <ul>
 <li><strong><code>Temperature sensor</code></strong> : Is an application that creates the data container. Produces a value every 5 seconds and pushes it to the data container.</li>
@@ -556,7 +563,8 @@ http://localhost:8000/onem2m/EDSOrch/edsorch/request
 </em> The applications inherit and extend a class called XAE in their implementations. Specifically it is required to override the <strong><code>_on_register</code></strong> method according to the requirements of the user. For example, creating containers, subscribing to containers, specifying variables etc.
 <em> The example applications once initiated successfully run forever unless terminated.
 </em> In the example applications, it is possible to witness creation of containers, subscribing to containers as well as pushing to data to containers based on when and what the example application needs to perform.</p>
-<h4 id="run-and-test-iiot-application-using-elastest">Run and test IIoT application using ElasTest</h4>
+<h4 class="small-subtitle">Run and test IIoT application using ElasTest</h4>
+
 <p>EDS is a Test Support Service (TSS) provided in ElasTest which is available as a docker image (<strong>elastest/eds-base</strong>). EDS is composed of three components:  </p>
 <ul>
 <li>EDS gateway : An OpenMTC gateway.</li>
@@ -585,20 +593,22 @@ Using the <strong>status</strong> channel the user application can make sure if 
 </ul>
 </li>
 </ul>
-<h5 id="elastest-eds-sut-configuration">ElasTest EDS SuT configuration</h5>
-<p><div class="docs-gallery inline-block">
+<h5 class="small-subtitle">ElasTest EDS SuT configuration</h5>
+
+<div class="docs-gallery inline-block">
     <a data-fancybox="gallery-1" href="/docs/test-services/images/eds/elastestedssut.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/eds/elastestedssut.png"/></a>
 </div>
-The figure shows the configuration of SuT for ElasTest. The application implemented is the same as the one implemented with standalone example discussed previously. Here the application only requests and uses the devices and applies the application logic.
+
+<p>The figure shows the configuration of SuT for ElasTest. The application implemented is the same as the one implemented with standalone example discussed previously. Here the application only requests and uses the devices and applies the application logic.
 The configuration is as follows:  </p>
 <ul>
-<li>SuT Name: EDS_SuT</li>
-<li>SuT Description: Sensor_Actuator_Logic_SuT</li>
-<li>Checked <code>Deployed by ElasTest</code></li>
-<li>Checked <code>With Commands Container</code></li>
-<li>Commands container image : <strong><code>elastest/eds-base</code></strong></li>
-<li>Commands:</li>
-</ul>
+<li><strong>SuT Name</strong>: <strong><code>EDS SuT</code></strong></li>
+<li><strong>SuT Description</strong>: <strong><code>Sensor Actuator Logic SuT</code></strong></li>
+<li>Checked <strong><code>Deployed by ElasTest</code></strong></li>
+<li>Checked <strong><code>With Commands Container</code></strong></li>
+<li><strong>Commands container image</strong>: <strong><code>elastest/eds-base</code></strong></li>
+<li>
+<p><strong>Commands</strong>:</p>
 <pre><code>git clone https://github.com/elastest/elastest-device-emulator-service.git /tmp/eds
 
 # create app template
@@ -609,44 +619,48 @@ sh ./apps/test-application -v &amp;
 
 python -m SimpleHTTPServer 9000
 </code></pre>
-
-<ul>
-<li>Checked SuT in Commands Container</li>
-<li>Wait for service on port 9000 to confirm SuT has started</li>
+</li>
+<li>
+<p>Checked <strong><code>SuT in Commands Container</code></strong></p>
+</li>
+<li>Wait for service on <strong>port</strong> <strong><code>9000</code></strong> to confirm SuT has started</li>
 </ul>
 <p>The use is encouraged to investigate the implementation of SuT which can be found in the <a href="https://github.com/elastest/elastest-device-emulator-service/tree/master/demo/eds_sut/TestApplication">EDS GitHub repository</a>. The code is documented to provide hints about the working.</p>
-<h5 id="elastest-eds-tjob-configuration">ElasTest EDS TJob configuration</h5>
-<p><div class="docs-gallery inline-block">
+<h5 class="small-subtitle">ElasTest EDS TJob configuration</h5>
+
+<div class="docs-gallery inline-block">
     <a data-fancybox="gallery-1" href="/docs/test-services/images/eds/elastestedstjob.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/eds/elastestedstjob.png"/></a>
 </div>
-The above figure provides the configuration of TJob. The TJob is also an OpenMTC application, where the __on_register method is modified to subscribe to the available containers initialized by SuT. The TJob subscribes to the containers and verifies the functional aspects of the working of SuT in run time. For example, the TJob verifies for every input provided by the sensor to the data container, the time duration between successive inputs which should not be greater than 6 seconds. Furthermore tests are implemented using the unit testing framework of Python and the tests are run using the xmlrunner to produce test results so that ElasTest is able to analyze the results produced.</p>
+
+<p>The above figure provides the configuration of TJob. The TJob is also an OpenMTC application, where the __on_register method is modified to subscribe to the available containers initialized by SuT. The TJob subscribes to the containers and verifies the functional aspects of the working of SuT in run time. For example, the TJob verifies for every input provided by the sensor to the data container, the time duration between successive inputs which should not be greater than 6 seconds. Furthermore tests are implemented using the unit testing framework of Python and the tests are run using the xmlrunner to produce test results so that ElasTest is able to analyze the results produced.</p>
 <p>The test configuration is as follows:  </p>
 <ul>
-<li>TJob Name: EDS_TJob</li>
-<li>Test Results Path : /tmp/test-reports</li>
-<li>Current SuT: EDS_SuT</li>
-<li>Environment docker image: elastest/eds-base</li>
-<li>Uncheked use docker image command.</li>
-<li>Commands:</li>
-</ul>
-<pre><code> # Give enough time for full initialization of SuT
+<li><strong>TJob Name</strong>: <strong><code>EDS TJob</code></strong></li>
+<li><strong>Test Results Path</strong>: <strong><code>/tmp/test-reports</code></strong></li>
+<li><strong>Current SuT</strong>: <strong><code>EDS SuT</code></strong></li>
+<li><strong>Environment docker image</strong>: <strong><code>elastest/eds-base</code></strong></li>
+<li><strong><code>Uncheked</code></strong> <strong>Use docker image command</strong>.</li>
+<li>
+<p><strong>Commands</strong>:</p>
+<pre><code># Give enough time for full initialization of SuT
 sleep 10
 
 git clone https://github.com/elastest/elastest-device-emulator-service.git /tmp/eds
 
- # create TJob app template
+# create TJob app template
 ./create-app-structure -d TestJob
 cp /tmp/eds/demo/eds_tjob/tjob1/* apps/TestJob/src/testjob/
 
 sh ./apps/test-job -v
 </code></pre>
-
-<ul>
-<li>Unchecked Activate Multi Configuration TJob</li>
-<li>Checked EDS in Test Support services</li>
+</li>
+<li>
+<p><strong><code>Unchecked</code></strong> <strong>Activate Multi Configuration TJob</strong></p>
+</li>
+<li><strong><code>Checked</code></strong> <strong>EDS</strong> in Test Support services</li>
 </ul>
 <p>The user is encouraged to learn more on test implementation of TJob which can be found in the <a href="https://github.com/elastest/elastest-device-emulator-service/tree/master/demo/eds_tjob/tjob1">EDS GitHub repository</a></p>
-<p>It is to be noted that both SuT and TJob rely on the environment variable <strong><code>ET_EDS_EDS_BASE_API</code></strong> to locate EDS and thus the OpenMTC gateway. This modification can be found in the <strong><code>\_\_main\_\_.py</code></strong> file under the SuT and TJob repository locations.</p>
+<p>It is to be noted that both SuT and TJob rely on the environment variable <strong><code>ET_EDS_EDS_BASE_API</code></strong> to locate EDS and thus the OpenMTC gateway. This modification can be found in the <strong><code>__main__.py</code></strong> file under the SuT and TJob repository locations.</p>
 					
 				      </div>
 				    </div>
