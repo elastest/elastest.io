@@ -473,38 +473,86 @@ section-icon: mdi mdi-content-copy
 </div>
 </div>
 
-<p>The ElasTest Security Service (ESS) is an ElasTest service for identifying security vulnerabilities in Web applications. ESS creates security tests that mimics the behavior of malicious users to probe a Web application to discover vulnerabilities. ESS is based on <a href="https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project">OWASP ZAP</a>, a prominent open source web vulnerability scanner. ESS not only supports the detection of the common web application vulnerabilities such as cross-site scripting, SQL injection etc., but also <a href="https://pdfs.semanticscholar.org/270c/cf24e8be8421515f5121600f248e841f424d.pdf?_ga=2.125276362.151869347.1515086898-1552517986.1515086898">replay attacks</a> and cross-site script inclusion.</p>
-<h3 class="holder-subtitle link-top">Features</h3>
+<p>The ElasTest Security Service (ESS) is an ElasTest service for identifying security vulnerabilities in the System under Test (SuT). ESS creates security tests that probe the SuT to discover security vulnerabilities. ESS is based on <a href="https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project">OWASP ZAP</a> (a prominent open source web vulnerability scanner). ESS not only supports the detection of the common web application vulnerabilities (cross-site scripting, SQL injection etc.), but also cookie misconfigurations, privacy attacks, <a href="https://pdfs.semanticscholar.org/270c/cf24e8be8421515f5121600f248e841f424d.pdf?_ga=2.125276362.151869347.1515086898-1552517986.1515086898">replay attacks</a>, etc.</p>
+<h3 class="holder-subtitle link-top" id="options">Features</h3>
 
-<p>The current version of ESS (v0.9.1) has the following features.</p>
-<ol>
-<li>A web-based GUI for providing the details of the Web application under test</li>
-<li>Support for detecting <a href="https://www.owasp.org/index.php/Top_10-2017_Top_10">common Web application security weaknesses</a></li>
-<li>Supports the detection of insecure cookies that (1) can be stolen using <a href="https://paladion.net/ssl-stripping-revisiting-http-downgrading-attacks/">SSL Stripping attacks</a>, (2) can be stolen using <a href="https://en.wikipedia.org/wiki/Cross-site_scripting">Cross-Site Scripting attacks</a>, (3) facilitates <a href="https://en.wikipedia.org/wiki/Cross-site_request_forgery">Cross-Site Request Forgery attacks</a></li>
-</ol>
-<p>The future releases of ESS will support the detection of:</p>
-<ol>
-<li>Vulnerabilities enabling cross-site sctipt inclusion attacks</li>
-<li>Vulnerabilities enabling replay attacks</li>
-</ol>
-<h3 class="holder-subtitle link-top">Using ESS in a TJob</h3>
-
-<p>ESS can be launched during the execution of a TJob. The following demo explains how this can be done.</p>
-<p>Create a new TJob in ElasTest with the following configuration:</p>
-<ul>
-<li><strong>TJob name</strong>: <strong><code>ESS demo</code></strong>,</li>
-<li><strong>Current SuT</strong>: Select <strong><code>None</code></strong>,</li>
-<li><strong>Environment Docker Image</strong>: <strong><code>dockernash/test-tjob-ess</code></strong></li>
-<li>
-<p><strong>Commands</strong>: </p>
-<pre><code>python fteaching-tjob.py http://example.org/
+<p>The current version of ESS (v1.0.0-beta7) has the following features.
+1. Support for programmatically scanning a TJob (see the next section for details)
+2. A web-based GUI for keeping track of the progress of a security scan and for displaying the results of a scan
+3. Support for detecting <a href="https://www.owasp.org/index.php/Top_10-2017_Top_10">common Web application security weaknesses</a> that are supported by OWASP ZAP
+4. Supports the detection of insecure cookies that are missing 
+   - the <em>secure</em> flag and thereby allowing <a href="https://paladion.net/ssl-stripping-revisiting-http-downgrading-attacks/">SSL Stripping attacks</a>
+   - the <em>httponly</em> flag and therefore susceptible <a href="https://en.wikipedia.org/wiki/Cross-site_scripting">Cross-Site Scripting attacks</a>, 
+   - the <em>SameSite</em> attribute and thereby facilitating <a href="https://en.wikipedia.org/wiki/Cross-site_request_forgery">Cross-Site Request Forgery attacks</a></p>
+<p>The future releases of ESS will support the detection of vulnerabilities enabling:
+- Privacy Attacks (e.g. Cross-Origin State Inference attacks)
+- Replay attacks
+- etc.</p>
+<h2 id="using-ess-in-a-tjob">Using ESS in a TJob</h2>
+<p>A normal TJob simply contains the code for executing a test (e.g. executing a selenium test using a web browser provided by the EUS). Once the test has dinished executing, the program returns and the TJob execution is completed. For scan a TJob using ESS, the author of the TJob must add the following steps before exiting.
+1. read the value of the <em>ET_ESS_API</em> environmental variable to get the URL of the ESS API. The following is an example (in Python) of how this can be done.</p>
+<pre><code>import os
+ess_api_url=os.environ['ET_ESS_API']
 </code></pre>
-</li>
-<li>
-<p><strong>Test Support Services</strong>: Check <strong><code>EUS</code></strong> and <strong><code>ESS</code></strong></p>
-</li>
-</ul>
-<p>Save the TJob and click the execute button. The security alerts for the SuT will be displayed under the <strong><code>ess section</code></strong>.</p>
+
+<ol>
+<li>send a HTTP POST request to the path <em>/ess/api/r4/start/</em> of the ESS API with a JSON body containing the key <em>sites</em> with the value being a list of SuT URLs that needs to be scanned for security. The following is an example (in Python) of how this can be done.</li>
+</ol>
+<pre><code>import requests
+resp=requests.post(ess_api_url+&quot;/ess/api/r4/start/&quot;,json={&quot;sites&quot;: [&quot;https://example.com&quot;]})
+</code></pre>
+
+<ol>
+<li>check whether the ESS scan has completed before exiting</li>
+</ol>
+<pre><code>if &quot;starting-ess&quot; in resp.text:
+            resp=requests.get(ess_api_url+'/ess/api/r4/status/')
+            status=resp.text
+            while (&quot;not-yet&quot; in status):
+                time.sleep(5)
+                resp=requests.get(ess_url+'/ess/api/r4/status/')
+                status=resp.text
+</code></pre>
+
+<p>We have created the docker image of similar TJob and it's code is available <a href="https://github.com/avinash-sudhodanan/sample-ess-tjob/blob/master/fteaching-tjob.py">here</a>. The docker image is available at</p>
+<blockquote>
+<p>dockernash/test-tjob-ess</p>
+</blockquote>
+<h2 id="executing-an-ess-security-scan-for-a-tjob">Executing an ESS security scan for a TJob</h2>
+<ol>
+<li>Visit ElasTest GUI in a Web Browser (see example image shown below)
+<img alt="" src="../../docs/test-services/images/ess/0.png" /></li>
+<li>Click on the <strong>New Project</strong> button to create a new project (see example image shown below)
+![][Create New Project ]</li>
+<li>Provide a new for the project (see example image shown below)
+<img alt="" src="../../docs/test-services/images/ess/1.1.png" /></li>
+<li>Click on the <strong>New TJob</strong> button to create a new TJob (see example image shown below)
+<img alt="" src="../../docs/test-services/images/ess/2.png" /></li>
+<li>Configure the TJob by providing the details of the docker image of the TJob created (see example image shown below)
+<img alt="" src="../../docs/test-services/images/ess/3.png" /></li>
+<li>Check the checkboxe corresponding to ESS and other requires TSSes (see example image shown below)
+<img alt="" src="../../docs/test-services/images/ess/4.png" /></li>
+<li>Click on the play button to run the TJob (see example image shown below)
+<img alt="" src="../../docs/test-services/images/ess/5.0.png" /></li>
+<li>Scroll down to the iframe the ESS GUI is displayed (see example image shown below)
+<img alt="" src="../../docs/test-services/images/ess/6.0.png" /></li>
+<li>Wait until the GUI changes to starting the ESS scan (see example image shown below)
+<img alt="" src="../../docs/test-services/images/ess/6.1.PNG" /></li>
+<li>Notice the progress bar that indicates the progress of the test and the progress status message displayed above (see example image shown below)
+<img alt="" src="../../docs/test-services/images/ess/6.2.PNG" /></li>
+<li>Wait until the scan is complete (see example image shown below)
+<img alt="" src="../../docs/test-services/images/ess/6.3.PNG" /></li>
+<li>Click on an alert to expand it (see example image shown below)
+<img alt="" src="../../docs/test-services/images/ess/6.4.PNG" /></li>
+<li>Scroll up and click on the name of the TJob to go to the TJob menu (see example image shown below)
+<img alt="" src="../../docs/test-services/images/ess/7.0.PNG" /></li>
+<li>Click on the last TJob execution (see example image shown below)
+<img alt="" src="../../docs/test-services/images/ess/7.1.PNG" /></li>
+<li>Look for the <em>report.json</em> file that contains the JSON report of the test (see example image shown below)
+<img alt="" src="../../docs/test-services/images/ess/7.2.PNG" /></li>
+<li>Click on the button next to it to open the JSON report in a new tab (see example image shown below)
+<img alt="" src="../../docs/test-services/images/ess/8.PNG" /></li>
+</ol>
 					
 				      </div>
 				    </div>
