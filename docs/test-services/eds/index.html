@@ -505,14 +505,14 @@ M2M communication is accomplished based on industry standards and one of them be
 <p>The word <strong><code>onem2m</code></strong> is suffixed to access the gateway functionalities.</p>
 <ul>
 <li><strong><code>oneM2M Application Entity (AE)</code></strong> : The application entity forms a generic representation of oneM2M application, under which there could be one or more containers ordered in a way however visualized by the user.</li>
-<li><strong><code>oneM2M Containers</code></strong> : Not to confuse with a docker container, these containers are placeholders for content instances.</li>
+<li><strong><code>oneM2M Containers</code></strong> : Not to be confused with a docker container, these containers are placeholders for content instances.</li>
 <li><strong><code>oneM2M Content Instances (CI)</code></strong> : Content instances are values which are stored in the oneM2M containers, depending upon how the containers are defined, there could be one or more content instances all of them identifiable with a unique ID.</li>
 <li><strong><code>oneM2M path</code></strong> : This is a standard path obtained as registration of hierarchical name spaces obtained as a combination of AEs and CIs. For example, if we have an AE name "my_app" and a container by name "my_container" registered under "my_app" then, the container "my_container" can be reached at:</li>
 </ul>
 <pre><code>http://&lt;Host_IP_Address&gt;:8000/onem2m/my_app/my_container
 </code></pre>
 
-<p>However when working in oneM2M applications, it is enough to specify the path as <strong><code>onem2m/my_app/my_container</code></strong>.</p>
+<p>However, when working in oneM2M applications, it is enough to specify the path as <strong><code>onem2m/my_app/my_container</code></strong>.</p>
 <h4 class="small-subtitle">The programming paradigm</h4>
 
 <p>The programming paradigm that can be followed to implement applications are:  </p>
@@ -558,11 +558,13 @@ http://localhost:8000/onem2m/EDSOrch/edsorch/request
 </ul>
 <h4 id="run-standalone-openmtc-applications">Run Standalone OpenMTC applications</h4>
 <p>For the benefit of user, an example implementation of the IIoT application is available in the <strong><a href="https://github.com/elastest/elastest-device-emulator-service/tree/master/demo/examples">Example Implementation</a></strong>. The examples are self documented. Please follow the instructions in <a href="https://github.com/elastest/elastest-device-emulator-service/blob/master/demo/examples/README.md">README.md</a>.</p>
-<p>Following points can be observed in the implementation:<br />
-<em> It is <strong>mandatory</strong> to run a gateway and specify it's end point in the applications.
-</em> The applications inherit and extend a class called XAE in their implementations. Specifically it is required to override the <strong><code>_on_register</code></strong> method according to the requirements of the user. For example, creating containers, subscribing to containers, specifying variables etc.
-<em> The example applications once initiated successfully run forever unless terminated.
-</em> In the example applications, it is possible to witness creation of containers, subscribing to containers as well as pushing to data to containers based on when and what the example application needs to perform.</p>
+<p>Following points can be observed in the implementation:  </p>
+<ul>
+<li>It is <strong>mandatory</strong> to run a gateway and specify it's end point in the applications.</li>
+<li>The applications inherit and extend a class called XAE in their implementations. Specifically it is required to override the <strong><code>_on_register</code></strong> method according to the requirements of the user. For example, creating containers, subscribing to containers, specifying variables etc.</li>
+<li>The example applications once initiated successfully run forever unless terminated.</li>
+<li>In the example applications, it is possible to witness creation of containers, subscribing to containers as well as pushing to data to containers based on when and what the example application needs to perform.</li>
+</ul>
 <h4 class="small-subtitle">Run and test IIoT application using ElasTest</h4>
 
 <p>EDS is a Test Support Service (TSS) provided in ElasTest which is available as a docker image (<strong>elastest/eds-base</strong>). EDS is composed of three components:  </p>
@@ -588,8 +590,8 @@ Using the <strong>status</strong> channel the user application can make sure if 
 <ul>
 <li>Override the <strong><code>_on_register</code></strong> method of XAE class.<ul>
 <li>Register the application with a unique ID. Remember EDS interacts with one or more user applications, it needs to identify the user application to assign sensors and actuators. On successful processing of the instruction, this creates a path at <strong><code>onem2m/EDSOrch/&lt;user_app_ID&gt;</code></strong>. Also EDS creates containers, sensors and actuators under this path for future use to attach device containers under them.</li>
-<li>Register a sensor or actuator: Remember to subscribe to response paths of the EDSOrch and device emulators to received the result. If a sensor is requested, it is available with a unique named container under <strong><code>onem2m/EDSOrch/&lt;user_app_ID&gt;/sensors/&lt;unique_ID_of_sensor&gt;/data</code></strong>. The user application can subscribe to the data container to receive the values generated by sensor. A similar behavior for actuator can be envisioned.</li>
-<li>Similarly to modify the behavior of a device during run time, launch <strong><code>modify</code></strong> request with the unique ID of the sensor you would like to modify and send it to the corresponding device emulator.</li>
+<li>Register a sensor or actuator: Remember to subscribe to response paths of the EDSOrch and device emulators to received the result. If a sensor is requested, it is available with a uniquely named container under <strong><code>onem2m/EDSOrch/&lt;user_app_ID&gt;/sensors/&lt;unique_ID_of_sensor&gt;/data</code></strong>. The user application can subscribe to the data container to receive the values generated by sensor. A similar behavior for actuator can be envisioned.</li>
+<li>Similarly, to modify the behavior of a device during run time, launch <strong><code>modify</code></strong> request with the unique ID of the sensor you would like to modify and send it to the corresponding device emulator.</li>
 </ul>
 </li>
 </ul>
@@ -625,7 +627,7 @@ python -m SimpleHTTPServer 9000
 </li>
 <li>Wait for service on <strong>port</strong> <strong><code>9000</code></strong> to confirm SuT has started</li>
 </ul>
-<p>The use is encouraged to investigate the implementation of SuT which can be found in the <a href="https://github.com/elastest/elastest-device-emulator-service/tree/master/demo/eds_sut/TestApplication">EDS GitHub repository</a>. The code is documented to provide hints about the working.</p>
+<p>The user is encouraged to investigate the implementation of SuT which can be found in the <a href="https://github.com/elastest/elastest-device-emulator-service/tree/master/demo/eds_sut/TestApplication">EDS GitHub repository</a>. The code is documented to provide hints about the working.</p>
 <h5 class="small-subtitle">ElasTest EDS TJob configuration</h5>
 
 <div class="docs-gallery inline-block">
