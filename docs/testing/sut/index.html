@@ -210,6 +210,17 @@ section-icon: mdi mdi-content-copy
 					<li><ul> 
 
     <li class="toctree-l1 ">
+        <a class="" href="../../executions-comparator/">Executions Comparator</a>
+        
+    </li>
+
+</ul></li>
+				
+			
+				
+					<li><ul> 
+
+    <li class="toctree-l1 ">
         <a class="" href="../../testlink/">TestLink with ElasTest</a>
         
     </li>
@@ -641,16 +652,25 @@ section-icon: mdi mdi-content-copy
 <ul>
 <li><strong>SuT IP</strong>: IP or DNS of your SuT. Thanks to this field your TJobs may know how to reach your SuT through environment variable <code>ET_SUT_HOST</code>. Check <a href="../../testing/environment-variables">Environment variables</a> to learn more.</li>
 <li><strong>SuT Protocol</strong>: Protocol of your SuT. <strong><code>http</code></strong> is selected by default.</li>
-<li><strong>Elasticsearch IP</strong>: IP or DNS of your Elasticsearch.</li>
-<li><strong>Elasticsearch Port</strong>: Port of your Elasticsearch.</li>
+<li><strong>Elasticsearch</strong>:<ul>
+<li><strong>Protocol</strong>: Protocol of your Elasticsearch.</li>
+<li><strong>IP</strong>: IP or DNS of your Elasticsearch.</li>
+<li><strong>Port</strong>: Port of your Elasticsearch.</li>
+<li><strong>Stream Fields</strong>: field or fields used to sort the different logs. For each value a log card will be displayed in ElasTest. If more than one field is indicated (separated by commas) it will be sorted by combination of values of each field following the order indicated.</li>
 <li><strong>ES Indices</strong>: Elasticsearch indices where the Sut monitoring traces be stored. If there are more than one index, type them separated by commas.</li>
+</ul>
+</li>
 </ul>
 <p><strong>Optional Fields:</strong></p>
 <ul>
 <li><strong>SuT Port</strong>: Port of your SuT.</li>
-<li><strong>Elasticsearch User</strong>: The User of your Elasticsearch.</li>
-<li><strong>Elasticsearch Pass</strong>: The Password of your Elasticsearch.</li>
+<li><strong>Elasticsearch</strong>:<ul>
+<li><strong>Path</strong>: Path of your Elasticsearch if it is behind a proxy.</li>
+<li><strong>User</strong>: The User of your Elasticsearch.</li>
+<li><strong>Pass</strong>: The Password of your Elasticsearch.</li>
 <li><strong>Use Indices by Execution</strong>: If checked, a parameter with the indices will be added. For each TJob Execution, you can to indicate the inidices.</li>
+</ul>
+</li>
 </ul>
 <p></p>
 

@@ -1,6 +1,6 @@
 --- 
 layout: default 
-title: Elastest Documentation - Roadmap 
+title: Elastest Documentation - Executions Comparator 
 active: documentation 
 section-title: Documentation 
 section-icon: mdi mdi-content-copy 
@@ -16,7 +16,7 @@ section-icon: mdi mdi-content-copy
 	$( document).ready(function(){
 		$('#menu-list').show();
 	    $('li.subnav_drop').find('ul.subnav').hide();
-	       $( ".subnav" ).find( "li:contains('Roadmap')" ).each(function(i,e){
+	       $( ".subnav" ).find( "li:contains('Executions Comparator')" ).each(function(i,e){
 		  var currentElement = $(e);
 		  currentElement.parent().css({"display":"block","visibility":"visible"}); //css("background-color","blue");
 		  currentElement.css({"display":"block","visibility":"visible"});
@@ -30,7 +30,7 @@ section-icon: mdi mdi-content-copy
 						$('#doc-container').css('min-height', minHeight+'px');
 	});
 	   
-	$( ".wy-nav-content" ).find( "li:contains('Roadmap')" ).css('color','red');
+	$( ".wy-nav-content" ).find( "li:contains('Executions Comparator')" ).css('color','red');
  </script>
 
 <div id="doc-container" class="container text-justify">
@@ -207,8 +207,10 @@ section-icon: mdi mdi-content-copy
 				
 					<li><ul> 
 
-    <li class="toctree-l1 ">
-        <a class="" href="../executions-comparator/">Executions Comparator</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Executions Comparator</a>
+        
+         
         
     </li>
 
@@ -449,10 +451,8 @@ section-icon: mdi mdi-content-copy
 				
 					<li><ul> 
 
-    <li class="toctree-l1 current">
-        <a class="current" href="./">Roadmap</a>
-        
-         
+    <li class="toctree-l1 ">
+        <a class="" href="../roadmap/">Roadmap</a>
         
     </li>
 
@@ -478,46 +478,107 @@ section-icon: mdi mdi-content-copy
 					
 					  <div class="range range-xs-left">
 <div class="cell-xs-10 cell-lg-6 text-md-left inset-md-right-80 cell-lg-push-1 offset-top-50 offset-lg-top-0">
-<h2 id="content" class="h1">Roadmap</h2>
+<h2 id="content" class="h1">Executions Comparator</h2>
+<div class="offset-top-30 offset-md-top-30">
+</div>
 </div>
 </div>
 
-<h3 id="features-for-next-release-due-december-2018">Features for next release (due December 2018)</h3>
+<p>ElasTest has a TJob Execution comparator which allows you to see the differences between two or more executions at a glance.</p>
+<h3 class="holder-subtitle link-top">Accessing Executions Comparator</h3>
+
+<p>To access the run comparator you must first navigate to the corresponding <strong>TJob section</strong>.</p>
+<p>Once there you will have to <strong>select two or more finished executions</strong> from the table and finally press the <strong class="etColor">Compare executions</strong> button.</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-2" href="/docs/executions-comparator/images/accessing.png"><img class="img-responsive img-wellcome" src="/docs/executions-comparator/images/accessing.png"/></a>
+</div>
+
+<h3 class="holder-subtitle link-top">Using the Executions Comparator</h3>
+
+<p>Once inside the execution comparator the following information will be displayed:</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-2" href="/docs/executions-comparator/images/executions_comparator.png"><img class="img-responsive img-wellcome" src="/docs/executions-comparator/images/executions_comparator.png"/></a>
+</div>
+
+<h4 class="small-subtitle holder-subtitle link-top">Executions to compare</h4>
+
+<p>A list with information about <strong>each execution</strong> will be displayed here. You will be able to click on each one of them to navigate to the page of that execution.</p>
+<h4 class="small-subtitle holder-subtitle link-top">Test Cases Comparison</h4>
+
+<p>Here you can see a table with the <strong class="etColor">results of each test case</strong> in <strong>each of the executions</strong>.</p>
+<h4 class="small-subtitle holder-subtitle link-top">Monitoring Traces Comparison</h4>
+
+<p>On the other hand, you can also make a comparison of the <strong class="etColor">metrics and logs</strong> of the executions. To do this, you can select the logs and/or metrics that you want to compare in the <strong>Monitoring Configuration</strong> window (by pressing the nut-button on the upper right-hand side) as you would on the screen of a tjob run. Once added they will be shown as follows:</p>
+<h5 id="log-comparator" class="small-subtitle">Log Comparator</h5>
+
+<p>To compare logs you must first select the logs you want to compare:</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-2" href="/docs/executions-comparator/images/log_comparator/lc1.png"><img class="img-responsive img-wellcome" src="/docs/executions-comparator/images/log_comparator/lc1.png"/></a>
+</div>
+
+<p>Once added you will see the following card:</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-2" href="/docs/executions-comparator/images/log_comparator/lc2.png"><img class="img-responsive img-wellcome" src="/docs/executions-comparator/images/log_comparator/lc2.png"/></a>
+</div>
+
+<p>In this card there will be <strong>a tab for each log selected</strong> and if you select more than one there will be another tab called <strong>AIO that mixes all the logs selected</strong>.</p>
+<p>In addition, within <strong>each of these tabs</strong> there will be one tab <strong>for each pair of selected executions</strong> (in this example we have only selected two, so there will only be one tab).</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-2" href="/docs/executions-comparator/images/log_comparator/lc3.png"><img class="img-responsive img-wellcome" src="/docs/executions-comparator/images/log_comparator/lc3.png"/></a>
+</div>
+
+<p>There are several possible filters that are divided into two categories:</p>
 <ul>
-<li><strong>Improve documentation</strong></li>
-<li><strong>Platform stabilization (from betas to 1.0 RELEASE)</strong></li>
-<li><strong>Multi-configuration TJobs</strong><ul>
-<li>Execute same TJob with different configurations and improve visualization with matrices and graphs (Basic Orchestration) </li>
-<li>Compare several executions</li>
+<li><strong><code>View</code></strong>:<ul>
+<li><strong>Complete logs</strong>: compare all available logs.</li>
+<li><strong>Test Logs</strong>: compare only the logs of the test cases.</li>
+<li><strong>Failed Tests</strong>: compare only the logs of the failed test cases.</li>
 </ul>
 </li>
-<li><strong>Integration with Jenkins agents</strong></li>
-<li><strong>Kubernetes</strong><ul>
-<li>Deploy ElasTest in k8s</li>
-<li>SUT deployed as Kubernetes app</li>
-<li>Design a management of an elastic k8s cluster</li>
+<li><strong><code>Comparison</code></strong>:<ul>
+<li><strong>Complete</strong>: includes the timestamp in the logs comparison.</li>
+<li><strong>No timestamp</strong>: only includes the message.</li>
+<li><strong>Time diff</strong>: includes the time diff between traces in the logs comparison.</li>
 </ul>
 </li>
-<li><strong>Document IoT device emulation in main elastest.io doc page</strong></li>
-<li><strong>Instrumentation manager</strong><ul>
-<li>Document instrumentation manager in main elastest.io doc page</li>
-<li>Develop controllability features</li>
 </ul>
-</li>
-<li><strong>Document monitoring sercice in main elastest.io doc page</strong></li>
-<li><strong>Document security service in main elastest.io doc page</strong></li>
-<li><strong>Cost estimations for test executions</strong><ul>
-<li>Document cost service in main elastest.io doc page</li>
-<li>Develop dynamic costs (based on real-time data)</li>
-</ul>
-</li>
-<li><strong>Continuous Integration</strong><ul>
-<li>Testing Elastest with Elastest</li>
-<li>Improve dashboard component tests (review with URJC)</li>
-</ul>
-</li>
-<li><strong>Document test recommendation engine in main elastest.io doc page</strong></li>
-</ul>
+<p>To start the check you should press the button Start Comparison:</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-2" href="/docs/executions-comparator/images/log_comparator/lc4.png"><img class="img-responsive img-wellcome" src="/docs/executions-comparator/images/log_comparator/lc4.png"/></a>
+</div>
+
+<p>The comparison will be shown:</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-2" href="/docs/executions-comparator/images/log_comparator/lc5.png"><img class="img-responsive img-wellcome" src="/docs/executions-comparator/images/log_comparator/lc5.png"/></a>
+</div>
+
+<p>If we select the Test Logs view:</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-2" href="/docs/executions-comparator/images/log_comparator/lc6.png"><img class="img-responsive img-wellcome" src="/docs/executions-comparator/images/log_comparator/lc6.png"/></a>
+</div>
+
+<!-- Metrics -->
+
+<h5 class="small-subtitle">Metrics Comparator</h5>
+
+<p>To compare metrics you must first select the metrics you want to compare:</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-2" href="/docs/executions-comparator/images/mc1.png"><img class="img-responsive img-wellcome" src="/docs/executions-comparator/images/mc1.png"/></a>
+</div>
+
+<p>Once added you will see the following card:</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-2" href="/docs/executions-comparator/images/mc2.png"><img class="img-responsive img-wellcome" src="/docs/executions-comparator/images/mc2.png"/></a>
+</div>
+
+<h6 class="smaller-subtitle">Advanced Metrics Configuration</h6>
+
+<p>You can configure your tests to send marks to ElasTest, so you can make better comparisons in the charts later.
+To send a mark to ElasTest, you must print a log line for each mark in your test with the following exact structure: <strong><code>##elastest-monitor-mark: id=MARKID, value=MARKVALUE</code></strong> replacing MARKID with the common id of the mark and MARKVALUE for the value of the mark at that time. There will be a different chart display for each mark id.</p>
+<p>In this test example several marks are sent with <code>id=action</code>, therefore, in the test results page we will have the option to visualize the charts as <strong>"action" Mark View</strong> or as <strong>Time View</strong> (default). By clicking on <strong>"action" Mark View</strong> button we will have the following view, in which each point of the chart corresponds to each mark sent:</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-2" href="/docs/executions-comparator/images/mc3.png"><img class="img-responsive img-wellcome" src="/docs/executions-comparator/images/mc3.png"/></a>
+</div>
 					
 				      </div>
 				    </div>
@@ -526,8 +587,10 @@ section-icon: mdi mdi-content-copy
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
+        <a href="../testlink/" class="btn btn-xs btn-primary float-right" title="TestLink with ElasTest">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
       
-        <a href="../releases/" class="btn btn-xs btn-primary" title="Releases"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
+      
+        <a href="../log-analyzer/" class="btn btn-xs btn-primary" title="Log Analyzer"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
       
     </div>
   
@@ -535,7 +598,7 @@ section-icon: mdi mdi-content-copy
 
   
   
-	  <a href="https://github.com/elastest/elastest.io-docs/blob/master/docs/roadmap/index.md" class="fa fa-github offset-xxs-top-30"> Edit Documentation on GitHub</a>
+	  <a href="https://github.com/elastest/elastest.io-docs/blob/master/docs/executions-comparator/index.md" class="fa fa-github offset-xxs-top-30"> Edit Documentation on GitHub</a>
   
 </footer>
 			  	  
