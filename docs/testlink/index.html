@@ -534,8 +534,17 @@ section-icon: mdi mdi-content-copy
 
 <h5 class="small-subtitle">TestLink Test Plan Execution</h5>
 
-<p>On the other hand, you can run the test plan clicking the "Execute Test Plan" button located on the top right. Immediately after clicking on the button, a modal will be displayed and you must select a build to run the test.</p>
-<p>You must wait a few seconds until the browser loads. After that, you can see the Test Plan information on the left and a web browser on the right. On the bottom, you will can see all the logs of your test.</p>
+<p>On the other hand, you can run the test plan clicking the "Execute Test Plan" button located on the top right. Immediately after clicking on the button, a modal will be displayed in which you can select the next configuration:</p>
+<ul>
+<li><strong>Select Build</strong> to run the test.</li>
+<li><strong>Select Browser and it's version</strong></li>
+<li><strong>Configure a hosts list</strong> to put them in the browser container <strong>/etc/hosts</strong>.</li>
+</ul>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-4" href="/docs/testlink/images/execute_plan_modal.png"><img class="img-responsive img-wellcome" src="/docs/testlink/images/execute_plan_modal.png"/></a>
+</div>
+
+<p>Once the configuration has been selected and the <em>Run test plan button</em> has been pressed, you must wait a few seconds until the browser loads. After that, you can see the Test Plan information on the left and a web browser on the right. On the bottom, you will can see all the logs of your test.</p>
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-4" href="/docs/testlink/images/testplan_execute.png"><img class="img-responsive img-wellcome" src="/docs/testlink/images/testplan_execute.png"/></a>
 </div>
