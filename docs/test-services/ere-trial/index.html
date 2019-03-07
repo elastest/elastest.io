@@ -1,6 +1,6 @@
 --- 
 layout: default 
-title: Elastest Documentation - Freestyle Jobs 
+title: Elastest Documentation - Recommendation Manager - Trial (ERE) 
 active: documentation 
 section-title: Documentation 
 section-icon: mdi mdi-content-copy 
@@ -16,7 +16,7 @@ section-icon: mdi mdi-content-copy
 	$( document).ready(function(){
 		$('#menu-list').show();
 	    $('li.subnav_drop').find('ul.subnav').hide();
-	       $( ".subnav" ).find( "li:contains('Freestyle Jobs')" ).each(function(i,e){
+	       $( ".subnav" ).find( "li:contains('Recommendation Manager - Trial (ERE)')" ).each(function(i,e){
 		  var currentElement = $(e);
 		  currentElement.parent().css({"display":"block","visibility":"visible"}); //css("background-color","blue");
 		  currentElement.css({"display":"block","visibility":"visible"});
@@ -30,7 +30,7 @@ section-icon: mdi mdi-content-copy
 						$('#doc-container').css('min-height', minHeight+'px');
 	});
 	   
-	$( ".wy-nav-content" ).find( "li:contains('Freestyle Jobs')" ).css('color','red');
+	$( ".wy-nav-content" ).find( "li:contains('Recommendation Manager - Trial (ERE)')" ).css('color','red');
  </script>
 
 <div id="doc-container" class="container text-justify">
@@ -276,7 +276,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../">Jenkins integration</a>
+        <a class="" href="../../jenkins/">Jenkins integration</a>
         
     </li>
 
@@ -285,7 +285,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../try-jenkins/">Try Jenkins plugin</a>
+        <a class="" href="../../jenkins/try-jenkins/">Try Jenkins plugin</a>
         
     </li>
 
@@ -294,7 +294,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../pipeline/">Pipeline Jobs</a>
+        <a class="" href="../../jenkins/pipeline/">Pipeline Jobs</a>
         
     </li>
 
@@ -302,10 +302,8 @@ section-icon: mdi mdi-content-copy
         
              
 
-    <li class="toctree-l1 current">
-        <a class="current" href="./">Freestyle Jobs</a>
-        
-         
+    <li class="toctree-l1 ">
+        <a class="" href="../../jenkins/freestyle/">Freestyle Jobs</a>
         
     </li>
 
@@ -327,7 +325,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../../test-services/introduction/">Introduction</a>
+        <a class="" href="../introduction/">Introduction</a>
         
     </li>
 
@@ -336,7 +334,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../../test-services/ebs/">Big Data Service (EBS)</a>
+        <a class="" href="../ebs/">Big Data Service (EBS)</a>
         
     </li>
 
@@ -345,7 +343,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../../test-services/ece/">Cost Engine (ECE)</a>
+        <a class="" href="../ece/">Cost Engine (ECE)</a>
         
     </li>
 
@@ -354,7 +352,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../../test-services/eds/">Device Emulator Service (EDS)</a>
+        <a class="" href="../eds/">Device Emulator Service (EDS)</a>
         
     </li>
 
@@ -363,7 +361,18 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../../test-services/ems/">Monitoring Service (EMS)</a>
+        <a class="" href="../ems/">Monitoring Service (EMS)</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Recommendation Manager - Trial (ERE)</a>
+        
+         
         
     </li>
 
@@ -372,16 +381,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../../test-services/ere-trial/">Recommendation Manager - Trial (ERE)</a>
-        
-    </li>
-
-
-        
-             
-
-    <li class="toctree-l1 ">
-        <a class="" href="../../test-services/ess/">Security Service (ESS)</a>
+        <a class="" href="../ess/">Security Service (ESS)</a>
         
     </li>
 
@@ -487,32 +487,93 @@ section-icon: mdi mdi-content-copy
 					
 					  <div class="range range-xs-left">
 <div class="cell-xs-10 cell-lg-6 text-md-left inset-md-right-80 cell-lg-push-1 offset-top-50 offset-lg-top-0">
-<h2 id="content" class="h1">Freestyle Jobs</h2>
+<h2 id="content" class="h1">ElasTest Recommendation Engine</h2>
 <div class="offset-top-30 offset-md-top-30">
 </div>
 </div>
 </div>
 
-<p>As mentioned above, the ElasTest plugin can also be used from a freestyle project, although at the moment it only offers some basic functionalities:</p>
-<ul>
-<li>Send the logs generated during the build of a Job to ElasTest</li>
-<li>Request an EUS TSS (a support services that provides browsers on demand), which can be used during the build.</li>
-<li>Send the test results report generated by the build to ElasTest</li>
-</ul>
-<p>To configure a Freestyle Job with ElasTest integrated, you will must select the <em>Integrate Jenkins with ElasTest</em> field. In this case, the <em>EUS</em> field is not required that is why this example do not need a web browser.</p>
-<p>To complete this freestyle job, you must download the project inside of this <a href="https://github.com/elastest/demo-projects">repository</a> and introduce <strong><code>cd ./unit/junit5-unit-test;mvn test</code></strong> in the <strong>Build command</strong>.</p>
-<p><br>
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/jenkins/images/job.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/job.png"/></a>
-</div>
-<br></p>
-<h5 class="small-subtitle">Job result</h5>
+<p>ElasTest Recommendation Engine (ERE) supports test automation developers by providing two types of recommendations. First, it recommends complete Java implementations of unit test cases based on short descriptions in natural language provided by a tester. Second, it recommends a list of test cases that are most relevant to the test case generated based on user's description.</p>
+<p>ERE follows the Neural Machine Translation (NMT) model architecture described in <a href="#luong">[1]</a>, which was designed for the task of performing translation between natural languages. ERE applies the NMT model to the code generation task. It ingests large amounts of data stored in software repositories to learn deep vector representations of source code modules. It then uses these representations to map natural language descriptions to source code (for the first type of recommendations) and to compute the degree of similarity between test cases (for the second type of recommendations).</p>
+<p>The trial version includes off-the-shelf model trained on over 700 online source code repositories available on GitHub. To ensure high quality of the code, only most popular repositories (1,000 stars and more) were considered as the source of training data. This Generic Model is capable of generating approximate recommendations, and will be most appropriate for teams that do not have their own training data, i.e. working on new projects with a minimal codebase.</p>
+<p>For users who wish to receive very accurate recommendations (requiring little or no editing), and have a medium or large database of automated code relevant to their domain, the best solution is training a custom model. The model trained on users own data will be much more precise without the need for increasing the size. As the part of the trial offering, we will train a project-specific model for users who will directly contact <a href="mailto:iix.elastest@ie.ibm.com">Innovation Exchange</a>.</p>
+<h3 class="holder-subtitle link-top">Features</h3>
 
-<p>After we run the Freestyle Job, we can check the results in both platforms, <strong>Jenkins</strong> and <strong>ElasTest</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Recommending new test code</td>
+<td>Based on short natural language description of a test case, user receives recommended Java implementation of that test case (newly generated code).</td>
+</tr>
+<tr>
+<td>Recommending automated test cases for reuse/adaptation</td>
+<td>Based on short natural language description of a test case, user receives a list of existing automated test cases that are most relevant to the query.</td>
+</tr>
+</tbody>
+</table>
+<h3 class="holder-subtitle link-top">How to run</h3>
+
+<p>ElasTest Recommendation Engine runs in the context of <a href="https://elastest.io/docs/">ElasTest platform</a> and can be launched from ElasTest Dashboard.</p>
+<h4 class="small-subtitle">Procedure</h4>
+
+<ol>
+<li>Start ElasTest platform:</li>
+</ol>
+<p><code>docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock --rm elastest/platform start -m=singlenode</code></p>
+<ol>
+<li>Use browser to access ElasTest Dashboard.</li>
+<li>Navigate to Test Engines page and start 'ere'.</li>
+</ol>
+<p><strong>Note:</strong>
+The first time you start ERE, you need to wait a couple of minutes for the image to get pulled from ElasTest repository. Once the image is present on your system, starting and stopping ERE is quick. The current size of /elastest/ere-trial image is 4.2 GB (it will be decreased in future releases).</p>
+<ol>
+<li>Click on eye icon to access ERE UI.</li>
+</ol>
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-4" href="/docs/jenkins/images/jenkins_log.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/jenkins_log.png"/></a>
-    <a data-fancybox="gallery-4" href="/docs/jenkins/images/elastest_log.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/elastest_log.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/test-services/images/ere-trial/test-engines.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ere-trial/test-engines.png"/></a>
 </div>
+
+<h4 class="small-subtitle" id="new_recom">New Recommendation wizard</h4>
+
+<p>Click on 'New Recommendation' button in the main page to enter a description of a test case. In the 'Area Description' field, provide a more general description of the tested area, such as a description of functionality of the class under test. In the 'Task Description' field, indicate the specific task or functionality to be tested. Click OK to submit your query.</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/test-services/images/ere-trial/enter-query.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ere-trial/enter-query.png"/></a>
+</div>
+
+<h4 class="small-subtitle" id="results_page">Results Page</h4>
+
+<p>For each query, ERE produces two types of recommendations: (1) new code generated from the area and task description, and (2) a list of existing test cases retrieved from the software repository based on their similarity to the generated test case.</p>
+<h5 class="small-subtitle">Generated code</h5>
+
+<p>The new code inferred by the machine learning model is checked for syntax. If it complies to basic Java syntax rules, it is displayed on the top of the page (embedded into a mock class), otherwise it is skipped.</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/test-services/images/ere-trial/query_results1.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ere-trial/query_results1.png"/></a>
+</div>
+
+<h5 class="small-subtitle">Test cases for reuse</h5>
+
+<p>The list of existing test cases recommended for re-use is displayed in a table. The table provides information that helps to locate the reusable test cases in the repository. Each row includes the name of the class containing the recommended test method and the name of that method, as well as the score indicating the degree of similarity to the generated code.</p>
+<p>Click on 'Show Details' link to display the body of the method.</p>
+<p>Hover over a class name to view package name.</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/test-services/images/ere-trial/query_results2.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ere-trial/query_results2.png"/></a>
+</div>
+
+<p>Click on the 'Class Members link (if available) to view the members of the class containing the recommended test case.</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/test-services/images/ere-trial/class_members.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ere-trial/class_members.png"/></a>
+</div>
+
+<p>Click on the 'Repository' link to open the repository of origin and inspect the context of the recommended test case.</p>
+<p><a name="luong"></a> <em>[1] Luong, T.; Pham, H.; Manning, C.D. Effective Approaches to Attention-based Neural Machine Translation.
+In Proceedings of the 2015 Conference on Empirical Methods in Natural Language Processing, Lisbon, Portugal,
+17–21 September 2015; pp. 1412–1421</em>.</p>
 					
 				      </div>
 				    </div>
@@ -521,10 +582,10 @@ section-icon: mdi mdi-content-copy
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../../test-services/introduction/" class="btn btn-xs btn-primary float-right" title="Introduction">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../ess/" class="btn btn-xs btn-primary float-right" title="Security Service (ESS)">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../pipeline/" class="btn btn-xs btn-primary" title="Pipeline Jobs"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
+        <a href="../ems/" class="btn btn-xs btn-primary" title="Monitoring Service (EMS)"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
       
     </div>
   
@@ -532,7 +593,7 @@ section-icon: mdi mdi-content-copy
 
   
   
-	  <a href="https://github.com/elastest/elastest.io-docs/blob/master/docs/jenkins/freestyle.md" class="fa fa-github offset-xxs-top-30"> Edit Documentation on GitHub</a>
+	  <a href="https://github.com/elastest/elastest.io-docs/blob/master/docs/test-services/ere-trial.md" class="fa fa-github offset-xxs-top-30"> Edit Documentation on GitHub</a>
   
 </footer>
 			  	  
