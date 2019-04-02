@@ -35870,3 +35870,38 @@ button#gdpr-cookie-advanced {
     margin-right: 5px;
 }
 
+
+.list-ic li .bullet {
+  display: inline-block;
+  font-weight: 800;
+  width: 2em;
+  height: 2em;
+  text-align: center;
+  line-height: 2em;
+  border-radius: 1em;
+  background: #f5bf2f;
+  color: white;
+  position: relative;
+  z-index: 1;
+}
+
+.list-ic.vertical li {
+  list-style-type: none;
+  text-align: left;
+}
+.list-ic.vertical li .bullet {
+  margin: 1.4em 0;
+}
+
+
+.list-ic li:first-child::before {
+  display: none;
+}
+
+.elastest-webinar{
+  background: #000;
+}
+
+.elastest-webinar iframe{
+  max-width: 100%;
+}
