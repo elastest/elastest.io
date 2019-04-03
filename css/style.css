@@ -35871,6 +35871,7 @@ button#gdpr-cookie-advanced {
 }
 
 
+
 .list-ic li .bullet {
   display: inline-block;
   font-weight: 800;
@@ -35883,6 +35884,10 @@ button#gdpr-cookie-advanced {
   color: white;
   position: relative;
   z-index: 1;
+}
+
+.list-ic.vertical {
+  font-size: 1.2em;
 }
 
 .list-ic.vertical li {
