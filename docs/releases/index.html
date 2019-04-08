@@ -493,6 +493,33 @@ section-icon: mdi mdi-content-copy
 
 <!-- ************************* -->
 
+<!-- ********* 1.4.0 ********* -->
+
+<!-- ************************* -->
+
+<h3 id="1.4.0" class="small-subtitle">1.4.0</h3>
+
+<h4 class="smaller-subtitle">08/04/2019</h4>
+
+<h5 class="smaller-subtitle">Features & Improvements</h5>
+
+<ul>
+<li><a target="_blank" href="/docs/web-browsers/e2e-browser">Browsers started by a TJob</a> run now have a <strong>fixed name</strong>, allowing you to compare browser logs between different executions**.</li>
+<li>It is now possible to <strong class="italicEtColor">upload files</strong> to a <strong>browser</strong> and also <strong class="italicEtColor">download</strong> them.</li>
+<li>A button has been added to <strong><code>upload files to the browser context</code></strong> on the <a target="_blank" href="/docs/testlink">TestLink</a> Test Plan <strong>execution</strong> page.</li>
+<li>It is possible to <strong>attach evidence files</strong> to the executions by means of an api that the TJob receives in an <a target="_blank" href="/docs/testing/environment-variables/">environment variable</a> (<em>ET_ETM_TJOB_ATTACHMENT_API</em>).</li>
+<li>The <strong><code>View in loganalyzer</code></strong> button has been added to the section of a <strong>specific Test Case</strong>.</li>
+</ul>
+<h5 class="smaller-subtitle">Bug Fixes</h5>
+
+<ul>
+<li>Fixed a bug in <a target="_blank" href="/docs/executions-comparator/#log-comparator">Log Comparator</a> that failed to get start/finish traces when testName had special characters or reserved for regex (<em>:[]$</em>...).</li>
+<li><strong>Browser logs</strong> that contain <strong>line breaks</strong> are now split and combined with the line break character, since it used to give an exception and were not being saved.</li>
+<li>Definitively fixed <a target="_blank" href="/docs/log-analyzer/">LogAnalyzer</a> date bug with Test Cases.</li>
+<li>If there is a connection problem on get <strong>browser images</strong> from Docker Hub, the <strong>cached</strong> images are used.</li>
+</ul>
+<!-- ************************* -->
+
 <!-- ********* 1.3.1 ********* -->
 
 <!-- ************************* -->
