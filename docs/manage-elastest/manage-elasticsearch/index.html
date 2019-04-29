@@ -1,6 +1,6 @@
 --- 
 layout: default 
-title: Elastest Documentation - Cost Engine (ECE) 
+title: Elastest Documentation - Manage Elasticsearch 
 active: documentation 
 section-title: Documentation 
 section-icon: mdi mdi-content-copy 
@@ -16,7 +16,7 @@ section-icon: mdi mdi-content-copy
 	$( document).ready(function(){
 		$('#menu-list').show();
 	    $('li.subnav_drop').find('ul.subnav').hide();
-	       $( ".subnav" ).find( "li:contains('Cost Engine (ECE)')" ).each(function(i,e){
+	       $( ".subnav" ).find( "li:contains('Manage Elasticsearch')" ).each(function(i,e){
 		  var currentElement = $(e);
 		  currentElement.parent().css({"display":"block","visibility":"visible"}); //css("background-color","blue");
 		  currentElement.css({"display":"block","visibility":"visible"});
@@ -30,7 +30,7 @@ section-icon: mdi mdi-content-copy
 						$('#doc-container').css('min-height', minHeight+'px');
 	});
 	   
-	$( ".wy-nav-content" ).find( "li:contains('Cost Engine (ECE)')" ).css('color','red');
+	$( ".wy-nav-content" ).find( "li:contains('Manage Elasticsearch')" ).css('color','red');
  </script>
 
 <div id="doc-container" class="container text-justify">
@@ -325,7 +325,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../introduction/">Introduction</a>
+        <a class="" href="../../test-services/introduction/">Introduction</a>
         
     </li>
 
@@ -334,18 +334,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../ebs/">Big Data Service (EBS)</a>
-        
-    </li>
-
-
-        
-             
-
-    <li class="toctree-l1 current">
-        <a class="current" href="./">Cost Engine (ECE)</a>
-        
-         
+        <a class="" href="../../test-services/ebs/">Big Data Service (EBS)</a>
         
     </li>
 
@@ -354,7 +343,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../eds/">Device Emulator Service (EDS)</a>
+        <a class="" href="../../test-services/ece/">Cost Engine (ECE)</a>
         
     </li>
 
@@ -363,7 +352,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../ems/">Monitoring Service (EMS)</a>
+        <a class="" href="../../test-services/eds/">Device Emulator Service (EDS)</a>
         
     </li>
 
@@ -372,7 +361,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../ere-trial/">Recommendation Manager - Trial (ERE)</a>
+        <a class="" href="../../test-services/ems/">Monitoring Service (EMS)</a>
         
     </li>
 
@@ -381,7 +370,16 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../ess/">Security Service (ESS)</a>
+        <a class="" href="../../test-services/ere-trial/">Recommendation Manager - Trial (ERE)</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../test-services/ess/">Security Service (ESS)</a>
         
     </li>
 
@@ -456,7 +454,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../../manage-elastest/monitoring-containers/">Monitoring Containers</a>
+        <a class="" href="../monitoring-containers/">Monitoring Containers</a>
         
     </li>
 
@@ -464,8 +462,10 @@ section-icon: mdi mdi-content-copy
         
              
 
-    <li class="toctree-l1 ">
-        <a class="" href="../../manage-elastest/manage-elasticsearch/">Manage Elasticsearch</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Manage Elasticsearch</a>
+        
+         
         
     </li>
 
@@ -518,71 +518,15 @@ section-icon: mdi mdi-content-copy
 					
 					  <div class="range range-xs-left">
 <div class="cell-xs-10 cell-lg-6 text-md-left inset-md-right-80 cell-lg-push-1 offset-top-50 offset-lg-top-0">
-<h2 id="content" class="h1">ElasTest Cost Engine (ECE)</h2>
+<h2 id="content" class="h1">Manage Elasticsearch (Only for singlenode mode)</h2>
 <div class="offset-top-30 offset-md-top-30">
 </div>
 </div>
 </div>
 
-<p>ElasTest Cost Engine (ECE) enables you to estimate the cost of executing your tests over ElasTest platform. Additionally, once the tests have finished execution, ECE allows you to see a detailed breakup of true cost across all physical and virtual resources used by various test execution runs.</p>
-<h3 class="holder-subtitle link-top">Staring up the engine</h3>
-
-<p>Before the cost engine can be used, it has to be started. Click on the play button next to ece in the Test Engines panel in ElasTest dshboard.</p>
+<p>In <a href="/docs/#modes">ElasTest singlenode mode</a>, Elasticsearch is used to store the monitoring information of the executions. In the <strong>Manage Elasticsearch</strong> section all Elasticsearch indexes can be displayed, as well as indexes that have a <strong>red state</strong>. When there are indexes in this state, Elasticsearch gives problems and ElasTest cannot load logs and metrics of the executions, so it is <strong>necessary to remove</strong> these indexes. To do this you would have to press the <strong>Delete Red Indices</strong> button.</p>
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/test-services/images/ece/engines.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ece/engines.png"/></a>
-</div>
-
-<p>Wait for the engine to be properly initialized, once it is ready, you will see the view icon just before the trash icon.</p>
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/test-services/images/ece/img02.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ece/img02.png"/></a>
-</div>
-
-<p>Click on the view icon to access the ece dashboard.</p>
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/test-services/images/ece/img03.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ece/img03.png"/></a>
-</div>
-
-<p>The ece fetches the list of all registered TJobs in ElasTest and presents a very simple interface with only 2 options next to each registered TJob. </p>
-<p>Analyze button allows one to estimate the cost of running a test based on the user's self asessment of the duration of the test and usage of various infrastructure and/or support service resources.</p>
-<p>True Cost button fetches the list of all known executions of the selected TJob, and using the actual resources consumed which it fetches from the ElasTest Monitoring Platform (EMP) service, computes the true cost of executions.</p>
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/test-services/images/ece/img04.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ece/img04.png"/></a>
-</div>
-
-<h3 class="holder-subtitle link-top">Estimating the cost of test execution</h3>
-
-<p>In order to estimate the cost of execution of your tests, click on the Analyze button next to your registered TJob id. You will be shown a form depending on the test support services you have selected while registering your TJob definition in the ElasTest dashboard.</p>
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/test-services/images/ece/img05.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ece/img05.png"/></a>
-</div>
-
-<p>In the figure above, the form displays fields where you can enter expected consumption of resources your TJob will need during execution. This form is dynamically generated based on the selected support services for the TJob and the registered cost models for the corresponding services in the ElasTest Service Manager (ESM). Please fill in reasonable values and hit Submit Data button at the bottom of the page.</p>
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/test-services/images/ece/img06.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ece/img06.png"/></a>
-</div>
-
-<p>The cost engine does static estimation based on the entered values and shows back the result in a easy to understand graphic. An example response screen is shown below.</p>
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/test-services/images/ece/img07.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ece/img07.png"/></a>
-</div>
-
-<p>The result shows the following data -</p>
-<ul>
-<li>summary of cost models of underlying infrastructure use, and any support service selected for use with TJob.</li>
-<li>setup cost: a one time cost component applied everytime this service is created for use with TJob</li>
-<li>meter list: list of parameters based on which the customer is billed</li>
-<li>Breakup of usage data</li>
-<li>This is derived from the data entered in the previous form</li>
-<li>Cost estimate breakup</li>
-<li>Pie chart with breakup of overall cost between consitituents</li>
-</ul>
-<p>This stage should provide the user a fairly detailed estimate of cost of executing their TJobs with ElasTest.</p>
-<h3 class="holder-subtitle link-top">Finding the true cost of test runs</h3>
-
-<p>For computing the true cost of your current and past test executions, simply click the <strong>True Cost</strong> button next to your registered TJob.</p>
-<p>The service fetches the list of ongoing and past executions, gather all necessary usage data aggregates from the ElasTest EMP service, and applies the appropriate cost models after fetching them from ESM service.</p>
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/test-services/images/ece/img08.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ece/img08.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/manage-elastest/images/red-indices.png"><img class="img-responsive img-wellcome" src="/docs/manage-elastest/images/manage-elasticsearch/red-indices.png"/></a>
 </div>
 					
 				      </div>
@@ -592,10 +536,10 @@ section-icon: mdi mdi-content-copy
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../eds/" class="btn btn-xs btn-primary float-right" title="Device Emulator Service (EDS)">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../../releases/" class="btn btn-xs btn-primary float-right" title="Releases">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../ebs/" class="btn btn-xs btn-primary" title="Big Data Service (EBS)"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
+        <a href="../monitoring-containers/" class="btn btn-xs btn-primary" title="Monitoring Containers"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
       
     </div>
   
@@ -603,7 +547,7 @@ section-icon: mdi mdi-content-copy
 
   
   
-	  <a href="https://github.com/elastest/elastest.io-docs/blob/master/docs/test-services/ece.md" class="fa fa-github offset-xxs-top-30"> Edit Documentation on GitHub</a>
+	  <a href="https://github.com/elastest/elastest.io-docs/blob/master/docs/manage-elastest/manage-elasticsearch.md" class="fa fa-github offset-xxs-top-30"> Edit Documentation on GitHub</a>
   
 </footer>
 			  	  

@@ -446,6 +446,37 @@ section-icon: mdi mdi-content-copy
 			
 				
 					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Manage ElasTest</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../manage-elastest/monitoring-containers/">Monitoring Containers</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../manage-elastest/manage-elasticsearch/">Manage Elasticsearch</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
 
     <li class="toctree-l1 current">
         <a class="current" href="./">Releases</a>
@@ -491,6 +522,33 @@ section-icon: mdi mdi-content-copy
 </div>
 </div>
 
+<!-- ************************* -->
+
+<!-- ********* 1.5.0 ********* -->
+
+<!-- ************************* -->
+
+<h3 id="1.5.0" class="small-subtitle">1.5.0</h3>
+
+<h4 class="smaller-subtitle">29/04/2019</h4>
+
+<h5 class="smaller-subtitle">Features & Improvements</h5>
+
+<ul>
+<li>Added a button to <strong><code>download files</code></strong> from the browser context during a <a target="_blank" href="/docs/testlink">TestLink</a> Test Plan Execution.</li>
+<li>Now you can select one or more <a target="_blank" href="/docs/testing/sut">Suts</a> and <strong><code>delete them all at once</code></strong>.</li>
+<li>It is now possible to <strong><code>activate/deactivate the All-In-One chart</code></strong> from the <strong>Monitoring Configuration</strong> modal window.</li>
+<li>Now when configuring in a <a target="_blank" href="/docs/jenkins">Jenkins</a> job the <strong>maximum number of builds to keep</strong>, this number will be synchronized with the <strong><code>maximum number of executions in ElasTest</code></strong>.</li>
+</ul>
+<h5 class="smaller-subtitle">Bug Fixes</h5>
+
+<ul>
+<li>Now, in <a target="_blank" href="/docs/jenkins">ElasTest Jenkins Plugin</a>, the <strong>log traces</strong> are sent to ElasTest with the <strong><code>timestamp</code></strong>, thus solving the problem of incorrect dates.</li>
+<li>Fixed a bug on the page of a <a target="_blank" href="/docs/testlink">TestLink</a> <strong>Test Case Execution</strong> that brokes the GUI.</li>
+<li>Now when a <strong>test suite</strong> has all its tests skipped, the <strong><code>suite is also shown as skipped</code></strong> and not as success.</li>
+<li>Fixed a bug in the modal window of an execution of a <strong>TJob with parameters</strong> that, when removing all parameters, the <strong><code>button to add more parameters disappeared</code></strong>.</li>
+<li>Fixed a bug in <a target="_blank" href="/docs/#modes">singlenode mode</a>: The <strong>Delete red indices</strong> button was <strong><code>always disabled</code></strong> and could not be pressed even if there were red indices.</li>
+</ul>
 <!-- ************************* -->
 
 <!-- ********* 1.4.1 ********* -->
@@ -582,7 +640,7 @@ section-icon: mdi mdi-content-copy
 <li>Now in the section of a <strong class="italicEtColor">specific TJob</strong> the <strong><code>executions are paginated</code></strong>.</li>
 </ul>
 </li>
-<li>A <strong>new section</strong> has been added: <strong><code>Manage Elastest</code></strong>. Here you can view the status, the general info and the logs of the containers of the core components of ElasTest, as well as the version that is being used. In <a target="_blank" href="/docs/#modes">singlenode mode</a> you can also manage Elasticsearch indices</li>
+<li>A <strong>new section</strong> has been added: <strong><code>Manage Elastest</code></strong>. Here you can view the status, the general info and the logs of the <a target="_blank" href="/docs/manage-elastest/monitoring-containers">containers</a> of the core components of ElasTest, as well as the version that is being used. In <a target="_blank" href="/docs/#modes">singlenode mode</a> you can also <a target="_blank" href="/docs/manage-elastest/manage-elasticsearch">manage Elasticsearch indices</a></li>
 <li>For <a target="_blank" href="/docs/testing/sut/#outsideExternalES">Sut with external Elasticsearch</a>, the user is now allowed to indicate a <strong><code>list of fields</code></strong> with a <strong>list of values</strong> by which to <strong>filter</strong> to save the traces.</li>
 <li><a target="_blank" href="/docs/monitoring">Monitoring traces</a> are now removed when deleting a <strong>TJobExecution, TJob, Sut, SutExecution or Project</strong> (the entire index in Elasticsearch for <a target="_blank" href="/docs/#modes">singlenode mode</a> OR the data in Mysql for <a target="_blank" href="/docs/#modes">mini mode</a>)</li>
 <li><strong>Elasticsearch</strong> has been updated to version <a target="_blank" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/release-notes-6.6.1.html">6.6.1</a> (for <a target="_blank" href="/docs/#modes">singlenode mode</a>)</li>
@@ -978,7 +1036,7 @@ section-icon: mdi mdi-content-copy
         <a href="../roadmap/" class="btn btn-xs btn-primary float-right" title="Roadmap">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../elastest-monitoring/" class="btn btn-xs btn-primary" title="ElasTest Monitoring"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
+        <a href="../manage-elastest/manage-elasticsearch/" class="btn btn-xs btn-primary" title="Manage Elasticsearch"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
       
     </div>
   

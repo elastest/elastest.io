@@ -448,6 +448,37 @@ section-icon: mdi mdi-content-copy
 			
 				
 					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Manage ElasTest</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../manage-elastest/monitoring-containers/">Monitoring Containers</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../manage-elastest/manage-elasticsearch/">Manage Elasticsearch</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
 
     <li class="toctree-l1 ">
         <a class="" href="../releases/">Releases</a>
@@ -549,10 +580,10 @@ section-icon: mdi mdi-content-copy
 <li><strong>Select Browser and it's version</strong>.</li>
 <li><strong>Select a Platform</strong>.</li>
 <li><strong>Configure a hosts list</strong> to put them in the browser container <strong>/etc/hosts</strong>.
-<p></p>
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-4" href="/docs/testlink/images/execute_plan_modal.png"><img class="img-responsive img-wellcome" src="/docs/testlink/images/execute_plan_modal.png"/></a>
-</div></li>
+    <p></p>
+    <div class="docs-gallery inline-block">
+        <a data-fancybox="gallery-4" href="/docs/testlink/images/execute_plan_modal.png"><img class="img-responsive img-wellcome" src="/docs/testlink/images/execute_plan_modal.png"/></a>
+    </div></li>
 </ul>
 <p>Once the configuration has been selected and the <em>Run test plan button</em> has been pressed, you must wait a few seconds until the browser loads. After that, you can see the Test Plan information on the left and a web browser on the right. On the bottom, you will can see all the logs of your test.</p>
 <div class="docs-gallery inline-block">
@@ -565,7 +596,18 @@ section-icon: mdi mdi-content-copy
     <a data-fancybox="gallery-4" href="/docs/testlink/images/testplan_execute_uploadfile.png"><img class="img-responsive img-wellcome" src="/docs/testlink/images/testplan_execute_uploadfile.png"/></a>
 </div>
 
-<p>When your test is finished, you must fill the fields for each Test Case and click <strong>Save &amp; Next</strong> button.</p>
+<p>It is also possible to <strong><code>obtain a file</code></strong> from the context of the browser, making use of the <strong>Download file from browser context</strong> button.</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-4" href="/docs/testlink/images/download_file_btn.png"><img class="img-responsive img-wellcome" src="/docs/testlink/images/download_file_btn.png"/></a>
+</div>
+
+<p>Clicking will open a <strong>modal window</strong> where we can enter the <strong><code>full path</code></strong> where the file is within the context of the browser:</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-4" href="/docs/testlink/images/download_file_path.png"><img class="img-responsive img-wellcome" src="/docs/testlink/images/download_file_path.png"/></a>
+</div>
+
+<p>Once the route has been entered, just click on the DOWNLOAD button and the file will be downloaded. </p>
+<p>To run Test Cases, you must fill the fields for each and click Save &amp; Next button.</p>
 <h5 class="small-subtitle">TestLink Test Plan Execution Result</h5>
 
 <p>Once you have completed all the test cases you will can see an overview of your test executed.</p>

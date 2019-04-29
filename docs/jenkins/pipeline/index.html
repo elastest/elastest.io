@@ -448,6 +448,37 @@ section-icon: mdi mdi-content-copy
 			
 				
 					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Manage ElasTest</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../manage-elastest/monitoring-containers/">Monitoring Containers</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../manage-elastest/manage-elasticsearch/">Manage Elasticsearch</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
 
     <li class="toctree-l1 ">
         <a class="" href="../../releases/">Releases</a>
@@ -982,6 +1013,19 @@ sutImage.withRun(&quot;--name ${sutContainerName}&quot;) { c -&gt;
 </code></pre>
 
 <p>Thanks to this option, ElasTest will be in charge of <strong>managing the browsers</strong>, <strong>recording</strong> the tests and <strong>associating the videos</strong> to them, as well as sending the logs of the browsers console. It also initializes <a href="../../testing/environment-variables">environment variable</a> <strong>ET_EUS_API</strong> that we mentioned in the step <a href="#modifyYourCode">Modify your code</a> and that you need to use in the code of your tests.</p>
+<!-- ************************************** -->
+
+<!-- ************ Limit Builds ************ -->
+
+<!-- ************************************** -->
+
+<h3 id="limitBuilds" class="holder-subtitle link-top">Setting max nº of builds</h3>
+
+<p>If in your Jenkins job you check the <strong>Discard old builds</strong> option and set a value for <strong>Max # of builds to keep</strong>, it will also be set in ElasTest, saving only the last N runs.</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-2" href="/docs/jenkins/images/pipeline/max_builds.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/pipeline/max_builds.png"/></a>
+</div>
+
 <!-- ************************************** -->
 
 <!-- ************ Known Issues ************ -->
