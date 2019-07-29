@@ -840,3 +840,8 @@ h6:before {
     line-height: 20px;
     font-weight: 400;
 }
+
+.header-use-case{
+    padding-top: 10%;
+    padding-bottom: 10%;
+}
