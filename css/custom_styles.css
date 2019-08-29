@@ -845,3 +845,120 @@ h6:before {
     padding-top: 10%;
     padding-bottom: 10%;
 }
+
+/* New doc styles */
+.run-div {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 40px;
+}
+
+.run-div hr {
+    border-top: 1px solid #FDAC45;
+}
+
+.run-div .docker-subtitle {
+    font-size: 2em;
+}
+
+.row-run-demo {
+    width: 100%;
+    display: table;
+    table-layout: fixed;
+}
+
+.row-run-demo .col {
+    display: table-cell;
+    vertical-align: middle;
+    float: none;
+}
+
+.img-run-demo {
+    max-height: 140px;
+}
+
+.docker-info-div {
+    margin-top: 1em;
+    font-size: 12px;
+    color: #7b7b7b;
+}
+
+.docker-info-icon {
+    text-align: center;
+}
+
+.docker-info-icon i {
+    font-size: 22px;
+}
+
+.run-div hr {
+    margin: 0;
+    border-top: 2px solid #eee;
+}
+
+.run-div code {
+    display: block;
+}
+
+.run-div ol li {
+    margin-top: 20px;
+}
+
+.run-div ol li p {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.run-div ol li code {
+    display: inline-block;
+    width: 50%;
+    margin-bottom: 10px;
+}
+
+.run-div ol li .btn-copy-code {
+    display: inline-block;
+}
+
+.run-div code {
+    word-wrap: break-word;
+    overflow-x: auto;
+}
+
+.run-div .docker-info-div {
+    margin-top: 1em;
+    font-size: 12px;
+    color: #7b7b7b;
+}
+
+.run-div .docker-info-icon {
+    text-align: center;
+}
+
+.run-div .docker-info-icon i {
+    font-size: 22px;
+}
+
+#code-2{
+    margin-left: 2em;
+}
+
+@media screen and (max-width: 991px) {
+    .run-div .col-img-demo {
+        text-align: center;
+    }
+
+    .run-div .col-title-demo {
+        text-align: center;
+    }
+
+    .run-div ol li code {
+        display: inline-block;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    #code-2{
+        margin-left: 0em;
+        margin-top: 2em;
+    }
+}
