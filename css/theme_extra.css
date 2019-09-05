@@ -577,6 +577,12 @@ code, .rst-content tt {
     }
 }
 
+@media (min-height: 1000px){
+    #menu-list{
+        max-height: 850px !important;
+    }
+}
+
 #site-menu-title h3{
     margin: 0 0 3px 0;
 }
