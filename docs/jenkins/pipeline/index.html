@@ -702,7 +702,7 @@ To configure this option, ElasTest provides the connection info using <a href=".
 def getFirstNetwork(containerName) {
     echo &quot;Inside getFirstNetwork function&quot;
     network = sh (
-        script: &quot;docker inspect &quot; + containerName + &quot; -f \&quot;{{json .NetworkSettings.Networks}}\&quot; | awk \&quot;{sub(/:.*/,\\\&quot;\\\&quot;)}1\&quot; | awk \&quot;{sub(/\\\&quot;/,\\\&quot;\\\&quot;)}1\&quot; | awk \&quot;{sub(/\\\&quot;/,\\\&quot;\\\&quot;)}1\&quot; | awk \&quot;{sub(/{/,\\\&quot;\\\&quot;)}1\&quot;&quot;,
+        script: &quot;docker inspect &quot; + containerName + &quot; -f \&quot;{%raw%}{{json .NetworkSettings.Networks}}{%endraw%}\&quot; | awk \&quot;{sub(/:.*/,\\\&quot;\\\&quot;)}1\&quot; | awk \&quot;{sub(/\\\&quot;/,\\\&quot;\\\&quot;)}1\&quot; | awk \&quot;{sub(/\\\&quot;/,\\\&quot;\\\&quot;)}1\&quot; | awk \&quot;{sub(/{/,\\\&quot;\\\&quot;)}1\&quot;&quot;,
         returnStdout: true
     ).trim()
 
@@ -713,7 +713,7 @@ def getFirstNetwork(containerName) {
 def containerIp(containerName, network) {
     echo &quot;Inside containerIp function&quot;
     containerIp = sh (
-        script: &quot;docker inspect --format=\&quot;{{.NetworkSettings.Networks.&quot; + network + &quot;.IPAddress}}\&quot; &quot;+ containerName,
+        script: &quot;docker inspect --format=\&quot;{%raw%}{{.NetworkSettings.Networks.&quot; + network + &quot;.IPAddress}}{%endraw%}\&quot; &quot;+ containerName,
         returnStdout: true
     ).trim()
 
@@ -824,7 +824,7 @@ This test has been developed in Java using <a href="https://junit.org/junit5/">J
 def getFirstNetwork(containerName) {
     echo &quot;Inside getFirstNetwork function&quot;
     network = sh (
-        script: &quot;docker inspect &quot; + containerName + &quot; -f \&quot;{{json .NetworkSettings.Networks}}\&quot; | awk \&quot;{sub(/:.*/,\\\&quot;\\\&quot;)}1\&quot; | awk \&quot;{sub(/\\\&quot;/,\\\&quot;\\\&quot;)}1\&quot; | awk \&quot;{sub(/\\\&quot;/,\\\&quot;\\\&quot;)}1\&quot; | awk \&quot;{sub(/{/,\\\&quot;\\\&quot;)}1\&quot;&quot;,
+        script: &quot;docker inspect &quot; + containerName + &quot; -f \&quot;{%raw%}{{json .NetworkSettings.Networks}}{%endraw%}\&quot; | awk \&quot;{sub(/:.*/,\\\&quot;\\\&quot;)}1\&quot; | awk \&quot;{sub(/\\\&quot;/,\\\&quot;\\\&quot;)}1\&quot; | awk \&quot;{sub(/\\\&quot;/,\\\&quot;\\\&quot;)}1\&quot; | awk \&quot;{sub(/{/,\\\&quot;\\\&quot;)}1\&quot;&quot;,
         returnStdout: true
     ).trim()
 
@@ -835,7 +835,7 @@ def getFirstNetwork(containerName) {
 def containerIp(containerName, network) {
     echo &quot;Inside containerIp function&quot;
     containerIp = sh (
-        script: &quot;docker inspect --format=\&quot;{{.NetworkSettings.Networks.&quot; + network + &quot;.IPAddress}}\&quot; &quot;+ containerName,
+        script: &quot;docker inspect --format=\&quot;{%raw%}{{.NetworkSettings.Networks.&quot; + network + &quot;.IPAddress}}{%endraw%}\&quot; &quot;+ containerName,
         returnStdout: true
     ).trim()
 
@@ -1056,7 +1056,7 @@ sutImage.withRun(&quot;--name ${sutContainerName}&quot;) { c -&gt;
 
   
   
-	  <a href="https://github.com/elastest/elastest.io-docs/blob/master/docs/jenkins/pipeline.md" class="fa fa-github offset-xxs-top-30"> Edit Documentation on GitHub</a>
+	  <a href="https://github.com/elastest/elastest.io-docs/blob/master/docs/jenkins/pipeline.md" class="fab fa-github offset-xxs-top-30"> Edit Documentation on GitHub</a>
   
 </footer>
 			  	  
