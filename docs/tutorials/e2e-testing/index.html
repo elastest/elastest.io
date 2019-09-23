@@ -1,0 +1,1229 @@
+--- 
+layout: default 
+title: Elastest Documentation - E2E Testing in ElasTest 
+active: documentation 
+section-title: Documentation 
+section-icon: mdi mdi-content-copy 
+---
+<script src="/js/jquery-3.1.1.min.js"></script>
+<script src="/js/float-panel.js"></script>
+
+<script type="text/javascript">
+	/* Import docs theme css */
+	$('head').append('<link rel="stylesheet" type="text/css" href="/css/theme_extra.css">');
+	
+
+	$( document).ready(function(){
+		$('#menu-list').show();
+	    $('li.subnav_drop').find('ul.subnav').hide();
+	       $( ".subnav" ).find( "li:contains('E2E Testing in ElasTest')" ).each(function(i,e){
+		  var currentElement = $(e);
+		  currentElement.parent().css({"display":"block","visibility":"visible"}); //css("background-color","blue");
+		  currentElement.css({"display":"block","visibility":"visible"});
+	       });
+	    $('li.subnav_drop').click(function(i,e) {  
+	      $('li.subnav_drop').not(this).find('ul.subnav').hide();
+	      $(this).find('ul.subnav').toggle();
+	    }); 
+
+	    var minHeight = $('#float-panel').outerHeight() + 100;	
+						$('#doc-container').css('min-height', minHeight+'px');
+	});
+	   
+	$( ".wy-nav-content" ).find( "li:contains('E2E Testing in ElasTest')" ).css('color','red');
+ </script>
+
+<div id="doc-container" class="container text-justify">
+  <div class="holder range"> 
+        <div id="float-panel" class="wy-grid-for-nav cell-xs-3 cell-md-3 cell-lg-2 float-panel" data-top="56">
+
+          
+          <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+            <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="main navigation">
+		<div id="site-menu-title">
+			<h3 class="h5">Explore docs</h3>
+			<hr class="divider hr-lg-left-0 bg-orange">    
+		</div>
+		<ul id="menu-list" class="current" hidden>
+			
+				
+					<li><ul> 
+
+    <li class="toctree-l1 ">
+        <a class="" href="../..">What is ElasTest?</a>
+        
+    </li>
+
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Tutorials</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../getting-started/">Getting started</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 current">
+        <a class="current" href="./">E2E Testing in ElasTest</a>
+        
+         
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../using-browsers-in-elastest/">Using browsers in ElasTest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../using-eds-devices-for-iot/">Using EDS devices for IoT</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../using-ems-to-build-tests-with-dynamic-info/">Using EMS to build tests with dynamic info</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../using-ess-to-perform-security-checks/">Using ESS to perform security checks</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../custom-metrics/">Custom metrics</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../ere-with-custom-code/">ERE with custom code</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../using-ebs-to-perform-analytics/">Using EBS to perform analytics</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../estimating-the-costs-of-tests-on-aws/">Estimating the costs of tests on AWS</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../observability-for-5g-infrastructures/">Observability for 5G infrastructures</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../ems/">EMS (show how specific visualizations for TJobs and ElasTest TSS work)</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../kubernetes/">Kubernetes (Q3)</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Demos</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../demos/api-testing/">API testing</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../demos/e2e-testing/">E2E testing</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../demos/functional-exploratory-testing/">Functional / Exploratory testing</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../demos/multi-configuration/">Multi-configuration</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../demos/cross-browser-testing/">Cross browser testing</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../demos/security-testing/">Security testing</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../demos/chaos-testing/">Chaos testing</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../demos/test-recommendation/">Test recommendation</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../demos/test-cost-estimation/">Test cost estimation</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Cheatsheet</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../try-elastest/">Try ElasTest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testing/unit/">Run unit tests</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testing/e2e-rest/">Run end2end tests</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testing/sut/">Software under Test</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testing/parameterized-tests/">Parameterized tests</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testing/multi-configuration-tjobs/">Multi-Configuration TJobs</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../web-browsers/manual-browsers/">Launching Web Browsers on ElasTest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../web-browsers/e2e-browser/">Run en2end tests with Web Browsers</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../web-browsers/outside-testing/">Testing with Web Browsers from outside ElasTest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../log-analyzer/">Log Analyzer</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../executions-comparator/">Executions Comparator</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testlink/">TestLink with ElasTest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../monitoring/">Test Monitoring</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../monitoring/outside-elastest/">Monitoring outside Elastest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../monitoring/custom/">Custom monitoring</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../jenkins/pipeline/">Pipeline Jobs</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../jenkins/freestyle/">Freestyle Jobs</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../releases/">Releases</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../roadmap/">Roadmap</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Reference documentation</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testing/environment-variables/">Enviroment variables</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../test-services/ems/">Elastest Monitoring Service (EMS)</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../test-services/ece/">Elastest Cost Engine (ECE)</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../test-services/ere-trial/">Elastest Recommendation Egine (ERE)</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../test-services/ebs/">ElasTest BigData Service (EBS)</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../test-services/eds/">ElasTest Device impersonation Service (EDS - IoT)</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../test-services/ess/">ElasTest Security Service (ESS)</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Deployment</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../deploying/ubuntu/">Linux Server</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../deploying/aws/">Amazon Web Services</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../deploying/kubernetes/">Kubernetes (Q3)</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Management</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../elastest-monitoring/">Monitoring ElasTest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../manage-elastest/monitoring-containers/">Monitoring containers</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../manage-elastest/manage-elasticsearch/">Monitoring ElasticSearch</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../support/">Support</a>
+        
+    </li>
+
+</ul></li>
+				
+			
+		</ul>
+            </div>
+            &nbsp;
+          </nav>
+        </div>
+
+	<section class="section-sm-41">
+		<div class="shell">
+		    <div class="range range-xs-right">
+		        <div class="cell-xs-10 cell-sm-8 cell-md-9 cell-lg-10 cell-xl-12 text-md-left cell-lg-push-1 offset-lg-top-0">
+			  
+				<div class="wy-nav-content">
+				  <div class="rst-content">
+				   
+				    <div role="main">
+				      <div class="section">
+					
+					  <div class="range range-xs-left">
+<div class="cell-xs-10 cell-lg-6 text-md-left inset-md-right-80 cell-lg-push-1 offset-top-50 offset-lg-top-0">
+<h2 id="content" class="h1">End to End Testing in ElasTest</h2>
+<div class="offset-top-30 offset-md-top-30">
+</div>
+</div>
+</div>
+
+<h4 class="small-subtitle">Installing ElasTest pluging in Jenkins</h4>
+
+<p><img style="border: none; margin: auto" class="img-responsive img-wellcome" src="/docs/tutorials/images/jenkins/integration/elastest_jenkins.png"/></p>
+<p>We want ElasTest to be a non-intrusive tool in your day-to-day activities. Therefore, we have created a plugin for the most widespread open source CI server: Jenkins. Thanks to this plugin you will be able to make use of the functionalities provided by ElasTest from any Freestyle or Pipeline project effortlessly. You'll see ElasTest provides value since the very beginning. However, to unveil its full potential, some help from your side is needed. Don't worry, this tutorial and the following ones will guide you through getting the most out of your testing activities in a stepwise way. </p>
+<p>To start trying ElasTest from Jenkins, you can choose one of these two options:</p>
+<ul>
+<li><strong>Use the Jenkins server provided by ElasTest</strong>. ElasTest already provides a Jenkins server ready to use as part of the ElasTest platform. This means that it is not necessary to install a dedicated Jenkins server and the corrsponding ElasTest Jenkins plugin on top of it, you can start playing with Jenkins and ElasTest without hassle. The integrated Jenkis server can be started in two ways:<ul>
+<li>Start Jenkins with ElasTest: just add the option <a href="../../try-elastest">[--jenkins|-jk]</a> to the start command of ElasTest. See the link for further details. </li>
+<li>Start Jenkins from ElasTest GUI: Jenkins can also be started from the ElasTest GUI once ElasTest has been started (this is explained on the <a href="../../jenkins/try-jenkins">next page</a>).</li>
+</ul>
+</li>
+<li><strong>Integrate your own Jenkins with ElasTest</strong>. If you alredy have a Jekins server up and running, you can install the ElasTest Jenkins plugin, available from the plugin management page. This proccess is described below.</li>
+</ul>
+<h4 class="small-subtitle">Plugin installation</h4>
+
+<p>To install the ElasTest Jenkins plugin, follow this steps:</p>
+<ul>
+<li>In your Jenkins server, logged as a user with administration privileges, navigate to <strong>Manage Jenkins / Manage Plugins</strong>.</li>
+<li>Open the <strong>Available</strong> tab and search for <strong>elastest</strong>. The ElasTest Jenkins plugin will appear. Check the box and click the <strong>Install plugin</strong> button.</li>
+</ul>
+<p>Keep reading to configure the plugin so that it can connect to your ElasTest installation.</p>
+<p></p>
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/tutorials/images/jenkins/integration/plugin_install.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/jenkins/integration/plugin_install.png"/></a>
+</div>
+
+<h4 class="small-subtitle">Plugin configuration</h4>
+
+<p>The plugin configuration is very simple and you only have to fill in the following fields:</p>
+<ul>
+<li><strong>ElasTest URL</strong>: complete URL of ElasTest (including protocol and port). This URL is provided by ElasTest automatically on startup. We have information on <a href="../../try-elastest">configuring the ElasTest IP (and domain)</a>.</li>
+<li><strong>Username</strong>: ElasTest username (provided as a command on ElasTest startup)</li>
+<li><strong>Password</strong>: ElasTest password (provided as a command on ElasTest startup)</li>
+</ul>
+<p><br>
+Before you execute your first Job integrated with ElasTest, we strongly recommend to check if the connection between Jenkins and ElasTest is successfully established by using the corresponding button on the configuration page.</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/tutorials/images/jenkins/integration/conf.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/jenkins/integration/conf.png"/></a>
+</div>
+
+<h4 class="holder-subtitle link-top">Launching <b>end-to-end</b> test</h4>
+
+<h4 class="small-subtitle">Test</h4>
+
+<p>Let's see how launch a TJob that makes use a web browser inside Elastest. Here we will run our <a href="https://github.com/elastest-experiments/webapp-2/tree/master/AMICOServer/src/test/java/com/example/demo/e2e/api">API Test</a>, which makes use of a Spring Boot Application as a SuT the application is a platform for education. Also has one test what check that a user not logged can't access to the sensible information.</p>
+<p>First we can see the code of the normal api test. The <strong><code>profile_uri</code></strong> variable contains the URL of the application that we will atack. </p>
+<h5 id="testapiresttemplatewithoutelastest"><strong>TestAPIRestTemplateWithoutElasTest</strong></h5>
+<pre><code class="java">public class TestAPIRestTemplateWithoutElasTest {
+
+    final static Logger log = getLogger(lookup().lookupClass());
+
+    protected static String profile_uri;
+
+    @BeforeAll
+    public static void setupClass() {
+        profile_uri = &quot;http://localhost:8000/api/users/{user}&quot;;
+    }
+
+    @Test
+    public void checkShowProfile() throws KeyManagementException, NoSuchAlgorithmException, KeyStoreException {
+        String url = profile_uri.replace(&quot;{user}&quot;, &quot;amico&quot;);
+        RestTemplate restTemplate = new RestTemplate(SSLClientFactory.getClientHttpRequestFactory(HttpClientType.HttpClient));
+
+        HttpStatus status;
+        HttpStatus expected = HttpStatus.UNAUTHORIZED;
+
+        try {
+            ResponseEntity&lt;String&gt; response = restTemplate.getForEntity(url, String.class);
+            status = response.getStatusCode();
+        } catch (HttpStatusCodeException e) {
+            status = e.getStatusCode();
+        }
+
+        Assert.assertEquals(&quot;failure - expected HTTP status &quot; + expected, expected, status);
+        log.info(&quot;The response is correct&quot;);
+    }
+
+}
+</code></pre>
+
+<p>Now we will see the changes we need for adapt the test to ElasTest. First need add the ElasTestBase in the project, which is responsible for printing logs at the beginning and end of each test. These two logs have a specific structure and are used by ElasTest to filter the logs corresponding to each test. We explain this in more detail <a href="/docs/testing/unit#xmlAndtestResultsPath">here</a> </p>
+<h5 id="elastestbase"><strong>ElasTestBase</strong></h5>
+<pre><code class="java">public class ElasTestBase {
+
+    protected static final Logger logger = LoggerFactory.getLogger(ElasTestBase.class);
+
+    @BeforeEach
+    public void logStart(TestInfo testInfo) {
+        logger.info(&quot;##### Start test: &quot; + testInfo.getTestMethod().get().getName());
+    }
+
+    @AfterEach
+    public void logEnd(TestInfo testInfo) {
+        logger.info(&quot;##### Finish test: &quot; + testInfo.getTestMethod().get().getName());
+    }
+
+}
+</code></pre>
+
+<p>In the test should extends the class ElasTestBase.</p>
+<h5 id="testapiresttemplate"><strong>TestAPIRestTemplate</strong></h5>
+<pre><code class="java">public class TestAPIRestTemplate extends ElasTestBase{
+
+    final static Logger log = getLogger(lookup().lookupClass());
+
+    protected static String sutUrl;
+    protected static String profile_uri;
+
+    @BeforeAll
+    public static void setupClass() {
+        String sutHost = System.getenv(&quot;ET_SUT_HOST&quot;);
+        String sutPort = System.getenv(&quot;ET_SUT_PORT&quot;);
+        String sutProtocol = System.getenv(&quot;ET_SUT_PROTOCOL&quot;);
+
+        if (sutHost == null) {
+            sutUrl = &quot;http://localhost:8000/&quot;;
+        } else {
+            sutPort = sutPort != null ? sutPort : &quot;8080&quot;;
+            sutProtocol = sutProtocol != null ? sutProtocol : &quot;http&quot;;
+
+            sutUrl = sutProtocol + &quot;://&quot; + sutHost + &quot;:&quot; + sutPort + &quot;/&quot;;
+        }
+
+        profile_uri = sutUrl + &quot;api/users/{user}&quot;;
+        logger.info(&quot;Webapp URL: &quot; + sutUrl);
+    }
+
+    @Test
+    public void checkShowProfile() throws KeyManagementException, NoSuchAlgorithmException, KeyStoreException {
+        String url = profile_uri.replace(&quot;{user}&quot;, &quot;amico&quot;);
+        RestTemplate restTemplate = new RestTemplate(SSLClientFactory.getClientHttpRequestFactory(HttpClientType.HttpClient));
+
+        HttpStatus status;
+        HttpStatus expected = HttpStatus.UNAUTHORIZED;
+
+        try {
+            ResponseEntity&lt;String&gt; response = restTemplate.getForEntity(url, String.class);
+            status = response.getStatusCode();
+        } catch (HttpStatusCodeException e) {
+            status = e.getStatusCode();
+        }
+
+        Assert.assertEquals(&quot;failure - expected HTTP status &quot; + expected, expected, status);
+        log.info(&quot;The response is correct&quot;);
+    }
+
+}
+</code></pre>
+
+<p>We need added the following variables:</p>
+<pre><code class="java">String sutHost = System.getenv(&quot;ET_SUT_HOST&quot;);
+String sutPort = System.getenv(&quot;ET_SUT_PORT&quot;);
+String sutProtocol = System.getenv(&quot;ET_SUT_PROTOCOL&quot;);
+</code></pre>
+
+<p>This variables we supply information about the <strong><code>SUT</code></strong>.</p>
+<blockquote>
+<ul>
+<li><strong><code>ET_SUT_HOST</code></strong>, <strong><code>ET_SUT_PORT</code></strong> and <strong><code>ET_SUT_PROTOCOL</code></strong>  variables will be the IP, port and protocol of our SuT respectively. ElasTest will automatically inject the right value (Know more about <a href="/docs/testing/environment-variables/">Environment Variables</a>)</li>
+</ul>
+</blockquote>
+<h4 class="small-subtitle">Elastest pipeline</h4>
+
+<p>To run our tests using Jenkins in Elastest, first open the Jenkins and click in <strong><code>new Item</code></strong></p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-2" href="/docs/tutorials/images/jenkins/pipeline/new-item.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/jenkins/pipeline/new-item.png"/></a>
+</div>
+
+<p>Write the name of the item: <strong><code>AMICourses</code></strong> and select <strong><code>Pipeline</code></strong></p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-2" href="/docs/tutorials/images/jenkins/pipeline/item-name.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/jenkins/pipeline/item-name.png"/></a>
+</div>
+
+<h5 id="normal-pipeline"><strong>Normal Pipeline</strong></h5>
+<p>We will see the normal <strong><code>Pipeline</code></strong> for used this Test in Jenkins.</p>
+<pre><code class="groovy">node{   
+    stage('Setting environment'){
+        git &quot;https://github.com/elastest-experiments/webapp-2.git&quot;
+    }
+
+    try{
+        stage('Start Sut') {
+            echo 'Running SUT'
+            sh &quot;cd docker-compose; export AMICO_IMAGE=webapp-2-fixed-profile; docker-compose up -d &amp;&amp; ./wait-app.sh 8000&quot;
+        }
+        stage(&quot;Run Tests&quot;) {   
+            echo 'Running test'
+            mvnHome = tool 'M3.3.9'
+            sh &quot;cd AMICOServer; '${mvnHome}/bin/mvn' -Dtest=TestAPIRestTemplate -B test&quot;
+            step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
+        }
+    } finally {
+        echo 'Stopping SUT'
+        sh &quot;cd docker; docker-compose down&quot;
+    }
+}
+</code></pre>
+
+<p>The example above can be split into the following sections:</p>
+<p></p>
+
+<ul>
+<li><strong>Start SUT</strong> : This block started the SUT application. The script <strong><code>wait-app.sh</code></strong> wait for the <strong><code>SUT</code></strong> is ready.</li>
+</ul>
+<p></p>
+
+<pre><code class="groovy">stage('Start Sut') {
+    echo 'Running SUT'
+    sh &quot;cd docker-compose; export AMICO_IMAGE=webapp-2-fixed-profile; docker-compose up -d &amp;&amp; ./wait-app.sh 8000&quot;
+}
+</code></pre>
+
+<p></p>
+
+<ul>
+<li><strong>Run Test</strong> : The tests execute if the SUT working correctly.</li>
+</ul>
+<p></p>
+
+<pre><code class="groovy">stage(&quot;Run Tests&quot;) {   
+    echo 'Running test'
+    mvnHome = tool 'M3.3.9'
+    sh &quot;cd AMICOServer; '${mvnHome}/bin/mvn' -Dtest=TestAPIRestTemplate -B test&quot;
+    step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
+}
+</code></pre>
+
+<p></p>
+
+<ul>
+<li><strong>Stop SUT</strong> : The SUT will stop when the test is finished.</li>
+</ul>
+<p></p>
+
+<pre><code class="groovy">} finally {
+    echo 'Stopping SUT'
+    sh &quot;cd docker; docker-compose down&quot;
+}
+</code></pre>
+
+<h5 id="elastest-pipeline"><strong>ElasTest Pipeline</strong></h5>
+<p>Now we will see the changes we need for adapt the <strong><code>Pipeline</code></strong> to ElasTest.</p>
+<pre><code class="groovy">node{
+    def sutIp
+    elastest(surefireReportsPattern: '**/target/surefire-reports/TEST-*.xml', monitoring: true, project: 'Jenkins Examples') {
+        stage(&quot;Setting environment&quot;) {
+            echo 'Environment variables'
+            sh &quot;env&quot;
+            git &quot;https://github.com/elastest-experiments/webapp-2.git&quot;
+        }
+        try {
+            stage(&quot;Start Sut&quot;) {
+                sh &quot;cd docker-compose; export AMICO_IMAGE=webapp-2-fixed-profile; docker-compose --no-ansi -p ${env.ET_SUT_CONTAINER_NAME} up -d&quot;
+                sutContainerName = env.ET_SUT_CONTAINER_NAME + &quot;_webapp2_1&quot;;
+                sutNetwork = getFirstNetwork(sutContainerName)
+                sutIp = containerIp(sutContainerName,network)
+
+                echo 'Sut ip: '+ sutIp
+                sh 'docker run -e IP=' + sutIp + ' -e PORT=8000 --network=' + sutNetwork + ' elastest/etm-check-service-up'
+            }
+            stage(&quot;Run Tests&quot;) {
+                withEnv(['ET_SUT_HOST=' + sutIp, 'ET_SUT_PORT=8000']) {
+                    echo 'Running test'
+                    mvnHome = tool 'M3.3.9'
+                    sh &quot;cd AMICOServer; '${mvnHome}/bin/mvn' -Dtest=TestAPIRestTemplate -B test&quot;
+                    step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
+                }
+            }
+        } finally {
+                echo 'Stopping SUT'
+                sh &quot;cd docker; docker-compose --no-ansi -p ${env.ET_SUT_CONTAINER_NAME} down&quot;
+        }
+    }
+}
+
+
+def getFirstNetwork(containerName) {
+    echo &quot;Inside getFirstNetwork function&quot;
+    network = sh (
+        script: &quot;docker inspect &quot; + containerName + &quot; -f \&quot;{%raw%}{{json .NetworkSettings.Networks}}{%endraw%}\&quot; | awk \&quot;{sub(/:.*/,\\\&quot;\\\&quot;)}1\&quot; | awk \&quot;{sub(/\\\&quot;/,\\\&quot;\\\&quot;)}1\&quot; | awk \&quot;{sub(/\\\&quot;/,\\\&quot;\\\&quot;)}1\&quot; | awk \&quot;{sub(/{/,\\\&quot;\\\&quot;)}1\&quot;&quot;,
+        returnStdout: true
+    ).trim()
+
+    echo containerName+&quot; Network = &quot; + network;
+    return network;
+}
+
+def containerIp(containerName, network) {
+    echo &quot;Inside containerIp function&quot;
+    containerIp = sh (
+        script: &quot;docker inspect --format=\&quot;{%raw%}{{.NetworkSettings.Networks.&quot; + network + &quot;.IPAddress}}{%endraw%}\&quot; &quot;+ containerName,
+        returnStdout: true
+    ).trim()
+
+    echo containerName+&quot; IP = &quot; + containerIp;
+    return containerIp;
+}
+</code></pre>
+
+<p>The example above can be split into the following sections:</p>
+<ul>
+<li><strong>ElasTest plugin block with configuration</strong> : this block will contain all the steps that the test must follow, as well as the necessary <a href="#options">configuration options</a>.</li>
+</ul>
+<p></p>
+
+<pre><code class="groovy">node{
+    elastest(surefireReportsPattern: '**/target/surefire-reports/TEST-*.xml', monitoring: true, project: 'Jenkins Examples') {
+        .......
+    }
+}
+</code></pre>
+
+<p></p>
+
+<ul>
+<li><strong>Sut configuration</strong> : The SUT must be started, passing the <strong><code>${env.ET_SUT_CONTAINER_NAME}</code></strong> env variable (provided by ElasTest) as name of the container. This will allow ElasTest to receive logs and metrics from the Sut.</li>
+</ul>
+<p></p>
+
+<pre><code class="groovy">sh &quot;cd docker-compose; export AMICO_IMAGE=webapp-2-fixed-profile; docker-compose --no-ansi -p ${env.ET_SUT_CONTAINER_NAME} up -d&quot;
+sutContainerName = env.ET_SUT_CONTAINER_NAME + &quot;_webapp2_1&quot;;
+sutNetwork = getFirstNetwork(sutContainerName)
+sutIp = containerIp(sutContainerName,network)
+</code></pre>
+
+<p></p>
+
+<ul>
+<li><strong>Wait for Sut</strong> : You have to obtain the Sut network and ip and run check image (elastest/etm-check-service-up) provided by ElasTest to wait for the Sut to be ready to be used. This step is not required, you can wait in other ways or not do it, but for this example we do it.</li>
+</ul>
+<p></p>
+
+<pre><code class="groovy">echo 'Sut ip: '+ sutIp
+sh 'docker run -e IP=' + sutIp + ' -e PORT=8000 --network=' + sutNetwork + ' elastest/etm-check-service-up'
+</code></pre>
+
+<p>We need added the following code in the <strong><code>Pipeline</code></strong>:</p>
+<pre><code class="groovy">def getFirstNetwork(containerName) {
+    echo &quot;Inside getFirstNetwork function&quot;
+    network = sh (
+        script: &quot;docker inspect &quot; + containerName + &quot; -f \&quot;{%raw%}{{json .NetworkSettings.Networks}}{%endraw%}\&quot; | awk \&quot;{sub(/:.*/,\\\&quot;\\\&quot;)}1\&quot; | awk \&quot;{sub(/\\\&quot;/,\\\&quot;\\\&quot;)}1\&quot; | awk \&quot;{sub(/\\\&quot;/,\\\&quot;\\\&quot;)}1\&quot; | awk \&quot;{sub(/{/,\\\&quot;\\\&quot;)}1\&quot;&quot;,
+        returnStdout: true
+    ).trim()
+
+    echo containerName+&quot; Network = &quot; + network;
+    return network;
+}
+
+def containerIp(containerName, network) {
+    echo &quot;Inside containerIp function&quot;
+    containerIp = sh (
+        script: &quot;docker inspect --format=\&quot;{%raw%}{{.NetworkSettings.Networks.&quot; + network + &quot;.IPAddress}}{%endraw%}\&quot; &quot;+ containerName,
+        returnStdout: true
+    ).trim()
+
+    echo containerName+&quot; IP = &quot; + containerIp;
+    return containerIp;
+}
+</code></pre>
+
+<p>This code obtain the network and the ip of the <strong><code>SUT</code></strong> container this information is needed for wait the <strong><code>SUT</code></strong> is ready to launch the Tests. It's functions has like the script <strong><code>wait-app.sh</code></strong> we seen in the normal <a href="#normal-pipeline">Pipeline</a>.</p>
+<p></p>
+
+<ul>
+<li><strong>Test Execution</strong> : Finally, the tests should be executed to verify that the SUT is working correctly. Remember that you have to configure the Sut ip as an environment variable or pass it as a maven property so that the test knows where the SUT is.</li>
+</ul>
+<p></p>
+
+<pre><code class="groovy">stage(&quot;Run Tests&quot;) {
+    withEnv(['ET_SUT_HOST=' + sutIp, 'ET_SUT_PORT=8000']) {
+        echo 'Running test'
+        mvnHome = tool 'M3.3.9'
+        sh &quot;cd AMICOServer; '${mvnHome}/bin/mvn' -Dtest=TestAPIRestTemplate -B test&quot;
+        step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
+    }
+}
+</code></pre>
+
+<p></p>
+
+<ul>
+<li><strong>Stop Sut</strong> : The SUT will stop when the test is finished, passing the <strong><code>${env.ET_SUT_CONTAINER_NAME}</code></strong> env variable (provided by ElasTest) as name of the container.</li>
+</ul>
+<p></p>
+
+<pre><code class="groovy">} finally {
+        echo 'Stopping SUT'
+        sh &quot;cd docker; docker-compose --no-ansi -p ${env.ET_SUT_CONTAINER_NAME} down&quot;
+}
+</code></pre>
+
+<p></p>
+
+<p>Copy the <strong><code>ElasTest Pipeline</code></strong> and paste in the <strong>Pipeline</strong> section, as follows:</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-2" href="/docs/tutorials/images/jenkins/pipeline/pipeline.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/jenkins/pipeline/pipeline.png"/></a>
+</div>
+
+<p>When the Job is created, we will click in <strong><code>Build Now</code></strong> button:</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-2" href="/docs/tutorials/images/jenkins/pipeline/run-tjob.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/jenkins/pipeline/run-tjob.png"/></a>
+</div>
+
+<p>After pressing the button, you will see the job running on Jenkins:</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-2" href="/docs/tutorials/images/jenkins/pipeline/running-tjob.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/jenkins/pipeline/running-tjob.png"/></a>
+</div>
+
+<p>Entering the build page, you will see the Open in ElasTest button, where you can see the execution page in ElasTest (If the button does not appear refresh the page, it may take a while). ElasTest will have created a project called <strong><code>Jenkins Examples</code></strong> also you show the project in this section.</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-2" href="/docs/tutorials/images/jenkins/pipeline/open-in-elastest.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/jenkins/pipeline/open-in-elastest.png"/></a>
+</div>
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-2" href="/docs/tutorials/images/jenkins/pipeline/execution.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/jenkins/pipeline/execution.png"/></a>
+</div>
+
+<h4 class="small-subtitle">Collecting logs & metrics automatically</h4>
+
+<p>ElasTest collect logs and metrics automatically this will show in the section <strong><code>TJob Monitoring</code></strong> of the <strong><code>TJob</code></strong>. There logs may download if click in the button marked.</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-3" href="/docs/tutorials/images/jenkins/logs/tjob-monitoring.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/jenkins/logs/tjob-monitoring.png"/></a>
+</div>
+
+<h4 class="small-subtitle">Observing sut & test behaviour in elastest</h4>
+
+<p>In the <strong>TJob</strong> we will observe the logs of the sut or test selecting the <strong>sut</strong> or <strong>test</strong> like we show in the following image:</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-4" href="/docs/tutorials/images/jenkins/logs/sut-logs.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/jenkins/logs/sut-logs.png"/></a>
+</div>
+
+<h4 class="small-subtitle">Comparing executions (logs & metrics)</h4>
+
+<p>ElasTest allows compare two different executions, we will may the logs and metric comparative. We relaunch the Jenkins Job, but with a small changed. This changed makes the execution correct. </p>
+<p>Change <code>export AMICO_IMAGE=webapp-2-fixed-profile;</code> for <code>AMICO_IMAGE=webapp-2-master;</code> in the <strong><code>Pipeline</code></strong>. The final result show in the folloging box:</p>
+<pre><code class="groovy">node{
+    def sutIp
+    elastest(surefireReportsPattern: '**/target/surefire-reports/TEST-*.xml', monitoring: true, project: 'Jenkins Examples') {
+        stage(&quot;Setting environment&quot;) {
+            echo 'Environment variables'
+            sh &quot;env&quot;
+            git &quot;https://github.com/elastest-experiments/webapp-2.git&quot;
+        }
+        try {
+            stage(&quot;Start Sut&quot;) {
+                sh &quot;cd docker-compose; export AMICO_IMAGE=webapp-2-master; docker-compose --no-ansi -p ${env.ET_SUT_CONTAINER_NAME} up -d&quot;
+                sutContainerName = env.ET_SUT_CONTAINER_NAME + &quot;_webapp2_1&quot;;
+                sutNetwork = getFirstNetwork(sutContainerName)
+                sutIp = containerIp(sutContainerName,network)
+
+                echo 'Sut ip: '+ sutIp
+                sh 'docker run -e IP=' + sutIp + ' -e PORT=8000 --network=' + sutNetwork + ' elastest/etm-check-service-up'
+            }
+            stage(&quot;Run Tests&quot;) {
+                withEnv(['ET_SUT_HOST=' + sutIp, 'ET_SUT_PORT=8000']) {
+                    echo 'Running test'
+                    mvnHome = tool 'M3.3.9'
+                    sh &quot;cd AMICOServer; '${mvnHome}/bin/mvn' -Dtest=TestAPIRestTemplate -B test&quot;
+                    step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
+                }
+            }
+        } finally {
+                echo 'Stopping SUT'
+                sh &quot;cd docker; docker-compose --no-ansi -p ${env.ET_SUT_CONTAINER_NAME} down&quot;
+        }
+    }
+}
+
+
+def getFirstNetwork(containerName) {
+    echo &quot;Inside getFirstNetwork function&quot;
+    network = sh (
+        script: &quot;docker inspect &quot; + containerName + &quot; -f \&quot;{%raw%}{{json .NetworkSettings.Networks}}{%endraw%}\&quot; | awk \&quot;{sub(/:.*/,\\\&quot;\\\&quot;)}1\&quot; | awk \&quot;{sub(/\\\&quot;/,\\\&quot;\\\&quot;)}1\&quot; | awk \&quot;{sub(/\\\&quot;/,\\\&quot;\\\&quot;)}1\&quot; | awk \&quot;{sub(/{/,\\\&quot;\\\&quot;)}1\&quot;&quot;,
+        returnStdout: true
+    ).trim()
+
+    echo containerName+&quot; Network = &quot; + network;
+    return network;
+}
+
+def containerIp(containerName, network) {
+    echo &quot;Inside containerIp function&quot;
+    containerIp = sh (
+        script: &quot;docker inspect --format=\&quot;{%raw%}{{.NetworkSettings.Networks.&quot; + network + &quot;.IPAddress}}{%endraw%}\&quot; &quot;+ containerName,
+        returnStdout: true
+    ).trim()
+
+    echo containerName+&quot; IP = &quot; + containerIp;
+    return containerIp;
+}
+</code></pre>
+
+<p>When we changed it, we will relaunch the job. And we will see:</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-5" href="/docs/tutorials/images/jenkins/logs/jenkis-job.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/jenkins/logs/jenkis-job.png"/></a>
+</div>
+
+<p>Now we will go to the <strong><code>AMICourses</code></strong> TJob in elastest and select the two executions from the table and finally press the <strong>Compare Executions</strong> button.</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-5" href="/docs/tutorials/images/jenkins/logs/select-tjobs-for-comparing.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/jenkins/logs/select-tjobs-for-comparing.png"/></a>
+</div>
+
+<p>Once added you will see the following card, in this card we will see the metric comparisons and we will select the <strong>test_default_log</strong> and click the <strong>Start Comparison</strong> button for the show the comparison logs.</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-5" href="/docs/tutorials/images/jenkins/logs/compare-metrics-select-comparison.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/jenkins/logs/compare-metrics-select-comparison.png"/></a>
+</div>
+
+<p>When push the button we will show the comparative betwen the two executions. In this case we will check that the left log return a 401 error nevertheless the right log return some information in JSON format. The test check that the not logged person no see the information that not correspond them. Therefore we check that the error is because the application return sensible information when not logged user.</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-5" href="/docs/tutorials/images/jenkins/logs/compare-error.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/jenkins/logs/compare-error.png"/></a>
+</div>
+					
+				      </div>
+				    </div>
+				    <footer>
+<hr class="divider divider-100 divider-xs hr-lg-center-0 offset-xs-top-20 offset-sm-top-20 offset-md-top-20 offset-lg-top-20">
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../using-browsers-in-elastest/" class="btn btn-xs btn-primary float-right" title="Using browsers in ElasTest">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../getting-started/" class="btn btn-xs btn-primary" title="Getting started"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
+      
+    </div>
+  
+
+
+  
+  
+	  <a href="https://github.com/elastest/elastest.io-docs/blob/master/docs/tutorials/e2e-testing.md" class="fab fa-github offset-xxs-top-30"> Edit Documentation on GitHub</a>
+  
+</footer>
+			  	  
+				  </div>
+				</div>
+			</div>
+		    </div>
+		</div>
+	</section>
+
+  </div>
+</div>
+
+<!-- Gallery -->
+<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
+
+<script>
+var galleries = $('div.docs-gallery');
+for (var i = 1; i <= galleries.length; i++) {
+    $().fancybox({
+    selector : '[data-fancybox="gallery-' + i + '"]',
+    infobar : true,
+    arrows : false,
+    loop: false,
+    protect: true,
+    transitionEffect: 'slide',
+    buttons : [
+        'close'
+    ],
+    clickOutside : 'close',
+    clickSlide   : 'close',
+  });
+}
+</script>

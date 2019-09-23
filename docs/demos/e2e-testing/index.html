@@ -1,0 +1,972 @@
+--- 
+layout: default 
+title: Elastest Documentation - E2E testing 
+active: documentation 
+section-title: Documentation 
+section-icon: mdi mdi-content-copy 
+---
+<script src="/js/jquery-3.1.1.min.js"></script>
+<script src="/js/float-panel.js"></script>
+
+<script type="text/javascript">
+	/* Import docs theme css */
+	$('head').append('<link rel="stylesheet" type="text/css" href="/css/theme_extra.css">');
+	
+
+	$( document).ready(function(){
+		$('#menu-list').show();
+	    $('li.subnav_drop').find('ul.subnav').hide();
+	       $( ".subnav" ).find( "li:contains('E2E testing')" ).each(function(i,e){
+		  var currentElement = $(e);
+		  currentElement.parent().css({"display":"block","visibility":"visible"}); //css("background-color","blue");
+		  currentElement.css({"display":"block","visibility":"visible"});
+	       });
+	    $('li.subnav_drop').click(function(i,e) {  
+	      $('li.subnav_drop').not(this).find('ul.subnav').hide();
+	      $(this).find('ul.subnav').toggle();
+	    }); 
+
+	    var minHeight = $('#float-panel').outerHeight() + 100;	
+						$('#doc-container').css('min-height', minHeight+'px');
+	});
+	   
+	$( ".wy-nav-content" ).find( "li:contains('E2E testing')" ).css('color','red');
+ </script>
+
+<div id="doc-container" class="container text-justify">
+  <div class="holder range"> 
+        <div id="float-panel" class="wy-grid-for-nav cell-xs-3 cell-md-3 cell-lg-2 float-panel" data-top="56">
+
+          
+          <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+            <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="main navigation">
+		<div id="site-menu-title">
+			<h3 class="h5">Explore docs</h3>
+			<hr class="divider hr-lg-left-0 bg-orange">    
+		</div>
+		<ul id="menu-list" class="current" hidden>
+			
+				
+					<li><ul> 
+
+    <li class="toctree-l1 ">
+        <a class="" href="../..">What is ElasTest?</a>
+        
+    </li>
+
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Tutorials</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../tutorials/getting-started/">Getting started</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../tutorials/e2e-testing/">E2E Testing in ElasTest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../tutorials/using-browsers-in-elastest/">Using browsers in ElasTest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../tutorials/using-eds-devices-for-iot/">Using EDS devices for IoT</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../tutorials/using-ems-to-build-tests-with-dynamic-info/">Using EMS to build tests with dynamic info</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../tutorials/using-ess-to-perform-security-checks/">Using ESS to perform security checks</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../tutorials/custom-metrics/">Custom metrics</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../tutorials/ere-with-custom-code/">ERE with custom code</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../tutorials/using-ebs-to-perform-analytics/">Using EBS to perform analytics</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../tutorials/estimating-the-costs-of-tests-on-aws/">Estimating the costs of tests on AWS</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../tutorials/observability-for-5g-infrastructures/">Observability for 5G infrastructures</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../tutorials/ems/">EMS (show how specific visualizations for TJobs and ElasTest TSS work)</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../tutorials/kubernetes/">Kubernetes (Q3)</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Demos</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../api-testing/">API testing</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 current">
+        <a class="current" href="./">E2E testing</a>
+        
+         
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../functional-exploratory-testing/">Functional / Exploratory testing</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../multi-configuration/">Multi-configuration</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../cross-browser-testing/">Cross browser testing</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../security-testing/">Security testing</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../chaos-testing/">Chaos testing</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../test-recommendation/">Test recommendation</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../test-cost-estimation/">Test cost estimation</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Cheatsheet</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../try-elastest/">Try ElasTest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testing/unit/">Run unit tests</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testing/e2e-rest/">Run end2end tests</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testing/sut/">Software under Test</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testing/parameterized-tests/">Parameterized tests</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testing/multi-configuration-tjobs/">Multi-Configuration TJobs</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../web-browsers/manual-browsers/">Launching Web Browsers on ElasTest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../web-browsers/e2e-browser/">Run en2end tests with Web Browsers</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../web-browsers/outside-testing/">Testing with Web Browsers from outside ElasTest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../log-analyzer/">Log Analyzer</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../executions-comparator/">Executions Comparator</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testlink/">TestLink with ElasTest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../monitoring/">Test Monitoring</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../monitoring/outside-elastest/">Monitoring outside Elastest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../monitoring/custom/">Custom monitoring</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../jenkins/pipeline/">Pipeline Jobs</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../jenkins/freestyle/">Freestyle Jobs</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../releases/">Releases</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../roadmap/">Roadmap</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Reference documentation</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testing/environment-variables/">Enviroment variables</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../test-services/ems/">Elastest Monitoring Service (EMS)</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../test-services/ece/">Elastest Cost Engine (ECE)</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../test-services/ere-trial/">Elastest Recommendation Egine (ERE)</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../test-services/ebs/">ElasTest BigData Service (EBS)</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../test-services/eds/">ElasTest Device impersonation Service (EDS - IoT)</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../test-services/ess/">ElasTest Security Service (ESS)</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Deployment</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../deploying/ubuntu/">Linux Server</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../deploying/aws/">Amazon Web Services</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../deploying/kubernetes/">Kubernetes (Q3)</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Management</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../elastest-monitoring/">Monitoring ElasTest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../manage-elastest/monitoring-containers/">Monitoring containers</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../manage-elastest/manage-elasticsearch/">Monitoring ElasticSearch</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../support/">Support</a>
+        
+    </li>
+
+</ul></li>
+				
+			
+		</ul>
+            </div>
+            &nbsp;
+          </nav>
+        </div>
+
+	<section class="section-sm-41">
+		<div class="shell">
+		    <div class="range range-xs-right">
+		        <div class="cell-xs-10 cell-sm-8 cell-md-9 cell-lg-10 cell-xl-12 text-md-left cell-lg-push-1 offset-lg-top-0">
+			  
+				<div class="wy-nav-content">
+				  <div class="rst-content">
+				   
+				    <div role="main">
+				      <div class="section">
+					
+					  <div class="range range-xs-left">
+<div class="cell-xs-10 cell-lg-6 text-md-left inset-md-right-80 cell-lg-push-1 offset-top-50 offset-lg-top-0">
+<h2 id="content" class="h1">E2E testing</h2>
+<div class="offset-top-30 offset-md-top-30">
+</div>
+</div>
+</div>
+
+<p>A sample videoconferencing applications (backend+media server+db) is started automatically. The test exercises the videoconferencing features through the UI by means of a couple of browsers. Logs, metrics and videos are collected automatically.</p>
+
+<div class="run-div">
+    <hr />
+    <div class="row row-run-demo no-margin">
+        <div class="col col-md-2 col-sm-4 col-xs-12">
+            <img src="/docs/images/logo-dark.png" style="border: none; padding-top: 14px;" alt="" />
+        </div>
+        <!-- Remove it -->
+        <div class="col col-md-8 col-sm-8 col-xs-6">
+            <a class="btn btn-xs btn-primary disabled" title="Try it now">Try it now</a>
+        </div>
+        <div class="col col-md-8 col-sm-8 col-xs-2">
+            <span class="text-center"><i class="fas fa-hammer fa-3x"></i>Coming soon</span>
+        </div>
+        <!--
+        <div class="col col-md-10 col-sm-8 col-xs-12">
+            <a class="btn btn-xs btn-primary disabled" title="Try it now">Try it now</a>
+        </div>
+        -->
+    </div>
+    <hr />
+    <div class="row row-run-demo no-margin">
+        <div class="col col-md-2 col-sm-4 col-xs-12"><img src="/docs/images/docker.png" style="border: none;" alt="" /></div>
+        <div class="col col-md-10 col-sm-8 col-xs-12">
+            <div class="row no-margin">
+                <div class="col-lg-1 col-md-2 col-sm-2 no-padding">
+                    <button id="btn-copy-2" class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="button"
+                    title="Copy to Clipboard">Copy</button>
+                </div>
+                <div class="col-lg-11 col-md-10 col-sm-10 no-padding">
+                    <code id="code-2">docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start</code>
+                </div>
+                <br/>
+                <div class="row no-margin docker-info-div">
+                    <div class="col-lg-1 col-md-2 col-sm-2 no-padding docker-info-icon">
+                        <i class="fas fa-info-circle"></i>
+                    </div>
+                    <div class="col-lg-11 col-md-10 col-sm-10 no-padding">
+                        <h4 class="small-subtitle">Recommended system specifications</h4>
+                        <p>ElasTest needs some minimum system specifications in order to run smoothly:</p>
+                        <table>
+                            <tr>
+                                <td>Processor</td>
+                                <td>1GHz or faster</td>
+                            </tr>
+                            <tr>
+                                <td>RAM</td>
+                                <td>16GB</td>
+                            </tr>
+                            <tr>
+                                <td>SWAP</td>
+                                <td>4GB (if RAM < 16GB)</td>
+                            </tr>
+                            <tr>
+                                <td>Hard Disk</td>
+                                <td>30GB</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="row row-run-demo no-margin">
+        <div class="col col-md-2 col-sm-4 col-xs-12"><img src="/docs/images/amazonAWS.png" style="border: none;" alt="" /></div>
+        <div class="col col-md-10 col-sm-8 col-xs-12">
+            <a href="/docs/deploying/aws/" class="btn btn-xs btn-primary" title="Deploy on Amazon">Deploy on Amazon</a>
+        </div>
+    </div>
+    <hr />
+    <div class="row row-run-demo no-margin">
+        <div class="col col-md-2 col-sm-4 col-xs-12"><img src="/docs/images/kubernetes.png" style="border: none; max-height: 124px; padding-top: 8px;" alt="" /></div>
+        <div class="col col-md-10 col-sm-8 col-xs-12">
+            <a href="/docs/deploying/kubernetes" class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="button"
+                    title="On quarter 3">Deploy on Kubernetes (Q3)</a>
+        </div>
+    </div>
+    <hr />
+</div>
+
+<h5 class="small-subtitle">Test <i class="fab fa-java"></i></h5>
+
+<pre><code class="java">@Tag(&quot;e2e&quot;)
+@DisplayName(&quot;E2E tests for FullTeaching REST CRUD operations&quot;)
+@ExtendWith(SeleniumExtension.class)
+public class FullTeachingTestE2EREST extends FullTeachingTestE2E {
+
+    private static String BROWSER;
+
+    final String TEST_COURSE = &quot;TEST_COURSE&quot;;
+    final String TEST_COURSE_INFO = &quot;TEST_COURSE_INFO&quot;;
+    final String EDITED = &quot; EDITED&quot;;
+
+    final String TEACHER_MAIL = &quot;teacher@gmail.com&quot;;
+    final String TEACHER_PASS = &quot;pass&quot;;
+    final String TEACHER_NAME = &quot;Teacher Cheater&quot;;
+
+    String COURSE_NAME = TEST_COURSE;
+
+    static Exception ex = null;
+
+    BrowserUser user;
+
+    public FullTeachingTestE2EREST() {
+        super();
+    }
+
+    /*** ClassRule methods ***/
+
+    @BeforeAll()
+    static void setupAll() {
+        BROWSER = System.getenv(&quot;BROWSER&quot;);
+
+        if ((BROWSER == null) || (!BROWSER.equals(FIREFOX))) {
+            BROWSER = CHROME;
+        }
+
+        log.info(&quot;Using URL {} to connect to openvidu-testapp&quot;, APP_URL);
+    }
+
+    @BeforeEach
+    void setup(TestInfo info) {
+
+        log.info(&quot;##### Start test: &quot; + info.getTestMethod().get().getName());
+
+        loginTeacher(info); // Teacher login
+        addCourse(COURSE_NAME); // Add test course
+    }
+
+    @AfterEach
+    void dispose(TestInfo info) {
+        try {
+            this.deleteCourseIfExist();
+            this.logout(user);
+            user.dispose();
+        } finally {
+            log.info(&quot;##### Finish test: &quot; + info.getTestMethod().get().getName());
+        }
+    }
+
+    /*** Test methods ***/
+
+    @Test
+    void courseRestOperations() throws Exception {
+
+        // Edit course
+
+        log.info(&quot;Editing course&quot;);
+
+        COURSE_NAME = COURSE_NAME + EDITED;
+
+        List&lt;WebElement&gt; l = user.getDriver().findElements(By.className(&quot;course-put-icon&quot;));
+        openDialog(l.get(l.size() - 1), user);
+
+        user.waitUntil(ExpectedConditions.elementToBeClickable(By.id((&quot;input-put-course-name&quot;))),
+                &quot;Input for course name not clickable&quot;);
+        user.getDriver().findElement(By.id(&quot;input-put-course-name&quot;)).clear();
+        user.getDriver().findElement(By.id(&quot;input-put-course-name&quot;)).sendKeys(COURSE_NAME);
+        user.getDriver().findElement(By.id(&quot;submit-put-course-btn&quot;)).click();
+
+        waitForDialogClosed(&quot;course-modal&quot;, &quot;Edition of course failed&quot;, user);
+
+        user.waitUntil(
+                ExpectedConditions.textToBe(
+                        By.cssSelector(&quot;#course-list .course-list-item:last-child div.course-title span&quot;), COURSE_NAME),
+                &quot;Unexpected course name&quot;);
+
+    }
+
+    ....
+</code></pre>
+
+<p>We can observe the all code in this <a href="https://github.com/elastest/full-teaching-experiment/blob/master/src/test/java/com/fullteaching/backend/e2e/FullTeachingTestE2EREST.java">link</a>.</p>
+<p>The enpoint for the application is defined in the <code>FullTrachingTestE2E</code> class. In the next box we observe the block of code that define the endpoint. we can observe the complete code in this <a href="https://github.com/elastest/full-teaching-experiment/blob/master/src/test/java/com/fullteaching/backend/e2e/FullTeachingTestE2E.java">link</a>.</p>
+<pre><code class="java">    public FullTeachingTestE2E() {
+        if (System.getenv(&quot;ET_EUS_API&quot;) == null) {
+            // Outside ElasTest
+            ChromeDriverManager.getInstance().setup();
+            FirefoxDriverManager.getInstance().setup();
+        }
+
+        if (System.getenv(&quot;ET_SUT_HOST&quot;) != null) {
+            APP_URL = &quot;https://&quot; + System.getenv(&quot;ET_SUT_HOST&quot;) + &quot;:5000/&quot;;
+        } else {
+            APP_URL = System.getProperty(&quot;app.url&quot;);
+            if (APP_URL == null) {
+                APP_URL = &quot;https://localhost:5000/&quot;;
+            }
+        }
+    }
+</code></pre>
+
+<blockquote>
+<ul>
+<li><strong><code>ET_SUT_HOST</code></strong>, <strong><code>ET_SUT_PORT</code></strong>  variables will be the IP and port of our SuT respectively. (Know more about <a href="/docs/testing/environment-variables/">Environment Variables</a>)</li>
+</ul>
+</blockquote>
+<h5 class="small-subtitle">Jenkins <i class="fab fa-jenkins"></i></h5>
+
+<pre><code class="groovy">node{
+    def sutIp
+    elastest(tss: ['EUS'], surefireReportsPattern: '**/target/surefire-reports/TEST-*.xml', monitoring: true, project: 'Jenkins Examples') {
+        stage(&quot;Setting environment&quot;) {
+            echo 'Environment variables'
+            sh &quot;env&quot;
+            git &quot;https://github.com/elastest/full-teaching-experiment.git&quot;
+        }
+        try {
+            stage(&quot;Start Sut&quot;) {
+                sh &quot;cd docker-compose/full-teaching-without-network; export BUG_TAG=demo; docker-compose --no-ansi -p ${env.ET_SUT_CONTAINER_NAME} up -d&quot;
+                sutContainerName = env.ET_SUT_CONTAINER_NAME + &quot;_full-teaching_1&quot;;
+                sutNetwork = getFirstNetwork(sutContainerName)
+                sutIp = containerIp(sutContainerName,network)
+
+                echo 'Sut ip: '+ sutIp
+                sh 'docker run -e IP=' + sutIp + ' -e PORT=5001 --network=' + sutNetwork + ' elastest/etm-check-service-up'
+            }
+            stage(&quot;Run Tests&quot;) {
+                echo 'Running test'
+                mvnHome = tool 'M3.3.9'
+                sh &quot;'${mvnHome}/bin/mvn' -Dapp.url=https://&quot; + sutIp +&quot;:5001/ -Dtest=FullTeachingTestE2EREST -B -DforkCount=0 test&quot;
+                step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
+            }
+        } finally {
+                echo 'Stopping SUT'
+                sh &quot;cd docker-compose/full-teaching-env; docker-compose --no-ansi -p ${env.ET_SUT_CONTAINER_NAME} down&quot;
+        }
+    }
+}
+
+
+def getFirstNetwork(containerName) {
+    echo &quot;Inside getFirstNetwork function&quot;
+    network = sh (
+        script: &quot;docker inspect &quot; + containerName + &quot; -f \&quot;{%raw%}{{json .NetworkSettings.Networks}}{%endraw%}\&quot; | awk \&quot;{sub(/:.*/,\\\&quot;\\\&quot;)}1\&quot; | awk \&quot;{sub(/\\\&quot;/,\\\&quot;\\\&quot;)}1\&quot; | awk \&quot;{sub(/\\\&quot;/,\\\&quot;\\\&quot;)}1\&quot; | awk \&quot;{sub(/{/,\\\&quot;\\\&quot;)}1\&quot;&quot;,
+        returnStdout: true
+    ).trim()
+
+    echo containerName+&quot; Network = &quot; + network;
+    return network;
+}
+
+def containerIp(containerName, network) {
+    echo &quot;Inside containerIp function&quot;
+    containerIp = sh (
+        script: &quot;docker inspect --format=\&quot;{%raw%}{{.NetworkSettings.Networks.&quot; + network + &quot;.IPAddress}}{%endraw%}\&quot; &quot;+ containerName,
+        returnStdout: true
+    ).trim()
+
+    echo containerName+&quot; IP = &quot; + containerIp;
+    return containerIp;
+}
+</code></pre>
+					
+				      </div>
+				    </div>
+				    <footer>
+<hr class="divider divider-100 divider-xs hr-lg-center-0 offset-xs-top-20 offset-sm-top-20 offset-md-top-20 offset-lg-top-20">
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../functional-exploratory-testing/" class="btn btn-xs btn-primary float-right" title="Functional / Exploratory testing">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../api-testing/" class="btn btn-xs btn-primary" title="API testing"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
+      
+    </div>
+  
+
+
+  
+  
+	  <a href="https://github.com/elastest/elastest.io-docs/blob/master/docs/demos/e2e-testing.md" class="fab fa-github offset-xxs-top-30"> Edit Documentation on GitHub</a>
+  
+</footer>
+			  	  
+				  </div>
+				</div>
+			</div>
+		    </div>
+		</div>
+	</section>
+
+  </div>
+</div>
+
+<!-- Gallery -->
+<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
+
+<script>
+var galleries = $('div.docs-gallery');
+for (var i = 1; i <= galleries.length; i++) {
+    $().fancybox({
+    selector : '[data-fancybox="gallery-' + i + '"]',
+    infobar : true,
+    arrows : false,
+    loop: false,
+    protect: true,
+    transitionEffect: 'slide',
+    buttons : [
+        'close'
+    ],
+    clickOutside : 'close',
+    clickSlide   : 'close',
+  });
+}
+</script>

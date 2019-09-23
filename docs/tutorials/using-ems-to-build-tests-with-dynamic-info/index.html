@@ -1,0 +1,845 @@
+--- 
+layout: default 
+title: Elastest Documentation - Using EMS to build tests with dynamic info 
+active: documentation 
+section-title: Documentation 
+section-icon: mdi mdi-content-copy 
+---
+<script src="/js/jquery-3.1.1.min.js"></script>
+<script src="/js/float-panel.js"></script>
+
+<script type="text/javascript">
+	/* Import docs theme css */
+	$('head').append('<link rel="stylesheet" type="text/css" href="/css/theme_extra.css">');
+	
+
+	$( document).ready(function(){
+		$('#menu-list').show();
+	    $('li.subnav_drop').find('ul.subnav').hide();
+	       $( ".subnav" ).find( "li:contains('Using EMS to build tests with dynamic info')" ).each(function(i,e){
+		  var currentElement = $(e);
+		  currentElement.parent().css({"display":"block","visibility":"visible"}); //css("background-color","blue");
+		  currentElement.css({"display":"block","visibility":"visible"});
+	       });
+	    $('li.subnav_drop').click(function(i,e) {  
+	      $('li.subnav_drop').not(this).find('ul.subnav').hide();
+	      $(this).find('ul.subnav').toggle();
+	    }); 
+
+	    var minHeight = $('#float-panel').outerHeight() + 100;	
+						$('#doc-container').css('min-height', minHeight+'px');
+	});
+	   
+	$( ".wy-nav-content" ).find( "li:contains('Using EMS to build tests with dynamic info')" ).css('color','red');
+ </script>
+
+<div id="doc-container" class="container text-justify">
+  <div class="holder range"> 
+        <div id="float-panel" class="wy-grid-for-nav cell-xs-3 cell-md-3 cell-lg-2 float-panel" data-top="56">
+
+          
+          <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+            <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="main navigation">
+		<div id="site-menu-title">
+			<h3 class="h5">Explore docs</h3>
+			<hr class="divider hr-lg-left-0 bg-orange">    
+		</div>
+		<ul id="menu-list" class="current" hidden>
+			
+				
+					<li><ul> 
+
+    <li class="toctree-l1 ">
+        <a class="" href="../..">What is ElasTest?</a>
+        
+    </li>
+
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Tutorials</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../getting-started/">Getting started</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../e2e-testing/">E2E Testing in ElasTest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../using-browsers-in-elastest/">Using browsers in ElasTest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../using-eds-devices-for-iot/">Using EDS devices for IoT</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Using EMS to build tests with dynamic info</a>
+        
+         
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../using-ess-to-perform-security-checks/">Using ESS to perform security checks</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../custom-metrics/">Custom metrics</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../ere-with-custom-code/">ERE with custom code</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../using-ebs-to-perform-analytics/">Using EBS to perform analytics</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../estimating-the-costs-of-tests-on-aws/">Estimating the costs of tests on AWS</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../observability-for-5g-infrastructures/">Observability for 5G infrastructures</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../ems/">EMS (show how specific visualizations for TJobs and ElasTest TSS work)</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../kubernetes/">Kubernetes (Q3)</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Demos</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../demos/api-testing/">API testing</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../demos/e2e-testing/">E2E testing</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../demos/functional-exploratory-testing/">Functional / Exploratory testing</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../demos/multi-configuration/">Multi-configuration</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../demos/cross-browser-testing/">Cross browser testing</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../demos/security-testing/">Security testing</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../demos/chaos-testing/">Chaos testing</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../demos/test-recommendation/">Test recommendation</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../demos/test-cost-estimation/">Test cost estimation</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Cheatsheet</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../try-elastest/">Try ElasTest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testing/unit/">Run unit tests</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testing/e2e-rest/">Run end2end tests</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testing/sut/">Software under Test</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testing/parameterized-tests/">Parameterized tests</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testing/multi-configuration-tjobs/">Multi-Configuration TJobs</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../web-browsers/manual-browsers/">Launching Web Browsers on ElasTest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../web-browsers/e2e-browser/">Run en2end tests with Web Browsers</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../web-browsers/outside-testing/">Testing with Web Browsers from outside ElasTest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../log-analyzer/">Log Analyzer</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../executions-comparator/">Executions Comparator</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testlink/">TestLink with ElasTest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../monitoring/">Test Monitoring</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../monitoring/outside-elastest/">Monitoring outside Elastest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../monitoring/custom/">Custom monitoring</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../jenkins/pipeline/">Pipeline Jobs</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../jenkins/freestyle/">Freestyle Jobs</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../releases/">Releases</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../roadmap/">Roadmap</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Reference documentation</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testing/environment-variables/">Enviroment variables</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../test-services/ems/">Elastest Monitoring Service (EMS)</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../test-services/ece/">Elastest Cost Engine (ECE)</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../test-services/ere-trial/">Elastest Recommendation Egine (ERE)</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../test-services/ebs/">ElasTest BigData Service (EBS)</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../test-services/eds/">ElasTest Device impersonation Service (EDS - IoT)</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../test-services/ess/">ElasTest Security Service (ESS)</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Deployment</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../deploying/ubuntu/">Linux Server</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../deploying/aws/">Amazon Web Services</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../deploying/kubernetes/">Kubernetes (Q3)</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Management</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../elastest-monitoring/">Monitoring ElasTest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../manage-elastest/monitoring-containers/">Monitoring containers</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../manage-elastest/manage-elasticsearch/">Monitoring ElasticSearch</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../support/">Support</a>
+        
+    </li>
+
+</ul></li>
+				
+			
+		</ul>
+            </div>
+            &nbsp;
+          </nav>
+        </div>
+
+	<section class="section-sm-41">
+		<div class="shell">
+		    <div class="range range-xs-right">
+		        <div class="cell-xs-10 cell-sm-8 cell-md-9 cell-lg-10 cell-xl-12 text-md-left cell-lg-push-1 offset-lg-top-0">
+			  
+				<div class="wy-nav-content">
+				  <div class="rst-content">
+				   
+				    <div role="main">
+				      <div class="section">
+					
+					  <div class="range range-xs-left">
+<div class="cell-xs-10 cell-lg-6 text-md-left inset-md-right-80 cell-lg-push-1 offset-top-50 offset-lg-top-0">
+<h2 id="content" class="h1">Using EMS to build tests with dynamic info</h2>
+<div class="offset-top-30 offset-md-top-30">
+</div>
+</div>
+</div>
+
+<p>Suppose we have a webserver and want to assess that when a client is downloading a file and then a second one starts a download too, then the bandwidth consumption roughly doubles.</p>
+<p>The ElasTest infrastructure provides us the means to extract data from the server automatically, and we can use the EMS to organize and process this data according to our desired property.</p>
+<p>The following example is <strong>already included in ElasTest</strong> within the project <strong><code>EMS Example</code></strong>, although we are going to explain how to create it.</p>
+<p><strong>If you like see the documentation of EMS click in this</strong> <a href="../../test-services/ems/">link</a></p>
+<h4 class="small-subtitle">The Sut</h4>
+
+<p>For this example we will use a well-known webserver, nginx.
+The SuT configuration is the following:</p>
+<ul>
+<li><strong>SuT Name</strong>: <strong><code>nginx</code></strong></li>
+<li>Select <strong><code>Deployed By Elastest</code></strong></li>
+<li>Select <strong><code>With Docker Compose</code></strong></li>
+<li>
+<p><strong>Docker Compose</strong>:</p>
+<pre><code>version: '3'
+
+services:
+
+    nginx-service:
+        image: nginx
+        entrypoint:
+            - /bin/bash
+            - "-c"
+            - "dd if=/dev/random of=/usr/share/nginx/html/sparse bs=1024 count=1 seek=5242880000;nginx;sleep infinity"
+        expose:
+            - "80"
+</code></pre>
+</li>
+<li>
+<p><strong>Main Service</strong>: <strong><code>nginx-service</code></strong></p>
+</li>
+<li><strong>Wait for http port</strong>: <strong><code>80</code></strong></li>
+</ul>
+<p></p>
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/test-services/images/ems/sut.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ems/sut.png"/></a>
+</div>
+
+<p>The sut is an ngninx application listening on port <code>80</code>, with a file called <code>sparse</code> of 500GB in its server root directory.</p>
+<h4 class="small-subtitle">The TJob</h4>
+
+<p>The TJob is a custom application whose source code can be found <a href="https://github.com/elastest/elastest-monitoring-service/tree/master/e2e-test/tjob">here</a>, and which has been deployed as a Docker image to Dockerhub at <a href="https://hub.docker.com/r/imdeasoftware/e2etjob">imdeasoftware/e2etjob</a>.</p>
+<p>The TJob configuration is the following:</p>
+<ul>
+<li><strong>TJob name</strong>: <strong><code>Double bandwidth</code></strong></li>
+<li><strong>Current SuT</strong>: Select <strong><code>nginx</code></strong></li>
+<li><strong>Environment Docker Image</strong>: <strong><code>imdeasoftware/e2etjob</code></strong></li>
+<li>
+<p><strong>Commands</strong>: </p>
+<pre><code>cd /go;./tjob
+</code></pre>
+</li>
+<li>
+<p><strong>Test Support Services</strong>: Check <strong><code>EMS</code></strong></p>
+</li>
+</ul>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/test-services/images/ems/tjob1.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ems/tjob1.png"/></a>
+</div>
+
+<p>And, of course, we have to make sure that the EMS checkbox is checked:
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/test-services/images/ems/tjob2.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ems/tjob2.png"/></a>
+</div></p>
+<p>When the TJob starts, it deploys these event stampers:</p>
+<pre><code>when e.strcmp(type,&quot;net&quot;) do #NetData
+when e.path(message) do #TJobMsg
+
+when e.tag(#testresult) do #websocket 
+when e.tag(#lowavg) do #websocket 
+when e.tag(#highavg) do #websocket 
+</code></pre>
+
+<p>We can see that
++ An event stamped with channel <strong><code>#testresult</code></strong> will also be stamped with channel stamp <strong><code>#websocket</code></strong>.
++ An event whose payload is <strong><code>{message: {info: "Info"}}</code></strong> will be stamped with stamp <strong><code>#TJobMsg</code></strong> but not with channel stamp <strong><code>#NetData</code></strong>.
++ An event whose payload is <strong><code>{type: "net", message: "Server"}</code></strong> will be stamped with channel stamp <strong><code>#NetData</code></strong> but not with channel stamp <strong><code>#TJobMsg</code></strong>.
++ Finally, an event whose payload is <strong><code>{message: {info: "Info"}, type: "net"}</code></strong> will be stamped with both channel stamps <strong><code>#TJobMsg</code></strong> and <strong><code>#NetData</code></strong>.</p>
+<p>The TJob also deploys the following monitoring machine at startup:</p>
+<pre><code>pred isnet := e.tag(#NetData) /\ e.strmatch(containerName, &quot;nginx&quot;)
+
+stream bool lowstarted := e.strmatch(message, &quot;STARTING FIRST DOWNLOAD&quot;)
+stream bool lowended := e.strmatch(message, &quot;STARTING SECOND DOWNLOAD&quot;)
+stream bool highstarted := e.strmatch(message, &quot;STARTING SECOND DOWNLOAD&quot;)
+stream bool highended:= e.strmatch(message, &quot;FINISHIN SECOND DOWNLOAD&quot;)
+stream bool tjobfinished := e.strmatch(message, &quot;FINISHING TEST&quot;)
+
+stream num outBandwidth := if isnet then e.getnum(net.txBytes_ps)
+
+stream bool low_is_running := Prev lowstarted /\ ~Prev lowended
+stream bool high_is_running := Prev highstarted /\ ~Prev highended
+
+stream num avgbwlow := avg(outBandwidth within low_is_running)
+stream num avgbwhigh := avg(outBandwidth within high_is_running)
+
+stream bool testcorrect := Prev low_is_running /\ Prev high_is_running /\ avgbwhigh &gt; avgbwlow * 1.8
+
+trigger tjobfinished do emit testcorrect on #testresult
+</code></pre>
+
+<ul>
+<li>The predicate <code>isnet</code> filters the events containing information about the net.</li>
+<li>The boolean streams <code>lowstarted/ended</code> indicate when the period of only one download starts and ends.</li>
+<li>The boolean streams <code>highstarted/ended</code> indicate when the period of two downloads in parallel starts and ends.</li>
+<li>The boolean stream <code>tjobfinised</code> indicates that the test is over.</li>
+<li>The numeric stream <code>outBandwidth</code> extracts the bandwidth usage from a specific field in the event.</li>
+<li>The boolean stream <code>low_is_running</code> indicates that only one download is being performed.</li>
+<li>The boolean stream <code>high_is_running</code> indicates that two downloads are being performed in parallel.</li>
+<li>The numeric stream <code>avgbwlow</code> calculates the average bandwidth when there is only one download.</li>
+<li>The numeric stream <code>avgbwhigh</code> calculates the average bandwidth when there are two downloads in parallel.</li>
+<li>The boolean stream <code>testcorrect</code> assesses that (a) there was a low bandwidth period, (b) there was a high bandwidth period, and (c), the average bandwidth during two parallel downloads is greater than (almost) the double of the bandwidth consumed by a single download.</li>
+<li>Finally, the <code>trigger</code> clause emits the result of <code>testcorrect</code> over the channel <code>#testresult</code> when the TJob is over.</li>
+</ul>
+<p>After the initialization phase, the TJob connects to the EMS websocket endpoint and also proceeds to perform the downloads, printing a message beteween the different stages.
+This can be seen in <a href="https://github.com/elastest/elastest-monitoring-service/blob/master/e2e-test/tjob/main.go">the main TJob routine</a>:</p>
+<pre><code class="go">fmt.Println(&quot;STARTING FIRST DOWNLOAD&quot;)
+go DownloadFile(fileUrl)
+time.Sleep(60 * time.Second)
+fmt.Println(&quot;STARTING SECOND DOWNLOAD&quot;)
+go DownloadFile(fileUrl)
+time.Sleep(60 * time.Second)
+fmt.Println(&quot;FINISHING SECOND DOWNLOAD&quot;)
+time.Sleep(5 * time.Second)
+fmt.Println(&quot;FINISHING TEST&quot;)
+</code></pre>
+
+<p>Then, the TJob checks the value of the event received over the channel <code>#testresult</code> and exits with a <em>success</em> or <em>fail</em> code accordingly.</p>
+					
+				      </div>
+				    </div>
+				    <footer>
+<hr class="divider divider-100 divider-xs hr-lg-center-0 offset-xs-top-20 offset-sm-top-20 offset-md-top-20 offset-lg-top-20">
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../using-ess-to-perform-security-checks/" class="btn btn-xs btn-primary float-right" title="Using ESS to perform security checks">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../using-eds-devices-for-iot/" class="btn btn-xs btn-primary" title="Using EDS devices for IoT"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
+      
+    </div>
+  
+
+
+  
+  
+	  <a href="https://github.com/elastest/elastest.io-docs/blob/master/docs/tutorials/using-ems-to-build-tests-with-dynamic-info.md" class="fab fa-github offset-xxs-top-30"> Edit Documentation on GitHub</a>
+  
+</footer>
+			  	  
+				  </div>
+				</div>
+			</div>
+		    </div>
+		</div>
+	</section>
+
+  </div>
+</div>
+
+<!-- Gallery -->
+<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
+
+<script>
+var galleries = $('div.docs-gallery');
+for (var i = 1; i <= galleries.length; i++) {
+    $().fancybox({
+    selector : '[data-fancybox="gallery-' + i + '"]',
+    infobar : true,
+    arrows : false,
+    loop: false,
+    protect: true,
+    transitionEffect: 'slide',
+    buttons : [
+        'close'
+    ],
+    clickOutside : 'close',
+    clickSlide   : 'close',
+  });
+}
+</script>

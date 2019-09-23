@@ -1,0 +1,902 @@
+--- 
+layout: default 
+title: Elastest Documentation - Security testing 
+active: documentation 
+section-title: Documentation 
+section-icon: mdi mdi-content-copy 
+---
+<script src="/js/jquery-3.1.1.min.js"></script>
+<script src="/js/float-panel.js"></script>
+
+<script type="text/javascript">
+	/* Import docs theme css */
+	$('head').append('<link rel="stylesheet" type="text/css" href="/css/theme_extra.css">');
+	
+
+	$( document).ready(function(){
+		$('#menu-list').show();
+	    $('li.subnav_drop').find('ul.subnav').hide();
+	       $( ".subnav" ).find( "li:contains('Security testing')" ).each(function(i,e){
+		  var currentElement = $(e);
+		  currentElement.parent().css({"display":"block","visibility":"visible"}); //css("background-color","blue");
+		  currentElement.css({"display":"block","visibility":"visible"});
+	       });
+	    $('li.subnav_drop').click(function(i,e) {  
+	      $('li.subnav_drop').not(this).find('ul.subnav').hide();
+	      $(this).find('ul.subnav').toggle();
+	    }); 
+
+	    var minHeight = $('#float-panel').outerHeight() + 100;	
+						$('#doc-container').css('min-height', minHeight+'px');
+	});
+	   
+	$( ".wy-nav-content" ).find( "li:contains('Security testing')" ).css('color','red');
+ </script>
+
+<div id="doc-container" class="container text-justify">
+  <div class="holder range"> 
+        <div id="float-panel" class="wy-grid-for-nav cell-xs-3 cell-md-3 cell-lg-2 float-panel" data-top="56">
+
+          
+          <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+            <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="main navigation">
+		<div id="site-menu-title">
+			<h3 class="h5">Explore docs</h3>
+			<hr class="divider hr-lg-left-0 bg-orange">    
+		</div>
+		<ul id="menu-list" class="current" hidden>
+			
+				
+					<li><ul> 
+
+    <li class="toctree-l1 ">
+        <a class="" href="../..">What is ElasTest?</a>
+        
+    </li>
+
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Tutorials</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../tutorials/getting-started/">Getting started</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../tutorials/e2e-testing/">E2E Testing in ElasTest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../tutorials/using-browsers-in-elastest/">Using browsers in ElasTest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../tutorials/using-eds-devices-for-iot/">Using EDS devices for IoT</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../tutorials/using-ems-to-build-tests-with-dynamic-info/">Using EMS to build tests with dynamic info</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../tutorials/using-ess-to-perform-security-checks/">Using ESS to perform security checks</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../tutorials/custom-metrics/">Custom metrics</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../tutorials/ere-with-custom-code/">ERE with custom code</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../tutorials/using-ebs-to-perform-analytics/">Using EBS to perform analytics</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../tutorials/estimating-the-costs-of-tests-on-aws/">Estimating the costs of tests on AWS</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../tutorials/observability-for-5g-infrastructures/">Observability for 5G infrastructures</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../tutorials/ems/">EMS (show how specific visualizations for TJobs and ElasTest TSS work)</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../tutorials/kubernetes/">Kubernetes (Q3)</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Demos</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../api-testing/">API testing</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../e2e-testing/">E2E testing</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../functional-exploratory-testing/">Functional / Exploratory testing</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../multi-configuration/">Multi-configuration</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../cross-browser-testing/">Cross browser testing</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Security testing</a>
+        
+         
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../chaos-testing/">Chaos testing</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../test-recommendation/">Test recommendation</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../test-cost-estimation/">Test cost estimation</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Cheatsheet</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../try-elastest/">Try ElasTest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testing/unit/">Run unit tests</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testing/e2e-rest/">Run end2end tests</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testing/sut/">Software under Test</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testing/parameterized-tests/">Parameterized tests</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testing/multi-configuration-tjobs/">Multi-Configuration TJobs</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../web-browsers/manual-browsers/">Launching Web Browsers on ElasTest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../web-browsers/e2e-browser/">Run en2end tests with Web Browsers</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../web-browsers/outside-testing/">Testing with Web Browsers from outside ElasTest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../log-analyzer/">Log Analyzer</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../executions-comparator/">Executions Comparator</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testlink/">TestLink with ElasTest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../monitoring/">Test Monitoring</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../monitoring/outside-elastest/">Monitoring outside Elastest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../monitoring/custom/">Custom monitoring</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../jenkins/pipeline/">Pipeline Jobs</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../jenkins/freestyle/">Freestyle Jobs</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../releases/">Releases</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../roadmap/">Roadmap</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Reference documentation</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testing/environment-variables/">Enviroment variables</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../test-services/ems/">Elastest Monitoring Service (EMS)</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../test-services/ece/">Elastest Cost Engine (ECE)</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../test-services/ere-trial/">Elastest Recommendation Egine (ERE)</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../test-services/ebs/">ElasTest BigData Service (EBS)</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../test-services/eds/">ElasTest Device impersonation Service (EDS - IoT)</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../test-services/ess/">ElasTest Security Service (ESS)</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Deployment</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../deploying/ubuntu/">Linux Server</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../deploying/aws/">Amazon Web Services</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../deploying/kubernetes/">Kubernetes (Q3)</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Management</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../elastest-monitoring/">Monitoring ElasTest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../manage-elastest/monitoring-containers/">Monitoring containers</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../manage-elastest/manage-elasticsearch/">Monitoring ElasticSearch</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../support/">Support</a>
+        
+    </li>
+
+</ul></li>
+				
+			
+		</ul>
+            </div>
+            &nbsp;
+          </nav>
+        </div>
+
+	<section class="section-sm-41">
+		<div class="shell">
+		    <div class="range range-xs-right">
+		        <div class="cell-xs-10 cell-sm-8 cell-md-9 cell-lg-10 cell-xl-12 text-md-left cell-lg-push-1 offset-lg-top-0">
+			  
+				<div class="wy-nav-content">
+				  <div class="rst-content">
+				   
+				    <div role="main">
+				      <div class="section">
+					
+					  <div class="range range-xs-left">
+<div class="cell-xs-10 cell-lg-6 text-md-left inset-md-right-80 cell-lg-push-1 offset-top-50 offset-lg-top-0">
+<h2 id="content" class="h1">Security testing</h2>
+<div class="offset-top-30 offset-md-top-30">
+</div>
+</div>
+</div>
+
+<p>It starts a sample vulnerable web application and performs a security pentesting attack to determine the vulnerabilities of the application.</p>
+
+<div class="run-div">
+    <hr />
+    <div class="row row-run-demo no-margin">
+        <div class="col col-md-2 col-sm-4 col-xs-12">
+            <img src="/docs/images/logo-dark.png" style="border: none; padding-top: 14px;" alt="" />
+        </div>
+        <!-- Remove it -->
+        <div class="col col-md-8 col-sm-8 col-xs-6">
+            <a class="btn btn-xs btn-primary disabled" title="Try it now">Try it now</a>
+        </div>
+        <div class="col col-md-8 col-sm-8 col-xs-2">
+            <span class="text-center"><i class="fas fa-hammer fa-3x"></i>Coming soon</span>
+        </div>
+        <!--
+        <div class="col col-md-10 col-sm-8 col-xs-12">
+            <a class="btn btn-xs btn-primary disabled" title="Try it now">Try it now</a>
+        </div>
+        -->
+    </div>
+    <hr />
+    <div class="row row-run-demo no-margin">
+        <div class="col col-md-2 col-sm-4 col-xs-12"><img src="/docs/images/docker.png" style="border: none;" alt="" /></div>
+        <div class="col col-md-10 col-sm-8 col-xs-12">
+            <div class="row no-margin">
+                <div class="col-lg-1 col-md-2 col-sm-2 no-padding">
+                    <button id="btn-copy-2" class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="button"
+                    title="Copy to Clipboard">Copy</button>
+                </div>
+                <div class="col-lg-11 col-md-10 col-sm-10 no-padding">
+                    <code id="code-2">docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start</code>
+                </div>
+                <br/>
+                <div class="row no-margin docker-info-div">
+                    <div class="col-lg-1 col-md-2 col-sm-2 no-padding docker-info-icon">
+                        <i class="fas fa-info-circle"></i>
+                    </div>
+                    <div class="col-lg-11 col-md-10 col-sm-10 no-padding">
+                        <h4 class="small-subtitle">Recommended system specifications</h4>
+                        <p>ElasTest needs some minimum system specifications in order to run smoothly:</p>
+                        <table>
+                            <tr>
+                                <td>Processor</td>
+                                <td>1GHz or faster</td>
+                            </tr>
+                            <tr>
+                                <td>RAM</td>
+                                <td>16GB</td>
+                            </tr>
+                            <tr>
+                                <td>SWAP</td>
+                                <td>4GB (if RAM < 16GB)</td>
+                            </tr>
+                            <tr>
+                                <td>Hard Disk</td>
+                                <td>30GB</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="row row-run-demo no-margin">
+        <div class="col col-md-2 col-sm-4 col-xs-12"><img src="/docs/images/amazonAWS.png" style="border: none;" alt="" /></div>
+        <div class="col col-md-10 col-sm-8 col-xs-12">
+            <a href="/docs/deploying/aws/" class="btn btn-xs btn-primary" title="Deploy on Amazon">Deploy on Amazon</a>
+        </div>
+    </div>
+    <hr />
+    <div class="row row-run-demo no-margin">
+        <div class="col col-md-2 col-sm-4 col-xs-12"><img src="/docs/images/kubernetes.png" style="border: none; max-height: 124px; padding-top: 8px;" alt="" /></div>
+        <div class="col col-md-10 col-sm-8 col-xs-12">
+            <a href="/docs/deploying/kubernetes" class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="button"
+                    title="On quarter 3">Deploy on Kubernetes (Q3)</a>
+        </div>
+    </div>
+    <hr />
+</div>
+
+<h5 class="small-subtitle">Test <i class="fab fa-python"></i></h5>
+
+<pre><code class="python">import unittest
+from selenium import webdriver
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+from pprint import pprint
+import os
+import sys
+import requests
+from urlparse import urlparse
+import time
+
+flag=&quot;&quot;
+url=&quot;&quot;
+class PythonOrgSearch(unittest.TestCase):
+
+    def setUp(self):
+        essApiUrl=os.environ['ET_ESS_API']
+        parsed_ess_url=urlparse(essApiUrl)
+        ess_url=parsed_ess_url.scheme+&quot;://&quot;+parsed_ess_url.netloc
+        print(&quot;ESS URL is: &quot;+str(ess_url))
+        eusUrl=os.environ['ET_EUS_API']
+        print(&quot;EUS URL is: &quot;+str(eusUrl))
+        ess_mitm_proxy_url=ess_url.rstrip(&quot;:80&quot;).lstrip(&quot;http://&quot;)
+        options = webdriver.ChromeOptions()
+        options.add_argument('--proxy-server='+ess_mitm_proxy_url+&quot;:8080&quot;)
+        capabilities = options.to_capabilities()
+        self.driver = webdriver.Remote(command_executor=eusUrl, desired_capabilities=capabilities)
+    #debug
+    #proxies = {'http': ess_mitm_proxy_url+&quot;:8080&quot;,'https': ess_mitm_proxy_url+&quot;:8080&quot;}
+    #requests.get('http://example.org', proxies=proxies)
+
+        #self.driver = webdriver.Chrome(desired_capabilities=capabilities)
+        #self.driver = webdriver.Firefox()
+    def test_search_in_python_org(self):
+        driver = self.driver
+    essApiUrl=os.environ['ET_ESS_API']
+        parsed_ess_url=urlparse(essApiUrl)
+        ess_url=parsed_ess_url.scheme+&quot;://&quot;+parsed_ess_url.netloc
+
+    if flag == &quot;login&quot;:
+        driver.get(url)
+        login_launch = driver.find_element_by_xpath(&quot;//*[@id=\&quot;navigation-bar\&quot;]/div/ul/li[2]/a&quot;)
+        login_launch.click()
+        username = driver.find_element_by_id(&quot;email&quot;)
+        username.send_keys(&quot;teacher@gmail.com&quot;)
+        password = driver.find_element_by_id(&quot;password&quot;)
+        password.send_keys(&quot;pass&quot;)
+        login_btn = driver.find_element_by_id(&quot;log-in-btn&quot;)
+        login_btn.click()
+        time.sleep(5)
+        settings_btn = driver.find_element_by_id(&quot;settings-button&quot;)
+        settings_btn.click()
+        re=requests.post(ess_url+&quot;/ess/api/r4/start/&quot;,json={&quot;sites&quot;: [url]})
+    else:
+        if(url==&quot;example&quot;):
+            driver.get(&quot;https://www.example.org&quot;)
+            time.sleep(3)
+            re=requests.post(ess_url+&quot;/ess/api/r4/start/&quot;,json={&quot;sites&quot;: [&quot;https://www.example.org&quot;]})
+        elif(url==&quot;fullteaching&quot;):
+            driver.get(&quot;https://52.50.3.12&quot;)
+            time.sleep(3)
+            re=requests.post(ess_url+&quot;/ess/api/r4/start/&quot;,json={&quot;sites&quot;: [&quot;https://52.50.3.12&quot;]})
+
+
+        elif(url==&quot;&quot;):                  
+            driver.get(&quot;https://www.example.org&quot;)
+            time.sleep(3)
+            re=requests.post(ess_url+&quot;/ess/api/r4/start/&quot;,json={&quot;sites&quot;: [&quot;https://www.example.org&quot;]})          
+        else:
+            driver.get(url)
+            time.sleep(3)
+            re=requests.post(ess_url+&quot;/ess/api/r4/start/&quot;,json={&quot;sites&quot;: [url]})    
+
+        #Checking the status of the scan
+        if &quot;starting-ess&quot; in re.text:
+            req=requests.get(ess_url+'/ess/api/r4/status/')
+            status=req.text
+            while (&quot;not-yet&quot; in status):
+                time.sleep(5)
+                req=requests.get(ess_url+'/ess/api/r4/status/')
+                status=req.text
+
+    def tearDown(self):
+        pass
+
+if __name__ == &quot;__main__&quot;:
+    if len(sys.argv)&gt;1 and len(sys.argv)&lt;=2:
+        url=sys.argv[1]
+        del sys.argv[1]
+    elif len(sys.argv)&gt;1 and len(sys.argv)&gt;2:
+        url=sys.argv[1]
+        flag=sys.argv[2]
+        del sys.argv[1]
+        del sys.argv[1]
+    unittest.main()
+</code></pre>
+
+<h5 class="small-subtitle">Generate Report <i class="fas fa-chart-bar"></i></h5>
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/demos/images/security/report.png"><img class="img-responsive img-wellcome" src="/docs/demos/images/security/report.png"/></a>
+</div>
+					
+				      </div>
+				    </div>
+				    <footer>
+<hr class="divider divider-100 divider-xs hr-lg-center-0 offset-xs-top-20 offset-sm-top-20 offset-md-top-20 offset-lg-top-20">
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../chaos-testing/" class="btn btn-xs btn-primary float-right" title="Chaos testing">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../cross-browser-testing/" class="btn btn-xs btn-primary" title="Cross browser testing"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
+      
+    </div>
+  
+
+
+  
+  
+	  <a href="https://github.com/elastest/elastest.io-docs/blob/master/docs/demos/security-testing.md" class="fab fa-github offset-xxs-top-30"> Edit Documentation on GitHub</a>
+  
+</footer>
+			  	  
+				  </div>
+				</div>
+			</div>
+		    </div>
+		</div>
+	</section>
+
+  </div>
+</div>
+
+<!-- Gallery -->
+<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
+
+<script>
+var galleries = $('div.docs-gallery');
+for (var i = 1; i <= galleries.length; i++) {
+    $().fancybox({
+    selector : '[data-fancybox="gallery-' + i + '"]',
+    infobar : true,
+    arrows : false,
+    loop: false,
+    protect: true,
+    transitionEffect: 'slide',
+    buttons : [
+        'close'
+    ],
+    clickOutside : 'close',
+    clickSlide   : 'close',
+  });
+}
+</script>

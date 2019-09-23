@@ -1,0 +1,1239 @@
+--- 
+layout: default 
+title: Elastest Documentation - Using browsers in ElasTest 
+active: documentation 
+section-title: Documentation 
+section-icon: mdi mdi-content-copy 
+---
+<script src="/js/jquery-3.1.1.min.js"></script>
+<script src="/js/float-panel.js"></script>
+
+<script type="text/javascript">
+	/* Import docs theme css */
+	$('head').append('<link rel="stylesheet" type="text/css" href="/css/theme_extra.css">');
+	
+
+	$( document).ready(function(){
+		$('#menu-list').show();
+	    $('li.subnav_drop').find('ul.subnav').hide();
+	       $( ".subnav" ).find( "li:contains('Using browsers in ElasTest')" ).each(function(i,e){
+		  var currentElement = $(e);
+		  currentElement.parent().css({"display":"block","visibility":"visible"}); //css("background-color","blue");
+		  currentElement.css({"display":"block","visibility":"visible"});
+	       });
+	    $('li.subnav_drop').click(function(i,e) {  
+	      $('li.subnav_drop').not(this).find('ul.subnav').hide();
+	      $(this).find('ul.subnav').toggle();
+	    }); 
+
+	    var minHeight = $('#float-panel').outerHeight() + 100;	
+						$('#doc-container').css('min-height', minHeight+'px');
+	});
+	   
+	$( ".wy-nav-content" ).find( "li:contains('Using browsers in ElasTest')" ).css('color','red');
+ </script>
+
+<div id="doc-container" class="container text-justify">
+  <div class="holder range"> 
+        <div id="float-panel" class="wy-grid-for-nav cell-xs-3 cell-md-3 cell-lg-2 float-panel" data-top="56">
+
+          
+          <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+            <div class="wy-menu wy-menu-vertical" role="navigation" aria-label="main navigation">
+		<div id="site-menu-title">
+			<h3 class="h5">Explore docs</h3>
+			<hr class="divider hr-lg-left-0 bg-orange">    
+		</div>
+		<ul id="menu-list" class="current" hidden>
+			
+				
+					<li><ul> 
+
+    <li class="toctree-l1 ">
+        <a class="" href="../..">What is ElasTest?</a>
+        
+    </li>
+
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Tutorials</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../getting-started/">Getting started</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../e2e-testing/">E2E Testing in ElasTest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Using browsers in ElasTest</a>
+        
+         
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../using-eds-devices-for-iot/">Using EDS devices for IoT</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../using-ems-to-build-tests-with-dynamic-info/">Using EMS to build tests with dynamic info</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../using-ess-to-perform-security-checks/">Using ESS to perform security checks</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../custom-metrics/">Custom metrics</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../ere-with-custom-code/">ERE with custom code</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../using-ebs-to-perform-analytics/">Using EBS to perform analytics</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../estimating-the-costs-of-tests-on-aws/">Estimating the costs of tests on AWS</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../observability-for-5g-infrastructures/">Observability for 5G infrastructures</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../ems/">EMS (show how specific visualizations for TJobs and ElasTest TSS work)</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../kubernetes/">Kubernetes (Q3)</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Demos</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../demos/api-testing/">API testing</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../demos/e2e-testing/">E2E testing</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../demos/functional-exploratory-testing/">Functional / Exploratory testing</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../demos/multi-configuration/">Multi-configuration</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../demos/cross-browser-testing/">Cross browser testing</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../demos/security-testing/">Security testing</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../demos/chaos-testing/">Chaos testing</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../demos/test-recommendation/">Test recommendation</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../demos/test-cost-estimation/">Test cost estimation</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Cheatsheet</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../try-elastest/">Try ElasTest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testing/unit/">Run unit tests</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testing/e2e-rest/">Run end2end tests</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testing/sut/">Software under Test</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testing/parameterized-tests/">Parameterized tests</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testing/multi-configuration-tjobs/">Multi-Configuration TJobs</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../web-browsers/manual-browsers/">Launching Web Browsers on ElasTest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../web-browsers/e2e-browser/">Run en2end tests with Web Browsers</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../web-browsers/outside-testing/">Testing with Web Browsers from outside ElasTest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../log-analyzer/">Log Analyzer</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../executions-comparator/">Executions Comparator</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testlink/">TestLink with ElasTest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../monitoring/">Test Monitoring</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../monitoring/outside-elastest/">Monitoring outside Elastest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../monitoring/custom/">Custom monitoring</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../jenkins/pipeline/">Pipeline Jobs</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../jenkins/freestyle/">Freestyle Jobs</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../releases/">Releases</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../roadmap/">Roadmap</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Reference documentation</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../testing/environment-variables/">Enviroment variables</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../test-services/ems/">Elastest Monitoring Service (EMS)</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../test-services/ece/">Elastest Cost Engine (ECE)</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../test-services/ere-trial/">Elastest Recommendation Egine (ERE)</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../test-services/ebs/">ElasTest BigData Service (EBS)</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../test-services/eds/">ElasTest Device impersonation Service (EDS - IoT)</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../test-services/ess/">ElasTest Security Service (ESS)</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Deployment</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../deploying/ubuntu/">Linux Server</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../deploying/aws/">Amazon Web Services</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../deploying/kubernetes/">Kubernetes (Q3)</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+    
+   
+    <li class="subnav_drop"><span>Management</span>
+<ul class="subnav">
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../elastest-monitoring/">Monitoring ElasTest</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../manage-elastest/monitoring-containers/">Monitoring containers</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../manage-elastest/manage-elasticsearch/">Monitoring ElasticSearch</a>
+        
+    </li>
+
+
+        
+</li>
+</ul>
+    
+</ul></li>
+				
+			
+				
+					<li><ul> 
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../support/">Support</a>
+        
+    </li>
+
+</ul></li>
+				
+			
+		</ul>
+            </div>
+            &nbsp;
+          </nav>
+        </div>
+
+	<section class="section-sm-41">
+		<div class="shell">
+		    <div class="range range-xs-right">
+		        <div class="cell-xs-10 cell-sm-8 cell-md-9 cell-lg-10 cell-xl-12 text-md-left cell-lg-push-1 offset-lg-top-0">
+			  
+				<div class="wy-nav-content">
+				  <div class="rst-content">
+				   
+				    <div role="main">
+				      <div class="section">
+					
+					  <div class="range range-xs-left">
+<div class="cell-xs-10 cell-lg-6 text-md-left inset-md-right-80 cell-lg-push-1 offset-top-50 offset-lg-top-0">
+<h2 id="content" class="h1">Using browser in ElasTest</h2>
+<div class="offset-top-30 offset-md-top-30">
+</div>
+</div>
+</div>
+
+<h4 class="small-subtitle">Launch web browser Job without SUT with Jenkins Plugin</h4>
+
+<p>We will use the browsers in ElasTest, we use a simple test that open a google page and search. The test has following:</p>
+<h5 id="usebrowser-class"><strong>UseBrowser class</strong></h5>
+<pre><code class="java">public class UseBrowser extends ElastestBaseTest{
+    protected static final Logger logger = LoggerFactory
+            .getLogger(UseBrowser.class);
+
+    @Test
+    public void searchInGoogle() {
+        String URL = &quot;https://google.com/&quot;;
+
+        this.driver.get(URL);       
+        logger.info(&quot;Go to http://google.es/...&quot;);
+
+        sleep(2000);
+
+        logger.info(&quot;Searching 'test' word...&quot;);
+        WebElement searchInput = driver.findElement(By.xpath(&quot;//input[@class='gLFyf gsfi']&quot;));
+        searchInput.sendKeys(&quot;test&quot;);
+        searchInput.sendKeys(Keys.ENTER);
+
+        sleep(2000);
+
+        logger.info(&quot;Finish test correctly&quot;);
+    }
+
+    public void sleep(int time) {
+        try {
+            Thread.sleep(time);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre>
+
+<p>We will see that the test extends the class <strong><code>ElastestBaseTest</code></strong>, this class is nedded for using the browser in ElasTest. We see the class in the following box:</p>
+<h5 id="elastestbasetest-class"><strong>ElastestBaseTest class</strong></h5>
+<pre><code class="java">public class ElastestBaseTest {
+    protected static final Logger logger = LoggerFactory
+            .getLogger(ElastestBaseTest.class);
+
+    protected static final String CHROME = &quot;chrome&quot;;
+    protected static final String FIREFOX = &quot;firefox&quot;;
+
+    protected static String browserType;
+    protected static String browserVersion;
+    protected static String eusURL;
+    protected static String sutUrl;
+
+    protected WebDriver driver;
+
+    @BeforeAll
+    public static void setupClass() {
+        String sutHost = System.getenv(&quot;ET_SUT_HOST&quot;);
+        String sutPort = System.getenv(&quot;ET_SUT_PORT&quot;);
+        String sutProtocol = System.getenv(&quot;ET_SUT_PROTOCOL&quot;);
+
+        if (sutHost == null) {
+            sutUrl = &quot;http://localhost:8080/&quot;;
+        } else {
+            sutPort = sutPort != null ? sutPort : &quot;8080&quot;;
+            sutProtocol = sutProtocol != null ? sutProtocol : &quot;http&quot;;
+
+            sutUrl = sutProtocol + &quot;://&quot; + sutHost + &quot;:&quot; + sutPort;
+        }
+        logger.info(&quot;Webapp URL: &quot; + sutUrl);
+
+        browserType = System.getProperty(&quot;browser&quot;);
+        logger.info(&quot;Browser Type: {}&quot;, browserType);
+        eusURL = System.getenv(&quot;ET_EUS_API&quot;);
+
+        if (eusURL == null) {
+            if (browserType == null || browserType.equals(CHROME)) {
+                WebDriverManager.chromedriver().setup();
+            } else {
+                WebDriverManager.firefoxdriver().setup();
+            }
+        }
+    }
+
+    @BeforeEach
+    public void setupTest(TestInfo info) throws MalformedURLException {
+        String testName = info.getTestMethod().get().getName();
+        logger.info(&quot;##### Start test: {}&quot;, testName);
+
+        if (eusURL == null) {
+            if (browserType == null || browserType.equals(CHROME)) {
+                driver = new ChromeDriver();
+            } else {
+                driver = new FirefoxDriver();
+            }
+        } else {
+            DesiredCapabilities caps;
+            if (browserType == null || browserType.equals(CHROME)) {
+                caps = DesiredCapabilities.chrome();
+            } else {
+                caps = DesiredCapabilities.firefox();
+            }
+
+            browserVersion = System.getProperty(&quot;browserVersion&quot;);
+            if (browserVersion != null) {
+                logger.info(&quot;Browser Version: {}&quot;, browserVersion);
+                caps.setVersion(browserVersion);
+            }
+
+            caps.setCapability(&quot;testName&quot;, testName);
+            driver = new RemoteWebDriver(new URL(eusURL), caps);
+        }
+
+        driver.get(sutUrl);
+    }
+
+    @AfterEach
+    public void teardown(TestInfo info) {
+        if (driver != null) {
+            driver.quit();
+        }
+
+        String testName = info.getTestMethod().get().getName();
+        logger.info(&quot;##### Finish test: {}&quot;, testName);
+    }
+
+}
+</code></pre>
+
+<blockquote>
+<ul>
+<li>
+<p><strong><code>ET_SUT_HOST</code></strong>, <strong><code>ET_SUT_PORT</code></strong> and <strong><code>ET_SUT_PROTOCOL</code></strong>  variables will be the IP, port and protocol of our SuT respectively. ElasTest will automatically inject the right value (Know more about <a href="/docs/testing/environment-variables/">Environment Variables</a>)</p>
+</li>
+<li>
+<p><strong><code>ET_EUS_API</code></strong> variable tells us where to connect to use Elastest browsers (standard Selenium Hub). If the variable has no value, we can consider that this service is no available and then local browsers have to be used (here we are using <a href="https://github.com/bonigarcia/webdrivermanager" target="_blank">WebDriver Manager</a> Java library. This library is responsible to download and configure any additional software needed to use installed browsers from tests)</p>
+</li>
+<li>
+<p>The values of the variables <strong>browserType</strong> and <strong>browserVersion</strong> are taken from the <strong>properties</strong> browser and browserVersion respectively, which you can pass in the test run command with <strong><code>-Dbrowser=chrome</code></strong>.</p>
+</li>
+</ul>
+</blockquote>
+<h3 id="jenkins-pipeline">Jenkins Pipeline</h3>
+<pre><code class="groovy">node{
+    elastest(tss: ['EUS'], surefireReportsPattern: '**/target/surefire-reports/TEST-*.xml', monitoring: true, project: 'Jenkins Examples') {
+        stage ('Executing Test') {
+            echo 'Set up test environment'
+            mvnHome = tool 'M3.3.9'
+            echo 'Cloning repository'
+            git 'https://github.com/elastest/demo-projects'
+            echo 'Running Test'
+            sh &quot;cd ./basic-using-browser/;'${mvnHome}/bin/mvn' -Dtest=UseBrowser -Dbrowser=chrome test&quot;
+        }
+    }
+}
+</code></pre>
+
+<p>The example above can be split into the following sections:</p>
+<p></p>
+
+<ul>
+<li><strong>ElasTest plugin block with configuration</strong> : this block will contain all the steps that the test must follow, as well as the necessary <a href="#options">configuration options</a>. In this case is very important the part <strong><code>tss: ['EUS']</code></strong> because allow us use the browsers.</li>
+</ul>
+<p></p>
+
+<pre><code class="groovy">node{
+    elastest(tss: ['EUS'], surefireReportsPattern: '**/target/surefire-reports/TEST-*.xml', monitoring: true, project: 'Jenkins Examples') {
+        .......
+    }
+}
+</code></pre>
+
+<p></p>
+
+<ul>
+<li><strong>Test Execution</strong> : Dowload the git project and execution test, we change the type of browser with the variable <strong><code>-Dbrowser=</code></strong>, and define the version with the variable <strong><code>-DbrowserVersion=</code></strong></li>
+</ul>
+<p></p>
+
+<h3 id="launch">Launch</h3>
+<h4 id="1-access-your-jenkins">1. Access your Jenkins</h4>
+<p>When you will open Jenkins click in the <strong><code>New Item</code></strong></p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/tutorials/images/browser/jenkins-basic-browser-new-item.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/browser/jenkins-basic-browser-new-item.png"/></a>
+</div>
+
+<h4 id="2-define-the-name-and-type-the-job">2. Define the name and type the Job</h4>
+<p>Input the <strong><code>UsingBrowserInElasTest</code></strong> and select the <strong><code>Pipeline</code></strong> option them click in the <strong><code>Ok</code></strong> button:</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/tutorials/images/browser/jenkins-basic-browser-define-item.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/browser/jenkins-basic-browser-define-item.png"/></a>
+</div>
+
+<h4 id="3-you-add-the-pipeline">3. You add the <strong>Pipeline</strong></h4>
+<p>Copy the <a href="#jenkins-pipeline">ElasTest Pipeline</a> and paste in the <strong>Pipeline</strong> section, as follows:</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/tutorials/images/browser/jenkins-basic-browser-create-pipeline.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/browser/jenkins-basic-browser-create-pipeline.png"/></a>
+</div>
+
+<h4 id="4-inside-pipeline-page">4. Inside Pipeline page</h4>
+<p>When we inside into the Pipeline page we will click in the <strong><code>Build Now</code></strong> to launch the Job in ElasTest</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/tutorials/images/browser/jenkins-basic-browser-build-now.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/browser/jenkins-basic-browser-build-now.png"/></a>
+</div>
+
+<h4 id="5-go-to-the-tjob-execution-screen">5. Go to the TJob execution screen</h4>
+<p>Entering the build page, you will see the Open in ElasTest button, where you can see the execution page in ElasTest (If the button does not appear refresh the page, it may take a while).</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/tutorials/images/browser/jenkins-basic-browser-open-in-elastest.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/browser/jenkins-basic-browser-open-in-elastest.png"/></a>
+</div>
+
+<p>When the TJob was opened you will see the video of the browser session and logs:</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/tutorials/images/browser/basic-browser-execution.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/browser/basic-browser-execution.png"/></a>
+</div>
+
+<p>Gif with the video of the browser session:</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/tutorials/images/browser/browser-session.gif"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/browser/browser-session.gif"/></a>
+</div>
+
+<h4 class="holder-subtitle link-top">Launch web browser Job and SUT with Jenkins Plugin</h4>
+
+<p>We using a Full-Teaching application for this tutorial. Now we run the Full-Teaching with bug for show the logs.</p>
+<pre><code class="java">@Tag(&quot;e2e&quot;)
+@DisplayName(&quot;E2E tests for FullTeaching REST CRUD operations&quot;)
+@ExtendWith(SeleniumExtension.class)
+public class FullTeachingTestE2EREST extends FullTeachingTestE2E {
+
+    private static String BROWSER;
+
+    final String TEST_COURSE = &quot;TEST_COURSE&quot;;
+    final String TEST_COURSE_INFO = &quot;TEST_COURSE_INFO&quot;;
+    final String EDITED = &quot; EDITED&quot;;
+
+    final String TEACHER_MAIL = &quot;teacher@gmail.com&quot;;
+    final String TEACHER_PASS = &quot;pass&quot;;
+    final String TEACHER_NAME = &quot;Teacher Cheater&quot;;
+
+    String COURSE_NAME = TEST_COURSE;
+
+    static Exception ex = null;
+
+    BrowserUser user;
+
+    public FullTeachingTestE2EREST() {
+        super();
+    }
+
+    /*** ClassRule methods ***/
+
+    @BeforeAll()
+    static void setupAll() {
+        BROWSER = System.getenv(&quot;BROWSER&quot;);
+
+        if ((BROWSER == null) || (!BROWSER.equals(FIREFOX))) {
+            BROWSER = CHROME;
+        }
+
+        log.info(&quot;Using URL {} to connect to openvidu-testapp&quot;, APP_URL);
+    }
+
+    @BeforeEach
+    void setup(TestInfo info) {
+
+        log.info(&quot;##### Start test: &quot; + info.getTestMethod().get().getName());
+
+        loginTeacher(info); // Teacher login
+        addCourse(COURSE_NAME); // Add test course
+    }
+
+    @AfterEach
+    void dispose(TestInfo info) {
+        try {
+            this.deleteCourseIfExist();
+            this.logout(user);
+            user.dispose();
+        } finally {
+            log.info(&quot;##### Finish test: &quot; + info.getTestMethod().get().getName());
+        }
+    }
+
+    /*** Test methods ***/
+
+    @Test
+    void courseRestOperations() throws Exception {
+
+        // Edit course
+
+        log.info(&quot;Editing course&quot;);
+
+        COURSE_NAME = COURSE_NAME + EDITED;
+
+        List&lt;WebElement&gt; l = user.getDriver().findElements(By.className(&quot;course-put-icon&quot;));
+        openDialog(l.get(l.size() - 1), user);
+
+        user.waitUntil(ExpectedConditions.elementToBeClickable(By.id((&quot;input-put-course-name&quot;))),
+                &quot;Input for course name not clickable&quot;);
+        user.getDriver().findElement(By.id(&quot;input-put-course-name&quot;)).clear();
+        user.getDriver().findElement(By.id(&quot;input-put-course-name&quot;)).sendKeys(COURSE_NAME);
+        user.getDriver().findElement(By.id(&quot;submit-put-course-btn&quot;)).click();
+
+        waitForDialogClosed(&quot;course-modal&quot;, &quot;Edition of course failed&quot;, user);
+
+        user.waitUntil(
+                ExpectedConditions.textToBe(
+                        By.cssSelector(&quot;#course-list .course-list-item:last-child div.course-title span&quot;), COURSE_NAME),
+                &quot;Unexpected course name&quot;);
+
+    }
+
+    ....
+</code></pre>
+
+<p>We can observe the all code in this <a href="https://github.com/elastest/full-teaching-experiment/blob/master/src/test/java/com/fullteaching/backend/e2e/FullTeachingTestE2EREST.java">link</a>.</p>
+<blockquote>
+<ul>
+<li>The test mark the init of the test case in the <strong><code>setup</code></strong> method and the finish of the test case in the <strong><code>dispose</code></strong> method. With the code <code>log.info("##### Start test: " + info.getTestMethod().get().getName());</code>and <code>log.info("##### Finish test: " + info.getTestMethod().get().getName());</code> respectively.  </li>
+</ul>
+</blockquote>
+<pre><code class="java">@ExtendWith(SeleniumExtension.class)
+public class FullTeachingTestE2E {
+
+    protected static String APP_URL;
+
+    protected static final String CHROME = &quot;chrome&quot;;
+    protected static final String FIREFOX = &quot;firefox&quot;;
+
+    final static Logger log = getLogger(lookup().lookupClass());
+
+    public FullTeachingTestE2E() {
+        if (System.getenv(&quot;ET_EUS_API&quot;) == null) {
+            // Outside ElasTest
+            ChromeDriverManager.getInstance().setup();
+            FirefoxDriverManager.getInstance().setup();
+        }
+
+        if (System.getenv(&quot;ET_SUT_HOST&quot;) != null) {
+            APP_URL = &quot;https://&quot; + System.getenv(&quot;ET_SUT_HOST&quot;) + &quot;:5000/&quot;;
+        } else {
+            APP_URL = System.getProperty(&quot;app.url&quot;);
+            if (APP_URL == null) {
+                APP_URL = &quot;https://localhost:5000/&quot;;
+            }
+        }
+...
+</code></pre>
+
+<p>We can observe the all code in this <a href="https://github.com/elastest/full-teaching-experiment/blob/master/src/test/java/com/fullteaching/backend/e2e/FullTeachingTestE2E.java">link</a>.</p>
+<blockquote>
+<ul>
+<li><strong><code>ET_SUT_HOST</code></strong>, <strong><code>ET_SUT_PORT</code></strong> variables will be the IP of our SuT respectively. ElasTest will automatically inject the right value (Know more about <a href="/docs/testing/environment-variables/">Environment Variables</a>)</li>
+</ul>
+</blockquote>
+<h5 id="jenkins">Jenkins <i class="fab fa-jenkins"></i></h5>
+<pre><code class="groovy">node{
+    def sutIp
+    elastest(tss: ['EUS'], surefireReportsPattern: '**/target/surefire-reports/TEST-*.xml', monitoring: true, project: 'Jenkins Examples') {
+        stage(&quot;Setting environment&quot;) {
+            echo 'Environment variables'
+            sh &quot;env&quot;
+            git &quot;https://github.com/elastest/full-teaching-experiment.git&quot;
+        }
+        try {
+            stage(&quot;Start Sut&quot;) {
+                sh &quot;cd docker-compose/full-teaching-without-network; export BUG_TAG=bug2; docker-compose --no-ansi -p ${env.ET_SUT_CONTAINER_NAME} up -d&quot;
+                sutContainerName = env.ET_SUT_CONTAINER_NAME + &quot;_full-teaching_1&quot;;
+                sutNetwork = getFirstNetwork(sutContainerName)
+                sutIp = containerIp(sutContainerName,network)
+
+                echo 'Sut ip: '+ sutIp
+                sh 'docker run -e IP=' + sutIp + ' -e PORT=5001 --network=' + sutNetwork + ' elastest/etm-check-service-up'
+            }
+            stage(&quot;Run Tests&quot;) {
+                echo 'Running test'
+                mvnHome = tool 'M3.3.9'
+                sh &quot;'${mvnHome}/bin/mvn' -Dapp.url=https://&quot; + sutIp +&quot;:5001/ -Dtest=FullTeachingTestE2EREST -B -DforkCount=0 test&quot;
+                step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
+            }
+        } finally {
+                echo 'Stopping SUT'
+                sh &quot;cd docker-compose/full-teaching-env; docker-compose --no-ansi -p ${env.ET_SUT_CONTAINER_NAME} down&quot;
+        }
+    }
+}
+
+
+def getFirstNetwork(containerName) {
+    echo &quot;Inside getFirstNetwork function&quot;
+    network = sh (
+        script: &quot;docker inspect &quot; + containerName + &quot; -f \&quot;{%raw%}{{json .NetworkSettings.Networks}}{%endraw%}\&quot; | awk \&quot;{sub(/:.*/,\\\&quot;\\\&quot;)}1\&quot; | awk \&quot;{sub(/\\\&quot;/,\\\&quot;\\\&quot;)}1\&quot; | awk \&quot;{sub(/\\\&quot;/,\\\&quot;\\\&quot;)}1\&quot; | awk \&quot;{sub(/{/,\\\&quot;\\\&quot;)}1\&quot;&quot;,
+        returnStdout: true
+    ).trim()
+
+    echo containerName+&quot; Network = &quot; + network;
+    return network;
+}
+
+def containerIp(containerName, network) {
+    echo &quot;Inside containerIp function&quot;
+    containerIp = sh (
+        script: &quot;docker inspect --format=\&quot;{%raw%}{{.NetworkSettings.Networks.&quot; + network + &quot;.IPAddress}}{%endraw%}\&quot; &quot;+ containerName,
+        returnStdout: true
+    ).trim()
+
+    echo containerName+&quot; IP = &quot; + containerIp;
+    return containerIp;
+}
+</code></pre>
+
+<p>The example above can be split into the following sections:</p>
+<ul>
+<li><strong>ElasTest plugin block with configuration</strong> : this block will contain all the steps that the test must follow, as well as the necessary <a href="#options">configuration options</a>. In this case is very important the part <strong><code>tss: ['EUS']</code></strong> because allow us use the browsers.</li>
+</ul>
+<p></p>
+
+<pre><code class="groovy">node{
+    elastest(tss: ['EUS'], surefireReportsPattern: '**/target/surefire-reports/TEST-*.xml', monitoring: true, project: 'Jenkins Examples') {
+        .......
+    }
+}
+</code></pre>
+
+<p></p>
+
+<ul>
+<li><strong>Sut configuration</strong> : The SUT must be started, passing the <strong><code>${env.ET_SUT_CONTAINER_NAME}</code></strong> env variable (provided by ElasTest) as name of the container. This will allow ElasTest to receive logs and metrics from the Sut.</li>
+</ul>
+<p></p>
+
+<pre><code class="groovy">sh &quot;cd docker-compose/full-teaching-without-network; export BUG_TAG=bug2; docker-compose --no-ansi -p ${env.ET_SUT_CONTAINER_NAME} up -d&quot;
+sutContainerName = env.ET_SUT_CONTAINER_NAME + &quot;_full-teaching_1&quot;;
+sutNetwork = getFirstNetwork(sutContainerName)
+sutIp = containerIp(sutContainerName,network)
+</code></pre>
+
+<p></p>
+
+<ul>
+<li><strong>Wait for Sut</strong> : You have to obtain the Sut network and ip and run check image (elastest/etm-check-service-up) provided by ElasTest to wait for the Sut to be ready to be used. This step is not required, you can wait in other ways or not do it, but for this example we do it.
+    <p></p></li>
+</ul>
+<pre><code class="groovy">echo 'Sut ip: '+ sutIp
+sh 'docker run -e IP=' + sutIp + ' -e PORT=8000 --network=' + sutNetwork + ' elastest/etm-check-service-up'
+</code></pre>
+
+<p>We need added the following code in the <strong><code>Pipeline</code></strong>:</p>
+<pre><code class="groovy">def getFirstNetwork(containerName) {
+    echo &quot;Inside getFirstNetwork function&quot;
+    network = sh (
+        script: &quot;docker inspect &quot; + containerName + &quot; -f \&quot;{%raw%}{{json .NetworkSettings.Networks}}{%endraw%}\&quot; | awk \&quot;{sub(/:.*/,\\\&quot;\\\&quot;)}1\&quot; | awk \&quot;{sub(/\\\&quot;/,\\\&quot;\\\&quot;)}1\&quot; | awk \&quot;{sub(/\\\&quot;/,\\\&quot;\\\&quot;)}1\&quot; | awk \&quot;{sub(/{/,\\\&quot;\\\&quot;)}1\&quot;&quot;,
+        returnStdout: true
+    ).trim()
+
+    echo containerName+&quot; Network = &quot; + network;
+    return network;
+}
+
+def containerIp(containerName, network) {
+    echo &quot;Inside containerIp function&quot;
+    containerIp = sh (
+        script: &quot;docker inspect --format=\&quot;{%raw%}{{.NetworkSettings.Networks.&quot; + network + &quot;.IPAddress}}{%endraw%}\&quot; &quot;+ containerName,
+        returnStdout: true
+    ).trim()
+
+    echo containerName+&quot; IP = &quot; + containerIp;
+    return containerIp;
+}
+</code></pre>
+
+<p></p>
+
+<ul>
+<li><strong>Test Execution</strong> : Finally, the tests should be executed to verify that the SUT is working correctly. Remember that you have to configure the Sut ip as an environment variable or pass it as a maven property so that the test knows where the SUT is.</li>
+</ul>
+<p></p>
+
+<pre><code class="groovy">stage(&quot;Run Tests&quot;) {
+    echo 'Running test'
+    mvnHome = tool 'M3.3.9'
+    sh &quot;'${mvnHome}/bin/mvn' -Dapp.url=https://&quot; + sutIp +&quot;:5001/ -Dtest=FullTeachingTestE2EREST -B -DforkCount=0 test&quot;
+    step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
+}
+</code></pre>
+
+<p></p>
+
+<ul>
+<li><strong>Stop Sut</strong> : The SUT will stop when the test is finished, passing the <strong><code>${env.ET_SUT_CONTAINER_NAME}</code></strong> env variable (provided by ElasTest) as name of the container.</li>
+</ul>
+<p></p>
+
+<pre><code class="groovy">} finally {
+        echo 'Stopping SUT'
+        sh &quot;cd docker; docker-compose --no-ansi -p ${env.ET_SUT_CONTAINER_NAME} down&quot;
+}
+</code></pre>
+
+<p></p>
+
+<p>To run the Test in Jenkins first create a new <strong><code>Item</code></strong>, after enter the <strong><code>FullTeaching Browser</code></strong> name and select the 
+<strong><code>Pipeline</code></strong> optinion. Finally click in <strong><code>Ok</code></strong> button.</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-2" href="/docs/tutorials/images/browser/new-item.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/browser/new-item.png"/></a>
+</div>
+
+<p>After, you write the <a href="#jenkins">Pipeline</a> and paste in the <strong><code>Pipeline</code></strong> section. After click the <strong><code>Save</code></strong> button.</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-2" href="/docs/tutorials/images/browser/create-pipeline.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/browser/create-pipeline.png"/></a>
+</div>
+
+<p>When the <strong><code>Job</code></strong> was created, you click in the <strong><code>Build Run</code></strong>:</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-2" href="/docs/tutorials/images/browser/run-Tjob.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/browser/run-Tjob.png"/></a>
+</div>
+
+<p>We will see the finish execution in Jenkins:</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-2" href="/docs/tutorials/images/browser/execution-jenkins.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/browser/execution-jenkins.png"/></a>
+</div>
+
+<p>Finally we can see the TJob execution in ElasTest:</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-2" href="/docs/tutorials/images/browser/tjob.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/browser/tjob.png"/></a>
+</div>
+					
+				      </div>
+				    </div>
+				    <footer>
+<hr class="divider divider-100 divider-xs hr-lg-center-0 offset-xs-top-20 offset-sm-top-20 offset-md-top-20 offset-lg-top-20">
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../using-eds-devices-for-iot/" class="btn btn-xs btn-primary float-right" title="Using EDS devices for IoT">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../e2e-testing/" class="btn btn-xs btn-primary" title="E2E Testing in ElasTest"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
+      
+    </div>
+  
+
+
+  
+  
+	  <a href="https://github.com/elastest/elastest.io-docs/blob/master/docs/tutorials/using-browsers-in-elastest.md" class="fab fa-github offset-xxs-top-30"> Edit Documentation on GitHub</a>
+  
+</footer>
+			  	  
+				  </div>
+				</div>
+			</div>
+		    </div>
+		</div>
+	</section>
+
+  </div>
+</div>
+
+<!-- Gallery -->
+<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
+
+<script>
+var galleries = $('div.docs-gallery');
+for (var i = 1; i <= galleries.length; i++) {
+    $().fancybox({
+    selector : '[data-fancybox="gallery-' + i + '"]',
+    infobar : true,
+    arrows : false,
+    loop: false,
+    protect: true,
+    transitionEffect: 'slide',
+    buttons : [
+        'close'
+    ],
+    clickOutside : 'close',
+    clickSlide   : 'close',
+  });
+}
+</script>
