@@ -791,7 +791,11 @@ h6:before {
 }
 
 .feature-column {
-    padding: 10% 1% 10%;
+    padding: 4% 1% 4%;
+}
+
+.feature-column ul {
+    padding-left: 40px;
 }
 
 .features-row .feature-icon {
