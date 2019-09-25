@@ -799,7 +799,7 @@ h6:before {
 }
 
 .features-row .feature-icon {
-    min-height: 100px;
+    min-height: 120px;
     max-height: 130px;
     float: none;
     text-align: center
