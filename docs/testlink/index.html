@@ -130,6 +130,15 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
+        <a class="" href="../tutorials/kubernetes/">Kubernetes</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
         <a class="" href="../tutorials/ere-with-custom-code/">ERE with custom code</a>
         
     </li>
@@ -167,15 +176,6 @@ section-icon: mdi mdi-content-copy
 
     <li class="toctree-l1 ">
         <a class="" href="../tutorials/ems/">EMS (show how specific visualizations for TJobs and ElasTest TSS work)</a>
-        
-    </li>
-
-
-        
-             
-
-    <li class="toctree-l1 ">
-        <a class="" href="../tutorials/kubernetes/">Kubernetes (Q3)</a>
         
     </li>
 
@@ -225,6 +225,15 @@ section-icon: mdi mdi-content-copy
 
     <li class="toctree-l1 ">
         <a class="" href="../demos/multi-configuration/">Multi-configuration</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../demos/load-testing-with-aws/">Load testing with AWS</a>
         
     </li>
 
@@ -562,7 +571,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../deploying/kubernetes/">Kubernetes (Q3)</a>
+        <a class="" href="../deploying/kubernetes/">Kubernetes</a>
         
     </li>
 
@@ -714,7 +723,10 @@ section-icon: mdi mdi-content-copy
 <p>On the other hand, you can run the test plan clicking the "Execute Test Plan" button located on the top right. Immediately after clicking on the button, a modal will be displayed in which you can select the next configuration:</p>
 <ul>
 <li><strong>Select Build</strong> to run the test.</li>
-<li><strong>Select Browser and it's version</strong>.</li>
+<li><strong>Select Browser and it's version</strong>.<ul>
+<li>You can check <strong><code>Enable Cross browser</code></strong> to use multiple browsers. View demo <a href="/docs/demos/cross-browser-testing" target="_blank">here</a></li>
+</ul>
+</li>
 <li><strong>Select a Platform</strong>.</li>
 <li><strong>Configure a hosts list</strong> to put them in the browser container <strong>/etc/hosts</strong>.
     <p></p>
@@ -743,8 +755,18 @@ section-icon: mdi mdi-content-copy
     <a data-fancybox="gallery-4" href="/docs/testlink/images/download_file_path.png"><img class="img-responsive img-wellcome" src="/docs/testlink/images/download_file_path.png"/></a>
 </div>
 
-<p>Once the route has been entered, just click on the DOWNLOAD button and the file will be downloaded. </p>
-<p>To run Test Cases, you must fill the fields for each and click Save &amp; Next button.</p>
+<p>Once the route has been entered, just click on the DOWNLOAD button and the file will be downloaded.</p>
+<p>To <strong><code>run Test Cases</code></strong>, you must fill the fields for each and click <strong>Save &amp; Next</strong> button.</p>
+<p>It's possible to <strong><code>pause</code></strong> an execution, and resume it later. In order to do this it is necessary to have <strong>executed at least one test case</strong>. From that moment on, a button to pause the execution will appear in the interface.</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-4" href="/docs/testlink/images/plan_execution_pause.png"><img class="img-responsive img-wellcome" src="/docs/testlink/images/plan_execution_pause.png"/></a>
+</div>
+
+<p>To resume it, navigate to Plan page and click to resume button:</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-4" href="/docs/testlink/images/plan_execution_resume.png"><img class="img-responsive img-wellcome" src="/docs/testlink/images/plan_execution_resume.png"/></a>
+</div>
+
 <h5 class="small-subtitle">TestLink Test Plan Execution Result</h5>
 
 <p>Once you have completed all the test cases you will can see an overview of your test executed.</p>

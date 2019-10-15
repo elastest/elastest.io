@@ -1,6 +1,6 @@
 --- 
 layout: default 
-title: Elastest Documentation - Kubernetes (Q3) 
+title: Elastest Documentation - Kubernetes 
 active: documentation 
 section-title: Documentation 
 section-icon: mdi mdi-content-copy 
@@ -16,7 +16,7 @@ section-icon: mdi mdi-content-copy
 	$( document).ready(function(){
 		$('#menu-list').show();
 	    $('li.subnav_drop').find('ul.subnav').hide();
-	       $( ".subnav" ).find( "li:contains('Kubernetes (Q3)')" ).each(function(i,e){
+	       $( ".subnav" ).find( "li:contains('Kubernetes')" ).each(function(i,e){
 		  var currentElement = $(e);
 		  currentElement.parent().css({"display":"block","visibility":"visible"}); //css("background-color","blue");
 		  currentElement.css({"display":"block","visibility":"visible"});
@@ -30,7 +30,7 @@ section-icon: mdi mdi-content-copy
 						$('#doc-container').css('min-height', minHeight+'px');
 	});
 	   
-	$( ".wy-nav-content" ).find( "li:contains('Kubernetes (Q3)')" ).css('color','red');
+	$( ".wy-nav-content" ).find( "li:contains('Kubernetes')" ).css('color','red');
  </script>
 
 <div id="doc-container" class="container text-justify">
@@ -130,6 +130,15 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
+        <a class="" href="../../tutorials/kubernetes/">Kubernetes</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
         <a class="" href="../../tutorials/ere-with-custom-code/">ERE with custom code</a>
         
     </li>
@@ -167,15 +176,6 @@ section-icon: mdi mdi-content-copy
 
     <li class="toctree-l1 ">
         <a class="" href="../../tutorials/ems/">EMS (show how specific visualizations for TJobs and ElasTest TSS work)</a>
-        
-    </li>
-
-
-        
-             
-
-    <li class="toctree-l1 ">
-        <a class="" href="../../tutorials/kubernetes/">Kubernetes (Q3)</a>
         
     </li>
 
@@ -225,6 +225,15 @@ section-icon: mdi mdi-content-copy
 
     <li class="toctree-l1 ">
         <a class="" href="../../demos/multi-configuration/">Multi-configuration</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../demos/load-testing-with-aws/">Load testing with AWS</a>
         
     </li>
 
@@ -560,7 +569,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 current">
-        <a class="current" href="./">Kubernetes (Q3)</a>
+        <a class="current" href="./">Kubernetes</a>
         
          
         
@@ -661,7 +670,143 @@ section-icon: mdi mdi-content-copy
 </div>
 </div>
 
-<p><i class="fas fa-hammer fa-3x"></i> On quarter 3</p>
+<h3 class="small-subtitle">How to run ElasTest on K8s (EK mode)</h3>
+
+<h5 id="get-the-elastest-manifests">Get the ElasTest Manifests</h5>
+<ul>
+<li><strong>Clone</strong> toolbox project    </li>
+</ul>
+<pre><code>git clone https://github.com/elastest/elastest-toolbox.git
+</code></pre>
+
+<p></p>
+
+<ul>
+<li><strong>Navigate</strong> to folder</li>
+</ul>
+<pre><code>cd elastest-toolbox/kubernetes/ek
+</code></pre>
+
+<h5 id="enable-security">Enable Security</h5>
+<p>If you want to stablish credentials to access to ElasTest and its integrated services, follow these steps:</p>
+<ul>
+<li><strong>Set Jenkins and TestLink Credentials.</strong> Edit the file <strong><code>etm-deployment.yml</code></strong> and replace the value "none" in the variables <strong><code>ET_USER</code></strong> and <strong><code>ET_PASS</code></strong> for whatever you want.</li>
+</ul>
+<pre><code>- name: ET_USER
+  value: XXXXXX
+- name: ET_PASS
+  value: YYYYYY
+</code></pre>
+
+<p></p>
+
+<ul>
+<li><strong>Set ElasTest Credentials.</strong> Edit the file <em>"etm-proxy-deployment.yml"</em> and replace the value "none" in the variables <strong><code>ET_USER</code></strong> and <strong><code>ET_PASS</code></strong> for whatever you want.</li>
+</ul>
+<pre><code>- name: ET_USER
+  value: XXXXXX
+- name: ET_PASS
+  value: YYYYYY
+</code></pre>
+
+<p></p>
+
+<p>In addition, you have to set to true the variable <strong><code>ET_SECURITY</code></strong>.</p>
+<pre><code>- name: ET_SECURITY
+  value: &quot;true&quot;
+</code></pre>
+
+<h4 class="holder-subtitle link-top">Minikube</h4>
+
+<p>It is possible that when you start with this mini tutorial, you don't have Minikube and the necessary tools installed. To know how to do this, please follow the steps in described in the official <a href="https://kubernetes.io/es/docs/tasks/tools/install-minikube/">site</a></p>
+<h5 id="minikube-in-ubuntu-host-without-a-vm"><strong>Minikube in Ubuntu host (without a VM)</strong></h5>
+<p>Run Minikube with this command in your local:</p>
+<pre><code>sudo minikube start --memory=4098 --cpus=4 --vm-driver=none --apiserver-ips 127.0.0.1 --apiserver-name localhost --extra-config=kubelet.resolv-conf=/run/systemd/resolve/resolv.conf --extra-config=apiserver.service-node-port-range=1000-60000
+</code></pre>
+
+<h6 id="deploy-elastest">Deploy ElasTest</h6>
+<pre><code>kubectl create -f . -f volumes/
+</code></pre>
+
+<p><strong>Note:</strong> <strong><code>-f volumes</code></strong> it’s only necessary first time, but there is no problem if it is used at another time, although error messages will be output*</p>
+<h5 id="minikube-in-vm"><strong>Minikube in VM</strong></h5>
+<p>Run Minikube with this command in your local:</p>
+<pre><code>sudo minikube start --memory=6048 --cpus=4 --extra-config=apiserver.service-node-port-range=1000-60000 --extra-config kubelet.node-ip=VM-IP
+</code></pre>
+
+<h6 id="deploy-elastest_1">Deploy ElasTest</h6>
+<ul>
+<li>
+<p>Set the Public Node IP in ElasTest
+Edit the file <strong><code>etm-deployment.yml</code></strong> and update this environment variable with the VM IP:</p>
+<pre><code>- name: ET_PUBLIC_HOST
+  value: VM IP
+</code></pre>
+</li>
+<li>
+<p>Start ElasTest</p>
+<pre><code>kubectl create -f . -f volumes/
+</code></pre>
+<p><strong>Note:</strong> <strong><code>-f volumes</code></strong> it’s only necessary first time, but there is no problem if it is used at another time, although error messages will be output*</p>
+</li>
+</ul>
+<h5 id="how-to-access">How to access</h5>
+<ul>
+<li>Execute <strong><code>sudo minikube ip</code></strong> to get the cluster ip.</li>
+<li>Open your browser and navigate to http://<em>CLUSTER-IP</em>:37000</li>
+</ul>
+<h4 class="holder-subtitle link-top">AWS</h4>
+
+<p>If you want to deploy ElasTest on a k8s cluster in AWS (in a single node), you will need to do something else before executing the command to start ElasTest on k8s.</p>
+<h5 id="cluster-configuration">Cluster Configuration</h5>
+<ul>
+<li>Extend default NodePort range 
+Add this line <strong><code>--service-node-port-range=1000-40000</code></strong> to the file <strong><code>/etc/kubernetes/manifests/kube-apiserver.yaml</code></strong>.</li>
+</ul>
+<pre><code>:q!apiVersion: v1
+kind: Pod
+metadata:
+creationTimestamp: null
+labels:
+    component: kube-apiserver
+    tier: control-plane
+name: kube-apiserver
+namespace: kube-system
+spec:
+containers:
+- command:
+    - kube-apiserver
+    - --advertise-address=10.1.47.54
+    ……
+    - --service-node-port-range=1000-40000
+</code></pre>
+
+<h5 id="deploy-elastest_2">Deploy ElasTest</h5>
+<ul>
+<li>
+<p>Set the Public Node IP in ElasTest
+Edit the file <strong><code>etm-deployment.yml</code></strong> and update this environment variable with the public ip for the node in AWS:</p>
+<pre><code>- name: ET_PUBLIC_HOST
+  value: AWS Public Node IP
+</code></pre>
+</li>
+<li>
+<p>Start ElasTest</p>
+<pre><code>kubectl create -f . -f volumes/
+</code></pre>
+<p><strong>Note:</strong> <strong><code>-f volumes</code></strong> it’s only necessary first time, but there is no problem if it is used at another time, although error messages will be output*</p>
+</li>
+</ul>
+<h5 id="how-to-access_1">How to access</h5>
+<ul>
+<li>Use the <strong>AWS public IP</strong> as your cluster IP.</li>
+<li>Open your browser and navigate to http://<em>CLUSTER-IP</em>:37000</li>
+</ul>
+<h6 id="how-to-stop">How to stop:</h6>
+<pre><code>kubectl delete -f .
+</code></pre>
+
+<p><strong>Note:</strong> don't include the volumes folder if you don't want to lose the elastest data, as the volumes will be deleted</p>
 					
 				      </div>
 				    </div>
