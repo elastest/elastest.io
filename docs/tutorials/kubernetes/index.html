@@ -1,6 +1,6 @@
 --- 
 layout: default 
-title: Elastest Documentation - Kubernetes 
+title: Elastest Documentation - Kubernetes (Q3) 
 active: documentation 
 section-title: Documentation 
 section-icon: mdi mdi-content-copy 
@@ -16,7 +16,7 @@ section-icon: mdi mdi-content-copy
 	$( document).ready(function(){
 		$('#menu-list').show();
 	    $('li.subnav_drop').find('ul.subnav').hide();
-	       $( ".subnav" ).find( "li:contains('Kubernetes')" ).each(function(i,e){
+	       $( ".subnav" ).find( "li:contains('Kubernetes (Q3)')" ).each(function(i,e){
 		  var currentElement = $(e);
 		  currentElement.parent().css({"display":"block","visibility":"visible"}); //css("background-color","blue");
 		  currentElement.css({"display":"block","visibility":"visible"});
@@ -30,7 +30,7 @@ section-icon: mdi mdi-content-copy
 						$('#doc-container').css('min-height', minHeight+'px');
 	});
 	   
-	$( ".wy-nav-content" ).find( "li:contains('Kubernetes')" ).css('color','red');
+	$( ".wy-nav-content" ).find( "li:contains('Kubernetes (Q3)')" ).css('color','red');
  </script>
 
 <div id="doc-container" class="container text-justify">
@@ -129,17 +129,6 @@ section-icon: mdi mdi-content-copy
         
              
 
-    <li class="toctree-l1 current">
-        <a class="current" href="./">Kubernetes</a>
-        
-         
-        
-    </li>
-
-
-        
-             
-
     <li class="toctree-l1 ">
         <a class="" href="../ere-with-custom-code/">ERE with custom code</a>
         
@@ -178,6 +167,17 @@ section-icon: mdi mdi-content-copy
 
     <li class="toctree-l1 ">
         <a class="" href="../ems/">EMS (show how specific visualizations for TJobs and ElasTest TSS work)</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Kubernetes (Q3)</a>
+        
+         
         
     </li>
 
@@ -227,15 +227,6 @@ section-icon: mdi mdi-content-copy
 
     <li class="toctree-l1 ">
         <a class="" href="../../demos/multi-configuration/">Multi-configuration</a>
-        
-    </li>
-
-
-        
-             
-
-    <li class="toctree-l1 ">
-        <a class="" href="../../demos/load-testing-with-aws/">Load testing with AWS</a>
         
     </li>
 
@@ -571,7 +562,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../../deploying/kubernetes/">Kubernetes</a>
+        <a class="" href="../../deploying/kubernetes/">Kubernetes (Q3)</a>
         
     </li>
 
@@ -670,145 +661,7 @@ section-icon: mdi mdi-content-copy
 </div>
 </div>
 
-<h4 class="small-subtitle">What do I need to run jenkins jobs at ElasTest with Kubernetes?</h4>
-
-<p>If you have already used <em>ElasTest with docker</em> and have run Jenkins jobs there are only a few small changes, if not, check out <a href="/docs/tutorials/e2e-testing/">this documentation</a> to see how to configure the <strong>ElasTest plugin</strong> for Jenkins.</p>
-<p>Once you have configured the ElasTest plugin and modified your Job's pipeline, all you have to do is <strong>follow these steps</strong>:</p>
-<ul>
-<li>Install <a href="https://github.com/jenkinsci/kubernetes-cli-plugin">Kubernetes CLI Plugin</a></li>
-<li>
-<p>Modify your pipeline script to add this block just below the elastest block:</p>
-<p>withKubeConfig([credentialsId: 'k8s-api-token', serverUrl: env.K8S_URL]) {</p>
-<p>Your pipeline will look like this:</p>
-<pre><code>    elastest(...) {
-        withKubeConfig([credentialsId: 'k8s-api-token', serverUrl: env.K8S_URL]) {
-            ...
-        }
-    }
-</code></pre>
-</li>
-</ul>
-<h4 class="small-subtitle">Running a Demo Job</h4>
-
-<p>The <strong>Jenkins instance provided by ElasTest</strong> offers by default several example Jobs to run with Kubernetes. Let's see the pipeline script of one of them, <strong><code>jenkins-junit5-multi-browser-test-on-k8s</code></strong>:</p>
-<pre><code>node {
-    elastest(tss: ['EUS'], surefireReportsPattern: '**/target/surefire-reports/TEST-*.xml', project: 'Jenkins Examples') {
-        withKubeConfig([credentialsId: 'k8s-api-token', serverUrl: env.K8S_URL]) {
-            try {
-                stage(&quot;Start SUT&quot;) {
-                    git(
-                        url: 'https://github.com/elastest/demo-projects'
-                        )
-                    sh &quot;cd ./webapp/junit5-web-multiple-browsers-test/k8s;./addSutPrefix.sh;kubectl create -f .&quot;
-                    checkPodStatus(1, &quot;${ET_SUT_CONTAINER_NAME}-demo-web-java-sut&quot;)
-                }
-
-                stage(&quot;Run tests&quot;) {
-                    mvnHome = tool 'M3.3.9'
-                    def sutIp = getPodIp('demo-web-java-sut')
-                    waitForService(5, &quot;http://&quot; + sutIp + &quot;:8080&quot;)
-                    withEnv(['ET_SUT_HOST=' + sutIp]) {
-                        echo &quot;Running test&quot;
-                        sh &quot;cd ./webapp/junit5-web-multiple-browsers-test/;'${mvnHome}/bin/mvn' -Dbrowser=chrome -DforkCount=0 test&quot;
-                    }
-                }
-
-            } finally {
-                sh &quot;cd ./webapp/junit5-web-multiple-browsers-test/;kubectl delete -f k8s/&quot;
-                junit &quot;target/*-reports/TEST-*.xml&quot;
-            }
-        }
-    }
-}
-
-def getPodIp(podName) {
-    echo &quot;Retrive pod ip&quot;
-    def podIp = sh (
-        script: &quot;kubectl get pod -o wide | grep &quot; + podName + &quot; | awk '{print \$6}'&quot;,
-        returnStdout: true
-    ).split( '\n' ).first()
-
-    echo podName+&quot; IP = &quot; + podIp;
-    return podIp;
-}
-
-def waitForService(time, serviceUrl) {
-    timeout(time) {
-        waitUntil {
-            echo &quot;Waiting for the service &quot; + serviceUrl + &quot; is ready&quot;
-            script {
-                def r = sh script: 'wget -q ' + serviceUrl + ' -O /dev/null', returnStatus: true
-                return (r == 0);
-           }
-        }
-    }
-}
-
-def checkPodStatus(time, podName) {
-    timeout(time) {
-        waitUntil {
-            echo &quot;Waiting for the pod &quot; + podName + &quot; is created&quot;
-            script {
-                def r = sh script: 'kubectl get pods -l io.elastest.service=' + podName.replace('_','-') + &quot; | awk '{print \$3}'&quot;, returnStdout: true
-                def status = r.split(&quot;\n&quot;).last()
-                echo &quot;Pod ${podName} current status: &quot; + status
-                return ( status == 'Running');
-           }
-        }
-    }
-}
-</code></pre>
-
-<p>Let's look at a few lines in detail:</p>
-<ul>
-<li>
-<p><strong>ElasTest configuration</strong>: This Job executes a E2E test. For this make use of EUS to start browsers</p>
-<pre><code>      elastest(tss: ['EUS'], surefireReportsPattern: '**/target/surefire-reports/TEST-*.xml', project: 'Jenkins Examples') {
-          ...
-      }
-</code></pre>
-</li>
-<li>
-<p>The <strong>Kubernetes config</strong> block:</p>
-<pre><code>      withKubeConfig([credentialsId: 'k8s-api-token', serverUrl: env.K8S_URL]) {
-          ...
-      }
-</code></pre>
-</li>
-<li>
-<p>Start and wait for <strong>Sut</strong>: This Job starts a Sut via Kubernetes using a yaml file.</p>
-<pre><code>      git(
-          url: 'https://github.com/elastest/demo-projects'
-          )
-      sh "cd ./webapp/junit5-web-multiple-browsers-test/k8s;./addSutPrefix.sh;kubectl create -f ."
-</code></pre>
-<p>Then waits until the Sut pod is created:</p>
-<pre><code>      checkPodStatus(1, "${ET_SUT_CONTAINER_NAME}-demo-web-java-sut")
-</code></pre>
-<p>After, gets the ip of the Sut and waits until the Sut is ready:</p>
-<pre><code>      def sutIp = getPodIp('demo-web-java-sut')
-      waitForService(5, "http://" + sutIp + ":8080")
-</code></pre>
-</li>
-<li>
-<p><strong>Run tests</strong>:</p>
-<pre><code>      withEnv(['ET_SUT_HOST=' + sutIp]) {
-          echo "Running test"
-          sh "cd ./webapp/junit5-web-multiple-browsers-test/;'${mvnHome}/bin/mvn' -Dbrowser=chrome -DforkCount=0 test"
-      }
-</code></pre>
-</li>
-</ul>
-<h5 id="running-job">Running Job</h5>
-<p>You can <strong><code>run the Job</code></strong> and <strong>navigate to ElasTest</strong> to view it. You can easily access it from the Jenkins run console:</p>
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-2" href="/docs/tutorials/images/kubernetes/openInElastest.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/kubernetes/openInElastest.png"/></a>
-</div>
-
-<p>This test suite has <strong>3 test cases</strong>, of which 2 finish correctly and <strong><code>1 of them fails</code></strong>. Once the execution is finished you can <strong>view all the information in ElasTest</strong>:</p>
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-2" href="/docs/tutorials/images/kubernetes/executionInElastest.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/kubernetes/executionInElastest.png"/></a>
-</div>
+<p><i class="fas fa-hammer fa-3x"></i> Work In Progress</p>
 					
 				      </div>
 				    </div>
@@ -817,10 +670,10 @@ def checkPodStatus(time, podName) {
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../ere-with-custom-code/" class="btn btn-xs btn-primary float-right" title="ERE with custom code">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../../demos/api-testing/" class="btn btn-xs btn-primary float-right" title="API testing">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../custom-metrics/" class="btn btn-xs btn-primary" title="Custom metrics"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
+        <a href="../ems/" class="btn btn-xs btn-primary" title="EMS (show how specific visualizations for TJobs and ElasTest TSS work)"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
       
     </div>
   
