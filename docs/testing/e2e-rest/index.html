@@ -130,6 +130,15 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
+        <a class="" href="../../tutorials/kubernetes/">Kubernetes</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
         <a class="" href="../../tutorials/ere-with-custom-code/">ERE with custom code</a>
         
     </li>
@@ -167,15 +176,6 @@ section-icon: mdi mdi-content-copy
 
     <li class="toctree-l1 ">
         <a class="" href="../../tutorials/ems/">EMS (show how specific visualizations for TJobs and ElasTest TSS work)</a>
-        
-    </li>
-
-
-        
-             
-
-    <li class="toctree-l1 ">
-        <a class="" href="../../tutorials/kubernetes/">Kubernetes (Q3)</a>
         
     </li>
 
@@ -225,6 +225,15 @@ section-icon: mdi mdi-content-copy
 
     <li class="toctree-l1 ">
         <a class="" href="../../demos/multi-configuration/">Multi-configuration</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../demos/load-testing-with-aws/">Load testing with AWS</a>
         
     </li>
 
@@ -562,7 +571,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../../deploying/kubernetes/">Kubernetes (Q3)</a>
+        <a class="" href="../../deploying/kubernetes/">Kubernetes</a>
         
     </li>
 
@@ -694,7 +703,7 @@ public class RestAppTest extends ElasTestBase {
 <blockquote><strong><code>ET_SUT_HOST</code></strong> variable will be the IP of our SuT. ElasTest will automatically inject the right value (Know more about <a href="/docs/testing/environment-variables/">Environment Variables</a>)</blockquote>
 </div>
 
-<p>In addition, as can be seen in the example, this test class extends a class called ElasTestBase which is responsible for printing logs at the beginning and end of each test. These two logs have a specific structure and are used by ElasTest to filter the logs corresponding to each test. We explain this in more detail <a href="/docs/testing/unit#xmlAndtestResultsPath">here</a>.</p>
+<p>In addition, as can be seen in the example, this test class extends a class called ElasTestBase which is responsible for printing logs at the beginning and end of each test. These two logs have a <strong>specific structure</strong> and are used by ElasTest to filter the <strong>logs and metrics</strong> corresponding to <strong><code>each test</code></strong>, as well as knowing its <strong>start and end date</strong>. We explain this in more detail <a href="/docs/testing/unit#xmlAndtestResultsPath">here</a> </p>
 <div id="elastestBaseCode" class="row">
 <h5 class="small-subtitle">ElasTestBase class</h5>
 <pre>

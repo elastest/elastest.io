@@ -132,6 +132,15 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
+        <a class="" href="../kubernetes/">Kubernetes</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
         <a class="" href="../ere-with-custom-code/">ERE with custom code</a>
         
     </li>
@@ -169,15 +178,6 @@ section-icon: mdi mdi-content-copy
 
     <li class="toctree-l1 ">
         <a class="" href="../ems/">EMS (show how specific visualizations for TJobs and ElasTest TSS work)</a>
-        
-    </li>
-
-
-        
-             
-
-    <li class="toctree-l1 ">
-        <a class="" href="../kubernetes/">Kubernetes (Q3)</a>
         
     </li>
 
@@ -227,6 +227,15 @@ section-icon: mdi mdi-content-copy
 
     <li class="toctree-l1 ">
         <a class="" href="../../demos/multi-configuration/">Multi-configuration</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
+        <a class="" href="../../demos/load-testing-with-aws/">Load testing with AWS</a>
         
     </li>
 
@@ -562,7 +571,7 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
-        <a class="" href="../../deploying/kubernetes/">Kubernetes (Q3)</a>
+        <a class="" href="../../deploying/kubernetes/">Kubernetes</a>
         
     </li>
 
@@ -742,7 +751,7 @@ Before you execute your first Job integrated with ElasTest, we strongly recommen
 }
 </code></pre>
 
-<p>Now we will see the changes we need for adapt the test to ElasTest. First need add the ElasTestBase in the project, which is responsible for printing logs at the beginning and end of each test. These two logs have a specific structure and are used by ElasTest to filter the logs corresponding to each test. We explain this in more detail <a href="/docs/testing/unit#xmlAndtestResultsPath">here</a> </p>
+<p>Now we will see the changes we need for adapt the test to ElasTest. First need add the <strong>ElasTestBase</strong> in the project, which is responsible for printing <strong>logs at the beginning and end</strong> of each test. These two logs have a <strong>specific structure</strong> and are used by ElasTest to filter the <strong>logs and metrics</strong> corresponding to <strong><code>each test</code></strong>, as well as knowing its <strong>start and end date</strong>. We explain this in more detail <a href="/docs/testing/unit#xmlAndtestResultsPath">here</a> </p>
 <h5 id="elastestbase"><strong>ElasTestBase</strong></h5>
 <pre><code class="java">public class ElasTestBase {
 
