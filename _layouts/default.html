@@ -118,6 +118,11 @@
                         <span class="nav-button">Project</span>
                       </a>
                     </li>
+                    <li {% if page.active=="blog" or layout.active=="blog" %} class="active" {% endif %}>
+                      <a href="https://medium.com/@elastest/" target="_blank">
+                        <span class="nav-button">Blog</span>
+                      </a>
+                    </li>
                     <li>
                       <a href="https://twitter.com/elastestio">
                         <span class="nav-button"><i class="fab fa-twitter fa-lg"></i></span>
@@ -126,11 +131,6 @@
                     <li>
                       <a href="https://github.com/elastest">
                         <span class="nav-button"><i class="fab fa-github fa-lg"></i></span>
-                      </a>
-                    </li>
-                    <li {% if page.active=="blog" or layout.active=="blog" %} class="active" {% endif %}>
-                      <a href="https://medium.com/@elastest/" target="_blank">
-                        <span class="nav-button">Blog</span>
                       </a>
                     </li>
                     <!--<li {% if page.active=="news" or layout.active=="news" %} class="active" {% endif %}>
