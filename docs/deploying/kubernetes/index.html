@@ -763,7 +763,7 @@ Edit the file <strong><code>etm-deployment.yml</code></strong> and update this e
 <li>Extend default NodePort range 
 Add this line <strong><code>--service-node-port-range=1000-40000</code></strong> to the file <strong><code>/etc/kubernetes/manifests/kube-apiserver.yaml</code></strong>.</li>
 </ul>
-<pre><code>:q!apiVersion: v1
+<pre><code>apiVersion: v1
 kind: Pod
 metadata:
 creationTimestamp: null
