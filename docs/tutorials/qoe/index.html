@@ -1,6 +1,6 @@
 --- 
 layout: default 
-title: Elastest Documentation - Using ESS to perform security checks 
+title: Elastest Documentation - Measuring video quality for video streaming applications 
 active: documentation 
 section-title: Documentation 
 section-icon: mdi mdi-content-copy 
@@ -16,7 +16,7 @@ section-icon: mdi mdi-content-copy
 	$( document).ready(function(){
 		$('#menu-list').show();
 	    $('li.subnav_drop').find('ul.subnav').hide();
-	       $( ".subnav" ).find( "li:contains('Using ESS to perform security checks')" ).each(function(i,e){
+	       $( ".subnav" ).find( "li:contains('Measuring video quality for video streaming applications')" ).each(function(i,e){
 		  var currentElement = $(e);
 		  currentElement.parent().css({"display":"block","visibility":"visible"}); //css("background-color","blue");
 		  currentElement.css({"display":"block","visibility":"visible"});
@@ -30,7 +30,7 @@ section-icon: mdi mdi-content-copy
 						$('#doc-container').css('min-height', minHeight+'px');
 	});
 	   
-	$( ".wy-nav-content" ).find( "li:contains('Using ESS to perform security checks')" ).css('color','red');
+	$( ".wy-nav-content" ).find( "li:contains('Measuring video quality for video streaming applications')" ).css('color','red');
  </script>
 
 <div id="doc-container" class="container text-justify">
@@ -111,10 +111,8 @@ section-icon: mdi mdi-content-copy
         
              
 
-    <li class="toctree-l1 current">
-        <a class="current" href="./">Using ESS to perform security checks</a>
-        
-         
+    <li class="toctree-l1 ">
+        <a class="" href="../using-ess-to-perform-security-checks/">Using ESS to perform security checks</a>
         
     </li>
 
@@ -185,8 +183,10 @@ section-icon: mdi mdi-content-copy
         
              
 
-    <li class="toctree-l1 ">
-        <a class="" href="../qoe/">Measuring video quality for video streaming applications</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Measuring video quality for video streaming applications</a>
+        
+         
         
     </li>
 
@@ -682,111 +682,49 @@ section-icon: mdi mdi-content-copy
 					
 					  <div class="range range-xs-left">
 <div class="cell-xs-10 cell-lg-6 text-md-left inset-md-right-80 cell-lg-push-1 offset-top-50 offset-lg-top-0">
-<h2 id="content" class="h1">Using ESS to perform security checks</h2>
+<h2 id="content" class="h1">Measuring video quality for video streaming applications</h2>
 <div class="offset-top-30 offset-md-top-30">
 </div>
 </div>
 </div>
 
-<p><strong>If you like see the documentation of ESS click in this</strong> <a href="../../test-services/ess/">link</a></p>
-<ol>
-<li>
-<p>Visit ElasTest GUI in a Web Browser (see example image shown below)
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/test-services/images/ess/0.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ess/0.png"/></a>
-</div></p>
-</li>
-<li>
-<p>Click on the <strong>New Project</strong> button to create a new project (see example image shown below)
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/test-services/images/ess/1.0.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ess/1.0.png"/></a>
-</div></p>
-</li>
-<li>
-<p>Provide a new for the project (see example image shown below)
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/test-services/images/ess/1.1.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ess/1.1.png"/></a>
-</div></p>
-</li>
-<li>
-<p>Click on the <strong>New TJob</strong> button to create a new TJob (see example image shown below)
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/test-services/images/ess/2.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ess/2.png"/></a>
-</div></p>
-</li>
-<li>
-<p>Configure the TJob by providing the details of the docker image of the TJob created (see example image shown below)
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/test-services/images/ess/3.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ess/3.png"/></a>
-</div></p>
-</li>
-<li>
-<p>Check the checkboxes corresponding to ESS and other requires TSSes (see example image shown below)
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/test-services/images/ess/4.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ess/4.png"/></a>
-</div></p>
-</li>
-<li>
-<p>Click on the play button to run the TJob (see example image shown below)
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/test-services/images/ess/5.0.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ess/5.0.png"/></a>
-</div></p>
-</li>
-<li>
-<p>Scroll down to the iframe the ESS GUI is displayed (see example image shown below)
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/test-services/images/ess/6.0.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ess/6.0.png"/></a>
-</div></p>
-</li>
-<li>
-<p>Wait until the GUI changes to starting the ESS scan (see example image shown below)
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/test-services/images/ess/6.1.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ess/6.1.png"/></a>
-</div></p>
-</li>
-<li>
-<p>Notice the progress bar that indicates the progress of the test and the progress status message displayed above (see example image shown below)
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/test-services/images/ess/6.2.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ess/6.2.png"/></a>
-</div></p>
-</li>
-<li>
-<p>Wait until the scan is complete (see example image shown below)
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/test-services/images/ess/6.3.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ess/6.3.png"/></a>
-</div></p>
-</li>
-<li>
-<p>Click on an alert to expand it (see example image shown below)
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/test-services/images/ess/6.4.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ess/6.4.png"/></a>
-</div></p>
-</li>
-<li>
-<p>Scroll up and click on the name of the TJob to go to the TJob menu (see example image shown below)
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/test-services/images/ess/7.0.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ess/7.0.png"/></a>
-</div></p>
-</li>
-<li>
-<p>Click on the last TJob execution (see example image shown below)
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/test-services/images/ess/7.1.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ess/7.1.png"/></a>
-</div></p>
-</li>
-<li>
-<p>Look for the <em>report.json</em> file that contains the JSON report of the test (see example image shown below)
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/test-services/images/ess/7.2.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ess/7.2.png"/></a>
-</div></p>
-</li>
-<li>
-<p>Click on the button next to it to open the JSON report in a new tab (see example image shown below)
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/test-services/images/ess/8.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ess/8.png"/></a>
-</div></p>
-</li>
-</ol>
+<h3 class="small-subtitle" id="qoe">QoE testing with EUS</h3>
+
+<p>Quality of Experience <a href="https://en.wikipedia.org/wiki/Quality_of_experience" target="_blank" title="QoE">(QoE)</a> is a measure of the delight or annoyance of a customer's experiences with a service. EUS offers an api for calculating QoE metrics for video, which is very useful for testing quality in videoconferencing applications such as <a href="https://openvidu.io/" target="_blank">OpenVidu</a>.</p>
+<p>The QoE test offered by EUS consists of the comparison of two videos: the first video would be the original video published by an endpoint and the second the video received through that endpoint. This comparison generates several csv with different quality metrics. You can take a look at these <a href="https://github.com/elastest/elastest-webrtc-qoe-meter/blob/master/data/openvidu_objective_results_10%25_packet_loss.csv" target="_blank">example results</a>.</p>
+<p>This functionality is available since version 2.1.0 of ElasTest, and a <a href="/docs/demos/qoe" target="_blank">sample demo project</a> is included. Is only available in elastest mini and siglenode modes, for Docker and <a target="_blank" href="/docs/tutorials/using-browsers-in-elastest/#browsersInAWS">AWS</a>. For Kubernetes (EK and HEK) is not available yet</p>
+<p>In order to calculate qoe metrics, it is <strong>necessary</strong> that the videos to be processed (original video + received video) have a <strong>padding at the beginning and at the end</strong>. For this you can use <a href="https://github.com/elastest/elastest-webrtc-qoe-meter/blob/master/scripts/generate_input_video.sh" target="_blank">this script</a>. It is recommended to set a padding of at least 12 seconds, replacing the default value of the variable PADDING_DURATION_SEC (5).</p>
+<p>Once you have obtained the original video (.y4m) and audio (.wav) with padding (two files are generated automatically), you must <strong>include it as a fake resource capability</strong> in your test, so that instead of showing the video from the camera this video is used.</p>
+<pre><code>    ChromeOptions options = new ChromeOptions();
+    // This flag avoids to grant the user media
+    options.addArguments(&quot;--use-fake-ui-for-media-stream&quot;);
+    // This flag fakes user media with synthetic video
+    options.addArguments(&quot;--use-fake-device-for-media-stream&quot;);
+    // This flag allows to load fake media files from host
+    options.addArguments(&quot;--allow-file-access-from-files&quot;);
+    // This flag sets the video input (with padding)
+    options.addArguments(&quot;--use-file-for-fake-video-capture=/path/to/video_with_padding.y4m&quot;);
+    // This flag sets the audio input
+    options.addArguments(&quot;--use-file-for-fake-audio-capture=/path/to/audio_with_padding.wav&quot;);
+
+</code></pre>
+
+<p>The browser must be able to access these files. To do this EUS has an <strong>api</strong> to be able to <strong>upload these files</strong> during the execution to the browser container. If the files are accessible from the test you can simply attach them to the call, but you can also have them in an online repository and send the url to the request and the EUS itself download it into the browser container, which is exactly what is done in the above mentioned <a href="/docs/demos/qoe" target="_blank">sample demo project</a>.</p>
+<p>To do this, call to the EUS api with path <strong><code>/browserfile/session/{sessionId}/</code></strong> and the following parameters:</p>
+<ul>
+<li><strong>fileUrl</strong>: the remote and accesible url where the video is stored.</li>
+<li><strong>fileName</strong>: the name under which the video will be saved inside the browser container. Should be the same as that defined in <strong><code>--use-file-for-fake-video-capture</code></strong></li>
+<li><strong>filePath</strong>: the path under which the video will be saved inside the browser container. Should be the same as that defined in <strong><code>--use-file-for-fake-video-capture</code></strong></li>
+</ul>
+<p>Then do the same for the audio file.</p>
+<p>To start the test call the EUS api (/session/{sessionId}/webrtc/qoe/meter/start) with the following parameters:</p>
+<ul>
+<li><strong>presenterPath</strong>: the path of the original video in the container of the browser that emits it.</li>
+<li><strong>presenterSessionId</strong>: the session id of the browser that broadcasts the original video.</li>
+<li><strong>viewerPath</strong>: the path of the received video in the container of the browser that receives it.</li>
+<li><strong>viewerSessionId</strong>: the session id of the browser receiving the broadcast video.</li>
+</ul>
+<p>This request is in charge of <strong>initiating the service</strong> that is in charge of calculating the QoE metric, obtaining and passing to this service the videos of the browser containers. Then it executes in the <strong>background the calculation</strong> of the metrics and it will <strong>return the Id of the service</strong> as an answer, so that from the test the EUS can be polled to know the state of the calculation. Once completed, the EUS itself will obtain the <strong>csv generated and attach them</strong> to the execution. It will also calculate the <strong>average of each metric and attach</strong> it.</p>
 					
 				      </div>
 				    </div>
@@ -795,10 +733,10 @@ section-icon: mdi mdi-content-copy
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../custom-metrics/" class="btn btn-xs btn-primary float-right" title="Custom metrics">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../../demos/api-testing/" class="btn btn-xs btn-primary float-right" title="API testing">Next &raquo;<span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../using-ems-to-build-tests-with-dynamic-info/" class="btn btn-xs btn-primary" title="Using EMS to build tests with dynamic info"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
+        <a href="../ems/" class="btn btn-xs btn-primary" title="EMS (show how specific visualizations for TJobs and ElasTest TSS work)"><span class="icon icon-circle-arrow-left"></span> &laquo; Prev</a>
       
     </div>
   
@@ -806,7 +744,7 @@ section-icon: mdi mdi-content-copy
 
   
   
-	  <a href="https://github.com/elastest/elastest.io-docs/blob/master/docs/tutorials/using-ess-to-perform-security-checks.md" class="fab fa-github offset-xxs-top-30"> Edit Documentation on GitHub</a>
+	  <a href="https://github.com/elastest/elastest.io-docs/blob/master/docs/tutorials/qoe.md" class="fab fa-github offset-xxs-top-30"> Edit Documentation on GitHub</a>
   
 </footer>
 			  	  
