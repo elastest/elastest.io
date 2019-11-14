@@ -271,6 +271,15 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
+        <a class="" href="../../demos/qoe/">QoE testing</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
         <a class="" href="../../demos/test-recommendation/">Test recommendation</a>
         
     </li>
@@ -1110,7 +1119,7 @@ sutIp = containerIp(sutContainerName,network)
 
 <ul>
 <li><strong>Wait for Sut</strong> : You have to obtain the Sut network and ip and run check image (elastest/etm-check-service-up) provided by ElasTest to wait for the Sut to be ready to be used. This step is not required, you can wait in other ways or not do it, but for this example we do it.
-    <p></p></li>
+  <p></p></li>
 </ul>
 <pre><code class="groovy">echo 'Sut ip: '+ sutIp
 sh 'docker run -e IP=' + sutIp + ' -e PORT=8000 --network=' + sutNetwork + ' elastest/etm-check-service-up'
@@ -1378,6 +1387,43 @@ def containerIp(containerName, network) {
 
 <h6 id="demo"><strong>Demo</strong></h6>
 <p>You can see a demo <a href="/docs/demos/load-testing-with-aws">here</a>.</p>
+<h3 class="small-subtitle" id="qoe">QoE testing with EUS</h3>
+
+<p>Quality of Experience <a href="https://en.wikipedia.org/wiki/Quality_of_experience" target="_blank" title="QoE">(QoE)</a> is a measure of the delight or annoyance of a customer's experiences with a service. EUS offers an api for calculating QoE metrics for video, which is very useful for testing quality in videoconferencing applications such as <a href="https://openvidu.io/" target="_blank">OpenVidu</a>.</p>
+<p>The QoE test offered by EUS consists of the comparison of two videos: the first video would be the original video published by an endpoint and the second the video received through that endpoint. This comparison generates several csv with different quality metrics. You can take a look at these <a href="https://github.com/elastest/elastest-webrtc-qoe-meter/blob/master/data/openvidu_objective_results_10%25_packet_loss.csv" target="_blank">example results</a>.</p>
+<p>This functionality is available since version 2.1.0 of ElasTest, and a <a href="/docs/demos/qoe" target="_blank">sample demo project</a> is included. Is only available in elastest mini and siglenode modes, for Docker and AWS. For Kubernetes (EK and HEK) is not available yet</p>
+<p>In order to calculate qoe metrics, it is <strong>necessary</strong> that the videos to be processed (original video + received video) have a <strong>padding at the beginning and at the end</strong>. For this you can use <a href="https://github.com/elastest/elastest-webrtc-qoe-meter/blob/master/scripts/generate_input_video.sh" target="_blank">this script</a>. It is recommended to set a padding of at least 12 seconds, replacing the default value of the variable PADDING_DURATION_SEC (5).</p>
+<p>Once you have obtained the original video (.y4m) and audio (.wav) with padding (two files are generated automatically), you must <strong>include it as a fake resource capability</strong> in your test, so that instead of showing the video from the camera this video is used.</p>
+<pre><code>    ChromeOptions options = new ChromeOptions();
+    // This flag avoids to grant the user media
+    options.addArguments(&quot;--use-fake-ui-for-media-stream&quot;);
+    // This flag fakes user media with synthetic video
+    options.addArguments(&quot;--use-fake-device-for-media-stream&quot;);
+    // This flag allows to load fake media files from host
+    options.addArguments(&quot;--allow-file-access-from-files&quot;);
+    // This flag sets the video input (with padding)
+    options.addArguments(&quot;--use-file-for-fake-video-capture=/path/to/video_with_padding.y4m&quot;);
+    // This flag sets the audio input
+    options.addArguments(&quot;--use-file-for-fake-audio-capture=/path/to/audio_with_padding.wav&quot;);
+
+</code></pre>
+
+<p>The browser must be able to access these files. To do this EUS has an <strong>api</strong> to be able to <strong>upload these files</strong> during the execution to the browser container. If the files are accessible from the test you can simply attach them to the call, but you can also have them in an online repository and send the url to the request and the EUS itself download it into the browser container, which is exactly what is done in the above mentioned <a href="/docs/demos/qoe" target="_blank">sample demo project</a>.</p>
+<p>To do this, call to the EUS api with path <strong><code>/browserfile/session/{sessionId}/</code></strong> and the following parameters:</p>
+<ul>
+<li><strong>fileUrl</strong>: the remote and accesible url where the video is stored.</li>
+<li><strong>fileName</strong>: the name under which the video will be saved inside the browser container. Should be the same as that defined in <strong><code>--use-file-for-fake-video-capture</code></strong></li>
+<li><strong>filePath</strong>: the path under which the video will be saved inside the browser container. Should be the same as that defined in <strong><code>--use-file-for-fake-video-capture</code></strong></li>
+</ul>
+<p>Then do the same for the audio file.</p>
+<p>To start the test call the EUS api (/session/{sessionId}/webrtc/qoe/meter/start) with the following parameters:</p>
+<ul>
+<li><strong>presenterPath</strong>: the path of the original video in the container of the browser that emits it.</li>
+<li><strong>presenterSessionId</strong>: the session id of the browser that broadcasts the original video.</li>
+<li><strong>viewerPath</strong>: the path of the received video in the container of the browser that receives it.</li>
+<li><strong>viewerSessionId</strong>: the session id of the browser receiving the broadcast video.</li>
+</ul>
+<p>This request is in charge of <strong>initiating the service</strong> that is in charge of calculating the QoE metric, obtaining and passing to this service the videos of the browser containers. Then it executes in the <strong>background the calculation</strong> of the metrics and it will <strong>return the Id of the service</strong> as an answer, so that from the test the EUS can be polled to know the state of the calculation. Once completed, the EUS itself will obtain the <strong>csv generated and attach them</strong> to the execution. It will also calculate the <strong>average of each metric and attach</strong> it.</p>
 					
 				      </div>
 				    </div>

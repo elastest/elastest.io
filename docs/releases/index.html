@@ -269,6 +269,15 @@ section-icon: mdi mdi-content-copy
              
 
     <li class="toctree-l1 ">
+        <a class="" href="../demos/qoe/">QoE testing</a>
+        
+    </li>
+
+
+        
+             
+
+    <li class="toctree-l1 ">
         <a class="" href="../demos/test-recommendation/">Test recommendation</a>
         
     </li>
@@ -670,6 +679,28 @@ section-icon: mdi mdi-content-copy
 
 <!-- ************************* -->
 
+<!-- ********* 2.1.0 ********* -->
+
+<!-- ************************* -->
+
+<h3 id="2.1.0" class="small-subtitle">2.1.0</h3>
+
+<h4 class="smaller-subtitle">14/11/2019</h4>
+
+<h5 class="smaller-subtitle">Features & Improvements</h5>
+
+<ul>
+<li>Now EUS is able to calculate <a target="_blank" href="/docs/tutorials/using-browsers-in-elastest/#qoe">QoE metrics for video</a>. A new <a href="/docs/demos/qoe" target="_blank">demo project</a> has been added.</li>
+</ul>
+<h5 class="smaller-subtitle">Bug Fixes</h5>
+
+<ul>
+<li>Fixed a bug in <a target="_blank" href="/docs/executions-comparator/#log-comparator">Log Comparator</a> that caused the comparison not to be displayed in the AIO tab (All-In-One).</li>
+<li><strong>Trim</strong> is now used in the <strong>Parameter fields</strong>, in the creation/edition of TJob/SuT</li>
+<li>The message <em>"Chrome is being controlled by automated test software"</em> is now also hidden in <strong>Chrome browsers</strong> from version <strong>75 onwards</strong>. This caused problems for <a target="_blank" href="/docs/demos/cross-browser-testing">Crossbrowser</a> when used together with other browsers.</li>
+</ul>
+<!-- ************************* -->
+
 <!-- ********* 2.0.1 ********* -->
 
 <!-- ************************* -->
@@ -698,7 +729,7 @@ section-icon: mdi mdi-content-copy
 
 <ul>
 <li><a target="_blank" href="/docs/deploying/kubernetes">Kubernetes</a> support is here!</li>
-<li>Great <strong class="italicEtColor">GUI</strong> enhancements:<ul>
+<li>Great <strong class="italicEtColor">GUI</strong> enhancements:</li>
 <li>The <strong><code>side menu has been collapsed</code></strong> by default so that only the icons are displayed.</li>
 <li>Great changes in the <strong><code>finished TJob Execution view</code></strong>: Test Results/Test cases are shown in tabs; Global execution data are now colapsed in a Expansion panel; If the execution fails and there are previous successful runs, <strong>Log Comparator</strong> is shown.
     <br>
@@ -717,47 +748,35 @@ section-icon: mdi mdi-content-copy
 <li><strong><code>Network traces</code></strong> received by <strong>Metricbeat</strong> can be displayed now.</li>
 <li>It's possible to <strong><code>collapse the LogAnalyzer menu</code></strong>.</li>
 <li><strong><code>Angular</code></strong> has been updated to version <strong><code>8</code></strong> and <strong><code>Covalent to 2.1.1</code></strong>.</li>
-</ul>
-</li>
-<li><a target="_blank" href="/docs/testlink">TestLink</a> Improvements:<ul>
+<li><a target="_blank" href="/docs/testlink">TestLink</a> Improvements:</li>
 <li>Now you can <strong><code>pause and resume</code></strong> a Test Plan Execution.</li>
 <li>Test Plans can now be executed with <a target="_blank" href="/docs/demos/cross-browser-testing">Crossbrowser</a>.</li>
 <li>External TJob Execs (<strong>Test Plan Executions</strong>) can now <strong><code>be removed</code></strong>.</li>
 <li>ElasTest Security Service (<strong>ESS</strong>) can now be <strong><code>used in Test Plan Execution</code></strong>.</li>
-</ul>
-</li>
 <li>New <a target="_blank" href="/docs/testing/environment-variables/">environment variable</a> is available in the TJob: <strong><code>ET_TEST_CONTAINER_NAME</code></strong>.</li>
 <li>Dockbeat collects now <strong><code>Browser container metrics</code></strong>.</li>
 <li>On <strong>remove</strong> TJobExec, TJob or External TJob Exec its <strong>folders</strong> associated with its content <strong><code>are deleted</code></strong>.</li>
 <li>The version of the <strong>ElasTest Browsers</strong> has been updated to <strong><code>2.1.0</code></strong>.</li>
-<li>It is now possible to deploy <a target="_blank" href="/docs/tutorials/using-browsers-in-elastest/#browsersInAWS">ElasTest browsers in AWS</a>.<ul>
+<li>It is now possible to deploy <a target="_blank" href="/docs/tutorials/using-browsers-in-elastest/#browsersInAWS">ElasTest browsers in AWS</a>.</li>
 <li>A <a target="_blank" href="/docs/demos/load-testing-with-aws/">demo project</a> has been added</li>
-</ul>
-</li>
 <li>The <strong>download of executions as JSON</strong> has been <strong><code>improved</code></strong>: now the logs and metrics of each test case are downloaded, in case of having start / finish traces that limit them</li>
 </ul>
 <h5 class="smaller-subtitle">Bug Fixes</h5>
 
 <ul>
-<li><a target="_blank" href="/docs/testlink">TestLink</a>:<ul>
+<li><a target="_blank" href="/docs/testlink">TestLink</a>:</li>
 <li>Fixed the bug that, <strong>when synchronizing</strong> TestLink data, <strong><code>removed start/end date</code></strong> from ExternalTestExecution (Test Plan Execution).</li>
 <li>Now the <strong><code>browser logs are retrieved</code></strong> again in Test Plans with Suts.</li>
 <li>Fixed bug that <strong>incorrectly</strong> established the <strong>names of internal Suts containers</strong> in ExternalTJobExecutions (Test Plan Execution), which caused the <strong><code>logs not to be saved</code></strong>.</li>
-</ul>
-</li>
-<li><strong class="italicEtColor">GUI</strong>:<ul>
+<li><strong class="italicEtColor">GUI</strong>:</li>
 <li>Fixed bug in the section of a <strong class="italicEtColor">specific Project</strong> that <strong>when duplicating or deleting a TJob</strong> did <strong><code>not reload the list</code></strong> and had to re-navigate to see the changes.</li>
 <li>Fixed a bug with <strong>some metricbeat charts</strong>, which only added one of the subtypes</li>
 <li>There was a bug in the <strong>Metric Cards</strong> that when you remove one of them <strong><code>the one that wasn't was removed</code></strong>.</li>
 <li>Other <strong>little fixes</strong>.</li>
-</ul>
-</li>
-<li><strong class="italicEtColor">EUS</strong>:<ul>
+<li><strong class="italicEtColor">EUS</strong>:</li>
 <li>Solved <strong><code>concurrency problem on send messages</code></strong> through the <strong>same websocket</strong>.</li>
 <li>Fixed bug in which when a <strong>request to the browser</strong> returned a code <strong>other than 200</strong>, an <strong><code>exception</code></strong> was launched. This began to give problems with the last versions of chrome (&gt;75) and with Firefox.</li>
 <li>Fixed a bug that did <strong><code>not intercept elastest scripts</code></strong> (elastestScript) and therefore, Single Browser test videos were not splitting and naming.</li>
-</ul>
-</li>
 <li>Now the metric traces sent by each <strong>Dockbeat</strong> are filtered according to their execution id, since when several executions were launched all the dockbeats sent the metrics of all the executions and the information was <strong>multiplied</strong>.</li>
 </ul>
 <!-- ************************* -->
@@ -866,7 +885,7 @@ section-icon: mdi mdi-content-copy
 
 <ul>
 <li>The <strong><code>maximum number of executions</code></strong> can now be configured in the <strong>TJobs</strong>.</li>
-<li><strong>Usability</strong> and <strong>performance</strong> <strong class="italicEtColor">enhancements</strong>:<ul>
+<li><strong>Usability</strong> and <strong>performance</strong> <strong class="italicEtColor">enhancements</strong>:</li>
 <li>In the <strong class="italicEtColor">Projects section</strong>, only the <strong>id</strong> and <strong>name</strong> of the projects are brought from the backend instead of bringing all their data.</li>
 <li>In the section of a <strong class="italicEtColor">specific Project</strong>, up to four times the complete object was being requested from the backend. Now <strong>only what is necessary is requested</strong>.</li>
 <li><strong class="italicEtColor">Dashboard</strong> section:<ul>
@@ -876,8 +895,6 @@ section-icon: mdi mdi-content-copy
 </ul>
 </li>
 <li>Now in the section of a <strong class="italicEtColor">specific TJob</strong> the <strong><code>executions are paginated</code></strong>.</li>
-</ul>
-</li>
 <li>A <strong>new section</strong> has been added: <strong><code>Manage Elastest</code></strong>. Here you can view the status, the general info and the logs of the <a target="_blank" href="/docs/manage-elastest/monitoring-containers">containers</a> of the core components of ElasTest, as well as the version that is being used. In <a target="_blank" href="/docs/#modes">singlenode mode</a> you can also <a target="_blank" href="/docs/manage-elastest/manage-elasticsearch">manage Elasticsearch indices</a></li>
 <li>For <a target="_blank" href="/docs/testing/sut/#outsideExternalES">Sut with external Elasticsearch</a>, the user is now allowed to indicate a <strong><code>list of fields</code></strong> with a <strong>list of values</strong> by which to <strong>filter</strong> to save the traces.</li>
 <li><a target="_blank" href="/docs/monitoring">Monitoring traces</a> are now removed when deleting a <strong>TJobExecution, TJob, Sut, SutExecution or Project</strong> (the entire index in Elasticsearch for <a target="_blank" href="/docs/#modes">singlenode mode</a> OR the data in Mysql for <a target="_blank" href="/docs/#modes">mini mode</a>)</li>
@@ -906,28 +923,22 @@ section-icon: mdi mdi-content-copy
 <h5 class="smaller-subtitle">Features & Improvements</h5>
 
 <ul>
-<li><a target="_blank" href="/docs/executions-comparator/#log-comparator">Log Comparator:</a><ul>
+<li><a target="_blank" href="/docs/executions-comparator/#log-comparator">Log Comparator:</a></li>
 <li>Now you can set the <strong><code>timeout</code></strong> to calculate the diff. Default: 0 (infinite)</li>
 <li>The <strong><code>line numbering</code></strong> for the <strong>Tests Logs mode</strong> starts at <strong>1 for each test case</strong> and the line number is <strong>not shown in the name</strong> of the test case.</li>
 <li>Now the <strong>Complete</strong> mode shows the complete message <strong>as it is saved</strong> (sometimes it has timestamp and sometimes not) and the <strong>Non-timestamp</strong> mode <strong><code>removes</code></strong> it from messages that contain it.</li>
-</ul>
-</li>
-<li><a target="_blank" href="/docs/testlink">TestLink:</a><ul>
+<li><a target="_blank" href="/docs/testlink">TestLink:</a></li>
 <li>Added a button to the main table that <strong><code>removes</code></strong> all synchronized data from elastest and <strong><code>resynchronizes</code></strong> it.</li>
 <li>TestLink now allows you to <strong><code>select a platform</code></strong> when running a Test Plan.</li>
 <li><strong><code>General improvements</code></strong> in stability and styles.</li>
 </ul>
-</li>
-</ul>
 <h5 class="smaller-subtitle">Bug Fixes</h5>
 
 <ul>
-<li><a target="_blank" href="/docs/testlink">TestLink:</a><ul>
+<li><a target="_blank" href="/docs/testlink">TestLink:</a></li>
 <li>Test cases are now executed <strong><code>sorted by id</code></strong> during execution and not randomly.</li>
 <li>Fixed the bug that, if a test case was associated with <strong>more than one test plan</strong>, <strong><code>only appeared</code></strong> in the Test Plan to which it had been <strong>associated recently</strong>.</li>
 <li>Now the <strong>url</strong> of an <strong>external sut</strong> <strong><code>opens automatically</code></strong> in the browser during execution.</li>
-</ul>
-</li>
 </ul>
 <!-- ************************* -->
 
