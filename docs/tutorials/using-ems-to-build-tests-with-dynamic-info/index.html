@@ -688,72 +688,47 @@ section-icon: mdi mdi-content-copy
 </div>
 </div>
 
-<p>Suppose we have a webserver and want to assess that when a client is downloading a file and then a second one starts a download too, then the bandwidth consumption roughly doubles.</p>
-<p>The ElasTest infrastructure provides us the means to extract data from the server automatically, and we can use the EMS to organize and process this data according to our desired property.</p>
-<p>The following example is <strong>already included in ElasTest</strong> within the project <strong><code>EMS Example</code></strong>, although we are going to explain how to create it.</p>
-<p><strong>If you like see the documentation of EMS click in this</strong> <a href="../../test-services/ems/">link</a></p>
-<h4 class="small-subtitle">The Sut</h4>
+<p>This tutorial aims to show the basic concepts and principles of the Elastest Monitoring Service, and its intended use. You can check the documentation of this service following this <a href="../../test-services/ems/">link</a>.</p>
+<p>In this example, we will use Elastest to assess that a webserver -- the System under Test -- is able to serve multiple clients, and uses as much bandwitdh as possible when doing so.</p>
+<p>In particular, our TJob will start one download of a large file at the beginning of the test, and after some time, it will start a second one. The test passes if the bandwidth consumption with two downloads in parallel roughly doubles the bandwidth consumption with only one download going on.</p>
+<p>The ElasTest infrastructure provides us with the means to extract data from the server running the test automatically. We use this feature to collect the network activity, which we will analyse in the EMS.</p>
+<p>This example is <strong>shipped along with ElasTest</strong> within the project <strong><code>EMS Example</code></strong>, but we are going to explain how to create it.</p>
+<h4 class="small-subtitle">The System under Test</h4>
 
-<p>For this example we will use a well-known webserver, nginx.
-The SuT configuration is the following:</p>
-<ul>
-<li><strong>SuT Name</strong>: <strong><code>nginx</code></strong></li>
-<li>Select <strong><code>Deployed By Elastest</code></strong></li>
-<li>Select <strong><code>With Docker Compose</code></strong></li>
-<li>
-<p><strong>Docker Compose</strong>:</p>
-<pre><code>version: '3'
+<p>Our SuT is <a href="https://www.nginx.com/">nginx</a>, a well-known webserver.
+The configuration of the System under Test in elastest is as follows:
+-   <strong>SuT Name</strong>: <strong><code>nginx</code></strong>
+-   Select <strong><code>Deployed by Elastest</code></strong>
+-   Select <strong><code>With Docker Compose</code></strong>
+-   <strong>Docker Compose</strong>:</p>
+<pre><code>    version: '3'
 
-services:
+    services:
 
-    nginx-service:
-        image: nginx
-        entrypoint:
-            - /bin/bash
-            - "-c"
-            - "dd if=/dev/random of=/usr/share/nginx/html/sparse bs=1024 count=1 seek=5242880000;nginx;sleep infinity"
-        expose:
-            - "80"
+        nginx-service:
+            image: nginx
+            entrypoint:
+                - /bin/bash
+                - "-c"
+                - "dd if=/dev/random of=/usr/share/nginx/html/sparse bs=1024 count=1 seek=5242880000;nginx;sleep infinity"
+            expose:
+                - "80"
 </code></pre>
-</li>
-<li>
-<p><strong>Main Service</strong>: <strong><code>nginx-service</code></strong></p>
-</li>
+<ul>
+<li><strong>Main Service</strong>: <strong><code>nginx-service</code></strong></li>
 <li><strong>Wait for http port</strong>: <strong><code>80</code></strong></li>
 </ul>
+<p>The SuT configuration should look like this:
 <p></p>
-
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-1" href="/docs/test-services/images/ems/sut.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ems/sut.png"/></a>
-</div>
-
-<p>The sut is an ngninx application listening on port <code>80</code>, with a file called <code>sparse</code> of 500GB in its server root directory.</p>
+</div></p>
+<p>We use Docker Compose to make nginx serve a large file called <code>sparse</code> on the root path of the webserver, which will listen for incoming connections at port <code>80</code>.</p>
 <h4 class="small-subtitle">The TJob</h4>
 
-<p>The TJob is a custom application whose source code can be found <a href="https://github.com/elastest/elastest-monitoring-service/tree/master/e2e-test/tjob">here</a>, and which has been deployed as a Docker image to Dockerhub at <a href="https://hub.docker.com/r/imdeasoftware/e2etjob">imdeasoftware/e2etjob</a>.</p>
-<p>The TJob configuration is the following:</p>
-<ul>
-<li><strong>TJob name</strong>: <strong><code>Double bandwidth</code></strong></li>
-<li><strong>Current SuT</strong>: Select <strong><code>nginx</code></strong></li>
-<li><strong>Environment Docker Image</strong>: <strong><code>imdeasoftware/e2etjob</code></strong></li>
-<li>
-<p><strong>Commands</strong>: </p>
-<pre><code>cd /go;./tjob
-</code></pre>
-</li>
-<li>
-<p><strong>Test Support Services</strong>: Check <strong><code>EMS</code></strong></p>
-</li>
-</ul>
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/test-services/images/ems/tjob1.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ems/tjob1.png"/></a>
-</div>
-
-<p>And, of course, we have to make sure that the EMS checkbox is checked:
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/test-services/images/ems/tjob2.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ems/tjob2.png"/></a>
-</div></p>
-<p>When the TJob starts, it deploys these event stampers:</p>
+<p>The TJob exercising the SuT is an HTTP client written in Go, whose source coude can be found <a href="https://github.com/elastest/elastest-monitoring-service/tree/master/e2e-test/tjob">here</a>.
+First, the TJob uses <a href="https://elastest.io/docs/api/ems/">the Elastest Monitoring Service API</a> to deploy one Stamper and one Monitoring Machine.
+The stamping rules at the file <code>stampers.txt</code> are the following:</p>
 <pre><code>when e.strcmp(type,&quot;net&quot;) do #NetData
 when e.path(message) do #TJobMsg
 
@@ -762,12 +737,10 @@ when e.tag(#lowavg) do #websocket
 when e.tag(#highavg) do #websocket 
 </code></pre>
 
-<p>We can see that
-+ An event stamped with channel <strong><code>#testresult</code></strong> will also be stamped with channel stamp <strong><code>#websocket</code></strong>.
-+ An event whose payload is <strong><code>{message: {info: "Info"}}</code></strong> will be stamped with stamp <strong><code>#TJobMsg</code></strong> but not with channel stamp <strong><code>#NetData</code></strong>.
-+ An event whose payload is <strong><code>{type: "net", message: "Server"}</code></strong> will be stamped with channel stamp <strong><code>#NetData</code></strong> but not with channel stamp <strong><code>#TJobMsg</code></strong>.
-+ Finally, an event whose payload is <strong><code>{message: {info: "Info"}, type: "net"}</code></strong> will be stamped with both channel stamps <strong><code>#TJobMsg</code></strong> and <strong><code>#NetData</code></strong>.</p>
-<p>The TJob also deploys the following monitoring machine at startup:</p>
+<p>We use the stampers to assign a tag to the input and output events according to their content.
+When an input event has a string field called <code>type</code> whose value is <code>net</code>, then it is <code>#NetData</code>. When an input event has a field called <code>message</code>, then it is a <code>#TJobMsg</code>.
+The output events tagged as <code>#testresult</code>, <code>#lowavg</code> and <code>#highavg</code> are output to the <code>websocket</code>, over which The TJob will be listening for events.</p>
+<p>The Monitoring Machine at the file <code>sessiondef.txt</code> is the following:</p>
 <pre><code>pred isnet := e.tag(#NetData) /\ e.strmatch(containerName, &quot;nginx&quot;)
 
 stream bool lowstarted := e.strmatch(message, &quot;STARTING FIRST DOWNLOAD&quot;)
@@ -778,31 +751,32 @@ stream bool tjobfinished := e.strmatch(message, &quot;FINISHING TEST&quot;)
 
 stream num outBandwidth := if isnet then e.getnum(net.txBytes_ps)
 
-stream bool low_is_running := Prev lowstarted /\ ~Prev lowended
-stream bool high_is_running := Prev highstarted /\ ~Prev highended
+stream bool low_is_running := Once lowstarted /\ ~Once lowended
+stream bool high_is_running := Once highstarted /\ ~Once highended
 
 stream num avgbwlow := avg(outBandwidth within low_is_running)
 stream num avgbwhigh := avg(outBandwidth within high_is_running)
 
-stream bool testcorrect := Prev low_is_running /\ Prev high_is_running /\ avgbwhigh &gt; avgbwlow * 1.8
+stream bool testcorrect := Once low_is_running /\ Once high_is_running /\ avgbwhigh * 0.8 &gt; avgbwlow
 
+trigger tjobfinished do emit avgbwlow on #lowavg
+trigger tjobfinished do emit avgbwhigh on #highavg
 trigger tjobfinished do emit testcorrect on #testresult
 </code></pre>
 
-<ul>
-<li>The predicate <code>isnet</code> filters the events containing information about the net.</li>
-<li>The boolean streams <code>lowstarted/ended</code> indicate when the period of only one download starts and ends.</li>
-<li>The boolean streams <code>highstarted/ended</code> indicate when the period of two downloads in parallel starts and ends.</li>
-<li>The boolean stream <code>tjobfinised</code> indicates that the test is over.</li>
-<li>The numeric stream <code>outBandwidth</code> extracts the bandwidth usage from a specific field in the event.</li>
-<li>The boolean stream <code>low_is_running</code> indicates that only one download is being performed.</li>
-<li>The boolean stream <code>high_is_running</code> indicates that two downloads are being performed in parallel.</li>
-<li>The numeric stream <code>avgbwlow</code> calculates the average bandwidth when there is only one download.</li>
-<li>The numeric stream <code>avgbwhigh</code> calculates the average bandwidth when there are two downloads in parallel.</li>
-<li>The boolean stream <code>testcorrect</code> assesses that (a) there was a low bandwidth period, (b) there was a high bandwidth period, and (c), the average bandwidth during two parallel downloads is greater than (almost) the double of the bandwidth consumed by a single download.</li>
-<li>Finally, the <code>trigger</code> clause emits the result of <code>testcorrect</code> over the channel <code>#testresult</code> when the TJob is over.</li>
-</ul>
-<p>After the initialization phase, the TJob connects to the EMS websocket endpoint and also proceeds to perform the downloads, printing a message beteween the different stages.
+<p>In this Monitoring Machine,
++ The predicate <code>isnet</code> filters the events containing information about the net.
++ The boolean streams <code>lowstarted/ended</code> indicate when the period of only one download starts and ends.
++ The boolean streams <code>highstarted/ended</code> indicate when the period of two downloads in parallel starts and ends.
++ The boolean stream <code>tjobfinised</code> indicates that the test is over.
++ The numeric stream <code>outBandwidth</code> extracts the bandwidth usage from a specific field in the event.
++ The boolean stream <code>low_is_running</code> indicates that only one download is being performed.
++ The boolean stream <code>high_is_running</code> indicates that two downloads are being performed in parallel.
++ The numeric stream <code>avgbwlow</code> calculates the average bandwidth when there is only one download.
++ The numeric stream <code>avgbwhigh</code> calculates the average bandwidth when there are two downloads in parallel.
++ The boolean stream <code>testcorrect</code> assesses that (a) there was a low bandwidth period, (b) there was a high bandwidth period, and (c), the average bandwidth during two parallel downloads is greater than (almost) the double of the bandwidth consumed by a single download.
++ Finally, the <code>trigger</code> clause emits the result of <code>testcorrect</code> over the channel <code>#testresult</code> when the TJob is over.</p>
+<p>After the initialization phase, the TJob connects to the Elastest Monitoring Service websocket endpoint and proceeds to perform the downloads, printing a message beteween the different stages.
 This can be seen in <a href="https://github.com/elastest/elastest-monitoring-service/blob/master/e2e-test/tjob/main.go">the main TJob routine</a>:</p>
 <pre><code class="go">fmt.Println(&quot;STARTING FIRST DOWNLOAD&quot;)
 go DownloadFile(fileUrl)
@@ -815,7 +789,36 @@ time.Sleep(5 * time.Second)
 fmt.Println(&quot;FINISHING TEST&quot;)
 </code></pre>
 
-<p>Then, the TJob checks the value of the event received over the channel <code>#testresult</code> and exits with a <em>success</em> or <em>fail</em> code accordingly.</p>
+<p>Then, the TJob checks the value of the event received over the channel <code>#testresult</code> and exits with a <em>success</em> or <em>fail</em> code accordingly.
+The code of the Go program is designed to stress the System under Test, while all the numeric computation and property assessment is carried out in the Monitoring Service.</p>
+<p>We have generated a Docker image for the TJob, and published at <a href="https://hub.docker.com/r/imdeasoftware/e2etjob:1.2">imdeasoftware/e2etjob:1.2</a>.
+The configuration for the TJob at ElasTest is as follows:</p>
+<ul>
+<li><strong>TJob name</strong>: <strong><code>Double bandwidth</code></strong></li>
+<li><strong>Current SuT</strong>: Select <strong><code>nginx</code></strong></li>
+<li><strong>Environment Docker Image</strong>: <strong><code>imdeasoftware/e2etjob:1.2</code></strong></li>
+<li>
+<p><strong>Commands</strong>: </p>
+<pre><code>cd /go;./tjob
+</code></pre>
+</li>
+<li>
+<p><strong>Test Support Services</strong>: Check <strong><code>EMS</code></strong>
+The TJob configuration should look like this:
+<p></p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/test-services/images/ems/tjob1.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ems/tjob1.png"/></a>
+</div></p>
+</li>
+</ul>
+<p>And, of course, we have to make sure that the EMS checkbox is checked:
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/test-services/images/ems/tjob2.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ems/tjob2.png"/></a>
+</div></p>
+<p>After some minutes, we should see that the test passes, which means that <code>nginx</code> behaves as expected:
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/test-services/images/ems/tjobfinished.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ems/tjobfinished.png"/></a>
+</div></p>
 					
 				      </div>
 				    </div>
