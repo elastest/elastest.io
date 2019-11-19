@@ -108,6 +108,11 @@
                         <span class="nav-button">Docs</span>
                       </a>
                     </li>
+                    <li {% if page.active=="research" or layout.active=="research" %} class="active" {% endif %}>
+                      <a href="/research.html">
+                        <span class="nav-button">Research</span>
+                      </a>
+                    </li>
                     <li {% if page.active=="media" or layout.active=="media" %} class="active" {% endif %}>
                       <a href="/media.html">
                         <span class="nav-button">Media</span>
