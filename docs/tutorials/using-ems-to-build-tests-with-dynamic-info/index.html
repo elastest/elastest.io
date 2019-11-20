@@ -689,33 +689,37 @@ section-icon: mdi mdi-content-copy
 </div>
 
 <p>This tutorial aims to show the basic concepts and principles of the Elastest Monitoring Service, and its intended use. You can check the documentation of this service following this <a href="../../test-services/ems/">link</a>.</p>
-<p>In this example, we will use Elastest to assess that a webserver -- the System under Test -- is able to serve multiple clients, and uses as much bandwitdh as possible when doing so.</p>
+<p>In this example, we will use Elastest to assess that a webserver — the System under Test — is able to serve multiple clients, and uses as much bandwitdh as possible when doing so.</p>
 <p>In particular, our TJob will start one download of a large file at the beginning of the test, and after some time, it will start a second one. The test passes if the bandwidth consumption with two downloads in parallel roughly doubles the bandwidth consumption with only one download going on.</p>
 <p>The ElasTest infrastructure provides us with the means to extract data from the server running the test automatically. We use this feature to collect the network activity, which we will analyse in the EMS.</p>
 <p>This example is <strong>shipped along with ElasTest</strong> within the project <strong><code>EMS Example</code></strong>, but we are going to explain how to create it.</p>
 <h4 class="small-subtitle">The System under Test</h4>
 
 <p>Our SuT is <a href="https://www.nginx.com/">nginx</a>, a well-known webserver.
-The configuration of the System under Test in elastest is as follows:
--   <strong>SuT Name</strong>: <strong><code>nginx</code></strong>
--   Select <strong><code>Deployed by Elastest</code></strong>
--   Select <strong><code>With Docker Compose</code></strong>
--   <strong>Docker Compose</strong>:</p>
-<pre><code>    version: '3'
-
-    services:
-
-        nginx-service:
-            image: nginx
-            entrypoint:
-                - /bin/bash
-                - "-c"
-                - "dd if=/dev/random of=/usr/share/nginx/html/sparse bs=1024 count=1 seek=5242880000;nginx;sleep infinity"
-            expose:
-                - "80"
-</code></pre>
+The configuration of the System under Test in elastest is as follows:</p>
 <ul>
-<li><strong>Main Service</strong>: <strong><code>nginx-service</code></strong></li>
+<li><strong>SuT Name</strong>: <strong><code>nginx</code></strong></li>
+<li>Select <strong><code>Deployed by Elastest</code></strong></li>
+<li>Select <strong><code>With Docker Compose</code></strong></li>
+<li>
+<p><strong>Docker Compose</strong>:</p>
+<pre><code>version: '3'
+
+services:
+
+    nginx-service:
+        image: nginx
+        entrypoint:
+            - /bin/bash
+            - "-c"
+            - "dd if=/dev/random of=/usr/share/nginx/html/sparse bs=1024 count=1 seek=5242880000;nginx;sleep infinity"
+        expose:
+            - "80"
+</code></pre>
+</li>
+<li>
+<p><strong>Main Service</strong>: <strong><code>nginx-service</code></strong></p>
+</li>
 <li><strong>Wait for http port</strong>: <strong><code>80</code></strong></li>
 </ul>
 <p>The SuT configuration should look like this:
@@ -764,18 +768,20 @@ trigger tjobfinished do emit avgbwhigh on #highavg
 trigger tjobfinished do emit testcorrect on #testresult
 </code></pre>
 
-<p>In this Monitoring Machine,
-+ The predicate <code>isnet</code> filters the events containing information about the net.
-+ The boolean streams <code>lowstarted/ended</code> indicate when the period of only one download starts and ends.
-+ The boolean streams <code>highstarted/ended</code> indicate when the period of two downloads in parallel starts and ends.
-+ The boolean stream <code>tjobfinised</code> indicates that the test is over.
-+ The numeric stream <code>outBandwidth</code> extracts the bandwidth usage from a specific field in the event.
-+ The boolean stream <code>low_is_running</code> indicates that only one download is being performed.
-+ The boolean stream <code>high_is_running</code> indicates that two downloads are being performed in parallel.
-+ The numeric stream <code>avgbwlow</code> calculates the average bandwidth when there is only one download.
-+ The numeric stream <code>avgbwhigh</code> calculates the average bandwidth when there are two downloads in parallel.
-+ The boolean stream <code>testcorrect</code> assesses that (a) there was a low bandwidth period, (b) there was a high bandwidth period, and (c), the average bandwidth during two parallel downloads is greater than (almost) the double of the bandwidth consumed by a single download.
-+ Finally, the <code>trigger</code> clause emits the result of <code>testcorrect</code> over the channel <code>#testresult</code> when the TJob is over.</p>
+<p>In this Monitoring Machine,</p>
+<ul>
+<li>The predicate <code>isnet</code> filters the events containing information about the net.</li>
+<li>The boolean streams <code>lowstarted/ended</code> indicate when the period of only one download starts and ends.</li>
+<li>The boolean streams <code>highstarted/ended</code> indicate when the period of two downloads in parallel starts and ends.</li>
+<li>The boolean stream <code>tjobfinised</code> indicates that the test is over.</li>
+<li>The numeric stream <code>outBandwidth</code> extracts the bandwidth usage from a specific field in the event.</li>
+<li>The boolean stream <code>low_is_running</code> indicates that only one download is being performed.</li>
+<li>The boolean stream <code>high_is_running</code> indicates that two downloads are being performed in parallel.</li>
+<li>The numeric stream <code>avgbwlow</code> calculates the average bandwidth when there is only one download.</li>
+<li>The numeric stream <code>avgbwhigh</code> calculates the average bandwidth when there are two downloads in parallel.</li>
+<li>The boolean stream <code>testcorrect</code> assesses that (a) there was a low bandwidth period, (b) there was a high bandwidth period, and (c), the average bandwidth during two parallel downloads is greater than (almost) the double of the bandwidth consumed by a single download.</li>
+<li>Finally, the <code>trigger</code> clause emits the result of <code>testcorrect</code> over the channel <code>#testresult</code> when the TJob is over.</li>
+</ul>
 <p>After the initialization phase, the TJob connects to the Elastest Monitoring Service websocket endpoint and proceeds to perform the downloads, printing a message beteween the different stages.
 This can be seen in <a href="https://github.com/elastest/elastest-monitoring-service/blob/master/e2e-test/tjob/main.go">the main TJob routine</a>:</p>
 <pre><code class="go">fmt.Println(&quot;STARTING FIRST DOWNLOAD&quot;)
@@ -803,14 +809,14 @@ The configuration for the TJob at ElasTest is as follows:</p>
 </code></pre>
 </li>
 <li>
-<p><strong>Test Support Services</strong>: Check <strong><code>EMS</code></strong>
-The TJob configuration should look like this:
+<p><strong>Test Support Services</strong>: Check <strong><code>EMS</code></strong></p>
+</li>
+</ul>
+<p>The TJob configuration should look like this:
 <p></p>
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-1" href="/docs/test-services/images/ems/tjob1.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ems/tjob1.png"/></a>
 </div></p>
-</li>
-</ul>
 <p>And, of course, we have to make sure that the EMS checkbox is checked:
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-1" href="/docs/test-services/images/ems/tjob2.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ems/tjob2.png"/></a>
