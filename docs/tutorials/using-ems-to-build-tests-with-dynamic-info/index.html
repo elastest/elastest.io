@@ -692,7 +692,7 @@ section-icon: mdi mdi-content-copy
 <p>In this example, we will use Elastest to assess that a webserver — the System under Test — is able to serve multiple clients, and uses as much bandwitdh as possible when doing so.</p>
 <p>In particular, our TJob will start one download of a large file at the beginning of the test, and after some time, it will start a second one. The test passes if the bandwidth consumption with two downloads in parallel roughly doubles the bandwidth consumption with only one download going on.</p>
 <p>The ElasTest infrastructure provides us with the means to extract data from the server running the test automatically. We use this feature to collect the network activity, which we will analyse in the EMS.</p>
-<p>This example is <strong>shipped along with ElasTest</strong> within the project <strong><code>EMS Example</code></strong>, but we are going to explain how to create it.</p>
+<p>This example is <strong>shipped along with ElasTest</strong> within the project <strong><code>Building assertions with monitoring data</code></strong> (EMS Example in older versions), but we are going to explain how to create it.</p>
 <h4 class="small-subtitle">The System under Test</h4>
 
 <p>Our SuT is <a href="https://www.nginx.com/">nginx</a>, a well-known webserver.
